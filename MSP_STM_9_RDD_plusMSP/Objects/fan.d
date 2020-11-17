@@ -1,0 +1,10 @@
+.\objects\fan.o: User\src\fan.c
+.\objects\fan.o: .\CMSIS\inc\stm32f3xx.h
+.\objects\fan.o: .\CMSIS\inc\stm32f334x8.h
+.\objects\fan.o: .\CMSIS\inc\core_cm4.h
+.\objects\fan.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\fan.o: .\CMSIS\inc\cmsis_version.h
+.\objects\fan.o: .\CMSIS\inc\cmsis_compiler.h
+.\objects\fan.o: .\CMSIS\inc\cmsis_armcc.h
+.\objects\fan.o: .\CMSIS\inc\system_stm32f3xx.h
+.\objects\fan.o: .\User\inc\fan.h

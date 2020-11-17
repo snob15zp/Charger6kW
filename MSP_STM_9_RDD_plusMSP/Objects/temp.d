@@ -1,0 +1,10 @@
+.\objects\temp.o: MSP430\temp.c
+.\objects\temp.o: MSP430\temp.h
+.\objects\temp.o: MSP430\time.h
+.\objects\temp.o: MSP430\debug.h
+.\objects\temp.o: MSP430\io.h
+.\objects\temp.o: MSP430\mainMSP.h
+.\objects\temp.o: MSP430\variant.h
+.\objects\temp.o: MSP430\pwm.h
+.\objects\temp.o: MSP430\iqmath.h
+.\objects\temp.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h

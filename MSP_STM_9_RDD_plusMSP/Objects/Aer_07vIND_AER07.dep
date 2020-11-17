@@ -1,0 +1,457 @@
+Dependencies for Project 'Aer_07vIND', Target 'AER07': (DO NOT MODIFY !)
+CompilerVersion: 5060750::V5.06 update 6 (build 750)::ARMCC
+F (.\CMSIS\src\system_stm32f3xx.c)(0x5D7F93F4)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\system_stm32f3xx.o --omf_browse .\objects\system_stm32f3xx.crf --depend .\objects\system_stm32f3xx.d)
+I (.\CMSIS\inc\stm32f3xx.h)(0x5ECEA16B)
+I (.\CMSIS\inc\stm32f334x8.h)(0x5D7F93F4)
+I (.\CMSIS\inc\core_cm4.h)(0x5D7F93F4)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B1868)
+I (.\CMSIS\inc\cmsis_version.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_compiler.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_armcc.h)(0x5C5BAC24)
+I (.\CMSIS\inc\system_stm32f3xx.h)(0x5D7F93F4)
+F (.\Starup\startup_stm32f334x8.s)(0x5D7F93F4)(--cpu Cortex-M4.fp.sp -g --apcs=interwork -I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 529" --pd "STM32F334x8 SETA 1"--list .\listings\startup_stm32f334x8.lst --xref -o .\objects\startup_stm32f334x8.o --depend .\objects\startup_stm32f334x8.d)
+F (.\User\src\main.c)(0x5ECEB2BF)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (.\CMSIS\inc\Stm32f3xx.h)(0x5ECEA16B)
+I (.\CMSIS\inc\stm32f334x8.h)(0x5D7F93F4)
+I (.\CMSIS\inc\core_cm4.h)(0x5D7F93F4)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B1868)
+I (.\CMSIS\inc\cmsis_version.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_compiler.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_armcc.h)(0x5C5BAC24)
+I (.\CMSIS\inc\system_stm32f3xx.h)(0x5D7F93F4)
+I (.\User\inc\BoardInit.h)(0x5DEDC4F8)
+I (.\User\inc\HiResTim.h)(0x5E364AEC)
+I (.\User\inc\adc.h)(0x5E3BC996)
+I (.\User\inc\termo.h)(0x5DED1438)
+I (.\MSP430\usci.h)(0x5ECA905B)
+I (.\MSP430\protocol.h)(0x5E42BE7E)
+I (C:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x5D9B1868)
+I (.\MSP430\debug.h)(0x5829719C)
+I (.\User\inc\fan.h)(0x5ECCE742)
+I (.\MSP430\can.h)(0x5ECE4FD6)
+I (.\MSP430\util.h)(0x5829719C)
+I (.\MSP430\mainMSP.h)(0x5E450F42)
+I (.\MSP430\variant.h)(0x5CF47994)
+F (.\User\src\HiResTim.c)(0x5ECEA1D9)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\hirestim.o --omf_browse .\objects\hirestim.crf --depend .\objects\hirestim.d)
+I (.\User\inc\HiResTim.h)(0x5E364AEC)
+I (.\CMSIS\inc\stm32f3xx.h)(0x5ECEA16B)
+I (.\CMSIS\inc\stm32f334x8.h)(0x5D7F93F4)
+I (.\CMSIS\inc\core_cm4.h)(0x5D7F93F4)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B1868)
+I (.\CMSIS\inc\cmsis_version.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_compiler.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_armcc.h)(0x5C5BAC24)
+I (.\CMSIS\inc\system_stm32f3xx.h)(0x5D7F93F4)
+F (.\User\src\BoardInit.c)(0x5DE90C06)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\boardinit.o --omf_browse .\objects\boardinit.crf --depend .\objects\boardinit.d)
+I (.\CMSIS\inc\stm32f3xx.h)(0x5ECEA16B)
+I (.\CMSIS\inc\stm32f334x8.h)(0x5D7F93F4)
+I (.\CMSIS\inc\core_cm4.h)(0x5D7F93F4)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B1868)
+I (.\CMSIS\inc\cmsis_version.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_compiler.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_armcc.h)(0x5C5BAC24)
+I (.\CMSIS\inc\system_stm32f3xx.h)(0x5D7F93F4)
+I (.\User\inc\BoardInit.h)(0x5DEDC4F8)
+F (.\User\src\adc.c)(0x5ECEA23F)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\adc.o --omf_browse .\objects\adc.crf --depend .\objects\adc.d)
+I (.\User\inc\adc.h)(0x5E3BC996)
+I (.\CMSIS\inc\stm32f3xx.h)(0x5ECEA16B)
+I (.\CMSIS\inc\stm32f334x8.h)(0x5D7F93F4)
+I (.\CMSIS\inc\core_cm4.h)(0x5D7F93F4)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B1868)
+I (.\CMSIS\inc\cmsis_version.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_compiler.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_armcc.h)(0x5C5BAC24)
+I (.\CMSIS\inc\system_stm32f3xx.h)(0x5D7F93F4)
+F (.\User\src\termo.c)(0x5E0F5FD2)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\termo.o --omf_browse .\objects\termo.crf --depend .\objects\termo.d)
+I (.\User\inc\termo.h)(0x5DED1438)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B1868)
+F (.\User\src\fan.c)(0x5ECCE8D5)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\fan.o --omf_browse .\objects\fan.crf --depend .\objects\fan.d)
+I (.\CMSIS\inc\stm32f3xx.h)(0x5ECEA16B)
+I (.\CMSIS\inc\stm32f334x8.h)(0x5D7F93F4)
+I (.\CMSIS\inc\core_cm4.h)(0x5D7F93F4)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B1868)
+I (.\CMSIS\inc\cmsis_version.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_compiler.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_armcc.h)(0x5C5BAC24)
+I (.\CMSIS\inc\system_stm32f3xx.h)(0x5D7F93F4)
+I (.\User\inc\fan.h)(0x5ECCE742)
+F (.\MSP430\cfg.c)(0x5E43F6FC)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\cfg.o --omf_browse .\objects\cfg.crf --depend .\objects\cfg.d)
+I (MSP430\variant.h)(0x5CF47994)
+I (MSP430\cfg.h)(0x5E450E2E)
+I (MSP430\debug.h)(0x5829719C)
+I (MSP430\iqmath.h)(0x5829719C)
+I (MSP430\time.h)(0x5E450C6A)
+I (MSP430\telem.h)(0x5E450CE2)
+I (MSP430\safety.h)(0x5E450C82)
+I (MSP430\flag.h)(0x5E450CA6)
+I (MSP430\meas.h)(0x5E450C90)
+I (MSP430\can.h)(0x5ECE4FD6)
+I (.\CMSIS\inc\Stm32f3xx.h)(0x5ECEA16B)
+I (.\CMSIS\inc\stm32f334x8.h)(0x5D7F93F4)
+I (.\CMSIS\inc\core_cm4.h)(0x5D7F93F4)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B1868)
+I (.\CMSIS\inc\cmsis_version.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_compiler.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_armcc.h)(0x5C5BAC24)
+I (.\CMSIS\inc\system_stm32f3xx.h)(0x5D7F93F4)
+I (MSP430\util.h)(0x5829719C)
+I (MSP430\flash.h)(0x5E450D56)
+I (MSP430\buildnum.h)(0x5829719C)
+F (.\MSP430\crc16.c)(0x5E4512BC)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\crc16.o --omf_browse .\objects\crc16.crf --depend .\objects\crc16.d)
+I (MSP430\crc16.h)(0x5E45129C)
+F (.\MSP430\flag.c)(0x5E450DB4)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\flag.o --omf_browse .\objects\flag.crf --depend .\objects\flag.d)
+I (MSP430\flag.h)(0x5E450CA6)
+I (MSP430\debug.h)(0x5829719C)
+I (MSP430\iqmath.h)(0x5829719C)
+I (MSP430\time.h)(0x5E450C6A)
+I (MSP430\flash.h)(0x5E450D56)
+I (MSP430\util.h)(0x5829719C)
+I (MSP430\cfg.h)(0x5E450E2E)
+I (MSP430\telem.h)(0x5E450CE2)
+I (MSP430\safety.h)(0x5E450C82)
+I (MSP430\meas.h)(0x5E450C90)
+I (MSP430\variant.h)(0x5CF47994)
+I (MSP430\io.h)(0x5E450DD2)
+I (MSP430\mainMSP.h)(0x5E450F42)
+F (.\MSP430\flash.c)(0x5E440E8E)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\flash.o --omf_browse .\objects\flash.crf --depend .\objects\flash.d)
+I (MSP430\flash.h)(0x5E450D56)
+I (MSP430\debug.h)(0x5829719C)
+I (MSP430\spi.h)(0x5E45123C)
+I (MSP430\io.h)(0x5E450DD2)
+I (MSP430\mainMSP.h)(0x5E450F42)
+I (MSP430\variant.h)(0x5CF47994)
+I (MSP430\util.h)(0x5829719C)
+F (.\MSP430\iqmath.c)(0x5E42C236)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\iqmath.o --omf_browse .\objects\iqmath.crf --depend .\objects\iqmath.d)
+I (C:\Keil_v5\ARM\ARMCC\include\signal.h)(0x5D9B186A)
+I (MSP430\iqmath.h)(0x5829719C)
+I (MSP430\debug.h)(0x5829719C)
+F (.\MSP430\mainMSP.c)(0x5ECEB2BF)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\mainmsp.o --omf_browse .\objects\mainmsp.crf --depend .\objects\mainmsp.d)
+I (C:\Keil_v5\ARM\ARMCC\include\signal.h)(0x5D9B186A)
+I (MSP430\variant.h)(0x5CF47994)
+I (MSP430\mainMSP.h)(0x5E450F42)
+I (MSP430\debug.h)(0x5829719C)
+I (MSP430\can.h)(0x5ECE4FD6)
+I (.\CMSIS\inc\Stm32f3xx.h)(0x5ECEA16B)
+I (.\CMSIS\inc\stm32f334x8.h)(0x5D7F93F4)
+I (.\CMSIS\inc\core_cm4.h)(0x5D7F93F4)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B1868)
+I (.\CMSIS\inc\cmsis_version.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_compiler.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_armcc.h)(0x5C5BAC24)
+I (.\CMSIS\inc\system_stm32f3xx.h)(0x5D7F93F4)
+I (MSP430\util.h)(0x5829719C)
+I (MSP430\usci.h)(0x5ECA905B)
+I (MSP430\protocol.h)(0x5E42BE7E)
+I (C:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x5D9B1868)
+I (MSP430\sch.h)(0x5829719C)
+I (MSP430\io.h)(0x5E450DD2)
+I (MSP430\comms.h)(0x5829719C)
+I (MSP430\meas.h)(0x5E450C90)
+I (MSP430\iqmath.h)(0x5829719C)
+I (MSP430\spi.h)(0x5E45123C)
+I (MSP430\flash.h)(0x5E450D56)
+I (MSP430\cfg.h)(0x5E450E2E)
+I (MSP430\time.h)(0x5E450C6A)
+I (MSP430\telem.h)(0x5E450CE2)
+I (MSP430\safety.h)(0x5E450C82)
+I (MSP430\flag.h)(0x5E450CA6)
+I (MSP430\status.h)(0x5829719C)
+I (MSP430\ctrl.h)(0x5829719C)
+I (MSP430\stats.h)(0x5E450CC4)
+I (MSP430\lcd.h)(0x5829719C)
+F (.\MSP430\meas.c)(0x5E4412C2)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\meas.o --omf_browse .\objects\meas.crf --depend .\objects\meas.d)
+I (MSP430\iqmath.h)(0x5829719C)
+I (MSP430\debug.h)(0x5829719C)
+I (MSP430\meas.h)(0x5E450C90)
+I (MSP430\variant.h)(0x5CF47994)
+I (MSP430\cfg.h)(0x5E450E2E)
+I (MSP430\time.h)(0x5E450C6A)
+I (MSP430\telem.h)(0x5E450CE2)
+I (MSP430\safety.h)(0x5E450C82)
+I (MSP430\flag.h)(0x5E450CA6)
+I (MSP430\io.h)(0x5E450DD2)
+I (MSP430\mainMSP.h)(0x5E450F42)
+I (C:\Keil_v5\ARM\ARMCC\include\limits.h)(0x5D9B1862)
+F (.\MSP430\safety.c)(0x5E450832)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\safety.o --omf_browse .\objects\safety.crf --depend .\objects\safety.d)
+I (MSP430\mainMSP.h)(0x5E450F42)
+I (MSP430\debug.h)(0x5829719C)
+I (MSP430\variant.h)(0x5CF47994)
+I (MSP430\safety.h)(0x5E450C82)
+I (MSP430\flag.h)(0x5E450CA6)
+I (MSP430\iqmath.h)(0x5829719C)
+I (MSP430\time.h)(0x5E450C6A)
+I (MSP430\meas.h)(0x5E450C90)
+I (MSP430\io.h)(0x5E450DD2)
+I (MSP430\cfg.h)(0x5E450E2E)
+I (MSP430\telem.h)(0x5E450CE2)
+F (.\MSP430\spi.c)(0x5E440ED2)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\spi.o --omf_browse .\objects\spi.crf --depend .\objects\spi.d)
+I (MSP430\spi.h)(0x5E45123C)
+I (MSP430\debug.h)(0x5829719C)
+F (.\MSP430\stats.c)(0x5E43F234)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\stats.o --omf_browse .\objects\stats.crf --depend .\objects\stats.d)
+I (MSP430\stats.h)(0x5E450CC4)
+I (MSP430\debug.h)(0x5829719C)
+I (MSP430\iqmath.h)(0x5829719C)
+I (MSP430\time.h)(0x5E450C6A)
+I (MSP430\flash.h)(0x5E450D56)
+I (MSP430\meas.h)(0x5E450C90)
+I (MSP430\variant.h)(0x5CF47994)
+F (.\MSP430\time.c)(0x5E44120A)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\time.o --omf_browse .\objects\time.crf --depend .\objects\time.d)
+I (MSP430\time.h)(0x5E450C6A)
+I (MSP430\debug.h)(0x5829719C)
+I (MSP430\stats.h)(0x5E450CC4)
+I (MSP430\iqmath.h)(0x5829719C)
+I (MSP430\flag.h)(0x5E450CA6)
+I (MSP430\meas.h)(0x5E450C90)
+I (MSP430\variant.h)(0x5CF47994)
+F (.\MSP430\usci.c)(0x5ECD15E0)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\usci.o --omf_browse .\objects\usci.crf --depend .\objects\usci.d)
+I (.\CMSIS\inc\Stm32f3xx.h)(0x5ECEA16B)
+I (.\CMSIS\inc\stm32f334x8.h)(0x5D7F93F4)
+I (.\CMSIS\inc\core_cm4.h)(0x5D7F93F4)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B1868)
+I (.\CMSIS\inc\cmsis_version.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_compiler.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_armcc.h)(0x5C5BAC24)
+I (.\CMSIS\inc\system_stm32f3xx.h)(0x5D7F93F4)
+I (MSP430\usci.h)(0x5ECA905B)
+I (MSP430\protocol.h)(0x5E42BE7E)
+I (C:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x5D9B1868)
+I (MSP430\debug.h)(0x5829719C)
+I (C:\Keil_v5\ARM\ARMCC\include\signal.h)(0x5D9B186A)
+I (MSP430\lcd.h)(0x5829719C)
+I (MSP430\time.h)(0x5E450C6A)
+I (MSP430\crc16.h)(0x5E45129C)
+F (.\MSP430\util.c)(0x5ECECFFE)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\util.o --omf_browse .\objects\util.crf --depend .\objects\util.d)
+I (MSP430\util.h)(0x5829719C)
+I (MSP430\debug.h)(0x5829719C)
+I (MSP430\flash.h)(0x5E450D56)
+F (.\MSP430\variant.c)(0x5E4410A0)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\variant.o --omf_browse .\objects\variant.crf --depend .\objects\variant.d)
+I (MSP430\variant.h)(0x5CF47994)
+I (MSP430\safety.h)(0x5E450C82)
+I (MSP430\flag.h)(0x5E450CA6)
+I (MSP430\debug.h)(0x5829719C)
+I (MSP430\iqmath.h)(0x5829719C)
+I (MSP430\time.h)(0x5E450C6A)
+I (MSP430\meas.h)(0x5E450C90)
+F (.\MSP430\lcd.c)(0x5ECB95B2)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\lcd.o --omf_browse .\objects\lcd.crf --depend .\objects\lcd.d)
+I (C:\Keil_v5\ARM\ARMCC\include\signal.h)(0x5D9B186A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9B186A)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5D9B1868)
+I (MSP430\variant.h)(0x5CF47994)
+I (MSP430\lcd.h)(0x5829719C)
+I (MSP430\meas.h)(0x5E450C90)
+I (MSP430\debug.h)(0x5829719C)
+I (MSP430\iqmath.h)(0x5829719C)
+I (MSP430\usci.h)(0x5ECA905B)
+I (MSP430\protocol.h)(0x5E42BE7E)
+I (C:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x5D9B1868)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B1868)
+I (MSP430\cfg.h)(0x5E450E2E)
+I (MSP430\time.h)(0x5E450C6A)
+I (MSP430\telem.h)(0x5E450CE2)
+I (MSP430\safety.h)(0x5E450C82)
+I (MSP430\flag.h)(0x5E450CA6)
+I (MSP430\flash.h)(0x5E450D56)
+I (MSP430\util.h)(0x5829719C)
+I (MSP430\comms.h)(0x5829719C)
+I (MSP430\crc16.h)(0x5E45129C)
+I (MSP430\status.h)(0x5829719C)
+I (MSP430\can.h)(0x5ECE4FD6)
+I (.\CMSIS\inc\Stm32f3xx.h)(0x5ECEA16B)
+I (.\CMSIS\inc\stm32f334x8.h)(0x5D7F93F4)
+I (.\CMSIS\inc\core_cm4.h)(0x5D7F93F4)
+I (.\CMSIS\inc\cmsis_version.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_compiler.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_armcc.h)(0x5C5BAC24)
+I (.\CMSIS\inc\system_stm32f3xx.h)(0x5D7F93F4)
+I (MSP430\stats.h)(0x5E450CC4)
+I (MSP430\ctrl.h)(0x5829719C)
+I (.\User\inc\adc.h)(0x5E3BC996)
+F (.\MSP430\can.c)(0x5ECE3EC7)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\can.o --omf_browse .\objects\can.crf --depend .\objects\can.d)
+I (.\CMSIS\inc\Stm32f3xx.h)(0x5ECEA16B)
+I (.\CMSIS\inc\stm32f334x8.h)(0x5D7F93F4)
+I (.\CMSIS\inc\core_cm4.h)(0x5D7F93F4)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B1868)
+I (.\CMSIS\inc\cmsis_version.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_compiler.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_armcc.h)(0x5C5BAC24)
+I (.\CMSIS\inc\system_stm32f3xx.h)(0x5D7F93F4)
+I (MSP430\can.h)(0x5ECE4FD6)
+I (MSP430\debug.h)(0x5829719C)
+I (MSP430\util.h)(0x5829719C)
+I (MSP430\usci.h)(0x5ECA905B)
+I (MSP430\protocol.h)(0x5E42BE7E)
+I (C:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x5D9B1868)
+I (MSP430\mcp.h)(0x5829719C)
+I (MSP430\io.h)(0x5E450DD2)
+I (MSP430\mainMSP.h)(0x5E450F42)
+I (MSP430\variant.h)(0x5CF47994)
+I (MSP430\cfg.h)(0x5E450E2E)
+I (MSP430\iqmath.h)(0x5829719C)
+I (MSP430\time.h)(0x5E450C6A)
+I (MSP430\telem.h)(0x5E450CE2)
+I (MSP430\safety.h)(0x5E450C82)
+I (MSP430\flag.h)(0x5E450CA6)
+I (MSP430\meas.h)(0x5E450C90)
+I (MSP430\main.h)(0x5829719C)
+F (.\MSP430\comms.c)(0x5ECE50A5)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\comms.o --omf_browse .\objects\comms.crf --depend .\objects\comms.d)
+I (MSP430\variant.h)(0x5CF47994)
+I (MSP430\comms.h)(0x5829719C)
+I (MSP430\debug.h)(0x5829719C)
+I (MSP430\can.h)(0x5ECE4FD6)
+I (.\CMSIS\inc\Stm32f3xx.h)(0x5ECEA16B)
+I (.\CMSIS\inc\stm32f334x8.h)(0x5D7F93F4)
+I (.\CMSIS\inc\core_cm4.h)(0x5D7F93F4)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B1868)
+I (.\CMSIS\inc\cmsis_version.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_compiler.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_armcc.h)(0x5C5BAC24)
+I (.\CMSIS\inc\system_stm32f3xx.h)(0x5D7F93F4)
+I (MSP430\util.h)(0x5829719C)
+I (MSP430\io.h)(0x5E450DD2)
+I (MSP430\mainMSP.h)(0x5E450F42)
+I (MSP430\meas.h)(0x5E450C90)
+I (MSP430\iqmath.h)(0x5829719C)
+I (MSP430\pwm.h)(0x5829719C)
+I (MSP430\flash.h)(0x5E450D56)
+I (MSP430\cfg.h)(0x5E450E2E)
+I (MSP430\time.h)(0x5E450C6A)
+I (MSP430\telem.h)(0x5E450CE2)
+I (MSP430\safety.h)(0x5E450C82)
+I (MSP430\flag.h)(0x5E450CA6)
+I (MSP430\stats.h)(0x5E450CC4)
+I (MSP430\main.h)(0x5829719C)
+I (MSP430\status.h)(0x5829719C)
+I (MSP430\ctrl.h)(0x5829719C)
+I (MSP430\lcd.h)(0x5829719C)
+F (.\MSP430\ctrl.c)(0x5ECA622F)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\ctrl.o --omf_browse .\objects\ctrl.crf --depend .\objects\ctrl.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B1868)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5D9B1868)
+I (MSP430\variant.h)(0x5CF47994)
+I (MSP430\ctrl.h)(0x5829719C)
+I (MSP430\debug.h)(0x5829719C)
+I (MSP430\pwm.h)(0x5829719C)
+I (MSP430\iqmath.h)(0x5829719C)
+I (MSP430\meas.h)(0x5E450C90)
+I (MSP430\io.h)(0x5E450DD2)
+I (MSP430\mainMSP.h)(0x5E450F42)
+I (MSP430\cfg.h)(0x5E450E2E)
+I (MSP430\time.h)(0x5E450C6A)
+I (MSP430\telem.h)(0x5E450CE2)
+I (MSP430\safety.h)(0x5E450C82)
+I (MSP430\flag.h)(0x5E450CA6)
+I (MSP430\util.h)(0x5829719C)
+I (MSP430\comms.h)(0x5829719C)
+I (MSP430\usci.h)(0x5ECA905B)
+I (MSP430\protocol.h)(0x5E42BE7E)
+I (C:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x5D9B1868)
+F (.\MSP430\io.c)(0x5ECEC1A4)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\io.o --omf_browse .\objects\io.crf --depend .\objects\io.d)
+I (.\CMSIS\inc\Stm32f3xx.h)(0x5ECEA16B)
+I (.\CMSIS\inc\stm32f334x8.h)(0x5D7F93F4)
+I (.\CMSIS\inc\core_cm4.h)(0x5D7F93F4)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B1868)
+I (.\CMSIS\inc\cmsis_version.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_compiler.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_armcc.h)(0x5C5BAC24)
+I (.\CMSIS\inc\system_stm32f3xx.h)(0x5D7F93F4)
+I (MSP430\variant.h)(0x5CF47994)
+I (MSP430\io.h)(0x5E450DD2)
+I (MSP430\mainMSP.h)(0x5E450F42)
+I (MSP430\debug.h)(0x5829719C)
+I (MSP430\ctrl.h)(0x5829719C)
+I (MSP430\flag.h)(0x5E450CA6)
+I (MSP430\iqmath.h)(0x5829719C)
+I (MSP430\time.h)(0x5E450C6A)
+I (MSP430\meas.h)(0x5E450C90)
+I (MSP430\safety.h)(0x5E450C82)
+I (MSP430\pwm.h)(0x5829719C)
+I (MSP430\comms.h)(0x5829719C)
+I (MSP430\cfg.h)(0x5E450E2E)
+I (MSP430\telem.h)(0x5E450CE2)
+I (.\User\inc\adc.h)(0x5E3BC996)
+F (.\MSP430\status.c)(0x5829719E)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\status.o --omf_browse .\objects\status.crf --depend .\objects\status.d)
+I (MSP430\status.h)(0x5829719C)
+I (MSP430\cfg.h)(0x5E450E2E)
+I (MSP430\debug.h)(0x5829719C)
+I (MSP430\iqmath.h)(0x5829719C)
+I (MSP430\time.h)(0x5E450C6A)
+I (MSP430\telem.h)(0x5E450CE2)
+I (MSP430\safety.h)(0x5E450C82)
+I (MSP430\flag.h)(0x5E450CA6)
+I (MSP430\meas.h)(0x5E450C90)
+I (MSP430\variant.h)(0x5CF47994)
+I (MSP430\stats.h)(0x5E450CC4)
+I (MSP430\comms.h)(0x5829719C)
+I (MSP430\flash.h)(0x5E450D56)
+I (MSP430\ctrl.h)(0x5829719C)
+F (.\MSP430\pwm.c)(0x5ECE9E48)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\pwm.o --omf_browse .\objects\pwm.crf --depend .\objects\pwm.d)
+I (C:\Keil_v5\ARM\ARMCC\include\signal.h)(0x5D9B186A)
+I (MSP430\iqmath.h)(0x5829719C)
+I (MSP430\debug.h)(0x5829719C)
+I (MSP430\pwm.h)(0x5829719C)
+I (MSP430\sch.h)(0x5829719C)
+I (MSP430\io.h)(0x5E450DD2)
+I (MSP430\mainMSP.h)(0x5E450F42)
+I (MSP430\variant.h)(0x5CF47994)
+I (.\User\inc\adc.h)(0x5E3BC996)
+I (.\CMSIS\inc\stm32f3xx.h)(0x5ECEA16B)
+I (.\CMSIS\inc\stm32f334x8.h)(0x5D7F93F4)
+I (.\CMSIS\inc\core_cm4.h)(0x5D7F93F4)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B1868)
+I (.\CMSIS\inc\cmsis_version.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_compiler.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_armcc.h)(0x5C5BAC24)
+I (.\CMSIS\inc\system_stm32f3xx.h)(0x5D7F93F4)
+I (MSP430\meas.h)(0x5E450C90)
+I (MSP430\ctrl.h)(0x5829719C)
+I (MSP430\cfg.h)(0x5E450E2E)
+I (MSP430\time.h)(0x5E450C6A)
+I (MSP430\telem.h)(0x5E450CE2)
+I (MSP430\safety.h)(0x5E450C82)
+I (MSP430\flag.h)(0x5E450CA6)
+I (MSP430\flash.h)(0x5E450D56)
+I (MSP430\comms.h)(0x5829719C)
+I (MSP430\temp.h)(0x59BFB876)
+F (.\MSP430\sch.c)(0x59BFB876)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\sch.o --omf_browse .\objects\sch.crf --depend .\objects\sch.d)
+I (MSP430\main.h)(0x5829719C)
+I (MSP430\debug.h)(0x5829719C)
+I (MSP430\variant.h)(0x5CF47994)
+I (MSP430\sch.h)(0x5829719C)
+I (MSP430\comms.h)(0x5829719C)
+I (MSP430\meas.h)(0x5E450C90)
+I (MSP430\iqmath.h)(0x5829719C)
+I (MSP430\time.h)(0x5E450C6A)
+I (MSP430\telem.h)(0x5E450CE2)
+I (MSP430\io.h)(0x5E450DD2)
+I (MSP430\mainMSP.h)(0x5E450F42)
+I (MSP430\ctrl.h)(0x5829719C)
+I (MSP430\can.h)(0x5ECE4FD6)
+I (.\CMSIS\inc\Stm32f3xx.h)(0x5ECEA16B)
+I (.\CMSIS\inc\stm32f334x8.h)(0x5D7F93F4)
+I (.\CMSIS\inc\core_cm4.h)(0x5D7F93F4)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B1868)
+I (.\CMSIS\inc\cmsis_version.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_compiler.h)(0x5C5BAC24)
+I (.\CMSIS\inc\cmsis_armcc.h)(0x5C5BAC24)
+I (.\CMSIS\inc\system_stm32f3xx.h)(0x5D7F93F4)
+I (MSP430\util.h)(0x5829719C)
+I (MSP430\flag.h)(0x5E450CA6)
+I (MSP430\stats.h)(0x5E450CC4)
+I (MSP430\safety.h)(0x5E450C82)
+I (MSP430\usci.h)(0x5ECA905B)
+I (MSP430\protocol.h)(0x5E42BE7E)
+I (C:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x5D9B1868)
+I (MSP430\lcd.h)(0x5829719C)
+I (MSP430\temp.h)(0x59BFB876)
+F (.\MSP430\telem.c)(0x5829719C)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430-I.\RTE\_AER07-IC:\Users\vvitr\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F334x8 -DSTM32F334x8-o .\objects\telem.o --omf_browse .\objects\telem.crf --depend .\objects\telem.d)
+I (MSP430\telem.h)(0x5E450CE2)
+I (MSP430\debug.h)(0x5829719C)
+I (MSP430\time.h)(0x5E450C6A)
+I (MSP430\cfg.h)(0x5E450E2E)
+I (MSP430\iqmath.h)(0x5829719C)
+I (MSP430\safety.h)(0x5E450C82)
+I (MSP430\flag.h)(0x5E450CA6)
+I (MSP430\meas.h)(0x5E450C90)
+I (MSP430\variant.h)(0x5CF47994)
+I (MSP430\flash.h)(0x5E450D56)
+I (MSP430\util.h)(0x5829719C)
+I (MSP430\comms.h)(0x5829719C)

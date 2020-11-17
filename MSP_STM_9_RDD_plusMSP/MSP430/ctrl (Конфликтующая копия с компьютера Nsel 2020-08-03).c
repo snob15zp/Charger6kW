@@ -1,0 +1,936 @@
+
+//-------------------------------------------------------------------
+// File: ctrl.c
+// Project: CY CoolMax MPPT
+// Device: MSP430F247
+// Author: Monte MacDiarmid, Tritium Pty Ltd.
+// Description: 
+// History:
+//   2010-07-07: original
+//-------------------------------------------------------------------
+
+//#include <msp430x24x.h>
+#include <stdint.h>
+#include <stdbool.h>
+
+#include "variant.h"
+#include "ctrl.h"
+#include "pwm.h"
+#include "meas.h"
+#include "iqmath.h"
+#include "io.h"
+#include "cfg.h"
+#include "util.h"
+#include "comms.h"
+#include "safety.h"
+#include "debug.h"
+#include "usci.h"
+
+extern unsigned int IO_pwmEnabled;
+extern int update_persistent;
+
+// At the moment this implements the periodic Voc sampling from the original AERL trackers
+
+#define CTRL_SAMPLE_PERIOD_TICKS		(unsigned long)( 30.0 * 1000000.0 / (float)PWM_PERIOD_US )        //  58593
+#define CTRL_OPEN_CIRCUIT_TIME_TICKS	(unsigned long)( 0.10 * 1000000.0 / (float)PWM_PERIOD_US )     //  195
+#define CTRL_NO_MEAS_TIME_TICKS			(unsigned long)( 0.50 * 1000000.0 / (float)PWM_PERIOD_US )     //  976
+#define CTRL_OUT_VOLT_BLANK_TICKS		( 10 * CTRL_OPEN_CIRCUIT_TIME_TICKS )	// Period of time during which output voltage isn't checked for float/bulk hold purposes // 1950
+#define CTRL_ABOUT_TO_SAMPLE_TICKS		(unsigned long)( 28.0 * 1000000.0 / (float)PWM_PERIOD_US )     // 54687
+
+#define CTRL_VINLIM_FRAC			1.2
+#define CTRL_VINLIM_DIODE_VOLT		0.2
+
+#define CTRL_NOMINAL_TO_FLOAT_RATIO		( 2.0 / 2.35 )
+#define CTRL_OFFSET_FLSET_NEW			24.93
+#define CTRL_SCALE_FLSET_NEW				1.22
+#define CTRL_FLTRIM_OFFSET_ONVCCG_NEW	2.9412
+#define CTRL_BASE_FLTRIM_ONVCCG_NEW		3.1359
+
+#define CTRL_OFFSET_FLSET_OLD	29.3957
+#define CTRL_SCALE_FLSET_OLD		1.2
+#define CTRL_FLTRIM_OFFSET_ONVCCG_OLD	2.9412
+#define CTRL_BASE_FLTRIM_ONVCCG_OLD		3.1359
+
+#define CTRL_KP_VINLIM	( 3.0 / 125.0 * MEAS_PVCURR_BASE ) 
+#define CTRL_KI_VINLIM	( 10.0 / PWM_RATE_HZ / 125.0 * MEAS_PVCURR_BASE )
+
+#define CTRL_VMP_SETPOINT_DURING_SAMPLE		IQ_cnst(1.05)
+
+// 1s
+#define CTRL_ONOFF_DELAY_TICKS (unsigned long)(0.5 * 1000000.0 / (float)PWM_PERIOD_US)    // 976
+// 2s
+#define CTRL_ONOFF_HOLD_TICKS (unsigned long)(2.0 * 1000000.0 / (float)PWM_PERIOD_US)     // 3906
+
+float CTRL_offsetFlset;
+float CTRL_scaleFlset;
+float CTRL_fltrimOffsetOnVCCG;
+float CTRL_baseFltrimOnVCCG;
+
+Iq CTRL_MpptSamplePtNow;
+Iq CTRL_MpptSamplePtTarget;
+
+#ifdef DBG_HARDCODED_VIN_SETPOINT
+	Iq fixedMpVolt;
+	Iq fixedOcVolt;
+#endif
+
+   
+//////////////////////////////////////////////////////
+   // DM: Current Limitation Section
+#define APPLY_CURRENT_LIMITATION   
+   
+#ifdef APPLY_CURRENT_LIMITATION
+#if MODEL_ID_HV  == 1
+#define CNTRL_OUTCURR_LIMIT   45.0//45.0
+#elif MODEL_ID_MV  == 1
+#define CNTRL_OUTCURR_LIMIT   60.0//60.0
+#else 
+#error Model ID unknown. Output Current Limit not set.    
+#endif
+
+#define CNTRL_OUTCURR_OVERTEMP_LIMIT_1   (90.0 / MEAS_CASETEMPR_BASE) // 90C
+#define CNTRL_OUTCURR_OVERTEMP_REDUC_1   0.8 // 20.0%
+#define CNTRL_OUTCURR_OVERTEMP_LIMIT_2   (100.0 / MEAS_CASETEMPR_BASE) // 100C
+#define CNTRL_OUTCURR_OVERTEMP_REDUC_2   0.7 // 30.0% 
+ 
+#define CNTRL_OUTCURR_HYST_PERCENT   90.0// 45.0
+#define CURR_LIMIT_HYST_COUNT    200 // Approximately 100 ms 
+static Iq unCntrlOutCurrLimit;
+static Iq unCntrlOutCurrSwOffPoint;
+static uint16_t unCurrLimitHysterisis;
+static bool bCurrentLimiting;
+#endif
+   
+//////////////////////////////////////////////////////
+// DM: Start-up Delay section
+// Added 2019-05-16
+// Start-up PWM Delay is in place to ensure that the device has correctly
+// run the safety checks before it does anything else. 
+
+#define ENABLE_START_UP_PWM_DELAY
+#define PWM_START_UP_DELAY		10
+#define PWM_START_UP_DELAY_TICKS	(unsigned long)(PWM_START_UP_DELAY * 1000000.0 / PWM_PERIOD_US) //RDD 4C4B
+
+#ifdef ENABLE_START_UP_PWM_DELAY
+static uint32_t m_unStartUpCount=0;
+#endif
+   
+   
+int firstMPPTPoint;
+int CTRL_enableTurbineLoad;
+
+typedef enum CTRL_Mode_
+{
+	CTRL_MODE_MPPT_REG,
+	CTRL_MODE_OUT_REG,
+	CTRL_MODE_VIN_LIM
+} CTRL_Mode;
+
+typedef struct Ctrl_
+{
+	unsigned long tickCount;
+	Iq pvVoltFrac;
+	Iq pvVinLim;
+	Iq pvVinLimInt;
+	int pvVinLimSat;
+	float tmpCmpV;
+	TimeShort bulkTime;
+	unsigned int flsetFloat;
+	Iq fltrimDutyFloat;
+	Iq floatVolt;
+	//unsigned int flsetBulk;
+	Iq fltrimDutyBulk;
+	Iq bulkVolt;
+	Iq bulkResetVolt;
+	float outVoltSetpoint;	// The current output voltage setpoint -- from us if master, from master if slave
+	int outVoltSetpointValid;
+	unsigned char mode;
+	unsigned char setpointIsBulk;
+	TimeShort timeAtSetpoint;
+	TimeShort notBulkTime;
+	unsigned int onOffTickCount;
+	unsigned int onOffDelayTickCount;
+	int pwmDisabledByOnOff;
+	int pwmChangeState;		// Change PWM state (0: off, 1: on, -1: nothing) in next CTRL_tick()
+	int pwmRemoteShutdown;
+	int pwmGroundFaultShutdown;
+	unsigned int groundFaultTickCount;
+	int pwmShutdown;		// Set if the PWM was shutdown for any reason
+} Ctrl;
+
+Ctrl ctrl;
+
+//extern Ctrl ctrl;
+
+int ctrl_initialised = 0;
+
+void CTRL_init()
+{
+	VAR_CTRL_setFltrimParams();
+
+	firstMPPTPoint = 0;
+	ctrl.tickCount = 0;
+	ctrl.timeAtSetpoint = 0;
+	ctrl.notBulkTime = 0;
+
+#ifndef DBG_HARDCODED_VIN_SETPOINT
+	ctrl.pvVoltFrac = IQ_cnst( CFG_remoteCfg.pvMpVolt / CFG_remoteCfg.pvOcVolt );
+#else
+	ctrl.pvVoltFrac = IQ_cnst( 1.1 );
+	fixedMpVolt = IQ_cnst( CFG_remoteCfg.pvMpVolt / MEAS_PVVOLT_BASE );
+	fixedOcVolt = IQ_cnst( CFG_remoteCfg.pvOcVolt / MEAS_PVVOLT_BASE );
+
+#endif
+
+	ctrl.pvVinLim = IQ_cnst( CFG_remoteCfg.floatVolt / MEAS_PVVOLT_BASE );	// Init to low value //IQ_cnst( CFG_remoteCfg.pvOcVolt / MEAS_PVVOLT_BASE );
+	ctrl.pvVinLimInt = IQ_cnst( CFG_remoteCfg.floatVolt / MEAS_PVVOLT_BASE );
+	ctrl.pvVinLimSat = 0;
+	ctrl.tmpCmpV = CFG_remoteCfg.tmpCmp / 1000.0;
+	ctrl.bulkTime = (TimeShort)( CFG_remoteCfg.bulkTime * 1000.0 );
+
+	ctrl.outVoltSetpointValid = 0;
+
+	CTRL_calcOutVoltSetpoints();
+	
+   // 2018-10-17 Added 
+#ifdef APPLY_CURRENT_LIMITATION
+   unCntrlOutCurrLimit=IQ_cnst( CNTRL_OUTCURR_LIMIT / MEAS_OUTCURR_BASE ); 
+   unCntrlOutCurrSwOffPoint=IQ_cnst( (CNTRL_OUTCURR_LIMIT*CNTRL_OUTCURR_HYST_PERCENT/100.) / MEAS_OUTCURR_BASE ); 
+
+   unCurrLimitHysterisis=0;   // Reset the hysterisis count
+   bCurrentLimiting=false;
+#endif    // APPLY_CURRENT_LIMITATION
+
+	// Set some dummy outputs -- these shouldn't matter until the output is actually switched on, 
+	// by which time we should have a Voc value we can use to set these properly
+	//PWM_setMpptSamplePt( IQ_cnst(0.5) );
+	//PWM_setVinLim( IQ_cnst(0.5) );
+	//PWM_setFlTrim( IQ_cnst(0.5) );
+
+	ctrl.mode = CTRL_MODE_MPPT_REG;
+	// Set to regulate bulk first
+	//IO_flset( ctrl.flsetBulk );
+	ctrl.setpointIsBulk = 1;
+	ctrl.onOffTickCount = 0xFFFF;
+	ctrl.onOffDelayTickCount = 0;
+
+// 24.05.20
+	if (persistentStorage.autoOn)
+	{
+		if (/*IFG1 & WDTIFG || IFG1 & PORIFG || ctrl_initialised*/ 1)
+		{
+			// Disable if reset by watchdog
+			ctrl.pwmDisabledByOnOff = 0;
+			ctrl.pwmChangeState = -1;
+		}
+		else
+		{
+			ctrl.pwmDisabledByOnOff = 1;
+			ctrl.pwmChangeState = 0;
+		}
+	}
+	else
+	{
+		ctrl.pwmDisabledByOnOff = 1;
+		ctrl.pwmChangeState = -1;
+	}
+	ctrl.pwmRemoteShutdown = 0;
+	ctrl.pwmGroundFaultShutdown = 0;
+	ctrl.groundFaultTickCount = 0;
+	ctrl.pwmShutdown = ctrl.pwmDisabledByOnOff || ctrl.pwmRemoteShutdown || ctrl.pwmGroundFaultShutdown;
+
+	CTRL_enableTurbineLoad = ctrl.pwmShutdown;
+	ctrl_initialised = 1;
+}
+
+void CTRL_setFltrimParams_new()
+{
+	CTRL_offsetFlset = CTRL_OFFSET_FLSET_NEW;
+	CTRL_scaleFlset = CTRL_SCALE_FLSET_NEW;
+	CTRL_fltrimOffsetOnVCCG = CTRL_FLTRIM_OFFSET_ONVCCG_NEW;
+	CTRL_baseFltrimOnVCCG = CTRL_BASE_FLTRIM_ONVCCG_NEW;
+}
+
+void CTRL_setFltrimParams_old()
+{
+	CTRL_offsetFlset = CTRL_OFFSET_FLSET_OLD;
+	CTRL_scaleFlset = CTRL_SCALE_FLSET_OLD;
+	CTRL_fltrimOffsetOnVCCG = CTRL_FLTRIM_OFFSET_ONVCCG_OLD;
+	CTRL_baseFltrimOnVCCG = CTRL_BASE_FLTRIM_ONVCCG_OLD;
+}
+
+void CTRL_setOutVoltCmd( float outVoltCmd )
+{
+	if ( IO_getIsSlave() )
+	{
+		ctrl.outVoltSetpoint = outVoltCmd;
+		ctrl.outVoltSetpointValid = 1;
+	}
+}
+
+float CTRL_getOutVoltCmd()
+{
+	return ctrl.outVoltSetpoint;
+}
+
+// Called at a slow rate.  Calculates output voltages setpoints including temperature compensation.
+void CTRL_calcOutVoltSetpoints()
+{
+	int flsetDec;
+	float trimRatio, floatVoltCmp, bulkVoltCmp, temprDiff;
+
+	if ( IO_getIsSlave() )
+	{
+		
+		// Slave mode
+		// ----------
+
+		if ( ctrl.outVoltSetpointValid )
+		{
+			floatVoltCmp = ctrl.outVoltSetpoint;
+			ctrl.outVoltSetpointValid = 0;	// Must get a command from the master before next call to this function
+		}
+		else
+		{
+			floatVoltCmp = CFG_remoteCfg.floatVolt;
+		}
+
+		// floatVoltCmp now contains the target voltage, either from the master or from the config if no master packet received
+		flsetDec = (int)((floatVoltCmp - CTRL_offsetFlset) / CTRL_scaleFlset );
+		if ( flsetDec < 0 ) flsetDec = 0;
+		if ( flsetDec > 399 ) flsetDec = 399;
+		ctrl.flsetFloat = UTIL_decimalToBcd( flsetDec );
+		ctrl.floatVolt = IQ_cnst( floatVoltCmp / MEAS_OUTVOLT_BASE );
+		trimRatio = ( floatVoltCmp ) / ( flsetDec * CTRL_scaleFlset + CTRL_offsetFlset );
+		ctrl.fltrimDutyFloat = IQ_cnst( trimRatio * CTRL_baseFltrimOnVCCG - CTRL_fltrimOffsetOnVCCG );
+
+		
+//		IO_flset( ctrl.flsetFloat );
+//		PWM_setFlTrim( ctrl.fltrimDutyFloat );
+	}
+	else
+	{
+		// Master mode
+		// -----------
+
+		temprDiff = meas.batTempr.valReal - MEAS_TEMPR_NOM;
+		floatVoltCmp = CFG_remoteCfg.floatVolt + ctrl.tmpCmpV * temprDiff;
+		bulkVoltCmp = CFG_remoteCfg.bulkVolt + ctrl.tmpCmpV * temprDiff;
+
+		//COMMS_sendDebugPacketFloat( floatVoltCmp , bulkVoltCmp );
+		// Calculate the closest flset voltage to the nominal voltage corresponding to the required floatVolt specified in the config
+		flsetDec = (int)((floatVoltCmp - CTRL_offsetFlset) / CTRL_scaleFlset );
+		if ( flsetDec < 0 ) flsetDec = 0;
+		if ( flsetDec > 399 ) flsetDec = 399;
+		ctrl.flsetFloat = UTIL_decimalToBcd( flsetDec );
+		ctrl.floatVolt = IQ_cnst( floatVoltCmp / MEAS_OUTVOLT_BASE );
+		
+		trimRatio = ( floatVoltCmp ) / ( flsetDec * CTRL_scaleFlset + CTRL_offsetFlset );
+		ctrl.fltrimDutyFloat = IQ_cnst( trimRatio * CTRL_baseFltrimOnVCCG - CTRL_fltrimOffsetOnVCCG );
+
+		trimRatio = ( bulkVoltCmp ) / ( flsetDec * CTRL_scaleFlset + CTRL_offsetFlset );
+		ctrl.fltrimDutyBulk = IQ_cnst( trimRatio * CTRL_baseFltrimOnVCCG - CTRL_fltrimOffsetOnVCCG );
+
+		ctrl.bulkVolt = IQ_cnst( bulkVoltCmp / MEAS_OUTVOLT_BASE );
+		ctrl.bulkResetVolt = IQ_cnst( ( CFG_remoteCfg.bulkResetVolt + ctrl.tmpCmpV * temprDiff ) / MEAS_OUTVOLT_BASE );
+
+		/*flsetDec = (int)(CFG_remoteCfg.bulkVolt * CTRL_NOMINAL_TO_FLOAT_RATIO - CTRL_nominalOffsetVolt);
+		if ( flsetDec < 0 ) flsetDec = 0;
+		if ( flsetDec > 399 ) flsetDec = 399;
+		ctrl.flsetBulk = UTIL_decimalToBcd( flsetDec );
+		ctrl.bulkVolt = IQ_cnst( CFG_remoteCfg.bulkVolt / MEAS_OUTVOLT_BASE );
+		ctrl.bulkResetVolt = IQ_cnst( CFG_remoteCfg.bulkResetVolt / MEAS_OUTVOLT_BASE );
+		trimRatio = ( CFG_remoteCfg.bulkVolt * CTRL_NOMINAL_TO_FLOAT_RATIO ) / ( flsetDec + CTRL_nominalOffsetVolt );
+		ctrl.fltrimDuty = IQ_cnst( trimRatio * CTRL_baseFltrimOnVCCG - CTRL_fltrimOffsetOnVCCG );*/
+
+		// Set output voltage setpoint
+		
+//		IO_flset( ctrl.flsetFloat );
+		if ( ctrl.setpointIsBulk )			
+		{
+//			PWM_setFlTrim( ctrl.fltrimDutyBulk );
+			ctrl.outVoltSetpoint = bulkVoltCmp;
+			//COMMS_sendDebugPacket( (unsigned int)ctrl.fltrimDutyBulk, (unsigned int)ctrl.fltrimDutyFloat, flsetDec, 0 );
+		}
+		else
+		{
+//			PWM_setFlTrim( ctrl.fltrimDutyFloat );
+			ctrl.outVoltSetpoint = floatVoltCmp;
+		}
+	}
+
+#ifdef DBG_FULL_ON
+	ctrl.flsetFloat = 0xFFFF;
+	ctrl.flsetBulk = 0xFFFF;
+#endif
+
+}
+
+void CTRL_enableOutput(int enable)
+{
+	// Output will be changed next time CTRL_tick() is called
+	ctrl.pwmChangeState = enable ? 1 : 0;
+}
+
+int CTRL_isOutputEnabled()
+{
+	return !ctrl.pwmDisabledByOnOff;
+}
+
+int CTRL_isGroundFault()
+{
+	return ctrl.pwmGroundFaultShutdown;
+}
+
+int CTRL_isTurbineLoadEnabled()
+{
+	return CTRL_enableTurbineLoad;
+}
+
+// This is called at the PWM frequency which is 512us as of Rev 133
+void CTRL_tick()
+{
+	// Set if the PWM needs to be stopped this tick
+	int disablePWM = 0;
+
+	if (IO_getGroundFault())    // RDD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! set with delay disablePWM according to  GroundFault: J10 on PWRboard
+	{
+		ctrl.pwmGroundFaultShutdown = 1;
+		ctrl.groundFaultTickCount = 0;
+		ctrl.pwmDisabledByOnOff = 1;
+		ctrl.pwmChangeState = -1;	// Ignore changes from LCD
+		if (persistentStorage.autoOn)
+		{
+			persistentStorage.autoOn = 0;
+			update_persistent = 1;
+		}
+		disablePWM = 1;
+	}
+	else if (ctrl.pwmGroundFaultShutdown)    //RDD  what does this affect?   On CTRL_getStatus()
+	{
+		// Ground fault pin needs to be up for about 50ms before ground fault is done
+		if (ctrl.groundFaultTickCount > 100)
+		{
+			ctrl.pwmGroundFaultShutdown = 0;
+		}
+		else
+		{
+			ctrl.groundFaultTickCount++;
+		}
+	}
+
+	if (SAFETY_getStatus() & 0x01)
+	{
+		// Negative PV current
+		disablePWM = 1;
+
+		// If PWM was on before negative current it will switch on again when current goes positive.
+		// If PWM is turned on by user while the current is negative, the PWM will automatically switch on when current goes positive.
+		// This might display the wrong state if the user tries to turn the output on or off while the current is negative.
+		// This matches the operation of G2.
+	}
+
+	// Start-up PWM Delay is in place to ensure that the device has correctly
+	// run the safety checks before it does anything else. 
+#ifdef ENABLE_START_UP_PWM_DELAY
+	// Added delay at start-up
+	if(m_unStartUpCount<PWM_START_UP_DELAY_TICKS) {               //RDD delays ones at power up.
+		m_unStartUpCount++;
+		return;
+	}
+#endif
+
+	if (CFG_toggleSwitchMode)
+	{
+		// Toggle mode - this is not normally used at the moment.
+		if (disablePWM)
+		{
+			// Force a small delay before pwm can be toggled
+			ctrl.onOffDelayTickCount = 0;
+			ctrl.onOffTickCount = 0xFFFF;
+		}
+		else
+		{
+			int pwmWasDisabled = ctrl.pwmDisabledByOnOff;
+			int pwmChangeState = ctrl.pwmChangeState;
+
+			if (IO_getOnOff())
+			{
+				if (ctrl.onOffTickCount < 0xFFFF)
+				{
+					ctrl.onOffTickCount++;
+				}
+			}
+			else
+			{
+				ctrl.onOffTickCount = 0;
+			}
+
+			if (ctrl.onOffDelayTickCount < CTRL_ONOFF_DELAY_TICKS)
+			{
+				ctrl.onOffDelayTickCount++;
+				// Must release the button before it will work if pressed before the delay ends
+				ctrl.onOffTickCount = 0xFFFF;
+			}
+			else
+			{
+				if (pwmChangeState != -1)
+				{
+					ctrl.pwmDisabledByOnOff = !pwmChangeState;
+					persistentStorage.autoOn = (uint16_t)((ctrl.pwmDisabledByOnOff == 1) ? 0 : 1);  //Invert Logic
+					update_persistent = 1;
+				}
+				else if (ctrl.onOffTickCount == CTRL_ONOFF_HOLD_TICKS)
+				{
+					ctrl.pwmDisabledByOnOff = !ctrl.pwmDisabledByOnOff;
+					persistentStorage.autoOn = (uint16_t)((ctrl.pwmDisabledByOnOff == 1) ? 0 : 1);  //Invert Logic
+					update_persistent = 1;
+				}
+
+				if (ctrl.pwmDisabledByOnOff != pwmWasDisabled || pwmChangeState != -1)
+				{
+					ctrl.onOffDelayTickCount = 0;
+					ctrl.onOffTickCount = 0xFFFF;
+					ctrl.pwmChangeState = -1;
+				}
+			}
+
+			if (ctrl.pwmDisabledByOnOff)
+			{
+				disablePWM = 1;
+			}
+		}
+	}
+	else
+	{
+		// Remote shutdown or switch mode
+		ctrl.pwmRemoteShutdown = IO_getOnOff();
+
+		// pwmDisabledByOnOff is always true and autoOn is always false when ground fault shutdown
+		// pwmDisabledByOnOff and autoOn couldn't be changed with a negative PV current for G2 so keep the same
+		if (!disablePWM)
+		{
+			if (ctrl.pwmChangeState != -1)
+			{
+				persistentStorage.autoOn = ctrl.pwmChangeState;
+				ctrl.pwmChangeState = -1;
+				update_persistent = 1;
+			}
+
+			if (ctrl.pwmRemoteShutdown)
+			{
+				ctrl.pwmDisabledByOnOff = 1;
+			}
+			else
+			{
+				ctrl.pwmDisabledByOnOff = !persistentStorage.autoOn;
+			}
+
+			if (ctrl.pwmDisabledByOnOff)
+			{
+				disablePWM = 1;
+			}
+		}
+	}
+
+	if (disablePWM)
+	{
+		// PWM needs to be shutdown
+		ctrl.pwmShutdown = 1;
+		
+		if (!IO_pwmEnabled)
+		{
+			// pvOcVolt is pvVolt when PWM is disabled
+			meas.pvOcVolt.val = meas.pvVolt.val;
+		}
+		IO_disablePwmCtrl();
+		MEAS_setDoUpdate(1);
+		CTRL_enableTurbineLoad = 1;
+		return;
+	}
+	else
+	{
+		if (ctrl.pwmShutdown)
+		{
+			// PWM starting after it has been stopped
+			ctrl.tickCount = 0;		//Do a sample. Should give a 100ms debounce period before PWM kicks back in
+		}
+		ctrl.pwmShutdown = 0;
+	}
+
+	if( meas.caseTempr.val > IQ_cnst(CNTRL_OUTCURR_OVERTEMP_LIMIT_1) && meas.caseTempr.val < IQ_cnst(CNTRL_OUTCURR_OVERTEMP_LIMIT_2) ) // De-rate output current maximum by 20% if inductor is above 90C but below 100C.
+	{
+		unCntrlOutCurrLimit=IQ_cnst( (CNTRL_OUTCURR_LIMIT*CNTRL_OUTCURR_OVERTEMP_REDUC_1) / MEAS_OUTCURR_BASE ); 
+		unCntrlOutCurrSwOffPoint=IQ_cnst( ((CNTRL_OUTCURR_LIMIT*CNTRL_OUTCURR_OVERTEMP_REDUC_1)*CNTRL_OUTCURR_HYST_PERCENT/100.) / MEAS_OUTCURR_BASE ); 
+	}
+	else if( meas.caseTempr.val > IQ_cnst(CNTRL_OUTCURR_OVERTEMP_LIMIT_2)) // De-rate output current maximum by 30% if inductor is above 100C (Additional Temperature Failsafe before 120C Shutdown).
+	{
+		unCntrlOutCurrLimit=IQ_cnst( (CNTRL_OUTCURR_LIMIT*CNTRL_OUTCURR_OVERTEMP_REDUC_2) / MEAS_OUTCURR_BASE ); 
+		unCntrlOutCurrSwOffPoint=IQ_cnst( ((CNTRL_OUTCURR_LIMIT*CNTRL_OUTCURR_OVERTEMP_REDUC_2)*CNTRL_OUTCURR_HYST_PERCENT/100.) / MEAS_OUTCURR_BASE ); 		
+	}
+	else 
+	{
+		unCntrlOutCurrLimit=IQ_cnst( CNTRL_OUTCURR_LIMIT / MEAS_OUTCURR_BASE ); 
+		unCntrlOutCurrSwOffPoint=IQ_cnst( (CNTRL_OUTCURR_LIMIT*CNTRL_OUTCURR_HYST_PERCENT/100.) / MEAS_OUTCURR_BASE ); 
+	}
+	
+   // Section to check the current limitation
+#ifdef APPLY_CURRENT_LIMITATION   
+   if( meas.outCurr.val > unCntrlOutCurrLimit ) {  
+   
+	  // Set the limitation flag
+	  bCurrentLimiting=true;
+   
+	  MEAS_setDoUpdate(1);
+   
+      unCurrLimitHysterisis++;
+      
+      // Only apply after the hysterisis count has expired.
+      // This is to account for the system delays
+      if(unCurrLimitHysterisis>CURR_LIMIT_HYST_COUNT) {
+      
+         // Increment the MPPT voltage by 200mV
+ 	   	if(CTRL_MpptSamplePtNow>0) {
+			CTRL_MpptSamplePtNow += IQ_cnst( 0.01*(meas.outCurr.val-unCntrlOutCurrLimit)/ MEAS_PVVOLT_BASE );//IQ_cnst( 0.1 / MEAS_PVVOLT_BASE );
+			PWM_setMpptSamplePt( CTRL_MpptSamplePtNow );
+		}
+		else {
+//			ctrl.pwmShutdown = 1;
+		}
+            
+         unCurrLimitHysterisis=0;
+      }
+   }
+   else if(bCurrentLimiting==true) {
+	   
+      unCurrLimitHysterisis++;
+	  
+	  MEAS_setDoUpdate(1);
+      
+      // Only apply after the hysterisis count has expired.
+      // This is to account for the system delays
+      if(unCurrLimitHysterisis>CURR_LIMIT_HYST_COUNT) {
+		 CTRL_MpptSamplePtNow -= IQ_cnst( 0.1 / MEAS_PVVOLT_BASE );
+		 PWM_setMpptSamplePt( CTRL_MpptSamplePtNow );
+		 unCurrLimitHysterisis=0;
+	  }
+	   
+	   // Check if we need to switch off the current limitation
+       if(meas.outCurr.val < unCntrlOutCurrSwOffPoint) {
+		   bCurrentLimiting=false;
+		   ctrl.tickCount = CTRL_SAMPLE_PERIOD_TICKS-1; 
+	   }
+   }
+
+   
+#endif  
+   
+#ifndef DBG_HARDCODED_VIN_SETPOINT
+#ifdef APPLY_CURRENT_LIMITATION      
+  	else if ( ctrl.tickCount == 0 )  // 2018-10-17 Added Current Limiter.
+#else      
+	if ( ctrl.tickCount == 0 )
+#endif      
+	{
+		// Go open-circuit
+		IO_disablePwmCtrl();
+		// Don't update measurements for a while
+		MEAS_setDoUpdate( 0 );
+	}
+	else if ( ctrl.tickCount > 0 && ctrl.tickCount < CTRL_OPEN_CIRCUIT_TIME_TICKS )
+	{
+		// Measuring Voc
+		meas.pvOcVolt.val = MEAS_filterFast( meas.pvOcVolt.val, meas.pvVolt.valPreFilter );
+	}
+	else if ( ctrl.tickCount == CTRL_OPEN_CIRCUIT_TIME_TICKS )
+	{
+		// Set MpptSamplePt and VinLim based on measured Voc
+#ifdef DBG_FULL_ON
+		PWM_setMpptSamplePt( IQ_cnst(0.1) );
+		PWM_setVinLim( IQ_cnst(0.5) );
+#else
+		// 1.04 added a ramp on the mppt voltage setpoint after a setpoint
+		// to try to limit the overshoot that occurs due to integrator windup in the analog control loop
+		//PWM_setMpptSamplePt( IQ_mpy( meas.pvOcVolt.val, ctrl.pvVoltFrac ) );
+		CTRL_MpptSamplePtTarget = IQ_mpy( meas.pvOcVolt.val, ctrl.pvVoltFrac );
+		CTRL_MpptSamplePtNow = meas.pvOcVolt.val;
+		PWM_setMpptSamplePt( CTRL_MpptSamplePtNow );
+
+		//PWM_setVinLim( ctrl.pvVinLim );
+#endif
+		//PWM_setFlTrim( IQ_cnst(0.5) );
+		//PWM_setFlTrim( IQ_cnst(0.0) );
+
+		// Enable output
+		IO_enablePwmCtrl();
+	}
+	else if ( ctrl.tickCount > CTRL_OPEN_CIRCUIT_TIME_TICKS && ctrl.tickCount < CTRL_NO_MEAS_TIME_TICKS)
+	{
+		//1.04 ramping the MPPT setpoint down by 200mV/ms
+		if(CTRL_MpptSamplePtNow > CTRL_MpptSamplePtTarget)
+		{
+			CTRL_MpptSamplePtNow -= IQ_cnst( 0.1 / MEAS_PVVOLT_BASE );
+			PWM_setMpptSamplePt( CTRL_MpptSamplePtNow );
+		}
+	}
+	else if ( ctrl.tickCount == CTRL_NO_MEAS_TIME_TICKS )
+	{
+		// in case the mppt sample point didn't reach the target
+		PWM_setMpptSamplePt( CTRL_MpptSamplePtTarget );
+		// Go back to updating measurements as normal
+		MEAS_setDoUpdate( 1 );
+	}
+	else if ( ctrl.tickCount > CTRL_NO_MEAS_TIME_TICKS )
+	{
+		PWM_setVinLim( IQ_mpy( IQ_cnst( 1.1 ), meas.pvOcVolt.val ));
+	}
+#else
+#ifdef APPLY_CURRENT_LIMITATION         
+	else if (firstMPPTPoint < 1)  // DM : 2018-10-17 Added Current Limiter.
+#else      
+	if (firstMPPTPoint < 1)
+#endif      
+	{
+		if ( ctrl.tickCount == 0 )
+		{
+			// Go open-circuit
+			IO_disablePwmCtrl();
+			// Don't update measurements for a while
+			MEAS_setDoUpdate( 0 );
+		}
+		else if ( ctrl.tickCount > 0 && ctrl.tickCount < CTRL_OPEN_CIRCUIT_TIME_TICKS )
+		{
+			// Measuring Voc
+			meas.pvOcVolt.val = MEAS_filterFast( meas.pvOcVolt.val, meas.pvVolt.valPreFilter );
+		}
+		else if ( ctrl.tickCount == CTRL_OPEN_CIRCUIT_TIME_TICKS )
+		{
+			// Set MpptSamplePt and VinLim based on measured Voc
+			// 1.04 added a ramp on the mppt voltage setpoint after a setpoint
+			// to try to limit the overshoot that occurs due to integrator windup in the analog control loop
+			//PWM_setMpptSamplePt( IQ_mpy( meas.pvOcVolt.val, ctrl.pvVoltFrac ) );
+			CTRL_MpptSamplePtTarget = fixedMpVolt;
+			CTRL_MpptSamplePtNow = meas.pvOcVolt.val;
+			if (CTRL_MpptSamplePtNow < fixedMpVolt)
+			{
+				CTRL_MpptSamplePtNow = fixedMpVolt;
+			}
+			PWM_setMpptSamplePt( CTRL_MpptSamplePtNow );
+
+			// Enable output
+			IO_enablePwmCtrl();
+			CTRL_enableTurbineLoad = 0;
+		}
+		else if ( ctrl.tickCount > CTRL_OPEN_CIRCUIT_TIME_TICKS && ctrl.tickCount < CTRL_NO_MEAS_TIME_TICKS)
+		{
+			//1.04 ramping the MPPT setpoint down by 200mV/ms
+			if(CTRL_MpptSamplePtNow > CTRL_MpptSamplePtTarget)
+			{
+				CTRL_MpptSamplePtNow -= IQ_cnst( 0.1 / MEAS_PVVOLT_BASE );
+				PWM_setMpptSamplePt( CTRL_MpptSamplePtNow );
+			}
+			//else if(CTRL_MpptSamplePtNow < CTRL_MpptSamplePtTarget)
+			//{
+			//	CTRL_MpptSamplePtNow += IQ_cnst( 0.1 / MEAS_PVVOLT_BASE );
+			//	PWM_setMpptSamplePt( CTRL_MpptSamplePtNow );
+			//}
+		}
+		else if ( ctrl.tickCount == CTRL_NO_MEAS_TIME_TICKS )
+		{
+			// in case the mppt sample point didn't reach the target
+			PWM_setMpptSamplePt( CTRL_MpptSamplePtTarget );
+			// Go back to updating measurements as normal
+			MEAS_setDoUpdate( 1 );
+		}
+		else if ( ctrl.tickCount > CTRL_NO_MEAS_TIME_TICKS )
+		{
+			//firstMPPTPoint=1;
+			PWM_setVinLim(IQ_mpy( IQ_cnst( 1.1 ),fixedOcVolt));
+		}
+	}
+		
+	/* 
+	meas.pvOcVolt.val = ctrl.pvVoltFrac;
+	MEAS_setDoUpdate( 1 );
+	PWM_setMpptSamplePt(ctrl.pvVoltFrac);
+	IO_enablePwmCtrl();
+	*/
+#endif
+
+	
+	//{
+		//1.04 (19/04/2012) removed the vinlim stuff as it is now redundant and sometimes causes strange behaviour.
+		
+		//PWM_setVinLim( IQ_mpy( IQ_cnst( 1.1 ), meas.pvOcVolt.val ));
+				
+		/*
+		// Run VinLim control loop based on PV current
+		pvVinLimMax = IQ_mpy( IQ_cnst( 1.1 ), meas.pvOcVolt.val );
+		//pvVinLimMax = meas.pvOcVolt.val;
+		pvVinLimMin = IQ_mpy( IQ_cnst( MEAS_OUTVOLT_TO_PVVOLT ), meas.outVolt.val );
+		//pvVinLimMin = IQ_cnst( 60.0 / MEAS_PVVOLT_BASE );
+		if ( pvVinLimMax <= pvVinLimMin ) pvVinLimMax = pvVinLimMin + 1;
+
+		// Run integrator if direction of increment is correct
+		//if (	( meas.pvCurr.val < 0 && ctrl.pvVinLimSat >= 0 ) 
+		//	 ||	( meas.pvCurr.val > 0 && ctrl.pvVinLimSat <= 0 ) )
+		{
+			pvVinIntIncr = IQ_mpy( IQ_cnst(CTRL_KI_VINLIM), meas.pvCurr.val );
+			if ( pvVinIntIncr == 0 ) pvVinIntIncr = IQ_sign( meas.pvCurr.val );
+			ctrl.pvVinLimInt += pvVinIntIncr;
+		}
+
+		// Saturate integrator intependendly
+		if ( ctrl.pvVinLimInt > pvVinLimMax ) ctrl.pvVinLimInt = pvVinLimMax;
+		if ( ctrl.pvVinLimInt < pvVinLimMin ) ctrl.pvVinLimInt = pvVinLimMin;
+
+		ctrl.pvVinLim = IQ_mpy( IQ_cnst(CTRL_KP_VINLIM), meas.pvCurr.val ) + ctrl.pvVinLimInt;
+
+		ctrl.pvVinLimSat = 0;
+		if ( ctrl.pvVinLim > pvVinLimMax ) { ctrl.pvVinLim = pvVinLimMax; ctrl.pvVinLimSat = 1; }
+		if ( ctrl.pvVinLim < pvVinLimMin ) { ctrl.pvVinLim = pvVinLimMin; ctrl.pvVinLimSat = -1; }
+		
+		
+		PWM_setVinLim( ctrl.pvVinLim );
+		//PWM_setVinLim( pvVinLimMax );
+		//PWM_setVinLim( IQ_cnst( 82.0 / MEAS_PVVOLT_BASE ) );
+		*/
+	//}
+
+#ifdef DEBUG_LED_SAMPLE
+	if ( ctrl.tickCount > CTRL_ABOUT_TO_SAMPLE_TICKS )
+	{
+		IO_setRelay(1);
+	}
+	else 
+	{
+		IO_setRelay(0);
+	}
+#endif
+	
+	ctrl.tickCount++;
+
+	if ( ctrl.tickCount == CTRL_SAMPLE_PERIOD_TICKS )
+	{
+		ctrl.tickCount = 0;
+	}
+
+
+}
+
+//void CTRL_vinLimLow();
+void CTRL_vmpHigh()
+{
+	// Put VinLim low to avoid locking the bootstrap off
+	//PWM_setVinLim( IQ_cnst(0.1) ); 
+
+	//Version 1.03: Set Vmp above Voc during sample to prevent winding up the control loop and overshooting massively at startup.
+	//This rails the pwm controller to a low PWM output (low side barely on).
+	//The hiside disable functions should prevent any negative current as a result
+	PWM_setMpptSamplePt( IQ_mpy( meas.pvOcVolt.val, CTRL_VMP_SETPOINT_DURING_SAMPLE )  );
+}
+
+//void CTRL_vinLimNormal();
+/*
+void CTRL_vmpNormal()
+{
+	// Put VinLim back up
+	//PWM_setVinLim( ctrl.pvVinLim );
+}
+*/
+
+unsigned char CTRL_getStatus()
+{
+	return (ctrl.pwmRemoteShutdown << 7) | (((persistentStorage.autoOn == 1) ? 1 : 0) << 6) | (ctrl.pwmGroundFaultShutdown << 5) | ((!ctrl.pwmDisabledByOnOff) << 4 ) |
+		( ctrl.mode << 2 ) | ( ( ctrl.setpointIsBulk != 0 ) << 1 ) | ( IO_getIsSlave() != 0 );
+}
+
+
+// Set output voltage setpoint based on bulk/float hysteresis
+void CTRL_checkBulkFloat()
+{
+	Iq outVoltSetpointIq;
+	//if ( ctrl.tickCount < CTRL_OUT_VOLT_BLANK_TICKS ) return;
+
+	//IO_flset( ctrl.flsetFloat );
+
+	if ( IO_getIsSlave() )
+	{
+		ctrl.setpointIsBulk = 0;
+	}
+
+	if ( ctrl.setpointIsBulk )	outVoltSetpointIq = ctrl.bulkVolt;
+	else outVoltSetpointIq = ctrl.floatVolt;
+
+//	COMMS_sendDebugPacket( meas.outVolt.val, outVoltSetpointIq, ctrl.bulkTime, ctrl.timeAtSetpoint );
+
+	if ( IQ_abs( meas.outVolt.val - outVoltSetpointIq ) < IQ_cnst(1.4/MEAS_OUTVOLT_BASE) )
+	{
+		// We're at the output voltage setpoint
+		ctrl.mode = CTRL_MODE_OUT_REG;
+		if ( !IO_getIsSlave() )
+		{
+			if ( ctrl.setpointIsBulk )
+			{
+				// Increment the bulk timer
+				ctrl.timeAtSetpoint += CTRL_SLOW_PERIOD_MS;
+				if ( ctrl.timeAtSetpoint >= ctrl.bulkTime )
+				{
+					//IO_flset(ctrl.flsetFloat);
+					//PWM_setFlTrim( ctrl.fltrimDutyFloat );
+					ctrl.setpointIsBulk = 0;
+				}
+				ctrl.notBulkTime = 0;
+			}	
+			else
+			{
+				ctrl.timeAtSetpoint = 0;
+			}
+		}
+	}
+	else
+	{
+		if ( meas.outVolt.val < outVoltSetpointIq )
+		{
+			// We're below the bulk voltage setpoint, so must be in MPPT regulation mode
+			ctrl.mode = CTRL_MODE_MPPT_REG;
+		}
+		else
+		{
+			// We're above the bulk voltage setpoint, so must be limiting on maximum input voltage
+			ctrl.mode = CTRL_MODE_VIN_LIM;
+		}
+
+		if (!ctrl.setpointIsBulk || ctrl.notBulkTime >= CTRL_BULK_HYSTERISIS_MS)
+		{
+			ctrl.timeAtSetpoint = 0;
+		}
+		else
+		{
+			ctrl.notBulkTime += CTRL_SLOW_PERIOD_MS;
+		}
+	}
+
+	if ( !IO_getIsSlave() )
+	{
+		// Regulate bulk if we drop below the bulk reset voltage
+		if ( meas.outVolt.val <= ctrl.bulkResetVolt )
+		{
+			//IO_flset(ctrl.flsetBulk);
+			//PWM_setFlTrim( ctrl.fltrimDutyBulk );
+			ctrl.setpointIsBulk = 1;
+		}
+	}
+}
+
+int CTRL_setpointIsBulk()
+{
+	return ctrl.setpointIsBulk;
+}
+
+/*void CTRL_temp()
+{
+	//COMMS_sendDebugPacket( ctrl.flset );
+}*/
+
+
