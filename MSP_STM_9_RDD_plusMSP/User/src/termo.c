@@ -21,7 +21,7 @@ static const uint16_t termoTable[] = { 3216, 3181, 3136, 3079, 3008, 2922, 2818,
  *
  *
  ******************************************************************************************************/
-float getTemperatureValue(uint32_t adcTemperatureCode){
+float getTemperatureValue(uint32_t adcTemperatureCode){  //call from endOfCycleExecute
 	
 	if ( adcTemperatureCode > TERMO_CODE_MIN ) { return TEMPERATURE_MIN; }
 	if ( adcTemperatureCode < TERMO_CODE_MAX ) { return TEMPERATURE_MAX; }

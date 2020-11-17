@@ -1,7 +1,7 @@
 #include "Stm32f3xx.h"
 #include "tim3.h"
 
-void initTim3(void)
+void initTim3(void)   // call from main
 {
 	RCC->APB1ENR |= RCC_APB1ENR_TIM3EN;
 	TIM3->PSC = 71;

@@ -22,7 +22,7 @@ float ftemp;  // for debug
 
 //FSM for debug 
 static uint16_t debugFSM_calc=0;
-void debugFSM()
+void debugFSM()       //call from TIM3_IRQHandler
 { 
 	switch (debugFSM_calc)
 	{	
@@ -54,8 +54,8 @@ int main(void)
 	DCDC_Init();
 	initTim3();
 	
-	IO_init();
-	uart_init();
+	IO_init();// is in  MAIN_resetAllAndStart()
+	uart_init();// is in  MAIN_resetAllAndStart()
 	mainMSPinit( );
 
 	
@@ -75,7 +75,7 @@ int main(void)
 *
 *
 **************************************************************************************************************************/
-void SysTick_Handler(void){
+void SysTick_Handler(void){ //Dont used now
 	sysTickCounter--;
 	//SCH_incrMs();
 }
@@ -83,7 +83,7 @@ void SysTick_Handler(void){
 void TIM3_IRQHandler(void)
 {
 	TIM3->SR = ~TIM_SR_UIF;
-	PWM_isr();
+	PWM_isr();   //function from MSP430 every 512 ms
 	//debugFSM();
 	
 //	if(TIM3->SR & TIM_SR_UIF){
@@ -101,9 +101,9 @@ void TIM3_IRQHandler(void)
 //	}
 }
 
-void delay_ms(uint32_t delayTime){
-	sysTickCounter = delayTime;
-	while(sysTickCounter){}
-}
+//void delay_ms(uint32_t delayTime){
+//	sysTickCounter = delayTime;
+//	while(sysTickCounter){}
+//}
 
 

@@ -38,7 +38,7 @@ static const float conversCoeffArray[] = { I_CONVERCE_COEFF, VIN_CONVERCE_COEFF,
  *  5: (ADC1_7, ADC2_8)  - V_LEAK_REF, V_LEAK_CHECK
  *  5: (ADC1_9, ADC2_18) - TMP_CASE, V_INT_REF
  ******************************************************************************************/
-void initAdcToDualRegularSimultaneousMode(void){
+void initAdcToDualRegularSimultaneousMode(void){  // call from DCDC_Init  
 
 	adcGpioConfig();																													// init adc GPIO
 
@@ -121,7 +121,7 @@ void initAdcToDualRegularSimultaneousMode(void){
  * 
  *
  ***********************************************************************************************************************************/
-void initDmaForAdc(uint32_t adcBuffAddr, uint32_t byteCount){
+void initDmaForAdc(uint32_t adcBuffAddr, uint32_t byteCount){   // call from DCDC_Init
 
 	RCC->AHBENR |= RCC_AHBENR_DMA1EN;																	// enable clock for DMA1
 
@@ -162,7 +162,7 @@ void initDmaForAdc(uint32_t adcBuffAddr, uint32_t byteCount){
  ******************************************************************************************/
 #define MODE_ANALOG			3UL
 
-void adcGpioConfig(void){
+void adcGpioConfig(void){  //call from initAdcToDualRegularSimultaneousMode
 
 	GPIOA->MODER |= ( MODE_ANALOG << GPIO_MODER_MODER0_Pos ) |
 									( MODE_ANALOG << GPIO_MODER_MODER1_Pos ) |
@@ -188,71 +188,72 @@ void adcGpioConfig(void){
 										 GPIO_PUPDR_PUPDR3_Msk );
 }
 
-/******************************************************************************************************
- *
- *
- ******************************************************************************************************/
-void updateSumValue(uint16_t* pMomentVal, uint32_t* pSumValue){
-	
-	uint16_t i = 0; ;
-	while(i < ADC_STRUCT_MEMBERS_NUM){
-		*pSumValue += *pMomentVal;																							// add the new value to the sum	
-		pSumValue++;
-		pMomentVal++;
-		i++;
-	}
-}
-
 
 /******************************************************************************************************
  *
  *
  ******************************************************************************************************/
-void updateAverageValue(float* pAverageValue, uint32_t* pSumValue){
-	uint16_t i = 0; ;
-	while(i < ADC_STRUCT_MEMBERS_NUM){
-		*pAverageValue = *pSumValue * 1.0f / ADC_SAMPLE_NUMBER ;								// calc average value
-		*pSumValue = 0;																													// erase sum value
-		pSumValue++;
-		pAverageValue++;
-		i++;
-	}
-}
-
-/******************************************************************************************************
- *
- *
- ******************************************************************************************************/
-void updateCalcValue( floatValue_t* pAverageValue,  floatValue_t* pCalcValue ){	
-
-	float adcMultipler = CPU_VREF_VALUE / pAverageValue->vrefCpu;
-	float adcCurrMultipler = adcMultipler * 50 * I_CONVERCE_COEFF;
-
-	pCalcValue->vInSensor = pAverageValue->vInSensor * adcMultipler * VIN_CONVERCE_COEFF;
-	pCalcValue->vOutSensor = pAverageValue->vOutSensor * adcMultipler * VOUT_CONVERCE_COEFF;
-
-	float delta = (pAverageValue->iInSensor - ZERO_CURR_CODE);
-	pCalcValue->iInSensor = (delta >= 0) ? (delta * adcCurrMultipler) : 0.0f;
-
-	delta = (pAverageValue->iOutSensor - ZERO_CURR_CODE);
- 	pCalcValue->iOutSensor = (delta >= 0) ? (delta * adcCurrMultipler) : 0.0f;
-
-	delta = (pAverageValue->iOutComSensor - ZERO_CURR_CODE);
-	pCalcValue->iOutComSensor = (delta >= 0) ? (delta * adcCurrMultipler) : 0.0f;
-
-	pCalcValue->v12Sensor = pAverageValue->v12Sensor * adcMultipler * V12_CONVERCE_COEFF;
-	pCalcValue->vrefCpu = pAverageValue->vrefCpu * adcMultipler;
-
-}
-
-/******************************************************************************************************
- *
- *
- ******************************************************************************************************/
-void setAdcMasterAnalogWatchdogThresholds(uint16_t hiThr, uint16_t loThr){
+void setAdcMasterAnalogWatchdogThresholds(uint16_t hiThr, uint16_t loThr){   //call from DCDC_init
 	ADC1->CR |= ADC_CR_ADSTP;
 	while(ADC1->CR & ADC_CR_ADSTP){};
 	ADC1->TR1 = (hiThr << ADC_TR1_HT1_Pos) | loThr;
 	ADC1->CR |= ADC_CR_ADSTART;
 }
+/******************************************************************************************************
+ *
+ *
+ ******************************************************************************************************/
+//void updateSumValue(uint16_t* pMomentVal, uint32_t* pSumValue){
+//	
+//	uint16_t i = 0; ;
+//	while(i < ADC_STRUCT_MEMBERS_NUM){
+//		*pSumValue += *pMomentVal;																							// add the new value to the sum	
+//		pSumValue++;
+//		pMomentVal++;
+//		i++;
+//	}
+//}
+
+
+/******************************************************************************************************
+ *
+ *
+ ******************************************************************************************************/
+//void updateAverageValue(float* pAverageValue, uint32_t* pSumValue){
+//	uint16_t i = 0; ;
+//	while(i < ADC_STRUCT_MEMBERS_NUM){
+//		*pAverageValue = *pSumValue * 1.0f / ADC_SAMPLE_NUMBER ;								// calc average value
+//		*pSumValue = 0;																													// erase sum value
+//		pSumValue++;
+//		pAverageValue++;
+//		i++;
+//	}
+//}
+
+/******************************************************************************************************
+ *
+ *
+ ******************************************************************************************************/
+//void updateCalcValue( floatValue_t* pAverageValue,  floatValue_t* pCalcValue ){	
+
+//	float adcMultipler = CPU_VREF_VALUE / pAverageValue->vrefCpu;
+//	float adcCurrMultipler = adcMultipler * 50 * I_CONVERCE_COEFF;
+
+//	pCalcValue->vInSensor = pAverageValue->vInSensor * adcMultipler * VIN_CONVERCE_COEFF;
+//	pCalcValue->vOutSensor = pAverageValue->vOutSensor * adcMultipler * VOUT_CONVERCE_COEFF;
+
+//	float delta = (pAverageValue->iInSensor - ZERO_CURR_CODE);
+//	pCalcValue->iInSensor = (delta >= 0) ? (delta * adcCurrMultipler) : 0.0f;
+
+//	delta = (pAverageValue->iOutSensor - ZERO_CURR_CODE);
+// 	pCalcValue->iOutSensor = (delta >= 0) ? (delta * adcCurrMultipler) : 0.0f;
+
+//	delta = (pAverageValue->iOutComSensor - ZERO_CURR_CODE);
+//	pCalcValue->iOutComSensor = (delta >= 0) ? (delta * adcCurrMultipler) : 0.0f;
+
+//	pCalcValue->v12Sensor = pAverageValue->v12Sensor * adcMultipler * V12_CONVERCE_COEFF;
+//	pCalcValue->vrefCpu = pAverageValue->vrefCpu * adcMultipler;
+
+//}
+
 

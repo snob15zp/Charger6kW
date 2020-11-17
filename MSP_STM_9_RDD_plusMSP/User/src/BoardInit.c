@@ -3,6 +3,8 @@
  *
  *  Created on: 16 NOV 2019 г.
  *  Author: Yakov Churinov
+ 
+    SystemClock & DCDC control pin
  */
 
 #include "stm32f3xx.h"
