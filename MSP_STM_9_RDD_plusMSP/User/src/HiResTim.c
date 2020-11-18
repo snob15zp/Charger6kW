@@ -93,8 +93,8 @@ void hrtimersGpioInit(void){
 }
 
 /******************************************************************************************
-*
-*
+*  
+*  Is called from HRTIM interrupt
 *******************************************************************************************/
 uint16_t hrtimerUpdateDuty(uint16_t dutycycle){
 	HRTIM1->sTimerxRegs[TIM_A].CMP1xR = dutycycle;														// CMP1 for duty cycle regulation
