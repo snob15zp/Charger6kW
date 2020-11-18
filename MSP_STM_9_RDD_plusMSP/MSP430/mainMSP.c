@@ -98,13 +98,13 @@ int mainMSPloop( char l )
 			ADC12CTL0 |= ADC12SC;               	// Start A/D conversions
 		}*/
 
-		CAN_transmit();
+		CAN_transmit();   // mainMSP
 
-		COMMS_receive();
+		COMMS_receive();  // mainMSP
 
-		SCH_runActiveTasks();
+		SCH_runActiveTasks(); // mainMSP
 
-		uart_receive();
+		uart_receive(); // mainMSP
 	}
   while(l); 
 	// Will never get here, keeps compiler happy

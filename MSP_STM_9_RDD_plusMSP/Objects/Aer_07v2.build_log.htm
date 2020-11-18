@@ -5,7 +5,7 @@
 <h2>Tool Versions:</h2>
 IDE-Version: µVision V5.28.0.0
 Copyright (C) 2019 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: 1 1, 1, LIC=2TTQD-8XRTT-HRTXN-YV1RZ-UZXPB-2VWER
+License Information: 1 1, 1, LIC=NHYHL-0KXUH-JPIZQ-NTCI2-NA0ND-Q2DKC
  
 Tool Versions:
 Toolchain:       MDK-ARM Professional  Version: 5.28.0.0
@@ -17,21 +17,466 @@ Library Manager: ArmAr.exe V5.06 update 6 (build 750)
 Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
 CPU DLL:         SARMCM3.DLL V5.28.0.0
 Dialog DLL:      DCM.DLL V1.17.3.0
-Target DLL:      Segger\JL2CM3.dll V2.99.36.0
+Target DLL:      UL2CM3.DLL V1.162.16.0
 Dialog DLL:      TCM.DLL V1.36.2.0
  
 <h2>Project:</h2>
-D:\user\github\Charger6kW\MSP_STM_9_RDD_plusMSP\Charger6kW_8.uvprojx
-Project File Date:  11/18/2020
+D:\userSSD\github\Charger6kW\MSP_STM_9_RDD_plusMSP\Charger6kW_8.uvprojx
+Project File Date:  11/17/2020
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'AER07'
-compiling HiResTim.c...
+compiling usci.c...
+MSP430\ctrl.h(20): warning:  #1295-D: Deprecated declaration CTRL_init - give arg types
+  void CTRL_init();
+MSP430\ctrl.h(22): warning:  #1295-D: Deprecated declaration CTRL_setFltrimParams_old - give arg types
+  void CTRL_setFltrimParams_old();
+MSP430\ctrl.h(23): warning:  #1295-D: Deprecated declaration CTRL_setFltrimParams_new - give arg types
+  void CTRL_setFltrimParams_new();
+MSP430\ctrl.h(26): warning:  #1295-D: Deprecated declaration CTRL_getOutVoltCmd - give arg types
+  float CTRL_getOutVoltCmd();
+MSP430\ctrl.h(28): warning:  #1295-D: Deprecated declaration CTRL_calcOutVoltSetpoints - give arg types
+  void CTRL_calcOutVoltSetpoints();
+MSP430\ctrl.h(31): warning:  #1295-D: Deprecated declaration CTRL_isOutputEnabled - give arg types
+  int CTRL_isOutputEnabled();
+MSP430\ctrl.h(36): warning:  #1295-D: Deprecated declaration CTRL_tick - give arg types
+  void CTRL_tick();
+MSP430\ctrl.h(38): warning:  #1295-D: Deprecated declaration CTRL_checkBulkFloat - give arg types
+  void CTRL_checkBulkFloat();
+MSP430\ctrl.h(39): warning:  #1295-D: Deprecated declaration CTRL_setpointIsBulk - give arg types
+  int CTRL_setpointIsBulk();
+MSP430\ctrl.h(40): warning:  #1295-D: Deprecated declaration CTRL_controlSyncRect - give arg types
+  void CTRL_controlSyncRect();
+MSP430\ctrl.h(42): warning:  #1295-D: Deprecated declaration CTRL_vmpHigh - give arg types
+  void CTRL_vmpHigh();
+MSP430\ctrl.h(45): warning:  #1295-D: Deprecated declaration CTRL_getStatus - give arg types
+  unsigned char CTRL_getStatus();
+MSP430\ctrl.h(47): warning:  #1295-D: Deprecated declaration CTRL_temp - give arg types
+  void CTRL_temp();
+MSP430\usci.c(161): warning:  #223-D: function "uart_send" declared implicitly
+  	uart_send(TYPE_COMMAND);
+MSP430\usci.c(292): warning:  #223-D: function "uart_send" declared implicitly
+  					uart_send(packetID.type);
+MSP430\usci.c(315): warning:  #68-D: integer conversion resulted in a change of sign
+  						i = -1;
+MSP430\usci.c(321): warning:  #68-D: integer conversion resulted in a change of sign
+  						i = -1;
+MSP430\usci.c: 17 warnings, 0 errors
+compiling main.c...
+.\MSP430\sch.h(17): warning:  #1295-D: Deprecated declaration SCH_init - give arg types
+  void SCH_init();
+.\MSP430\sch.h(18): warning:  #1295-D: Deprecated declaration SCH_incrMs - give arg types
+  void SCH_incrMs();
+.\MSP430\sch.h(19): warning:  #1295-D: Deprecated declaration SCH_runActiveTasks - give arg types
+  void SCH_runActiveTasks();
+.\MSP430\meas.h(142): warning:  #1295-D: Deprecated declaration MEAS_init - give arg types
+  void MEAS_init();
+.\MSP430\meas.h(144): warning:  #1295-D: Deprecated declaration MEAS_update - give arg types
+  void MEAS_update();
+.\MSP430\meas.h(145): warning:  #1295-D: Deprecated declaration MEAS_updateCharge - give arg types
+  void MEAS_updateCharge();
+.\MSP430\meas.h(146): warning:  #1295-D: Deprecated declaration MEAS_resetCharge - give arg types
+  void MEAS_resetCharge();
+.\MSP430\meas.h(147): warning:  #1295-D: Deprecated declaration MEAS_updateTempr - give arg types
+  void MEAS_updateTempr();
+.\MSP430\meas.h(149): warning:  #1295-D: Deprecated declaration MEAS_isPvActive - give arg types
+  int MEAS_isPvActive();
+User\src\main.c(58): warning:  #223-D: function "uart_init" declared implicitly
+  	uart_init();// is in  MAIN_resetAllAndStart()
+User\src\main.c: 10 warnings, 0 errors
+compiling sch.c...
+MSP430\main.h(19): warning:  #1295-D: Deprecated declaration MAIN_resetAllAndStart - give arg types
+  void MAIN_resetAllAndStart();
+MSP430\main.h(20): warning:  #1295-D: Deprecated declaration MAIN_resetRemoteCfg - give arg types
+  void MAIN_resetRemoteCfg();
+MSP430\sch.h(17): warning:  #1295-D: Deprecated declaration SCH_init - give arg types
+  void SCH_init();
+MSP430\sch.h(18): warning:  #1295-D: Deprecated declaration SCH_incrMs - give arg types
+  void SCH_incrMs();
+MSP430\sch.h(19): warning:  #1295-D: Deprecated declaration SCH_runActiveTasks - give arg types
+  void SCH_runActiveTasks();
+MSP430\comms.h(17): warning:  #1295-D: Deprecated declaration COMMS_init - give arg types
+  void COMMS_init();
+MSP430\comms.h(19): warning:  #1295-D: Deprecated declaration COMMS_getStatus - give arg types
+  unsigned char COMMS_getStatus();
+MSP430\comms.h(21): warning:  #1295-D: Deprecated declaration COMMS_sendHeartbeat - give arg types
+  void COMMS_sendHeartbeat();
+MSP430\comms.h(22): warning:  #1295-D: Deprecated declaration COMMS_sendStatus - give arg types
+  void COMMS_sendStatus();
+MSP430\comms.h(23): warning:  #1295-D: Deprecated declaration COMMS_sendPvMeas - give arg types
+  void COMMS_sendPvMeas();
+MSP430\comms.h(24): warning:  #1295-D: Deprecated declaration COMMS_sendOutMeas - give arg types
+  void COMMS_sendOutMeas();
+MSP430\comms.h(25): warning:  #1295-D: Deprecated declaration COMMS_sendOcQMeas - give arg types
+  void COMMS_sendOcQMeas();
+MSP430\comms.h(26): warning:  #1295-D: Deprecated declaration COMMS_sendPowTemprMeas - give arg types
+  void COMMS_sendPowTemprMeas();
+MSP430\comms.h(27): warning:  #1295-D: Deprecated declaration COMMS_sendTime - give arg types
+  void COMMS_sendTime();
+MSP430\comms.h(28): warning:  #1295-D: Deprecated declaration COMMS_sendFlag - give arg types
+  void COMMS_sendFlag();
+MSP430\comms.h(29): warning:  #1295-D: Deprecated declaration COMMS_sendOutVoltCmd - give arg types
+  void COMMS_sendOutVoltCmd();
+MSP430\comms.h(31): warning:  #1295-D: Deprecated declaration COMMS_receive - give arg types
+  void COMMS_receive();
+MSP430\comms.h(33): warning:  #1295-D: Deprecated declaration COMMS_sendP2pPacket - give arg types
+  void COMMS_sendP2pPacket();
+MSP430\meas.h(142): warning:  #1295-D: Deprecated declaration MEAS_init - give arg types
+  void MEAS_init();
+MSP430\meas.h(144): warning:  #1295-D: Deprecated declaration MEAS_update - give arg types
+  void MEAS_update();
+MSP430\meas.h(145): warning:  #1295-D: Deprecated declaration MEAS_updateCharge - give arg types
+  void MEAS_updateCharge();
+MSP430\meas.h(146): warning:  #1295-D: Deprecated declaration MEAS_resetCharge - give arg types
+  void MEAS_resetCharge();
+MSP430\meas.h(147): warning:  #1295-D: Deprecated declaration MEAS_updateTempr - give arg types
+  void MEAS_updateTempr();
+MSP430\meas.h(149): warning:  #1295-D: Deprecated declaration MEAS_isPvActive - give arg types
+  int MEAS_isPvActive();
+MSP430\ctrl.h(20): warning:  #1295-D: Deprecated declaration CTRL_init - give arg types
+  void CTRL_init();
+MSP430\ctrl.h(22): warning:  #1295-D: Deprecated declaration CTRL_setFltrimParams_old - give arg types
+  void CTRL_setFltrimParams_old();
+MSP430\ctrl.h(23): warning:  #1295-D: Deprecated declaration CTRL_setFltrimParams_new - give arg types
+  void CTRL_setFltrimParams_new();
+MSP430\ctrl.h(26): warning:  #1295-D: Deprecated declaration CTRL_getOutVoltCmd - give arg types
+  float CTRL_getOutVoltCmd();
+MSP430\ctrl.h(28): warning:  #1295-D: Deprecated declaration CTRL_calcOutVoltSetpoints - give arg types
+  void CTRL_calcOutVoltSetpoints();
+MSP430\ctrl.h(31): warning:  #1295-D: Deprecated declaration CTRL_isOutputEnabled - give arg types
+  int CTRL_isOutputEnabled();
+MSP430\ctrl.h(36): warning:  #1295-D: Deprecated declaration CTRL_tick - give arg types
+  void CTRL_tick();
+MSP430\ctrl.h(38): warning:  #1295-D: Deprecated declaration CTRL_checkBulkFloat - give arg types
+  void CTRL_checkBulkFloat();
+MSP430\ctrl.h(39): warning:  #1295-D: Deprecated declaration CTRL_setpointIsBulk - give arg types
+  int CTRL_setpointIsBulk();
+MSP430\ctrl.h(40): warning:  #1295-D: Deprecated declaration CTRL_controlSyncRect - give arg types
+  void CTRL_controlSyncRect();
+MSP430\ctrl.h(42): warning:  #1295-D: Deprecated declaration CTRL_vmpHigh - give arg types
+  void CTRL_vmpHigh();
+MSP430\ctrl.h(45): warning:  #1295-D: Deprecated declaration CTRL_getStatus - give arg types
+  unsigned char CTRL_getStatus();
+MSP430\ctrl.h(47): warning:  #1295-D: Deprecated declaration CTRL_temp - give arg types
+  void CTRL_temp();
+MSP430\sch.c: 37 warnings, 0 errors
+compiling mainMSP.c...
+MSP430\sch.h(17): warning:  #1295-D: Deprecated declaration SCH_init - give arg types
+  void SCH_init();
+MSP430\sch.h(18): warning:  #1295-D: Deprecated declaration SCH_incrMs - give arg types
+  void SCH_incrMs();
+MSP430\sch.h(19): warning:  #1295-D: Deprecated declaration SCH_runActiveTasks - give arg types
+  void SCH_runActiveTasks();
+MSP430\comms.h(17): warning:  #1295-D: Deprecated declaration COMMS_init - give arg types
+  void COMMS_init();
+MSP430\comms.h(19): warning:  #1295-D: Deprecated declaration COMMS_getStatus - give arg types
+  unsigned char COMMS_getStatus();
+MSP430\comms.h(21): warning:  #1295-D: Deprecated declaration COMMS_sendHeartbeat - give arg types
+  void COMMS_sendHeartbeat();
+MSP430\comms.h(22): warning:  #1295-D: Deprecated declaration COMMS_sendStatus - give arg types
+  void COMMS_sendStatus();
+MSP430\comms.h(23): warning:  #1295-D: Deprecated declaration COMMS_sendPvMeas - give arg types
+  void COMMS_sendPvMeas();
+MSP430\comms.h(24): warning:  #1295-D: Deprecated declaration COMMS_sendOutMeas - give arg types
+  void COMMS_sendOutMeas();
+MSP430\comms.h(25): warning:  #1295-D: Deprecated declaration COMMS_sendOcQMeas - give arg types
+  void COMMS_sendOcQMeas();
+MSP430\comms.h(26): warning:  #1295-D: Deprecated declaration COMMS_sendPowTemprMeas - give arg types
+  void COMMS_sendPowTemprMeas();
+MSP430\comms.h(27): warning:  #1295-D: Deprecated declaration COMMS_sendTime - give arg types
+  void COMMS_sendTime();
+MSP430\comms.h(28): warning:  #1295-D: Deprecated declaration COMMS_sendFlag - give arg types
+  void COMMS_sendFlag();
+MSP430\comms.h(29): warning:  #1295-D: Deprecated declaration COMMS_sendOutVoltCmd - give arg types
+  void COMMS_sendOutVoltCmd();
+MSP430\comms.h(31): warning:  #1295-D: Deprecated declaration COMMS_receive - give arg types
+  void COMMS_receive();
+MSP430\comms.h(33): warning:  #1295-D: Deprecated declaration COMMS_sendP2pPacket - give arg types
+  void COMMS_sendP2pPacket();
+MSP430\meas.h(142): warning:  #1295-D: Deprecated declaration MEAS_init - give arg types
+  void MEAS_init();
+MSP430\meas.h(144): warning:  #1295-D: Deprecated declaration MEAS_update - give arg types
+  void MEAS_update();
+MSP430\meas.h(145): warning:  #1295-D: Deprecated declaration MEAS_updateCharge - give arg types
+  void MEAS_updateCharge();
+MSP430\meas.h(146): warning:  #1295-D: Deprecated declaration MEAS_resetCharge - give arg types
+  void MEAS_resetCharge();
+MSP430\meas.h(147): warning:  #1295-D: Deprecated declaration MEAS_updateTempr - give arg types
+  void MEAS_updateTempr();
+MSP430\meas.h(149): warning:  #1295-D: Deprecated declaration MEAS_isPvActive - give arg types
+  int MEAS_isPvActive();
+MSP430\status.h(17): warning:  #1295-D: Deprecated declaration STATUS_init - give arg types
+  void STATUS_init();
+MSP430\status.h(19): warning:  #1295-D: Deprecated declaration STATUS_update - give arg types
+  void STATUS_update();
+MSP430\status.h(21): warning:  #1295-D: Deprecated declaration STATUS_getStatus - give arg types
+  unsigned long long STATUS_getStatus();
+MSP430\ctrl.h(20): warning:  #1295-D: Deprecated declaration CTRL_init - give arg types
+  void CTRL_init();
+MSP430\ctrl.h(22): warning:  #1295-D: Deprecated declaration CTRL_setFltrimParams_old - give arg types
+  void CTRL_setFltrimParams_old();
+MSP430\ctrl.h(23): warning:  #1295-D: Deprecated declaration CTRL_setFltrimParams_new - give arg types
+  void CTRL_setFltrimParams_new();
+MSP430\ctrl.h(26): warning:  #1295-D: Deprecated declaration CTRL_getOutVoltCmd - give arg types
+  float CTRL_getOutVoltCmd();
+MSP430\ctrl.h(28): warning:  #1295-D: Deprecated declaration CTRL_calcOutVoltSetpoints - give arg types
+  void CTRL_calcOutVoltSetpoints();
+MSP430\ctrl.h(31): warning:  #1295-D: Deprecated declaration CTRL_isOutputEnabled - give arg types
+  int CTRL_isOutputEnabled();
+MSP430\ctrl.h(36): warning:  #1295-D: Deprecated declaration CTRL_tick - give arg types
+  void CTRL_tick();
+MSP430\ctrl.h(38): warning:  #1295-D: Deprecated declaration CTRL_checkBulkFloat - give arg types
+  void CTRL_checkBulkFloat();
+MSP430\ctrl.h(39): warning:  #1295-D: Deprecated declaration CTRL_setpointIsBulk - give arg types
+  int CTRL_setpointIsBulk();
+MSP430\ctrl.h(40): warning:  #1295-D: Deprecated declaration CTRL_controlSyncRect - give arg types
+  void CTRL_controlSyncRect();
+MSP430\ctrl.h(42): warning:  #1295-D: Deprecated declaration CTRL_vmpHigh - give arg types
+  void CTRL_vmpHigh();
+MSP430\ctrl.h(45): warning:  #1295-D: Deprecated declaration CTRL_getStatus - give arg types
+  unsigned char CTRL_getStatus();
+MSP430\ctrl.h(47): warning:  #1295-D: Deprecated declaration CTRL_temp - give arg types
+  void CTRL_temp();
+MSP430\mainMSP.c(62): warning:  #69-D: integer conversion resulted in truncation
+  const __special_area__ my_erasable_data_area my_bsl_info[] = {0x0,0x0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'H',AER_PRODUCT_ID,VAR_VERSION_NUMBER,0x00,0x00};
+MSP430\mainMSP.c(163): warning:  #223-D: function "uart_init" declared implicitly
+  	uart_init();
+MSP430\mainMSP.c: 40 warnings, 0 errors
+compiling lcd.c...
+MSP430\meas.h(142): warning:  #1295-D: Deprecated declaration MEAS_init - give arg types
+  void MEAS_init();
+MSP430\meas.h(144): warning:  #1295-D: Deprecated declaration MEAS_update - give arg types
+  void MEAS_update();
+MSP430\meas.h(145): warning:  #1295-D: Deprecated declaration MEAS_updateCharge - give arg types
+  void MEAS_updateCharge();
+MSP430\meas.h(146): warning:  #1295-D: Deprecated declaration MEAS_resetCharge - give arg types
+  void MEAS_resetCharge();
+MSP430\meas.h(147): warning:  #1295-D: Deprecated declaration MEAS_updateTempr - give arg types
+  void MEAS_updateTempr();
+MSP430\meas.h(149): warning:  #1295-D: Deprecated declaration MEAS_isPvActive - give arg types
+  int MEAS_isPvActive();
+MSP430\comms.h(17): warning:  #1295-D: Deprecated declaration COMMS_init - give arg types
+  void COMMS_init();
+MSP430\comms.h(19): warning:  #1295-D: Deprecated declaration COMMS_getStatus - give arg types
+  unsigned char COMMS_getStatus();
+MSP430\comms.h(21): warning:  #1295-D: Deprecated declaration COMMS_sendHeartbeat - give arg types
+  void COMMS_sendHeartbeat();
+MSP430\comms.h(22): warning:  #1295-D: Deprecated declaration COMMS_sendStatus - give arg types
+  void COMMS_sendStatus();
+MSP430\comms.h(23): warning:  #1295-D: Deprecated declaration COMMS_sendPvMeas - give arg types
+  void COMMS_sendPvMeas();
+MSP430\comms.h(24): warning:  #1295-D: Deprecated declaration COMMS_sendOutMeas - give arg types
+  void COMMS_sendOutMeas();
+MSP430\comms.h(25): warning:  #1295-D: Deprecated declaration COMMS_sendOcQMeas - give arg types
+  void COMMS_sendOcQMeas();
+MSP430\comms.h(26): warning:  #1295-D: Deprecated declaration COMMS_sendPowTemprMeas - give arg types
+  void COMMS_sendPowTemprMeas();
+MSP430\comms.h(27): warning:  #1295-D: Deprecated declaration COMMS_sendTime - give arg types
+  void COMMS_sendTime();
+MSP430\comms.h(28): warning:  #1295-D: Deprecated declaration COMMS_sendFlag - give arg types
+  void COMMS_sendFlag();
+MSP430\comms.h(29): warning:  #1295-D: Deprecated declaration COMMS_sendOutVoltCmd - give arg types
+  void COMMS_sendOutVoltCmd();
+MSP430\comms.h(31): warning:  #1295-D: Deprecated declaration COMMS_receive - give arg types
+  void COMMS_receive();
+MSP430\comms.h(33): warning:  #1295-D: Deprecated declaration COMMS_sendP2pPacket - give arg types
+  void COMMS_sendP2pPacket();
+MSP430\status.h(17): warning:  #1295-D: Deprecated declaration STATUS_init - give arg types
+  void STATUS_init();
+MSP430\status.h(19): warning:  #1295-D: Deprecated declaration STATUS_update - give arg types
+  void STATUS_update();
+MSP430\status.h(21): warning:  #1295-D: Deprecated declaration STATUS_getStatus - give arg types
+  unsigned long long STATUS_getStatus();
+MSP430\ctrl.h(20): warning:  #1295-D: Deprecated declaration CTRL_init - give arg types
+  void CTRL_init();
+MSP430\ctrl.h(22): warning:  #1295-D: Deprecated declaration CTRL_setFltrimParams_old - give arg types
+  void CTRL_setFltrimParams_old();
+MSP430\ctrl.h(23): warning:  #1295-D: Deprecated declaration CTRL_setFltrimParams_new - give arg types
+  void CTRL_setFltrimParams_new();
+MSP430\ctrl.h(26): warning:  #1295-D: Deprecated declaration CTRL_getOutVoltCmd - give arg types
+  float CTRL_getOutVoltCmd();
+MSP430\ctrl.h(28): warning:  #1295-D: Deprecated declaration CTRL_calcOutVoltSetpoints - give arg types
+  void CTRL_calcOutVoltSetpoints();
+MSP430\ctrl.h(31): warning:  #1295-D: Deprecated declaration CTRL_isOutputEnabled - give arg types
+  int CTRL_isOutputEnabled();
+MSP430\ctrl.h(36): warning:  #1295-D: Deprecated declaration CTRL_tick - give arg types
+  void CTRL_tick();
+MSP430\ctrl.h(38): warning:  #1295-D: Deprecated declaration CTRL_checkBulkFloat - give arg types
+  void CTRL_checkBulkFloat();
+MSP430\ctrl.h(39): warning:  #1295-D: Deprecated declaration CTRL_setpointIsBulk - give arg types
+  int CTRL_setpointIsBulk();
+MSP430\ctrl.h(40): warning:  #1295-D: Deprecated declaration CTRL_controlSyncRect - give arg types
+  void CTRL_controlSyncRect();
+MSP430\ctrl.h(42): warning:  #1295-D: Deprecated declaration CTRL_vmpHigh - give arg types
+  void CTRL_vmpHigh();
+MSP430\ctrl.h(45): warning:  #1295-D: Deprecated declaration CTRL_getStatus - give arg types
+  unsigned char CTRL_getStatus();
+MSP430\ctrl.h(47): warning:  #1295-D: Deprecated declaration CTRL_temp - give arg types
+  void CTRL_temp();
+MSP430\lcd.c(256): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	CFG_localCfg.outVoltAdcCal.scale = IQ_cnst(factoryConfig_R.outVoltAdcCal.scale);
+MSP430\lcd.c(257): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	CFG_localCfg.outVoltAdcCal.offset = IQ_cnst(factoryConfig_R.outVoltAdcCal.offset);
+MSP430\lcd.c(258): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	CFG_localCfg.outCurrAdcCal.scale = IQ_cnst(factoryConfig_R.outCurrentAdcCal.scale);
+MSP430\lcd.c(259): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	CFG_localCfg.outCurrAdcCal.offset = IQ_cnst(factoryConfig_R.outCurrentAdcCal.offset);
+MSP430\lcd.c(260): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	CFG_localCfg.pvVoltAdcCal.scale = IQ_cnst(factoryConfig_R.pvVoltAdcCal.scale);
+MSP430\lcd.c(261): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	CFG_localCfg.pvVoltAdcCal.offset = IQ_cnst(factoryConfig_R.pvVoltAdcCal.offset);
+MSP430\lcd.c(262): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	CFG_localCfg.pvCurrAdcCal.scale = IQ_cnst(factoryConfig_R.pvCurrentAdcCal.scale);
+MSP430\lcd.c(263): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	CFG_localCfg.pvCurrAdcCal.offset = IQ_cnst(factoryConfig_R.pvCurrentAdcCal.offset);
+MSP430\lcd.c(265): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	CFG_localCfg.rail12VoltAdcCal.scale = IQ_cnst(factoryConfig_R.rail12VoltAdcCal.scale);
+MSP430\lcd.c(266): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	CFG_localCfg.rail12VoltAdcCal.offset = IQ_cnst(factoryConfig_R.rail12VoltAdcCal.offset);
+MSP430\lcd.c(268): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	CFG_localCfg.flSetSenseAdcCal.scale = IQ_cnst(factoryConfig_R.floatSetSenseAdcCal.scale);
+MSP430\lcd.c(269): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	CFG_localCfg.flSetSenseAdcCal.offset = IQ_cnst(factoryConfig_R.floatSetSenseAdcCal.offset);
+MSP430\lcd.c(271): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	CFG_localCfg.caseTmpAdcCal.scale = IQ_cnst(factoryConfig_R.pwmErrorMinusAdcCal.scale);
+MSP430\lcd.c(272): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	CFG_localCfg.caseTmpAdcCal.offset = IQ_cnst(factoryConfig_R.pwmErrorMinusAdcCal.offset);
+MSP430\lcd.c(274): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	CFG_localCfg.tmpCmpSenseAdcCal.scale = IQ_cnst(factoryConfig_R.tmpCmpSenseAdcCal.scale);
+MSP430\lcd.c(276): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	CFG_localCfg.tmpCmpSenseAdcCal.offset = IQ_cnst(factoryConfig_R.tmpCmpSenseAdcCal.offset);
+MSP430\lcd.c(282): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	CFG_localCfg.mpptSamplePtDacCal.scale = IQ_cnst(factoryConfig_R.mpptSamplePointDacCal.scale);
+MSP430\lcd.c(283): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	CFG_localCfg.mpptSamplePtDacCal.offset = IQ_cnst(factoryConfig_R.mpptSamplePointDacCal.offset);
+MSP430\lcd.c(284): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	CFG_localCfg.vinLimDacCal.scale = IQ_cnst(factoryConfig_R.vinLimDacCal.scale);
+MSP430\lcd.c(285): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	CFG_localCfg.vinLimDacCal.offset = IQ_cnst(factoryConfig_R.vinLimDacCal.offset);
+MSP430\lcd.c(286): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	CFG_localCfg.flTrimDacCal.scale = IQ_cnst(factoryConfig_R.floatTrimDacCal.scale);
+MSP430\lcd.c(287): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	CFG_localCfg.flTrimDacCal.offset = IQ_cnst(factoryConfig_R.floatTrimDacCal.offset);
+MSP430\lcd.c(866): warning:  #223-D: function "uart_send" declared implicitly
+  					uart_send(lcd_writeType);
+MSP430\lcd.c: 58 warnings, 0 errors
+compiling ctrl.c...
+MSP430\ctrl.h(20): warning:  #1295-D: Deprecated declaration CTRL_init - give arg types
+  void CTRL_init();
+MSP430\ctrl.h(22): warning:  #1295-D: Deprecated declaration CTRL_setFltrimParams_old - give arg types
+  void CTRL_setFltrimParams_old();
+MSP430\ctrl.h(23): warning:  #1295-D: Deprecated declaration CTRL_setFltrimParams_new - give arg types
+  void CTRL_setFltrimParams_new();
+MSP430\ctrl.h(26): warning:  #1295-D: Deprecated declaration CTRL_getOutVoltCmd - give arg types
+  float CTRL_getOutVoltCmd();
+MSP430\ctrl.h(28): warning:  #1295-D: Deprecated declaration CTRL_calcOutVoltSetpoints - give arg types
+  void CTRL_calcOutVoltSetpoints();
+MSP430\ctrl.h(31): warning:  #1295-D: Deprecated declaration CTRL_isOutputEnabled - give arg types
+  int CTRL_isOutputEnabled();
+MSP430\ctrl.h(36): warning:  #1295-D: Deprecated declaration CTRL_tick - give arg types
+  void CTRL_tick();
+MSP430\ctrl.h(38): warning:  #1295-D: Deprecated declaration CTRL_checkBulkFloat - give arg types
+  void CTRL_checkBulkFloat();
+MSP430\ctrl.h(39): warning:  #1295-D: Deprecated declaration CTRL_setpointIsBulk - give arg types
+  int CTRL_setpointIsBulk();
+MSP430\ctrl.h(40): warning:  #1295-D: Deprecated declaration CTRL_controlSyncRect - give arg types
+  void CTRL_controlSyncRect();
+MSP430\ctrl.h(42): warning:  #1295-D: Deprecated declaration CTRL_vmpHigh - give arg types
+  void CTRL_vmpHigh();
+MSP430\ctrl.h(45): warning:  #1295-D: Deprecated declaration CTRL_getStatus - give arg types
+  unsigned char CTRL_getStatus();
+MSP430\ctrl.h(47): warning:  #1295-D: Deprecated declaration CTRL_temp - give arg types
+  void CTRL_temp();
+MSP430\meas.h(142): warning:  #1295-D: Deprecated declaration MEAS_init - give arg types
+  void MEAS_init();
+MSP430\meas.h(144): warning:  #1295-D: Deprecated declaration MEAS_update - give arg types
+  void MEAS_update();
+MSP430\meas.h(145): warning:  #1295-D: Deprecated declaration MEAS_updateCharge - give arg types
+  void MEAS_updateCharge();
+MSP430\meas.h(146): warning:  #1295-D: Deprecated declaration MEAS_resetCharge - give arg types
+  void MEAS_resetCharge();
+MSP430\meas.h(147): warning:  #1295-D: Deprecated declaration MEAS_updateTempr - give arg types
+  void MEAS_updateTempr();
+MSP430\meas.h(149): warning:  #1295-D: Deprecated declaration MEAS_isPvActive - give arg types
+  int MEAS_isPvActive();
+MSP430\comms.h(17): warning:  #1295-D: Deprecated declaration COMMS_init - give arg types
+  void COMMS_init();
+MSP430\comms.h(19): warning:  #1295-D: Deprecated declaration COMMS_getStatus - give arg types
+  unsigned char COMMS_getStatus();
+MSP430\comms.h(21): warning:  #1295-D: Deprecated declaration COMMS_sendHeartbeat - give arg types
+  void COMMS_sendHeartbeat();
+MSP430\comms.h(22): warning:  #1295-D: Deprecated declaration COMMS_sendStatus - give arg types
+  void COMMS_sendStatus();
+MSP430\comms.h(23): warning:  #1295-D: Deprecated declaration COMMS_sendPvMeas - give arg types
+  void COMMS_sendPvMeas();
+MSP430\comms.h(24): warning:  #1295-D: Deprecated declaration COMMS_sendOutMeas - give arg types
+  void COMMS_sendOutMeas();
+MSP430\comms.h(25): warning:  #1295-D: Deprecated declaration COMMS_sendOcQMeas - give arg types
+  void COMMS_sendOcQMeas();
+MSP430\comms.h(26): warning:  #1295-D: Deprecated declaration COMMS_sendPowTemprMeas - give arg types
+  void COMMS_sendPowTemprMeas();
+MSP430\comms.h(27): warning:  #1295-D: Deprecated declaration COMMS_sendTime - give arg types
+  void COMMS_sendTime();
+MSP430\comms.h(28): warning:  #1295-D: Deprecated declaration COMMS_sendFlag - give arg types
+  void COMMS_sendFlag();
+MSP430\comms.h(29): warning:  #1295-D: Deprecated declaration COMMS_sendOutVoltCmd - give arg types
+  void COMMS_sendOutVoltCmd();
+MSP430\comms.h(31): warning:  #1295-D: Deprecated declaration COMMS_receive - give arg types
+  void COMMS_receive();
+MSP430\comms.h(33): warning:  #1295-D: Deprecated declaration COMMS_sendP2pPacket - give arg types
+  void COMMS_sendP2pPacket();
+MSP430\ctrl.c(177): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	ctrl.pvVoltFrac = IQ_cnst( CFG_remoteCfg.pvMpVolt / CFG_remoteCfg.pvOcVolt );
+MSP430\ctrl.c(185): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	ctrl.pvVinLim = IQ_cnst( CFG_remoteCfg.floatVolt / MEAS_PVVOLT_BASE );	// Init to low value //IQ_cnst( CFG_remoteCfg.pvOcVolt / MEAS_PVVOLT_BASE );
+MSP430\ctrl.c(186): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	ctrl.pvVinLimInt = IQ_cnst( CFG_remoteCfg.floatVolt / MEAS_PVVOLT_BASE );
+MSP430\ctrl.c(188): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	ctrl.tmpCmpV = CFG_remoteCfg.tmpCmp / 1000.0;
+MSP430\ctrl.c(189): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	ctrl.bulkTime = (TimeShort)( CFG_remoteCfg.bulkTime * 1000.0 );
+MSP430\ctrl.c(303): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  		ctrl.floatVolt = IQ_cnst( floatVoltCmp / MEAS_OUTVOLT_BASE );
+MSP430\ctrl.c(305): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  		ctrl.fltrimDutyFloat = IQ_cnst( trimRatio * CTRL_baseFltrimOnVCCG - CTRL_fltrimOffsetOnVCCG );
+MSP430\ctrl.c(316): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  		temprDiff = meas.batTempr.valReal - MEAS_TEMPR_NOM;
+MSP430\ctrl.c(326): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  		ctrl.floatVolt = IQ_cnst( floatVoltCmp / MEAS_OUTVOLT_BASE );
+MSP430\ctrl.c(329): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  		ctrl.fltrimDutyFloat = IQ_cnst( trimRatio * CTRL_baseFltrimOnVCCG - CTRL_fltrimOffsetOnVCCG );
+MSP430\ctrl.c(332): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  		ctrl.fltrimDutyBulk = IQ_cnst( trimRatio * CTRL_baseFltrimOnVCCG - CTRL_fltrimOffsetOnVCCG );
+MSP430\ctrl.c(334): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  		ctrl.bulkVolt = IQ_cnst( bulkVoltCmp / MEAS_OUTVOLT_BASE );
+MSP430\ctrl.c(335): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  		ctrl.bulkResetVolt = IQ_cnst( ( CFG_remoteCfg.bulkResetVolt + ctrl.tmpCmpV * temprDiff ) / MEAS_OUTVOLT_BASE );
+MSP430\ctrl.c: 45 warnings, 0 errors
+compiling can.c...
+MSP430\meas.h(142): warning:  #1295-D: Deprecated declaration MEAS_init - give arg types
+  void MEAS_init();
+MSP430\meas.h(144): warning:  #1295-D: Deprecated declaration MEAS_update - give arg types
+  void MEAS_update();
+MSP430\meas.h(145): warning:  #1295-D: Deprecated declaration MEAS_updateCharge - give arg types
+  void MEAS_updateCharge();
+MSP430\meas.h(146): warning:  #1295-D: Deprecated declaration MEAS_resetCharge - give arg types
+  void MEAS_resetCharge();
+MSP430\meas.h(147): warning:  #1295-D: Deprecated declaration MEAS_updateTempr - give arg types
+  void MEAS_updateTempr();
+MSP430\meas.h(149): warning:  #1295-D: Deprecated declaration MEAS_isPvActive - give arg types
+  int MEAS_isPvActive();
+MSP430\main.h(19): warning:  #1295-D: Deprecated declaration MAIN_resetAllAndStart - give arg types
+  void MAIN_resetAllAndStart();
+MSP430\main.h(20): warning:  #1295-D: Deprecated declaration MAIN_resetRemoteCfg - give arg types
+  void MAIN_resetRemoteCfg();
+MSP430\can.c(419): warning:  #177-D: variable "can_tir"  was declared but never referenced
+  	unsigned int can_tir;
+MSP430\can.c: 9 warnings, 0 errors
 linking...
 Program Size: Code=31368 RO-data=1064 RW-data=1076 ZI-data=6220  
 FromELF: creating hex file...
-".\Objects\Aer_07v2.axf" - 0 Error(s), 0 Warning(s).
+".\Objects\Aer_07v2.axf" - 0 Error(s), 216 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -42,10 +487,10 @@ Package Vendor: Keil
 
 <h2>Collection of Component include folders:</h2>
   .\RTE\_AER07
-  d:\Keil_v5\ARM\PACK\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include
+  D:\Keil_v5\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:04
 </pre>
 </body>
 </html>

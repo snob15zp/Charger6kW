@@ -64,7 +64,7 @@ int main(void)
  	
 	do 
 	{ //ftemp=2.3*	((float)debugFSM_calc) ;
-		MEAS_update();
+		MEAS_update();  //ToDo: link with time or measurement
   	DCDC_Loop(0);
 		mainMSPloop(0);
 	}

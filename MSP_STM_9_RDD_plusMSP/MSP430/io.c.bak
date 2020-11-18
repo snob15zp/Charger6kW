@@ -100,7 +100,7 @@
 		RCC->AHBENR |= RCC_AHBENR_GPIOBEN | RCC_AHBENR_GPIOCEN |RCC_AHBENR_GPIODEN;
 		GPIOC->MODER &= ~(GPIO_MODER_MODER6_0 | GPIO_MODER_MODER6_1 |
 											GPIO_MODER_MODER7_0 | GPIO_MODER_MODER7_1);
-		GPIOC->MODER |= GPIO_MODER_MODER6_0 | GPIO_MODER_MODER7_0;			//PC6, PC7 - outputs REL1, REL2
+		GPIOC->MODER |= GPIO_MODER_MODER6_0 | GPIO_MODER_MODER7_0;			//PC6, PC7 - outputs
 		GPIOD->MODER &= ~(GPIO_MODER_MODER2_0 | GPIO_MODER_MODER2_1);
 		GPIOD->MODER |= GPIO_MODER_MODER2_0;														//PD2 - output
 		GPIOC->MODER &= ~(GPIO_MODER_MODER8_0 | GPIO_MODER_MODER8_1 |		//PC8 - input
@@ -122,7 +122,7 @@
 	}
 
 	//Functions that are only used for WALL
-void IO_setFanDutyCycle(unsigned int fanDuty)
+	void IO_setFanDutyCycle(unsigned int fanDuty)
 	{	
 		if(fanDuty <= IO_FAN_PWM_PERIOD)
 		{
@@ -141,7 +141,7 @@ void IO_setFanDutyCycle(unsigned int fanDuty)
 	int IO_getGroundFault()
 	{
 //		return ((P5IN & GF_ONOFF) == 0);
-		return ((GPIOC->IDR & GPIO_IDR_0)==0); //ToDo fix
+		return ((GPIOC->IDR & GPIO_IDR_0)==0);
 	}
 
 	int IO_getDigitalTemp()
@@ -222,7 +222,7 @@ int IO_getIsSlave()
 
 void IO_setRelay( unsigned long long bitfield )
 {
-	if ( bitfield != 0ull )	//ToDo fix
+	if ( bitfield != 0ull )	
 //		P3OUT |= RELAY;
 		GPIOC->ODR |= GPIO_ODR_6;
 	else					
@@ -344,7 +344,7 @@ void IO_fanSetSpeed()
 			fanShutdown = 0;
 		}
 	}
-	else  //RDD variable for FAN   meas.caseTempr.valReal, meas.caseTemprFault, meas.outCurr.valReal, meas.caseTempr.val
+	else
 	{
 		if((meas.caseTempr.valReal > heatsinkTempFanHysThresh) || (meas.caseTemprFault == 1))
 		{

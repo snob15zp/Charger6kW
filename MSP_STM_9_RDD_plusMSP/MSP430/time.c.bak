@@ -59,11 +59,11 @@ void TIME_tick()
 			if ( timeIsValid )
 			{
 				//STATS_queueNextEntry();
-//				MEAS_resetCharge();  //RDD ???
+//				MEAS_resetCharge();
 			}
 		}
 
-//		SCH_incrMs();   RDD ???
+//		SCH_incrMs();
 	}
 }
 

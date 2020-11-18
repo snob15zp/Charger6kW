@@ -35,14 +35,14 @@ extern miscState_t miscState_W;
 extern persistentStorage_t persistentStorage;
 
 // Public Function prototypes
-extern 	void 			usci_init( unsigned char clock );
-extern 	void			usci_transmit( unsigned char data );
-extern 	unsigned char 	usci_exchange( unsigned char data );
-extern void uart_tx(void);
+//extern 	void 			usci_init( unsigned char clock );
+//extern 	void			usci_transmit( unsigned char data );  //RDD CAN
+//extern 	unsigned char 	usci_exchange( unsigned char data ); //RDD CAN
+extern void uart_tx(void);  //Transmit data low level
 
 extern	void			uart_init(void);
-extern	int				uart_send(int type);
-extern	void			uart_receive(void);
+extern	int				uart_send(int type); //high level 
+extern	void			uart_receive(void); // high level
 
 //struct rxPacket {
 //	unsigned char packet_type;

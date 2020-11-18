@@ -92,7 +92,7 @@ void SCH_init()
 	numTasks = sizeof( tasks ) / sizeof( tasks[0] );
 }
 
-void SCH_incrMs()
+void SCH_incrMs() //RDD ToDo link with systimer
 {
 	timeSinceLastRun_ms++;
 }
