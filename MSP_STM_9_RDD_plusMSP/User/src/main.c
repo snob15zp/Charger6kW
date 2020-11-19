@@ -29,7 +29,7 @@ void debugFSM()       //call from TIM3_IRQHandler
 	  case 1:
 			DCDC_Start_Stop(0); break;
 	  case 4000:
-			setVin(0);DCDC_Start_Stop(1); break;
+			setVin(0);DCDC_Start_Stop(1);DCDC_Enable_Disable(1); break;
 	  case 8000:
 			setVin(100);break;
 		case 12000: 
@@ -77,14 +77,14 @@ int main(void)
 **************************************************************************************************************************/
 void SysTick_Handler(void){ //Dont used now
 	sysTickCounter--;
-	//SCH_incrMs();
+	SCH_incrMs();
 }
 
 void TIM3_IRQHandler(void)
 {
 	TIM3->SR = ~TIM_SR_UIF;
 	PWM_isr();   //function from MSP430 every 512 ms
-	//debugFSM();
+	//RDD DEBUG debugFSM(); //RDD DEBUG
 	
 //	if(TIM3->SR & TIM_SR_UIF){
 //		TIM3->SR = ~TIM_SR_UIF;
