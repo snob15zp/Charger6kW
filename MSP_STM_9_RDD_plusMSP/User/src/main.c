@@ -75,8 +75,8 @@ int main(void)
 *
 *
 **************************************************************************************************************************/
-void SysTick_Handler(void){ //Dont used now
-	sysTickCounter--;
+void SysTick_Handler(void){ 
+	sysTickCounter--;//do not used
 	SCH_incrMs();
 }
 
