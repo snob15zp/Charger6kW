@@ -1,3 +1,19 @@
+/*********************************************************************************
+*
+* init: Pins, ADC, ADCWhatchDog, DMA, HRTIM
+*
+* loop:   --- 
+*
+* interface: SetVin, Start_Stop, Enable_Disable
+*
+* DMA_Chammel1_IRQ -> flag
+*
+* ADC1_2_IRQ -> WathDog
+*
+* HRTIM_IRQ -> measure, regulator, DutyCycle
+*
+***********************************************************************************/
+
 
 #include "Stm32f3xx.h"
 #include "BoardInit.h"

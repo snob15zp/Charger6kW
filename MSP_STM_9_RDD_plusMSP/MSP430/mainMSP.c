@@ -66,7 +66,7 @@ const __special_area__ my_erasable_data_area my_bsl_info[] = {0x0,0x0,0,0,0,0,0,
 #endif
 
 // Function prototypes
-void clock_init( void );
+void clock_init( void ); //RDD do not need in STM verdion
 
 
 // Global variables

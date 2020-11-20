@@ -1,4 +1,14 @@
-
+/******************************************************************
+*
+* INIT : CLock, DCDC, mainMSPinit
+*
+* LOOP: mainMSPLoop
+*
+* SysTick->SCH_incrMs() //from MSP
+*
+* TIM3_IRQ -> PWMisr() //512 ms, from MSP
+*
+*******************************************************************/
 #include "Stm32f3xx.h"
 #include "BoardInit.h"
 
