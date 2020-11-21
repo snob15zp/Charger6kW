@@ -1,3 +1,19 @@
+/*********************************************************************************
+*
+* init: Pins, ADC, ADCWhatchDog, DMA, HRTIM
+*
+* loop:   --- 
+*
+* interface: SetVin, Start_Stop, Enable_Disable
+*
+* DMA_Chammel1_IRQ -> flag
+*
+* ADC1_2_IRQ -> WathDog
+*
+* HRTIM_IRQ -> measure, regulator, DutyCycle
+*
+***********************************************************************************/
+
 
 #include "Stm32f3xx.h"
 #include "BoardInit.h"
@@ -60,20 +76,8 @@ volatile struct DCDC_Flags{
 /**  Global variables declarations start **/
 
 static volatile  struct  DCDC_Flags statusFlags; 
-/*
-volatile struct {
-	uint16_t FAULT_DETECT					:	1;  //bit filds
-	uint16_t ADC_CONVERS_COMPLIT	: 1;
-	uint16_t WORK_CYCLE_END				: 1;
-	uint16_t CONTROL_ENABLE				:	1;
-	uint16_t CONTROL_START				:	1;
-	uint16_t CONTROL_STOP					:	1;
-	uint16_t CURRENT_LIMIT				:	1;
-	uint16_t MAX_DUTY_LIMIT				:	1;
-	uint16_t MIN_DUTY_LIMIT				:	1;
-	uint16_t PERIOD_STEP_UP				:	1;
-}statusFlags;
-*/
+
+
 volatile __align(4)  regAdcValue_t momentValue = {0,0,0,0,0,0,0,0,0,0,0,0}; //for DMA
 
 __align(4) wordAdcValue_t sumValueBank_1 = {0,0,0,0,0,0,0,0,0,0,0,0}; //temporary summ 1
