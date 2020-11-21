@@ -277,7 +277,7 @@ void IO_fanDrvPWM()
 void IO_fanSenseSpeed()
 {
 //	if (P1IFG & FAN_FB)
-	if(GPIOC->IDR & GPIO_IDR_8){
+	if(GPIOC->IDR & GPIO_IDR_8){  //RDD ToDo: need be detected edge
 		// fan feedback 1
 		if (fanFBCount1 < IO_FAN_COUNT_TIMEOUT){
 			fanFBCount1++;
