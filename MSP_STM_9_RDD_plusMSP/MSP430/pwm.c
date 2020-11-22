@@ -181,7 +181,7 @@ void PWM_isr(void)
 		IO_fanSenseSpeed();
 //		IO_controlSyncRect();
 //#ifdef DIGITAL_TEMP
-//		TEMP_tick();
+		TEMP_tick();
 //#endif
 //		//FLAG_tick();
 //	}

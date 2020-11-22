@@ -10,14 +10,20 @@
 //-------------------------------------------------------------------
 /********************************************************************
 Schematic Digital Input Output
-*CASETMP
+*CASETMP thermistor?
+
 *ON_OFF_GFD
+
 *RELAY_1_EN
 *RELAY_2_EN
-*TMPCMP io.c: int IO_getDigitalTemp()
+           io.c: IO_setRelay
+*TMPCMP used Analog or Digital?
+        Digital:
+        io.c: int IO_getDigitalTemp()
         temp.c:TEMP_init()->io.c: int IO_getDigitalTemp()
-				temp.c:TEMP_tick()->io.c: int IO_getDigitalTemp()
+				pwm.c:PWM_isr()->temp.c:TEMP_tick()->io.c: int IO_getDigitalTemp()
 *ONOFF/SLAVE#
+        io.c: IO_getOnOff
 **********************************************************************/
 //#include <msp430x24x.h>
 #include "Stm32f3xx.h"
