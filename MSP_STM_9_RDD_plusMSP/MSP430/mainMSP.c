@@ -5,7 +5,34 @@
  *      Author: RD
  */
 
+/*
 
+cfg
+crc16
+flag
+flash
+iqmath
+mainMSP
+meas
+safety
+spi
+stats
+time
+usci
+util
+variant
+lcd
+can
+comms
+ctrl
+io
+status
+pwm
+sch
+telem
+temp
+
+*/
 
 //-------------------------------------------------------------------
 // File: main.c

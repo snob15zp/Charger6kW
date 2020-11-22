@@ -11,6 +11,21 @@
  *	- CAN_transmit
  *	- CAN_receive
  *
+ 
+ 
+ mainMSP.c:mainMSPloop()->          can.h:CAN_transmit()
+ 
+ 
+ mainMSP.c:MAIN_resetAllAndStart()->can.h:CAN_init()
+ mainMSP.c:MAIN_resetRemoteCfg    ->can.h:CAN_init()
+ 
+ comms.c:COMMS_receive()          ->can.h:CAN_init()
+ 
+ 
+ comms.c:COMMS_receive()->          can.h:CAN_receive()
+ 
+ 
+ 
  */
 
 // Include files

@@ -10,10 +10,12 @@
 //-------------------------------------------------------------------
 /********************************************************************
 Schematic Digital Input Output
-*CASETMP thermistor?
+*CASETMP thermistor
 
 *ON_OFF_GFD
-
+           io.c:IO_getGroundFault()
+					 ctrl.c:CTRL_tick()->io.c:IO_getGroundFault()
+					 RDD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! set with delay disablePWM according to  GroundFault: J10 on PWRboard
 *RELAY_1_EN
 *RELAY_2_EN
            io.c: IO_setRelay
@@ -23,7 +25,10 @@ Schematic Digital Input Output
         temp.c:TEMP_init()->io.c: int IO_getDigitalTemp()
 				pwm.c:PWM_isr()->temp.c:TEMP_tick()->io.c: int IO_getDigitalTemp()
 *ONOFF/SLAVE#
-        io.c: IO_getOnOff
+        io.c:  epsent? 
+				
+In io.c:
+        IO_getIsSlave
 **********************************************************************/
 //#include <msp430x24x.h>
 #include "Stm32f3xx.h"

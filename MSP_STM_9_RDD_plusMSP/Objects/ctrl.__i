@@ -1,6 +1,0 @@
---c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\AER_07K -I .\CMSIS\inc -I .\User\inc -I .\MSP430 -I .\User\inc -I .\STM32F3xx_HAL_Driver\Inc -I .\STM32F3xx_HAL_Driver\Inc\Legacy -I .\CMSIS\Device\ST\STM32F3xx\Include
--I.\RTE\_AER07
--IC:\Users\RD\AppData\Local\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include
--IC:\Keil_v5\ARM\CMSIS\Include
--D__UVISION_VERSION="528" -DSTM32F334x8 -DSTM32F334x8
--o .\objects\ctrl.o --omf_browse .\objects\ctrl.crf --depend .\objects\ctrl.d "MSP430\ctrl.c"
