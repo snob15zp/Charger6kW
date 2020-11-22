@@ -8,7 +8,17 @@
 // History:
 //   2010-07-07: original
 //-------------------------------------------------------------------
-
+/********************************************************************
+Schematic Digital Input Output
+*CASETMP
+*ON_OFF_GFD
+*RELAY_1_EN
+*RELAY_2_EN
+*TMPCMP io.c: int IO_getDigitalTemp()
+        temp.c:TEMP_init()->io.c: int IO_getDigitalTemp()
+				temp.c:TEMP_tick()->io.c: int IO_getDigitalTemp()
+*ONOFF/SLAVE#
+**********************************************************************/
 //#include <msp430x24x.h>
 #include "Stm32f3xx.h"
 #include "variant.h"
