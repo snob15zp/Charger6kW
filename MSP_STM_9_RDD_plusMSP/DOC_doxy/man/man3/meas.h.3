@@ -1,0 +1,310 @@
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/meas.h" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/meas.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'debug\&.h'\fP
+.br
+\fC#include 'variant\&.h'\fP
+.br
+\fC#include 'adc\&.h'\fP
+.br
+\fC#include 'iqmath\&.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBCommsMeas_\fP"
+.br
+.ti -1c
+.RI "struct \fBAdcMeas_\fP"
+.br
+.ti -1c
+.RI "struct \fBAdcCommsMeas_\fP"
+.br
+.ti -1c
+.RI "struct \fBIntegralMeas_\fP"
+.br
+.ti -1c
+.RI "struct \fBMeas_\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBMEAS_PVVOLT_BASE\fP   300\&.0"
+.br
+.ti -1c
+.RI "#define \fBMEAS_OUTVOLT_BASE\fP   255\&.0"
+.br
+.ti -1c
+.RI "#define \fBMEAS_PVCURR_BASE\fP   265\&.0"
+.br
+.ti -1c
+.RI "#define \fBMEAS_OUTCURR_BASE\fP   265\&.0"
+.br
+.ti -1c
+.RI "#define \fBMEAS_PVPOWER_BASE\fP   ( \fBMEAS_PVVOLT_BASE\fP * \fBMEAS_PVCURR_BASE\fP )"
+.br
+.ti -1c
+.RI "#define \fBMEAS_TEMPR_BASE\fP   100\&.0"
+.br
+.ti -1c
+.RI "#define \fBMEAS_CASETEMPR_BASE\fP   160\&.0"
+.br
+.ti -1c
+.RI "#define \fBMEAS_12V_BASE\fP   12\&.0"
+.br
+.ti -1c
+.RI "#define \fBMEAS_3V3_BASE\fP   3\&.3"
+.br
+.ti -1c
+.RI "#define \fBMEAS_PVVOLT_IQBASE\fP   ( \fBMEAS_PVVOLT_BASE\fP / 4096\&.0 )"
+.br
+.ti -1c
+.RI "#define \fBMEAS_OUTVOLT_IQBASE\fP   ( \fBMEAS_OUTVOLT_BASE\fP / 4096\&.0 )"
+.br
+.ti -1c
+.RI "#define \fBMEAS_PVCURR_IQBASE\fP   ( \fBMEAS_PVCURR_BASE\fP / 4096\&.0 )"
+.br
+.ti -1c
+.RI "#define \fBMEAS_OUTCURR_IQBASE\fP   ( \fBMEAS_OUTCURR_BASE\fP / 4096\&.0 )"
+.br
+.ti -1c
+.RI "#define \fBMEAS_PVPOWER_IQBASE\fP   ( \fBMEAS_PVPOWER_BASE\fP / 4096\&.0 )"
+.br
+.ti -1c
+.RI "#define \fBMEAS_TEMPR_IQBASE\fP   ( \fBMEAS_TEMPR_BASE\fP / 4096\&.0 )"
+.br
+.ti -1c
+.RI "#define \fBMEAS_CASETEMPR_IQBASE\fP   ( \fBMEAS_CASETEMPR_BASE\fP / 4096\&.0 )"
+.br
+.ti -1c
+.RI "#define \fBMEAS_12V_IQBASE\fP   ( \fBMEAS_12V_BASE\fP / 4096\&.0 )"
+.br
+.ti -1c
+.RI "#define \fBMEAS_3V3_IQBASE\fP   ( \fBMEAS_3V3_BASE\fP / 4096\&.0 )"
+.br
+.ti -1c
+.RI "#define \fBCHARGE_UPDATE_RATE_HZ\fP   2"
+.br
+.ti -1c
+.RI "#define \fBMEAS_TEMPR_NOM\fP   ( 25\&.0 )"
+.br
+.ti -1c
+.RI "#define \fBMEAS_OUTVOLT_TO_PVVOLT\fP   ( \fBMEAS_OUTVOLT_BASE\fP / \fBMEAS_PVVOLT_BASE\fP )"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct \fBCommsMeas_\fP \fBCommsMeas\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBAdcMeas_\fP \fBAdcMeas\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBAdcCommsMeas_\fP \fBAdcCommsMeas\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBIntegralMeas_\fP \fBIntegralMeas\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBMeas_\fP \fBMeas\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBMEAS_init\fP ()"
+.br
+.ti -1c
+.RI "void \fBMEAS_setDoUpdate\fP (int doUpd)"
+.br
+.ti -1c
+.RI "void \fBMEAS_update\fP ()"
+.br
+.ti -1c
+.RI "void \fBMEAS_updateCharge\fP ()"
+.br
+.ti -1c
+.RI "void \fBMEAS_resetCharge\fP ()"
+.br
+.ti -1c
+.RI "void \fBMEAS_updateTempr\fP ()"
+.br
+.ti -1c
+.RI "int \fBMEAS_isPvActive\fP ()"
+.br
+.ti -1c
+.RI "\fBIq\fP \fBMEAS_temprLookup\fP (\fBIq\fP rawval)"
+.br
+.ti -1c
+.RI "\fBIq\fP \fBMEAS_filter\fP (\fBIq\fP valNow, \fBIq\fP valIn)"
+.br
+.ti -1c
+.RI "\fBIq\fP \fBMEAS_filterFast\fP (\fBIq\fP valNow, \fBIq\fP valIn)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "volatile \fBMeas\fP \fBmeas\fP"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define CHARGE_UPDATE_RATE_HZ   2"
+
+.PP
+Definition at line 68 of file meas\&.h\&.
+.SS "#define MEAS_12V_BASE   12\&.0"
+
+.PP
+Definition at line 55 of file meas\&.h\&.
+.SS "#define MEAS_12V_IQBASE   ( \fBMEAS_12V_BASE\fP / 4096\&.0 )"
+
+.PP
+Definition at line 65 of file meas\&.h\&.
+.SS "#define MEAS_3V3_BASE   3\&.3"
+
+.PP
+Definition at line 56 of file meas\&.h\&.
+.SS "#define MEAS_3V3_IQBASE   ( \fBMEAS_3V3_BASE\fP / 4096\&.0 )"
+
+.PP
+Definition at line 66 of file meas\&.h\&.
+.SS "#define MEAS_CASETEMPR_BASE   160\&.0"
+
+.PP
+Definition at line 54 of file meas\&.h\&.
+.SS "#define MEAS_CASETEMPR_IQBASE   ( \fBMEAS_CASETEMPR_BASE\fP / 4096\&.0 )"
+
+.PP
+Definition at line 64 of file meas\&.h\&.
+.SS "#define MEAS_OUTCURR_BASE   265\&.0"
+
+.PP
+Definition at line 51 of file meas\&.h\&.
+.SS "#define MEAS_OUTCURR_IQBASE   ( \fBMEAS_OUTCURR_BASE\fP / 4096\&.0 )"
+
+.PP
+Definition at line 61 of file meas\&.h\&.
+.SS "#define MEAS_OUTVOLT_BASE   255\&.0"
+
+.PP
+Definition at line 49 of file meas\&.h\&.
+.SS "#define MEAS_OUTVOLT_IQBASE   ( \fBMEAS_OUTVOLT_BASE\fP / 4096\&.0 )"
+
+.PP
+Definition at line 59 of file meas\&.h\&.
+.SS "#define MEAS_OUTVOLT_TO_PVVOLT   ( \fBMEAS_OUTVOLT_BASE\fP / \fBMEAS_PVVOLT_BASE\fP )"
+
+.PP
+Definition at line 72 of file meas\&.h\&.
+.SS "#define MEAS_PVCURR_BASE   265\&.0"
+
+.PP
+Definition at line 50 of file meas\&.h\&.
+.SS "#define MEAS_PVCURR_IQBASE   ( \fBMEAS_PVCURR_BASE\fP / 4096\&.0 )"
+
+.PP
+Definition at line 60 of file meas\&.h\&.
+.SS "#define MEAS_PVPOWER_BASE   ( \fBMEAS_PVVOLT_BASE\fP * \fBMEAS_PVCURR_BASE\fP )"
+
+.PP
+Definition at line 52 of file meas\&.h\&.
+.SS "#define MEAS_PVPOWER_IQBASE   ( \fBMEAS_PVPOWER_BASE\fP / 4096\&.0 )"
+
+.PP
+Definition at line 62 of file meas\&.h\&.
+.SS "#define MEAS_PVVOLT_BASE   300\&.0"
+
+.PP
+Definition at line 48 of file meas\&.h\&.
+.SS "#define MEAS_PVVOLT_IQBASE   ( \fBMEAS_PVVOLT_BASE\fP / 4096\&.0 )"
+
+.PP
+Definition at line 58 of file meas\&.h\&.
+.SS "#define MEAS_TEMPR_BASE   100\&.0"
+
+.PP
+Definition at line 53 of file meas\&.h\&.
+.SS "#define MEAS_TEMPR_IQBASE   ( \fBMEAS_TEMPR_BASE\fP / 4096\&.0 )"
+
+.PP
+Definition at line 63 of file meas\&.h\&.
+.SS "#define MEAS_TEMPR_NOM   ( 25\&.0 )"
+
+.PP
+Definition at line 70 of file meas\&.h\&.
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef struct \fBAdcCommsMeas_\fP \fBAdcCommsMeas\fP"
+
+.SS "typedef struct \fBAdcMeas_\fP \fBAdcMeas\fP"
+
+.SS "typedef struct \fBCommsMeas_\fP \fBCommsMeas\fP"
+
+.SS "typedef struct \fBIntegralMeas_\fP \fBIntegralMeas\fP"
+
+.SS "typedef struct \fBMeas_\fP \fBMeas\fP"
+
+.SH "Function Documentation"
+.PP 
+.SS "\fBIq\fP MEAS_filter (\fBIq\fP valNow, \fBIq\fP valIn)"
+
+.PP
+Definition at line 309 of file meas\&.c\&.
+.SS "\fBIq\fP MEAS_filterFast (\fBIq\fP valNow, \fBIq\fP valIn)"
+
+.PP
+Definition at line 322 of file meas\&.c\&.
+.SS "void MEAS_init ()"
+
+.PP
+Definition at line 36 of file meas\&.c\&.
+.SS "int MEAS_isPvActive ()"
+
+.PP
+Definition at line 188 of file meas\&.c\&.
+.SS "void MEAS_resetCharge ()"
+
+.PP
+Definition at line 183 of file meas\&.c\&.
+.SS "void MEAS_setDoUpdate (int doUpd)"
+
+.PP
+Definition at line 99 of file meas\&.c\&.
+.SS "\fBIq\fP MEAS_temprLookup (\fBIq\fP rawval)"
+
+.SS "void MEAS_update ()"
+
+.PP
+Definition at line 117 of file meas\&.c\&.
+.SS "void MEAS_updateCharge ()"
+
+.PP
+Definition at line 178 of file meas\&.c\&.
+.SS "void MEAS_updateTempr ()"
+
+.PP
+Definition at line 217 of file meas\&.c\&.
+.SH "Variable Documentation"
+.PP 
+.SS "volatile \fBMeas\fP meas\fC [extern]\fP"
+
+.PP
+Definition at line 28 of file meas\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.

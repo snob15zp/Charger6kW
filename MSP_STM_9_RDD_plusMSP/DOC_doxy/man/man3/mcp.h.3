@@ -1,0 +1,951 @@
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/mcp.h" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/mcp.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'debug\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBMCP_RESET\fP   0xC0"
+.br
+.ti -1c
+.RI "#define \fBMCP_READ\fP   0x03"
+.br
+.ti -1c
+.RI "#define \fBMCP_READ_RX\fP   0x90"
+.br
+.ti -1c
+.RI "#define \fBMCP_WRITE\fP   0x02"
+.br
+.ti -1c
+.RI "#define \fBMCP_WRITE_TX\fP   0x40"
+.br
+.ti -1c
+.RI "#define \fBMCP_RTS\fP   0x80"
+.br
+.ti -1c
+.RI "#define \fBMCP_STATUS\fP   0xA0"
+.br
+.ti -1c
+.RI "#define \fBMCP_FILTER\fP   0xB0"
+.br
+.ti -1c
+.RI "#define \fBMCP_MODIFY\fP   0x05"
+.br
+.ti -1c
+.RI "#define \fBRXF0SIDH\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBRXF0SIDL\fP   0x01"
+.br
+.ti -1c
+.RI "#define \fBRXF0EID8\fP   0x02"
+.br
+.ti -1c
+.RI "#define \fBRXF0EID0\fP   0x03"
+.br
+.ti -1c
+.RI "#define \fBRXF1SIDH\fP   0x04"
+.br
+.ti -1c
+.RI "#define \fBRXF1SIDL\fP   0x05"
+.br
+.ti -1c
+.RI "#define \fBRXF1EID8\fP   0x06"
+.br
+.ti -1c
+.RI "#define \fBRXF1EID0\fP   0x07"
+.br
+.ti -1c
+.RI "#define \fBRXF2SIDH\fP   0x08"
+.br
+.ti -1c
+.RI "#define \fBRXF2SIDL\fP   0x09"
+.br
+.ti -1c
+.RI "#define \fBRXF2EID8\fP   0x0A"
+.br
+.ti -1c
+.RI "#define \fBRXF2EID0\fP   0x0B"
+.br
+.ti -1c
+.RI "#define \fBBFPCTRL\fP   0x0C"
+.br
+.ti -1c
+.RI "#define \fBTXRTSCTRL\fP   0x0D"
+.br
+.ti -1c
+.RI "#define \fBCANSTAT\fP   0x0E"
+.br
+.ti -1c
+.RI "#define \fBCANCTRL\fP   0x0F"
+.br
+.ti -1c
+.RI "#define \fBRXF3SIDH\fP   0x10"
+.br
+.ti -1c
+.RI "#define \fBRXF3SIDL\fP   0x11"
+.br
+.ti -1c
+.RI "#define \fBRXF3EID8\fP   0x12"
+.br
+.ti -1c
+.RI "#define \fBRXF3EID0\fP   0x13"
+.br
+.ti -1c
+.RI "#define \fBRXF4SIDH\fP   0x14"
+.br
+.ti -1c
+.RI "#define \fBRXF4SIDL\fP   0x15"
+.br
+.ti -1c
+.RI "#define \fBRXF4EID8\fP   0x16"
+.br
+.ti -1c
+.RI "#define \fBRXF4EID0\fP   0x17"
+.br
+.ti -1c
+.RI "#define \fBRXF5SIDH\fP   0x18"
+.br
+.ti -1c
+.RI "#define \fBRXF5SIDL\fP   0x19"
+.br
+.ti -1c
+.RI "#define \fBRXF5EID8\fP   0x1A"
+.br
+.ti -1c
+.RI "#define \fBRXF5EID0\fP   0x1B"
+.br
+.ti -1c
+.RI "#define \fBTEC\fP   0x1C"
+.br
+.ti -1c
+.RI "#define \fBREC\fP   0x1D"
+.br
+.ti -1c
+.RI "#define \fBRXM0SIDH\fP   0x20"
+.br
+.ti -1c
+.RI "#define \fBRXM0SIDL\fP   0x21"
+.br
+.ti -1c
+.RI "#define \fBRXM0EID8\fP   0x22"
+.br
+.ti -1c
+.RI "#define \fBRXM0EID0\fP   0x23"
+.br
+.ti -1c
+.RI "#define \fBRXM1SIDH\fP   0x24"
+.br
+.ti -1c
+.RI "#define \fBRXM1SIDL\fP   0x25"
+.br
+.ti -1c
+.RI "#define \fBRXM1EID8\fP   0x26"
+.br
+.ti -1c
+.RI "#define \fBRXM1EID0\fP   0x27"
+.br
+.ti -1c
+.RI "#define \fBCNF3\fP   0x28"
+.br
+.ti -1c
+.RI "#define \fBCNF2\fP   0x29"
+.br
+.ti -1c
+.RI "#define \fBCNF1\fP   0x2A"
+.br
+.ti -1c
+.RI "#define \fBCANINTE\fP   0x2B"
+.br
+.ti -1c
+.RI "#define \fBCANINTF\fP   0x2C"
+.br
+.ti -1c
+.RI "#define \fBEFLAG\fP   0x2D"
+.br
+.ti -1c
+.RI "#define \fBTXB0CTRL\fP   0x30"
+.br
+.ti -1c
+.RI "#define \fBTXB0SIDH\fP   0x31"
+.br
+.ti -1c
+.RI "#define \fBTXB0SIDL\fP   0x32"
+.br
+.ti -1c
+.RI "#define \fBTXB0EID8\fP   0x33"
+.br
+.ti -1c
+.RI "#define \fBTXB0EID0\fP   0x34"
+.br
+.ti -1c
+.RI "#define \fBTXB0DLC\fP   0x35"
+.br
+.ti -1c
+.RI "#define \fBTXB0D0\fP   0x36"
+.br
+.ti -1c
+.RI "#define \fBTXB0D1\fP   0x37"
+.br
+.ti -1c
+.RI "#define \fBTXB0D2\fP   0x38"
+.br
+.ti -1c
+.RI "#define \fBTXB0D3\fP   0x39"
+.br
+.ti -1c
+.RI "#define \fBTXB0D4\fP   0x3A"
+.br
+.ti -1c
+.RI "#define \fBTXB0D5\fP   0x3B"
+.br
+.ti -1c
+.RI "#define \fBTXB0D6\fP   0x3C"
+.br
+.ti -1c
+.RI "#define \fBTXB0D7\fP   0x3D"
+.br
+.ti -1c
+.RI "#define \fBTXB1CTRL\fP   0x40"
+.br
+.ti -1c
+.RI "#define \fBTXB1SIDH\fP   0x41"
+.br
+.ti -1c
+.RI "#define \fBTXB1SIDL\fP   0x42"
+.br
+.ti -1c
+.RI "#define \fBTXB1EID8\fP   0x43"
+.br
+.ti -1c
+.RI "#define \fBTXB1EID0\fP   0x44"
+.br
+.ti -1c
+.RI "#define \fBTXB1DLC\fP   0x45"
+.br
+.ti -1c
+.RI "#define \fBTXB1D0\fP   0x46"
+.br
+.ti -1c
+.RI "#define \fBTXB1D1\fP   0x47"
+.br
+.ti -1c
+.RI "#define \fBTXB1D2\fP   0x48"
+.br
+.ti -1c
+.RI "#define \fBTXB1D3\fP   0x49"
+.br
+.ti -1c
+.RI "#define \fBTXB1D4\fP   0x4A"
+.br
+.ti -1c
+.RI "#define \fBTXB1D5\fP   0x4B"
+.br
+.ti -1c
+.RI "#define \fBTXB1D6\fP   0x4C"
+.br
+.ti -1c
+.RI "#define \fBTXB1D7\fP   0x4D"
+.br
+.ti -1c
+.RI "#define \fBTXB2CTRL\fP   0x50"
+.br
+.ti -1c
+.RI "#define \fBTXB2SIDH\fP   0x51"
+.br
+.ti -1c
+.RI "#define \fBTXB2SIDL\fP   0x52"
+.br
+.ti -1c
+.RI "#define \fBTXB2EID8\fP   0x53"
+.br
+.ti -1c
+.RI "#define \fBTXB2EID0\fP   0x54"
+.br
+.ti -1c
+.RI "#define \fBTXB2DLC\fP   0x55"
+.br
+.ti -1c
+.RI "#define \fBTXB2D0\fP   0x56"
+.br
+.ti -1c
+.RI "#define \fBTXB2D1\fP   0x57"
+.br
+.ti -1c
+.RI "#define \fBTXB2D2\fP   0x58"
+.br
+.ti -1c
+.RI "#define \fBTXB2D3\fP   0x59"
+.br
+.ti -1c
+.RI "#define \fBTXB2D4\fP   0x5A"
+.br
+.ti -1c
+.RI "#define \fBTXB2D5\fP   0x5B"
+.br
+.ti -1c
+.RI "#define \fBTXB2D6\fP   0x5C"
+.br
+.ti -1c
+.RI "#define \fBTXB2D7\fP   0x5D"
+.br
+.ti -1c
+.RI "#define \fBRXB0CTRL\fP   0x60"
+.br
+.ti -1c
+.RI "#define \fBRXB0SIDH\fP   0x61"
+.br
+.ti -1c
+.RI "#define \fBRXB0SIDL\fP   0x62"
+.br
+.ti -1c
+.RI "#define \fBRXB0EID8\fP   0x63"
+.br
+.ti -1c
+.RI "#define \fBRXB0EID0\fP   0x64"
+.br
+.ti -1c
+.RI "#define \fBRXB0DLC\fP   0x65"
+.br
+.ti -1c
+.RI "#define \fBRXB0D0\fP   0x66"
+.br
+.ti -1c
+.RI "#define \fBRXB0D1\fP   0x67"
+.br
+.ti -1c
+.RI "#define \fBRXB0D2\fP   0x68"
+.br
+.ti -1c
+.RI "#define \fBRXB0D3\fP   0x69"
+.br
+.ti -1c
+.RI "#define \fBRXB0D4\fP   0x6A"
+.br
+.ti -1c
+.RI "#define \fBRXB0D5\fP   0x6B"
+.br
+.ti -1c
+.RI "#define \fBRXB0D6\fP   0x6C"
+.br
+.ti -1c
+.RI "#define \fBRXB0D7\fP   0x6D"
+.br
+.ti -1c
+.RI "#define \fBRXB1CTRL\fP   0x70"
+.br
+.ti -1c
+.RI "#define \fBRXB1SIDH\fP   0x71"
+.br
+.ti -1c
+.RI "#define \fBRXB1SIDL\fP   0x72"
+.br
+.ti -1c
+.RI "#define \fBRXB1EID8\fP   0x73"
+.br
+.ti -1c
+.RI "#define \fBRXB1EID0\fP   0x74"
+.br
+.ti -1c
+.RI "#define \fBRXB1DLC\fP   0x75"
+.br
+.ti -1c
+.RI "#define \fBRXB1D0\fP   0x76"
+.br
+.ti -1c
+.RI "#define \fBRXB1D1\fP   0x77"
+.br
+.ti -1c
+.RI "#define \fBRXB1D2\fP   0x78"
+.br
+.ti -1c
+.RI "#define \fBRXB1D3\fP   0x79"
+.br
+.ti -1c
+.RI "#define \fBRXB1D4\fP   0x7A"
+.br
+.ti -1c
+.RI "#define \fBRXB1D5\fP   0x7B"
+.br
+.ti -1c
+.RI "#define \fBRXB1D6\fP   0x7C"
+.br
+.ti -1c
+.RI "#define \fBRXB1D7\fP   0x7D"
+.br
+.ti -1c
+.RI "#define \fBMCP_RXB0_RTR\fP   0x08"
+.br
+.ti -1c
+.RI "#define \fBMCP_RXB1_RTR\fP   0x08"
+.br
+.ti -1c
+.RI "#define \fBMCP_IRQ_MERR\fP   0x80"
+.br
+.ti -1c
+.RI "#define \fBMCP_IRQ_WAKE\fP   0x40"
+.br
+.ti -1c
+.RI "#define \fBMCP_IRQ_ERR\fP   0x20"
+.br
+.ti -1c
+.RI "#define \fBMCP_IRQ_TXB2\fP   0x10"
+.br
+.ti -1c
+.RI "#define \fBMCP_IRQ_TXB1\fP   0x08"
+.br
+.ti -1c
+.RI "#define \fBMCP_IRQ_TXB0\fP   0x04"
+.br
+.ti -1c
+.RI "#define \fBMCP_IRQ_RXB1\fP   0x02"
+.br
+.ti -1c
+.RI "#define \fBMCP_IRQ_RXB0\fP   0x01"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define BFPCTRL   0x0C"
+
+.PP
+Definition at line 31 of file mcp\&.h\&.
+.SS "#define CANCTRL   0x0F"
+
+.PP
+Definition at line 34 of file mcp\&.h\&.
+.SS "#define CANINTE   0x2B"
+
+.PP
+Definition at line 62 of file mcp\&.h\&.
+.SS "#define CANINTF   0x2C"
+
+.PP
+Definition at line 63 of file mcp\&.h\&.
+.SS "#define CANSTAT   0x0E"
+
+.PP
+Definition at line 33 of file mcp\&.h\&.
+.SS "#define CNF1   0x2A"
+
+.PP
+Definition at line 61 of file mcp\&.h\&.
+.SS "#define CNF2   0x29"
+
+.PP
+Definition at line 60 of file mcp\&.h\&.
+.SS "#define CNF3   0x28"
+
+.PP
+Definition at line 59 of file mcp\&.h\&.
+.SS "#define EFLAG   0x2D"
+
+.PP
+Definition at line 64 of file mcp\&.h\&.
+.SS "#define MCP_FILTER   0xB0"
+
+.PP
+Definition at line 15 of file mcp\&.h\&.
+.SS "#define MCP_IRQ_ERR   0x20"
+
+.PP
+Definition at line 148 of file mcp\&.h\&.
+.SS "#define MCP_IRQ_MERR   0x80"
+
+.PP
+Definition at line 146 of file mcp\&.h\&.
+.SS "#define MCP_IRQ_RXB0   0x01"
+
+.PP
+Definition at line 153 of file mcp\&.h\&.
+.SS "#define MCP_IRQ_RXB1   0x02"
+
+.PP
+Definition at line 152 of file mcp\&.h\&.
+.SS "#define MCP_IRQ_TXB0   0x04"
+
+.PP
+Definition at line 151 of file mcp\&.h\&.
+.SS "#define MCP_IRQ_TXB1   0x08"
+
+.PP
+Definition at line 150 of file mcp\&.h\&.
+.SS "#define MCP_IRQ_TXB2   0x10"
+
+.PP
+Definition at line 149 of file mcp\&.h\&.
+.SS "#define MCP_IRQ_WAKE   0x40"
+
+.PP
+Definition at line 147 of file mcp\&.h\&.
+.SS "#define MCP_MODIFY   0x05"
+
+.PP
+Definition at line 16 of file mcp\&.h\&.
+.SS "#define MCP_READ   0x03"
+
+.PP
+Definition at line 9 of file mcp\&.h\&.
+.SS "#define MCP_READ_RX   0x90"
+
+.PP
+Definition at line 10 of file mcp\&.h\&.
+.SS "#define MCP_RESET   0xC0"
+
+.PP
+Definition at line 8 of file mcp\&.h\&.
+.SS "#define MCP_RTS   0x80"
+
+.PP
+Definition at line 13 of file mcp\&.h\&.
+.SS "#define MCP_RXB0_RTR   0x08"
+
+.PP
+Definition at line 142 of file mcp\&.h\&.
+.SS "#define MCP_RXB1_RTR   0x08"
+
+.PP
+Definition at line 143 of file mcp\&.h\&.
+.SS "#define MCP_STATUS   0xA0"
+
+.PP
+Definition at line 14 of file mcp\&.h\&.
+.SS "#define MCP_WRITE   0x02"
+
+.PP
+Definition at line 11 of file mcp\&.h\&.
+.SS "#define MCP_WRITE_TX   0x40"
+
+.PP
+Definition at line 12 of file mcp\&.h\&.
+.SS "#define REC   0x1D"
+
+.PP
+Definition at line 49 of file mcp\&.h\&.
+.SS "#define RXB0CTRL   0x60"
+
+.PP
+Definition at line 111 of file mcp\&.h\&.
+.SS "#define RXB0D0   0x66"
+
+.PP
+Definition at line 117 of file mcp\&.h\&.
+.SS "#define RXB0D1   0x67"
+
+.PP
+Definition at line 118 of file mcp\&.h\&.
+.SS "#define RXB0D2   0x68"
+
+.PP
+Definition at line 119 of file mcp\&.h\&.
+.SS "#define RXB0D3   0x69"
+
+.PP
+Definition at line 120 of file mcp\&.h\&.
+.SS "#define RXB0D4   0x6A"
+
+.PP
+Definition at line 121 of file mcp\&.h\&.
+.SS "#define RXB0D5   0x6B"
+
+.PP
+Definition at line 122 of file mcp\&.h\&.
+.SS "#define RXB0D6   0x6C"
+
+.PP
+Definition at line 123 of file mcp\&.h\&.
+.SS "#define RXB0D7   0x6D"
+
+.PP
+Definition at line 124 of file mcp\&.h\&.
+.SS "#define RXB0DLC   0x65"
+
+.PP
+Definition at line 116 of file mcp\&.h\&.
+.SS "#define RXB0EID0   0x64"
+
+.PP
+Definition at line 115 of file mcp\&.h\&.
+.SS "#define RXB0EID8   0x63"
+
+.PP
+Definition at line 114 of file mcp\&.h\&.
+.SS "#define RXB0SIDH   0x61"
+
+.PP
+Definition at line 112 of file mcp\&.h\&.
+.SS "#define RXB0SIDL   0x62"
+
+.PP
+Definition at line 113 of file mcp\&.h\&.
+.SS "#define RXB1CTRL   0x70"
+
+.PP
+Definition at line 126 of file mcp\&.h\&.
+.SS "#define RXB1D0   0x76"
+
+.PP
+Definition at line 132 of file mcp\&.h\&.
+.SS "#define RXB1D1   0x77"
+
+.PP
+Definition at line 133 of file mcp\&.h\&.
+.SS "#define RXB1D2   0x78"
+
+.PP
+Definition at line 134 of file mcp\&.h\&.
+.SS "#define RXB1D3   0x79"
+
+.PP
+Definition at line 135 of file mcp\&.h\&.
+.SS "#define RXB1D4   0x7A"
+
+.PP
+Definition at line 136 of file mcp\&.h\&.
+.SS "#define RXB1D5   0x7B"
+
+.PP
+Definition at line 137 of file mcp\&.h\&.
+.SS "#define RXB1D6   0x7C"
+
+.PP
+Definition at line 138 of file mcp\&.h\&.
+.SS "#define RXB1D7   0x7D"
+
+.PP
+Definition at line 139 of file mcp\&.h\&.
+.SS "#define RXB1DLC   0x75"
+
+.PP
+Definition at line 131 of file mcp\&.h\&.
+.SS "#define RXB1EID0   0x74"
+
+.PP
+Definition at line 130 of file mcp\&.h\&.
+.SS "#define RXB1EID8   0x73"
+
+.PP
+Definition at line 129 of file mcp\&.h\&.
+.SS "#define RXB1SIDH   0x71"
+
+.PP
+Definition at line 127 of file mcp\&.h\&.
+.SS "#define RXB1SIDL   0x72"
+
+.PP
+Definition at line 128 of file mcp\&.h\&.
+.SS "#define RXF0EID0   0x03"
+
+.PP
+Definition at line 22 of file mcp\&.h\&.
+.SS "#define RXF0EID8   0x02"
+
+.PP
+Definition at line 21 of file mcp\&.h\&.
+.SS "#define RXF0SIDH   0x00"
+
+.PP
+Definition at line 19 of file mcp\&.h\&.
+.SS "#define RXF0SIDL   0x01"
+
+.PP
+Definition at line 20 of file mcp\&.h\&.
+.SS "#define RXF1EID0   0x07"
+
+.PP
+Definition at line 26 of file mcp\&.h\&.
+.SS "#define RXF1EID8   0x06"
+
+.PP
+Definition at line 25 of file mcp\&.h\&.
+.SS "#define RXF1SIDH   0x04"
+
+.PP
+Definition at line 23 of file mcp\&.h\&.
+.SS "#define RXF1SIDL   0x05"
+
+.PP
+Definition at line 24 of file mcp\&.h\&.
+.SS "#define RXF2EID0   0x0B"
+
+.PP
+Definition at line 30 of file mcp\&.h\&.
+.SS "#define RXF2EID8   0x0A"
+
+.PP
+Definition at line 29 of file mcp\&.h\&.
+.SS "#define RXF2SIDH   0x08"
+
+.PP
+Definition at line 27 of file mcp\&.h\&.
+.SS "#define RXF2SIDL   0x09"
+
+.PP
+Definition at line 28 of file mcp\&.h\&.
+.SS "#define RXF3EID0   0x13"
+
+.PP
+Definition at line 39 of file mcp\&.h\&.
+.SS "#define RXF3EID8   0x12"
+
+.PP
+Definition at line 38 of file mcp\&.h\&.
+.SS "#define RXF3SIDH   0x10"
+
+.PP
+Definition at line 36 of file mcp\&.h\&.
+.SS "#define RXF3SIDL   0x11"
+
+.PP
+Definition at line 37 of file mcp\&.h\&.
+.SS "#define RXF4EID0   0x17"
+
+.PP
+Definition at line 43 of file mcp\&.h\&.
+.SS "#define RXF4EID8   0x16"
+
+.PP
+Definition at line 42 of file mcp\&.h\&.
+.SS "#define RXF4SIDH   0x14"
+
+.PP
+Definition at line 40 of file mcp\&.h\&.
+.SS "#define RXF4SIDL   0x15"
+
+.PP
+Definition at line 41 of file mcp\&.h\&.
+.SS "#define RXF5EID0   0x1B"
+
+.PP
+Definition at line 47 of file mcp\&.h\&.
+.SS "#define RXF5EID8   0x1A"
+
+.PP
+Definition at line 46 of file mcp\&.h\&.
+.SS "#define RXF5SIDH   0x18"
+
+.PP
+Definition at line 44 of file mcp\&.h\&.
+.SS "#define RXF5SIDL   0x19"
+
+.PP
+Definition at line 45 of file mcp\&.h\&.
+.SS "#define RXM0EID0   0x23"
+
+.PP
+Definition at line 54 of file mcp\&.h\&.
+.SS "#define RXM0EID8   0x22"
+
+.PP
+Definition at line 53 of file mcp\&.h\&.
+.SS "#define RXM0SIDH   0x20"
+
+.PP
+Definition at line 51 of file mcp\&.h\&.
+.SS "#define RXM0SIDL   0x21"
+
+.PP
+Definition at line 52 of file mcp\&.h\&.
+.SS "#define RXM1EID0   0x27"
+
+.PP
+Definition at line 58 of file mcp\&.h\&.
+.SS "#define RXM1EID8   0x26"
+
+.PP
+Definition at line 57 of file mcp\&.h\&.
+.SS "#define RXM1SIDH   0x24"
+
+.PP
+Definition at line 55 of file mcp\&.h\&.
+.SS "#define RXM1SIDL   0x25"
+
+.PP
+Definition at line 56 of file mcp\&.h\&.
+.SS "#define TEC   0x1C"
+
+.PP
+Definition at line 48 of file mcp\&.h\&.
+.SS "#define TXB0CTRL   0x30"
+
+.PP
+Definition at line 66 of file mcp\&.h\&.
+.SS "#define TXB0D0   0x36"
+
+.PP
+Definition at line 72 of file mcp\&.h\&.
+.SS "#define TXB0D1   0x37"
+
+.PP
+Definition at line 73 of file mcp\&.h\&.
+.SS "#define TXB0D2   0x38"
+
+.PP
+Definition at line 74 of file mcp\&.h\&.
+.SS "#define TXB0D3   0x39"
+
+.PP
+Definition at line 75 of file mcp\&.h\&.
+.SS "#define TXB0D4   0x3A"
+
+.PP
+Definition at line 76 of file mcp\&.h\&.
+.SS "#define TXB0D5   0x3B"
+
+.PP
+Definition at line 77 of file mcp\&.h\&.
+.SS "#define TXB0D6   0x3C"
+
+.PP
+Definition at line 78 of file mcp\&.h\&.
+.SS "#define TXB0D7   0x3D"
+
+.PP
+Definition at line 79 of file mcp\&.h\&.
+.SS "#define TXB0DLC   0x35"
+
+.PP
+Definition at line 71 of file mcp\&.h\&.
+.SS "#define TXB0EID0   0x34"
+
+.PP
+Definition at line 70 of file mcp\&.h\&.
+.SS "#define TXB0EID8   0x33"
+
+.PP
+Definition at line 69 of file mcp\&.h\&.
+.SS "#define TXB0SIDH   0x31"
+
+.PP
+Definition at line 67 of file mcp\&.h\&.
+.SS "#define TXB0SIDL   0x32"
+
+.PP
+Definition at line 68 of file mcp\&.h\&.
+.SS "#define TXB1CTRL   0x40"
+
+.PP
+Definition at line 81 of file mcp\&.h\&.
+.SS "#define TXB1D0   0x46"
+
+.PP
+Definition at line 87 of file mcp\&.h\&.
+.SS "#define TXB1D1   0x47"
+
+.PP
+Definition at line 88 of file mcp\&.h\&.
+.SS "#define TXB1D2   0x48"
+
+.PP
+Definition at line 89 of file mcp\&.h\&.
+.SS "#define TXB1D3   0x49"
+
+.PP
+Definition at line 90 of file mcp\&.h\&.
+.SS "#define TXB1D4   0x4A"
+
+.PP
+Definition at line 91 of file mcp\&.h\&.
+.SS "#define TXB1D5   0x4B"
+
+.PP
+Definition at line 92 of file mcp\&.h\&.
+.SS "#define TXB1D6   0x4C"
+
+.PP
+Definition at line 93 of file mcp\&.h\&.
+.SS "#define TXB1D7   0x4D"
+
+.PP
+Definition at line 94 of file mcp\&.h\&.
+.SS "#define TXB1DLC   0x45"
+
+.PP
+Definition at line 86 of file mcp\&.h\&.
+.SS "#define TXB1EID0   0x44"
+
+.PP
+Definition at line 85 of file mcp\&.h\&.
+.SS "#define TXB1EID8   0x43"
+
+.PP
+Definition at line 84 of file mcp\&.h\&.
+.SS "#define TXB1SIDH   0x41"
+
+.PP
+Definition at line 82 of file mcp\&.h\&.
+.SS "#define TXB1SIDL   0x42"
+
+.PP
+Definition at line 83 of file mcp\&.h\&.
+.SS "#define TXB2CTRL   0x50"
+
+.PP
+Definition at line 96 of file mcp\&.h\&.
+.SS "#define TXB2D0   0x56"
+
+.PP
+Definition at line 102 of file mcp\&.h\&.
+.SS "#define TXB2D1   0x57"
+
+.PP
+Definition at line 103 of file mcp\&.h\&.
+.SS "#define TXB2D2   0x58"
+
+.PP
+Definition at line 104 of file mcp\&.h\&.
+.SS "#define TXB2D3   0x59"
+
+.PP
+Definition at line 105 of file mcp\&.h\&.
+.SS "#define TXB2D4   0x5A"
+
+.PP
+Definition at line 106 of file mcp\&.h\&.
+.SS "#define TXB2D5   0x5B"
+
+.PP
+Definition at line 107 of file mcp\&.h\&.
+.SS "#define TXB2D6   0x5C"
+
+.PP
+Definition at line 108 of file mcp\&.h\&.
+.SS "#define TXB2D7   0x5D"
+
+.PP
+Definition at line 109 of file mcp\&.h\&.
+.SS "#define TXB2DLC   0x55"
+
+.PP
+Definition at line 101 of file mcp\&.h\&.
+.SS "#define TXB2EID0   0x54"
+
+.PP
+Definition at line 100 of file mcp\&.h\&.
+.SS "#define TXB2EID8   0x53"
+
+.PP
+Definition at line 99 of file mcp\&.h\&.
+.SS "#define TXB2SIDH   0x51"
+
+.PP
+Definition at line 97 of file mcp\&.h\&.
+.SS "#define TXB2SIDL   0x52"
+
+.PP
+Definition at line 98 of file mcp\&.h\&.
+.SS "#define TXRTSCTRL   0x0D"
+
+.PP
+Definition at line 32 of file mcp\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.

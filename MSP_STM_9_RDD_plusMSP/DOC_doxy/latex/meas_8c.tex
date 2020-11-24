@@ -1,0 +1,417 @@
+\hypertarget{meas_8c}{}\doxysection{D\+:/user\+S\+S\+D/github/\+Charger6k\+W/\+M\+S\+P\+\_\+\+S\+T\+M\+\_\+9\+\_\+\+R\+D\+D\+\_\+plus\+M\+S\+P/\+M\+S\+P430/meas.c File Reference}
+\label{meas_8c}\index{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/meas.c@{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/meas.c}}
+{\ttfamily \#include \char`\"{}iqmath.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}meas.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}adc\+\_\+msp.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cfg.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}comms.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}io.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}safety.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}temp.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}limits.\+h\char`\"{}}\newline
+Include dependency graph for meas.\+c\+:
+% FIG 0
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{meas_8c_ad1b5ff7f9c4ac29ae02885d1c748c4d4}{C\+O\+R\+N\+E\+R\+F\+R\+EQ}}~0.\+002
+\item 
+\#define \mbox{\hyperlink{meas_8c_acb99b4618bad7e6fa462a2fd88ace380}{C\+O\+R\+N\+E\+R\+F\+R\+E\+Q\+\_\+\+F\+A\+ST}}~0.\+2
+\item 
+\#define \mbox{\hyperlink{meas_8c_aa7c048682f416db487192b81d705204d}{A\+D\+C\+\_\+\+R\+E\+A\+D\+A\+N\+D\+F\+I\+L\+T\+E\+R\+\_\+\+S\+TM}}(c\+Meas,  do\+Update)
+\item 
+\#define \mbox{\hyperlink{meas_8c_a44664d538c76a5f4cfe7d307d8ac19cf}{B\+A\+T\+\_\+\+T\+E\+M\+P\+R\+\_\+\+R\+A\+W\+\_\+\+M\+IN}}~1795
+\item 
+\#define \mbox{\hyperlink{meas_8c_a8df19464e6e8149f42b208dd8611d360}{B\+A\+T\+\_\+\+T\+E\+M\+P\+R\+\_\+\+R\+A\+W\+\_\+\+M\+AX}}~3004
+\item 
+\#define \mbox{\hyperlink{meas_8c_a3aea976de9be49d475f66c3c1d92b29a}{B\+A\+T\+\_\+\+T\+E\+M\+P\+R\+\_\+\+R\+A\+W\+\_\+\+F\+A\+U\+LT}}~3100
+\item 
+\#define \mbox{\hyperlink{meas_8c_a408c52e06f4e4bede82d3b54b8ac42ae}{B\+A\+T\+\_\+\+T\+E\+M\+P\+R\+\_\+\+R\+A\+W\+\_\+\+S\+T\+EP}}~39
+\item 
+\#define \mbox{\hyperlink{meas_8c_a4c62cde21cc9ea4ab262a9b76ad02d0a}{B\+A\+T\+\_\+\+T\+E\+M\+P\+R\+\_\+\+T\+A\+B\+L\+E\+\_\+\+L\+EN}}~32
+\item 
+\#define \mbox{\hyperlink{meas_8c_a352227cf09e460175e8771d80cbe9f41}{C\+A\+S\+E\+\_\+\+T\+E\+M\+P\+R\+\_\+\+R\+A\+W\+\_\+\+M\+IN}}~85
+\item 
+\#define \mbox{\hyperlink{meas_8c_a05beb38e7e64834a972194601ca44fc6}{C\+A\+S\+E\+\_\+\+T\+E\+M\+P\+R\+\_\+\+R\+A\+W\+\_\+\+M\+AX}}~2837
+\item 
+\#define \mbox{\hyperlink{meas_8c_ac97f791042a8abb66b88c3afed102250}{C\+A\+S\+E\+\_\+\+T\+E\+M\+P\+R\+\_\+\+R\+A\+W\+\_\+\+F\+A\+U\+LT}}~3100
+\item 
+\#define \mbox{\hyperlink{meas_8c_aaa7f360ccf6e843e0d4cb780df1b188f}{C\+A\+S\+E\+\_\+\+T\+E\+M\+P\+R\+\_\+\+R\+A\+W\+\_\+\+S\+T\+EP}}~64
+\item 
+\#define \mbox{\hyperlink{meas_8c_a1e0438a65bc4d7df6471248ea73a93c3}{C\+A\+S\+E\+\_\+\+T\+E\+M\+P\+R\+\_\+\+T\+A\+B\+L\+E\+\_\+\+L\+EN}}~44
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{meas_8c_a850ee91971ae035e12c1870beef56c16}{M\+E\+A\+S\+\_\+init}} ()
+\item 
+void \mbox{\hyperlink{meas_8c_aeff9afb4eb4ea15093686cf1530a2027}{M\+E\+A\+S\+\_\+set\+Do\+Update}} (int do\+Upd)
+\item 
+void \mbox{\hyperlink{meas_8c_a82ac7713a91b1e286080c10e1776d2f8}{M\+E\+A\+S\+\_\+update}} ()
+\item 
+void \mbox{\hyperlink{meas_8c_abdc540816dd069fec38e198828a23108}{M\+E\+A\+S\+\_\+update\+Charge}} ()
+\item 
+void \mbox{\hyperlink{meas_8c_a3140c9687a4e65dd17e956c61c326de6}{M\+E\+A\+S\+\_\+reset\+Charge}} ()
+\item 
+int \mbox{\hyperlink{meas_8c_a4eddadca6822d26b55b25a6887b8d511}{M\+E\+A\+S\+\_\+is\+Pv\+Active}} ()
+\item 
+void \mbox{\hyperlink{meas_8c_aeec473c93cee8120dc0d5de800250a84}{M\+E\+A\+S\+\_\+update\+Tempr}} ()
+\item 
+\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} \mbox{\hyperlink{meas_8c_a4b81997899bac7a3ca87fee7a2ded013}{M\+E\+A\+S\+\_\+filter}} (\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} val\+Now, \mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} val\+In)
+\item 
+\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} \mbox{\hyperlink{meas_8c_ab9db9c93546f4aad441d6616aea60dab}{M\+E\+A\+S\+\_\+filter\+Fast}} (\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} val\+Now, \mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} val\+In)
+\item 
+\mbox{\hyperlink{iqmath_8h_af79bc963a4ce8eed63e791577ffc4d48}{Iq\+Long}} \mbox{\hyperlink{meas_8c_a1e0728196d70ba62a16653f8f3044603}{M\+E\+A\+S\+\_\+integrate}} (\mbox{\hyperlink{iqmath_8h_af79bc963a4ce8eed63e791577ffc4d48}{Iq\+Long}} val\+Now, \mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} val\+In)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+volatile \mbox{\hyperlink{meas_8h_a02b47a94014dbe0e2b875457c4b7ffe9}{Meas}} \mbox{\hyperlink{meas_8c_a9e5c86e6e0a3f5c1240163c45c08cb74}{meas}}
+\item 
+int \mbox{\hyperlink{meas_8c_ad371bad78ae8c441b878ca53291f14c4}{meas\+Do\+Update}}
+\item 
+float\+Value\+\_\+t \mbox{\hyperlink{meas_8c_acfbfce159a34ddb79768ef9731b78529}{calculated\+Value}}
+\item 
+float\+Value\+\_\+t \mbox{\hyperlink{meas_8c_a38c7bf7a3512b4f5afa1dbe8846fb0b2}{average\+Value}}
+\item 
+float\+Value\+\_\+t \mbox{\hyperlink{meas_8c_a5fddfeaf3ed96a77ccc6e8739ea5b8a1}{moment\+Value}}
+\item 
+const \mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} \mbox{\hyperlink{meas_8c_ac90a8f572c0522f27c4e5dfea3c506d7}{B\+A\+T\+\_\+\+T\+E\+M\+P\+R\+\_\+\+T\+A\+B\+LE}} \mbox{[}$\,$\mbox{]}
+\item 
+const \mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} \mbox{\hyperlink{meas_8c_abaeebcfb43a0b13a5786df89e44ee1fa}{C\+A\+S\+E\+\_\+\+T\+E\+M\+P\+R\+\_\+\+T\+A\+B\+LE}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{meas_8c_aa7c048682f416db487192b81d705204d}\label{meas_8c_aa7c048682f416db487192b81d705204d}} 
+\index{meas.c@{meas.c}!ADC\_READANDFILTER\_STM@{ADC\_READANDFILTER\_STM}}
+\index{ADC\_READANDFILTER\_STM@{ADC\_READANDFILTER\_STM}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{ADC\_READANDFILTER\_STM}{ADC\_READANDFILTER\_STM}}
+{\footnotesize\ttfamily \#define A\+D\+C\+\_\+\+R\+E\+A\+D\+A\+N\+D\+F\+I\+L\+T\+E\+R\+\_\+\+S\+TM(\begin{DoxyParamCaption}\item[{}]{c\+Meas,  }\item[{}]{do\+Update }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{        cMeas.valPreFilter = cMeas.valReal / cMeas.base; \(\backslash\)}
+\DoxyCodeLine{        if ( doUpdate ) cMeas.val = \mbox{\hyperlink{meas_8c_a4b81997899bac7a3ca87fee7a2ded013}{MEAS\_filter}}( cMeas.val, cMeas.valPreFilter );}
+
+\end{DoxyCode}
+
+
+Definition at line 111 of file meas.\+c.
+
+\mbox{\Hypertarget{meas_8c_a3aea976de9be49d475f66c3c1d92b29a}\label{meas_8c_a3aea976de9be49d475f66c3c1d92b29a}} 
+\index{meas.c@{meas.c}!BAT\_TEMPR\_RAW\_FAULT@{BAT\_TEMPR\_RAW\_FAULT}}
+\index{BAT\_TEMPR\_RAW\_FAULT@{BAT\_TEMPR\_RAW\_FAULT}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{BAT\_TEMPR\_RAW\_FAULT}{BAT\_TEMPR\_RAW\_FAULT}}
+{\footnotesize\ttfamily \#define B\+A\+T\+\_\+\+T\+E\+M\+P\+R\+\_\+\+R\+A\+W\+\_\+\+F\+A\+U\+LT~3100}
+
+
+
+Definition at line 196 of file meas.\+c.
+
+\mbox{\Hypertarget{meas_8c_a8df19464e6e8149f42b208dd8611d360}\label{meas_8c_a8df19464e6e8149f42b208dd8611d360}} 
+\index{meas.c@{meas.c}!BAT\_TEMPR\_RAW\_MAX@{BAT\_TEMPR\_RAW\_MAX}}
+\index{BAT\_TEMPR\_RAW\_MAX@{BAT\_TEMPR\_RAW\_MAX}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{BAT\_TEMPR\_RAW\_MAX}{BAT\_TEMPR\_RAW\_MAX}}
+{\footnotesize\ttfamily \#define B\+A\+T\+\_\+\+T\+E\+M\+P\+R\+\_\+\+R\+A\+W\+\_\+\+M\+AX~3004}
+
+
+
+Definition at line 195 of file meas.\+c.
+
+\mbox{\Hypertarget{meas_8c_a44664d538c76a5f4cfe7d307d8ac19cf}\label{meas_8c_a44664d538c76a5f4cfe7d307d8ac19cf}} 
+\index{meas.c@{meas.c}!BAT\_TEMPR\_RAW\_MIN@{BAT\_TEMPR\_RAW\_MIN}}
+\index{BAT\_TEMPR\_RAW\_MIN@{BAT\_TEMPR\_RAW\_MIN}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{BAT\_TEMPR\_RAW\_MIN}{BAT\_TEMPR\_RAW\_MIN}}
+{\footnotesize\ttfamily \#define B\+A\+T\+\_\+\+T\+E\+M\+P\+R\+\_\+\+R\+A\+W\+\_\+\+M\+IN~1795}
+
+
+
+Definition at line 194 of file meas.\+c.
+
+\mbox{\Hypertarget{meas_8c_a408c52e06f4e4bede82d3b54b8ac42ae}\label{meas_8c_a408c52e06f4e4bede82d3b54b8ac42ae}} 
+\index{meas.c@{meas.c}!BAT\_TEMPR\_RAW\_STEP@{BAT\_TEMPR\_RAW\_STEP}}
+\index{BAT\_TEMPR\_RAW\_STEP@{BAT\_TEMPR\_RAW\_STEP}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{BAT\_TEMPR\_RAW\_STEP}{BAT\_TEMPR\_RAW\_STEP}}
+{\footnotesize\ttfamily \#define B\+A\+T\+\_\+\+T\+E\+M\+P\+R\+\_\+\+R\+A\+W\+\_\+\+S\+T\+EP~39}
+
+
+
+Definition at line 197 of file meas.\+c.
+
+\mbox{\Hypertarget{meas_8c_a4c62cde21cc9ea4ab262a9b76ad02d0a}\label{meas_8c_a4c62cde21cc9ea4ab262a9b76ad02d0a}} 
+\index{meas.c@{meas.c}!BAT\_TEMPR\_TABLE\_LEN@{BAT\_TEMPR\_TABLE\_LEN}}
+\index{BAT\_TEMPR\_TABLE\_LEN@{BAT\_TEMPR\_TABLE\_LEN}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{BAT\_TEMPR\_TABLE\_LEN}{BAT\_TEMPR\_TABLE\_LEN}}
+{\footnotesize\ttfamily \#define B\+A\+T\+\_\+\+T\+E\+M\+P\+R\+\_\+\+T\+A\+B\+L\+E\+\_\+\+L\+EN~32}
+
+
+
+Definition at line 198 of file meas.\+c.
+
+\mbox{\Hypertarget{meas_8c_ac97f791042a8abb66b88c3afed102250}\label{meas_8c_ac97f791042a8abb66b88c3afed102250}} 
+\index{meas.c@{meas.c}!CASE\_TEMPR\_RAW\_FAULT@{CASE\_TEMPR\_RAW\_FAULT}}
+\index{CASE\_TEMPR\_RAW\_FAULT@{CASE\_TEMPR\_RAW\_FAULT}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{CASE\_TEMPR\_RAW\_FAULT}{CASE\_TEMPR\_RAW\_FAULT}}
+{\footnotesize\ttfamily \#define C\+A\+S\+E\+\_\+\+T\+E\+M\+P\+R\+\_\+\+R\+A\+W\+\_\+\+F\+A\+U\+LT~3100}
+
+
+
+Definition at line 208 of file meas.\+c.
+
+\mbox{\Hypertarget{meas_8c_a05beb38e7e64834a972194601ca44fc6}\label{meas_8c_a05beb38e7e64834a972194601ca44fc6}} 
+\index{meas.c@{meas.c}!CASE\_TEMPR\_RAW\_MAX@{CASE\_TEMPR\_RAW\_MAX}}
+\index{CASE\_TEMPR\_RAW\_MAX@{CASE\_TEMPR\_RAW\_MAX}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{CASE\_TEMPR\_RAW\_MAX}{CASE\_TEMPR\_RAW\_MAX}}
+{\footnotesize\ttfamily \#define C\+A\+S\+E\+\_\+\+T\+E\+M\+P\+R\+\_\+\+R\+A\+W\+\_\+\+M\+AX~2837}
+
+
+
+Definition at line 207 of file meas.\+c.
+
+\mbox{\Hypertarget{meas_8c_a352227cf09e460175e8771d80cbe9f41}\label{meas_8c_a352227cf09e460175e8771d80cbe9f41}} 
+\index{meas.c@{meas.c}!CASE\_TEMPR\_RAW\_MIN@{CASE\_TEMPR\_RAW\_MIN}}
+\index{CASE\_TEMPR\_RAW\_MIN@{CASE\_TEMPR\_RAW\_MIN}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{CASE\_TEMPR\_RAW\_MIN}{CASE\_TEMPR\_RAW\_MIN}}
+{\footnotesize\ttfamily \#define C\+A\+S\+E\+\_\+\+T\+E\+M\+P\+R\+\_\+\+R\+A\+W\+\_\+\+M\+IN~85}
+
+
+
+Definition at line 206 of file meas.\+c.
+
+\mbox{\Hypertarget{meas_8c_aaa7f360ccf6e843e0d4cb780df1b188f}\label{meas_8c_aaa7f360ccf6e843e0d4cb780df1b188f}} 
+\index{meas.c@{meas.c}!CASE\_TEMPR\_RAW\_STEP@{CASE\_TEMPR\_RAW\_STEP}}
+\index{CASE\_TEMPR\_RAW\_STEP@{CASE\_TEMPR\_RAW\_STEP}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{CASE\_TEMPR\_RAW\_STEP}{CASE\_TEMPR\_RAW\_STEP}}
+{\footnotesize\ttfamily \#define C\+A\+S\+E\+\_\+\+T\+E\+M\+P\+R\+\_\+\+R\+A\+W\+\_\+\+S\+T\+EP~64}
+
+
+
+Definition at line 209 of file meas.\+c.
+
+\mbox{\Hypertarget{meas_8c_a1e0438a65bc4d7df6471248ea73a93c3}\label{meas_8c_a1e0438a65bc4d7df6471248ea73a93c3}} 
+\index{meas.c@{meas.c}!CASE\_TEMPR\_TABLE\_LEN@{CASE\_TEMPR\_TABLE\_LEN}}
+\index{CASE\_TEMPR\_TABLE\_LEN@{CASE\_TEMPR\_TABLE\_LEN}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{CASE\_TEMPR\_TABLE\_LEN}{CASE\_TEMPR\_TABLE\_LEN}}
+{\footnotesize\ttfamily \#define C\+A\+S\+E\+\_\+\+T\+E\+M\+P\+R\+\_\+\+T\+A\+B\+L\+E\+\_\+\+L\+EN~44}
+
+
+
+Definition at line 210 of file meas.\+c.
+
+\mbox{\Hypertarget{meas_8c_ad1b5ff7f9c4ac29ae02885d1c748c4d4}\label{meas_8c_ad1b5ff7f9c4ac29ae02885d1c748c4d4}} 
+\index{meas.c@{meas.c}!CORNERFREQ@{CORNERFREQ}}
+\index{CORNERFREQ@{CORNERFREQ}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{CORNERFREQ}{CORNERFREQ}}
+{\footnotesize\ttfamily \#define C\+O\+R\+N\+E\+R\+F\+R\+EQ~0.\+002}
+
+
+
+Definition at line 23 of file meas.\+c.
+
+\mbox{\Hypertarget{meas_8c_acb99b4618bad7e6fa462a2fd88ace380}\label{meas_8c_acb99b4618bad7e6fa462a2fd88ace380}} 
+\index{meas.c@{meas.c}!CORNERFREQ\_FAST@{CORNERFREQ\_FAST}}
+\index{CORNERFREQ\_FAST@{CORNERFREQ\_FAST}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{CORNERFREQ\_FAST}{CORNERFREQ\_FAST}}
+{\footnotesize\ttfamily \#define C\+O\+R\+N\+E\+R\+F\+R\+E\+Q\+\_\+\+F\+A\+ST~0.\+2}
+
+
+
+Definition at line 24 of file meas.\+c.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{meas_8c_a4b81997899bac7a3ca87fee7a2ded013}\label{meas_8c_a4b81997899bac7a3ca87fee7a2ded013}} 
+\index{meas.c@{meas.c}!MEAS\_filter@{MEAS\_filter}}
+\index{MEAS\_filter@{MEAS\_filter}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{MEAS\_filter()}{MEAS\_filter()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} M\+E\+A\+S\+\_\+filter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}}}]{val\+Now,  }\item[{\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}}}]{val\+In }\end{DoxyParamCaption})}
+
+
+
+Definition at line 309 of file meas.\+c.
+
+Here is the call graph for this function\+:
+% FIG 1
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{meas_8c_ab9db9c93546f4aad441d6616aea60dab}\label{meas_8c_ab9db9c93546f4aad441d6616aea60dab}} 
+\index{meas.c@{meas.c}!MEAS\_filterFast@{MEAS\_filterFast}}
+\index{MEAS\_filterFast@{MEAS\_filterFast}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{MEAS\_filterFast()}{MEAS\_filterFast()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} M\+E\+A\+S\+\_\+filter\+Fast (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}}}]{val\+Now,  }\item[{\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}}}]{val\+In }\end{DoxyParamCaption})}
+
+
+
+Definition at line 322 of file meas.\+c.
+
+Here is the call graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{meas_8c_a850ee91971ae035e12c1870beef56c16}\label{meas_8c_a850ee91971ae035e12c1870beef56c16}} 
+\index{meas.c@{meas.c}!MEAS\_init@{MEAS\_init}}
+\index{MEAS\_init@{MEAS\_init}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{MEAS\_init()}{MEAS\_init()}}
+{\footnotesize\ttfamily void M\+E\+A\+S\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 36 of file meas.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{meas_8c_a1e0728196d70ba62a16653f8f3044603}\label{meas_8c_a1e0728196d70ba62a16653f8f3044603}} 
+\index{meas.c@{meas.c}!MEAS\_integrate@{MEAS\_integrate}}
+\index{MEAS\_integrate@{MEAS\_integrate}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{MEAS\_integrate()}{MEAS\_integrate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{iqmath_8h_af79bc963a4ce8eed63e791577ffc4d48}{Iq\+Long}} M\+E\+A\+S\+\_\+integrate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{iqmath_8h_af79bc963a4ce8eed63e791577ffc4d48}{Iq\+Long}}}]{val\+Now,  }\item[{\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}}}]{val\+In }\end{DoxyParamCaption})}
+
+
+
+Definition at line 335 of file meas.\+c.
+
+\mbox{\Hypertarget{meas_8c_a4eddadca6822d26b55b25a6887b8d511}\label{meas_8c_a4eddadca6822d26b55b25a6887b8d511}} 
+\index{meas.c@{meas.c}!MEAS\_isPvActive@{MEAS\_isPvActive}}
+\index{MEAS\_isPvActive@{MEAS\_isPvActive}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{MEAS\_isPvActive()}{MEAS\_isPvActive()}}
+{\footnotesize\ttfamily int M\+E\+A\+S\+\_\+is\+Pv\+Active (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 188 of file meas.\+c.
+
+Here is the call graph for this function\+:
+% FIG 5
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{meas_8c_a3140c9687a4e65dd17e956c61c326de6}\label{meas_8c_a3140c9687a4e65dd17e956c61c326de6}} 
+\index{meas.c@{meas.c}!MEAS\_resetCharge@{MEAS\_resetCharge}}
+\index{MEAS\_resetCharge@{MEAS\_resetCharge}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{MEAS\_resetCharge()}{MEAS\_resetCharge()}}
+{\footnotesize\ttfamily void M\+E\+A\+S\+\_\+reset\+Charge (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 183 of file meas.\+c.
+
+\mbox{\Hypertarget{meas_8c_aeff9afb4eb4ea15093686cf1530a2027}\label{meas_8c_aeff9afb4eb4ea15093686cf1530a2027}} 
+\index{meas.c@{meas.c}!MEAS\_setDoUpdate@{MEAS\_setDoUpdate}}
+\index{MEAS\_setDoUpdate@{MEAS\_setDoUpdate}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{MEAS\_setDoUpdate()}{MEAS\_setDoUpdate()}}
+{\footnotesize\ttfamily void M\+E\+A\+S\+\_\+set\+Do\+Update (\begin{DoxyParamCaption}\item[{int}]{do\+Upd }\end{DoxyParamCaption})}
+
+
+
+Definition at line 99 of file meas.\+c.
+
+\mbox{\Hypertarget{meas_8c_a82ac7713a91b1e286080c10e1776d2f8}\label{meas_8c_a82ac7713a91b1e286080c10e1776d2f8}} 
+\index{meas.c@{meas.c}!MEAS\_update@{MEAS\_update}}
+\index{MEAS\_update@{MEAS\_update}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{MEAS\_update()}{MEAS\_update()}}
+{\footnotesize\ttfamily void M\+E\+A\+S\+\_\+update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 117 of file meas.\+c.
+
+Here is the call graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{meas_8c_abdc540816dd069fec38e198828a23108}\label{meas_8c_abdc540816dd069fec38e198828a23108}} 
+\index{meas.c@{meas.c}!MEAS\_updateCharge@{MEAS\_updateCharge}}
+\index{MEAS\_updateCharge@{MEAS\_updateCharge}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{MEAS\_updateCharge()}{MEAS\_updateCharge()}}
+{\footnotesize\ttfamily void M\+E\+A\+S\+\_\+update\+Charge (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 178 of file meas.\+c.
+
+\mbox{\Hypertarget{meas_8c_aeec473c93cee8120dc0d5de800250a84}\label{meas_8c_aeec473c93cee8120dc0d5de800250a84}} 
+\index{meas.c@{meas.c}!MEAS\_updateTempr@{MEAS\_updateTempr}}
+\index{MEAS\_updateTempr@{MEAS\_updateTempr}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{MEAS\_updateTempr()}{MEAS\_updateTempr()}}
+{\footnotesize\ttfamily void M\+E\+A\+S\+\_\+update\+Tempr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 217 of file meas.\+c.
+
+Here is the call graph for this function\+:
+% FIG 8
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{meas_8c_a38c7bf7a3512b4f5afa1dbe8846fb0b2}\label{meas_8c_a38c7bf7a3512b4f5afa1dbe8846fb0b2}} 
+\index{meas.c@{meas.c}!averageValue@{averageValue}}
+\index{averageValue@{averageValue}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{averageValue}{averageValue}}
+{\footnotesize\ttfamily float\+Value\+\_\+t average\+Value\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{meas_8c_ac90a8f572c0522f27c4e5dfea3c506d7}\label{meas_8c_ac90a8f572c0522f27c4e5dfea3c506d7}} 
+\index{meas.c@{meas.c}!BAT\_TEMPR\_TABLE@{BAT\_TEMPR\_TABLE}}
+\index{BAT\_TEMPR\_TABLE@{BAT\_TEMPR\_TABLE}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{BAT\_TEMPR\_TABLE}{BAT\_TEMPR\_TABLE}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} B\+A\+T\+\_\+\+T\+E\+M\+P\+R\+\_\+\+T\+A\+B\+LE\mbox{[}$\,$\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= }
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    1639, 1601, 1564, 1527, 1490, 1453, 1416, 1379, 1342, 1306, 1269, 1232, 1195, 1157, 1120, 1082, 1044, 1006, 967, 928, 888, 847, 806, 765, 722, 679, 635, 589, 543, 495, 445, 394, }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line 200 of file meas.\+c.
+
+\mbox{\Hypertarget{meas_8c_acfbfce159a34ddb79768ef9731b78529}\label{meas_8c_acfbfce159a34ddb79768ef9731b78529}} 
+\index{meas.c@{meas.c}!calculatedValue@{calculatedValue}}
+\index{calculatedValue@{calculatedValue}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{calculatedValue}{calculatedValue}}
+{\footnotesize\ttfamily float\+Value\+\_\+t calculated\+Value\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{meas_8c_abaeebcfb43a0b13a5786df89e44ee1fa}\label{meas_8c_abaeebcfb43a0b13a5786df89e44ee1fa}} 
+\index{meas.c@{meas.c}!CASE\_TEMPR\_TABLE@{CASE\_TEMPR\_TABLE}}
+\index{CASE\_TEMPR\_TABLE@{CASE\_TEMPR\_TABLE}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{CASE\_TEMPR\_TABLE}{CASE\_TEMPR\_TABLE}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} C\+A\+S\+E\+\_\+\+T\+E\+M\+P\+R\+\_\+\+T\+A\+B\+LE\mbox{[}$\,$\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= }
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    3948,3380,3042,2802,2617,2465,2337,2226,2127,2038,1956,1882,1812,1747,1685,1626,1570,1517,1465,1415,1367,1319,1273,1228,1183,1139,1095,1052,1008,965,922,878,834,789,744,698,650,601,551,498,442,384,321,254,}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line 212 of file meas.\+c.
+
+\mbox{\Hypertarget{meas_8c_a9e5c86e6e0a3f5c1240163c45c08cb74}\label{meas_8c_a9e5c86e6e0a3f5c1240163c45c08cb74}} 
+\index{meas.c@{meas.c}!meas@{meas}}
+\index{meas@{meas}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{meas}{meas}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{meas_8h_a02b47a94014dbe0e2b875457c4b7ffe9}{Meas}} meas}
+
+
+
+Definition at line 28 of file meas.\+c.
+
+\mbox{\Hypertarget{meas_8c_ad371bad78ae8c441b878ca53291f14c4}\label{meas_8c_ad371bad78ae8c441b878ca53291f14c4}} 
+\index{meas.c@{meas.c}!measDoUpdate@{measDoUpdate}}
+\index{measDoUpdate@{measDoUpdate}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{measDoUpdate}{measDoUpdate}}
+{\footnotesize\ttfamily int meas\+Do\+Update}
+
+
+
+Definition at line 30 of file meas.\+c.
+
+\mbox{\Hypertarget{meas_8c_a5fddfeaf3ed96a77ccc6e8739ea5b8a1}\label{meas_8c_a5fddfeaf3ed96a77ccc6e8739ea5b8a1}} 
+\index{meas.c@{meas.c}!momentValue@{momentValue}}
+\index{momentValue@{momentValue}!meas.c@{meas.c}}
+\doxysubsubsection{\texorpdfstring{momentValue}{momentValue}}
+{\footnotesize\ttfamily float\+Value\+\_\+t moment\+Value\hspace{0.3cm}{\ttfamily [extern]}}
+

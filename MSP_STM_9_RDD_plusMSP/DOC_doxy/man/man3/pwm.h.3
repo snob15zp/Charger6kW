@@ -1,0 +1,112 @@
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/pwm.h" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/pwm.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'debug\&.h'\fP
+.br
+\fC#include 'iqmath\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBCLOCK_RATE_HZ\fP   16000000"
+.br
+.ti -1c
+.RI "#define \fBPWM_BITS\fP   13"
+.br
+.ti -1c
+.RI "#define \fBPWM_RATE_HZ\fP   ( (float)\fBCLOCK_RATE_HZ\fP / ( 1 << \fBPWM_BITS\fP ) )"
+.br
+.ti -1c
+.RI "#define \fBMAX_PWM\fP   ( 1 << \fBPWM_BITS\fP )"
+.br
+.ti -1c
+.RI "#define \fBPWM_PERIOD_US\fP   ( 1000000ull * \fBMAX_PWM\fP / \fBCLOCK_RATE_HZ\fP )"
+.br
+.ti -1c
+.RI "#define \fBCONT_TIMER_LOAD_VAL\fP   ( 0xFFFF \- \fBMAX_PWM\fP )"
+.br
+.ti -1c
+.RI "#define \fBMIN_DUTY_CYCLE\fP   ( 0\&.01 )"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBPWM_init\fP (void)"
+.br
+.ti -1c
+.RI "void \fBPWM_isr\fP (void)"
+.br
+.ti -1c
+.RI "void \fBPWM_setMpptSamplePt\fP (\fBIq\fP val)"
+.br
+.ti -1c
+.RI "void \fBPWM_setVinLim\fP (\fBIq\fP val)"
+.br
+.ti -1c
+.RI "void \fBPWM_setFlTrim\fP (\fBIq\fP val)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define CLOCK_RATE_HZ   16000000"
+
+.PP
+Definition at line 19 of file pwm\&.h\&.
+.SS "#define CONT_TIMER_LOAD_VAL   ( 0xFFFF \- \fBMAX_PWM\fP )"
+
+.PP
+Definition at line 24 of file pwm\&.h\&.
+.SS "#define MAX_PWM   ( 1 << \fBPWM_BITS\fP )"
+
+.PP
+Definition at line 22 of file pwm\&.h\&.
+.SS "#define MIN_DUTY_CYCLE   ( 0\&.01 )"
+
+.PP
+Definition at line 26 of file pwm\&.h\&.
+.SS "#define PWM_BITS   13"
+
+.PP
+Definition at line 20 of file pwm\&.h\&.
+.SS "#define PWM_PERIOD_US   ( 1000000ull * \fBMAX_PWM\fP / \fBCLOCK_RATE_HZ\fP )"
+
+.PP
+Definition at line 23 of file pwm\&.h\&.
+.SS "#define PWM_RATE_HZ   ( (float)\fBCLOCK_RATE_HZ\fP / ( 1 << \fBPWM_BITS\fP ) )"
+
+.PP
+Definition at line 21 of file pwm\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "void PWM_init (void)"
+
+.PP
+Definition at line 63 of file pwm\&.c\&.
+.SS "void PWM_isr (void)"
+Regulator(mpptSamplePtShadow); //RDD
+.PP
+Definition at line 134 of file pwm\&.c\&.
+.SS "void PWM_setFlTrim (\fBIq\fP val)"
+
+.PP
+Definition at line 124 of file pwm\&.c\&.
+.SS "void PWM_setMpptSamplePt (\fBIq\fP val)"
+
+.PP
+Definition at line 89 of file pwm\&.c\&.
+.SS "void PWM_setVinLim (\fBIq\fP val)"
+
+.PP
+Definition at line 116 of file pwm\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.

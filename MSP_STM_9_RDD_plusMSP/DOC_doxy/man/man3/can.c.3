@@ -1,0 +1,157 @@
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/can.c" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/can.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'Stm32f3xx\&.h'\fP
+.br
+\fC#include 'can\&.h'\fP
+.br
+\fC#include 'usci\&.h'\fP
+.br
+\fC#include 'io\&.h'\fP
+.br
+\fC#include 'cfg\&.h'\fP
+.br
+\fC#include 'main\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBALT_FUNC_CAN\fP   0x09"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBCAN_transmit\fP (void)"
+.br
+.ti -1c
+.RI "void \fBCAN_receive\fP (void)"
+.br
+.ti -1c
+.RI "void \fBCAN_reset\fP (void)"
+.br
+.ti -1c
+.RI "void \fBCAN_read\fP (unsigned char address, unsigned char *ptr, unsigned char bytes)"
+.br
+.ti -1c
+.RI "void \fBCAN_read_rx\fP (unsigned char address, unsigned char *ptr)"
+.br
+.ti -1c
+.RI "void \fBCAN_write\fP (unsigned char address, unsigned char *ptr, unsigned char bytes)"
+.br
+.ti -1c
+.RI "void \fBCAN_write_tx\fP (unsigned char address, unsigned char *ptr)"
+.br
+.ti -1c
+.RI "void \fBCAN_rts\fP (unsigned char address)"
+.br
+.ti -1c
+.RI "unsigned char \fBCAN_read_status\fP (void)"
+.br
+.ti -1c
+.RI "unsigned char \fBCAN_read_filter\fP (void)"
+.br
+.ti -1c
+.RI "void \fBCAN_mod\fP (unsigned char address, unsigned char mask, unsigned char data)"
+.br
+.ti -1c
+.RI "unsigned long \fBCAN_getBaseId\fP (void)"
+.br
+.ti -1c
+.RI "void \fBCAN_init\fP (unsigned long newBaseId)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "unsigned long \fBCAN_txBufferAddr\fP [\fBCAN_TxBufferInd_NUM\fP]"
+.br
+.ti -1c
+.RI "\fBCAN_TxBuffer\fP \fBCAN_txBuffer\fP [\fBCAN_TxBufferInd_NUM\fP]"
+.br
+.ti -1c
+.RI "\fBCAN_Rx\fP \fBCAN_rx\fP"
+.br
+.ti -1c
+.RI "unsigned char \fBbuffer\fP [16]"
+.br
+.ti -1c
+.RI "unsigned long \fBCAN_baseId\fP"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define ALT_FUNC_CAN   0x09"
+
+.PP
+Definition at line 41 of file can\&.c\&.
+.SH "Function Documentation"
+.PP 
+.SS "unsigned long CAN_getBaseId (void)"
+
+.PP
+Definition at line 73 of file can\&.c\&.
+.SS "void CAN_init (unsigned long newBaseId)"
+
+.PP
+Definition at line 78 of file can\&.c\&.
+.SS "void CAN_mod (unsigned char address, unsigned char mask, unsigned char data)"
+
+.SS "void CAN_read (unsigned char address, unsigned char * ptr, unsigned char bytes)"
+
+.SS "unsigned char CAN_read_filter (void)"
+
+.SS "void CAN_read_rx (unsigned char address, unsigned char * ptr)"
+
+.SS "unsigned char CAN_read_status (void)"
+
+.SS "void CAN_receive (void)"
+
+.PP
+Definition at line 267 of file can\&.c\&.
+.SS "void CAN_reset (void)"
+
+.SS "void CAN_rts (unsigned char address)"
+
+.SS "void CAN_transmit (void)"
+
+.PP
+Definition at line 427 of file can\&.c\&.
+.SS "void CAN_write (unsigned char address, unsigned char * ptr, unsigned char bytes)"
+
+.SS "void CAN_write_tx (unsigned char address, unsigned char * ptr)"
+
+.SH "Variable Documentation"
+.PP 
+.SS "unsigned char buffer[16]"
+
+.PP
+Definition at line 51 of file can\&.c\&.
+.SS "unsigned long CAN_baseId"
+
+.PP
+Definition at line 52 of file can\&.c\&.
+.SS "\fBCAN_Rx\fP CAN_rx"
+
+.PP
+Definition at line 48 of file can\&.c\&.
+.SS "\fBCAN_TxBuffer\fP CAN_txBuffer[\fBCAN_TxBufferInd_NUM\fP]"
+
+.PP
+Definition at line 47 of file can\&.c\&.
+.SS "unsigned long CAN_txBufferAddr[\fBCAN_TxBufferInd_NUM\fP]"
+
+.PP
+Definition at line 43 of file can\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.

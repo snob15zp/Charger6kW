@@ -1,0 +1,156 @@
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/mainMSP.c" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/mainMSP.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <signal\&.h>\fP
+.br
+\fC#include 'variant\&.h'\fP
+.br
+\fC#include 'mainMSP\&.h'\fP
+.br
+\fC#include 'can\&.h'\fP
+.br
+\fC#include 'usci\&.h'\fP
+.br
+\fC#include 'sch\&.h'\fP
+.br
+\fC#include 'io\&.h'\fP
+.br
+\fC#include 'pwm\&.h'\fP
+.br
+\fC#include 'comms\&.h'\fP
+.br
+\fC#include 'meas\&.h'\fP
+.br
+\fC#include 'spi\&.h'\fP
+.br
+\fC#include 'flash\&.h'\fP
+.br
+\fC#include 'cfg\&.h'\fP
+.br
+\fC#include 'telem\&.h'\fP
+.br
+\fC#include 'status\&.h'\fP
+.br
+\fC#include 'ctrl\&.h'\fP
+.br
+\fC#include 'stats\&.h'\fP
+.br
+\fC#include 'safety\&.h'\fP
+.br
+\fC#include 'lcd\&.h'\fP
+.br
+\fC#include 'temp\&.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "union \fBmy_erasable_data_area\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fB__special_area__\fP   __attribute__((section('\&.specialarea')))"
+.br
+.RI "????? "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBclock_init\fP (void)"
+.br
+.ti -1c
+.RI "int \fBmainMSPinit\fP (void)"
+.br
+.ti -1c
+.RI "int \fBmainMSPloop\fP (char l)"
+.br
+.ti -1c
+.RI "void \fBMAIN_resetAllAndStart\fP ()"
+.br
+.ti -1c
+.RI "void \fBMAIN_resetRemoteCfg\fP ()"
+.br
+.ti -1c
+.RI "void \fBbrief_pause\fP (register unsigned int n)"
+.br
+.RI "void \fBinline\fP "
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "const \fB__special_area__\fP \fBmy_erasable_data_area\fP \fBmy_bsl_info\fP [] = {0x0,0x0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'H',\fBAER_PRODUCT_ID\fP,\fBVAR_VERSION_NUMBER\fP,0x00,0x00}"
+.br
+.ti -1c
+.RI "volatile unsigned char \fBsend_serial_flag\fP = \fBFALSE\fP"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define __special_area__   __attribute__((section('\&.specialarea')))"
+
+.PP
+????? #include <msp430x24x\&.h> include 'svs\&.h' #include 'adc\&.h' 
+.PP
+Definition at line 72 of file mainMSP\&.c\&.
+.SH "Function Documentation"
+.PP 
+.SS "void brief_pause (register unsigned int n)"
+
+.PP
+void \fBinline\fP \fBasm\fP \fBvolatile\fP ( '1: \\n' ' dec  %[n] \\n' ' jne  1b \\n' : [n] '+r'(n));
+.PP
+Definition at line 225 of file mainMSP\&.c\&.
+.SS "void clock_init (void)"
+RDD OLD hardware if (CALBC1_16MHZ != 0xFF)
+.PP
+RDD OLD hardware BCSCTL1 = CALBC1_16MHZ; RDD OLD hardware DCOCTL = CALDCO_16MHZ;
+.PP
+RDD OLD hardware else
+.PP
+RDD OLD hardware BCSCTL1 = 0x8F; RDD OLD hardware DCOCTL = 0x00;
+.PP
+Definition at line 235 of file mainMSP\&.c\&.
+.SS "void MAIN_resetAllAndStart (void)"
+dint(); //RDD comment Disable interrupts ?
+.PP
+eint();
+.PP
+Definition at line 141 of file mainMSP\&.c\&.
+.SS "void MAIN_resetRemoteCfg (void)"
+
+.PP
+Definition at line 210 of file mainMSP\&.c\&.
+.SS "int mainMSPinit (void)"
+WDTCTL = WDTPW + WDTHOLD;
+.PP
+SVSCTL=VLD3|VLD1|VLD0|PORON; //RDD comment Vcc control
+.PP
+Definition at line 103 of file mainMSP\&.c\&.
+.SS "int mainMSPloop (char l)"
+
+.PP
+Definition at line 119 of file mainMSP\&.c\&.
+.SH "Variable Documentation"
+.PP 
+.SS "const \fB__special_area__\fP \fBmy_erasable_data_area\fP my_bsl_info[] = {0x0,0x0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'H',\fBAER_PRODUCT_ID\fP,\fBVAR_VERSION_NUMBER\fP,0x00,0x00}"
+
+.PP
+Definition at line 89 of file mainMSP\&.c\&.
+.SS "volatile unsigned char send_serial_flag = \fBFALSE\fP"
+
+.PP
+Definition at line 100 of file mainMSP\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.

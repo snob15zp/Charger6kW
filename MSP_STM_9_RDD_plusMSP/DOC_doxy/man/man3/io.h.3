@@ -1,0 +1,428 @@
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/io.h" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/io.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'mainMSP\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBTWO_FAN\fP"
+.br
+.ti -1c
+.RI "#define \fBFAN_DRV\fP   0x01"
+.br
+.ti -1c
+.RI "#define \fBUNUSED\fP   0x02"
+.br
+.ti -1c
+.RI "#define \fBFAN_FB\fP   0x04"
+.br
+.ti -1c
+.RI "#define \fBTMPCMP_DIGITAL\fP   0x08"
+.br
+.ti -1c
+.RI "#define \fBFLSET10\fP   0x10"
+.br
+.ti -1c
+.RI "#define \fBFLSET20\fP   0x20"
+.br
+.ti -1c
+.RI "#define \fBFLSET40\fP   0x40"
+.br
+.ti -1c
+.RI "#define \fBFLSET80\fP   0x80"
+.br
+.ti -1c
+.RI "#define \fBENABLE\fP   0x01"
+.br
+.ti -1c
+.RI "#define \fBCAN_nINT\fP   0x02"
+.br
+.ti -1c
+.RI "#define \fBCA_OUT\fP   0x04"
+.br
+.ti -1c
+.RI "#define \fBFLTRIM_PWM\fP   0x08"
+.br
+.ti -1c
+.RI "#define \fBSAMPLE_PWM\fP   0x10"
+.br
+.ti -1c
+.RI "#define \fBIOUTSP_CA\fP   0x20"
+.br
+.ti -1c
+.RI "#define \fBONOFF\fP   0x40"
+.br
+.ti -1c
+.RI "#define \fBVINLIM_PWM\fP   0x80"
+.br
+.ti -1c
+.RI "#define \fBCAN_nCS\fP   0x01"
+.br
+.ti -1c
+.RI "#define \fBCAN_MOSI\fP   0x02"
+.br
+.ti -1c
+.RI "#define \fBCAN_MISO\fP   0x04"
+.br
+.ti -1c
+.RI "#define \fBCAN_SCLK\fP   0x08"
+.br
+.ti -1c
+.RI "#define \fBLCD_TX\fP   0x10"
+.br
+.ti -1c
+.RI "#define \fBLCD_RX\fP   0x20"
+.br
+.ti -1c
+.RI "#define \fBnHISIDE_EN\fP   0x40"
+.br
+.ti -1c
+.RI "#define \fBRELAY\fP   0x80"
+.br
+.ti -1c
+.RI "#define \fBDCONTROL\fP   0x01"
+.br
+.ti -1c
+.RI "#define \fBFLSET1\fP   0x04"
+.br
+.ti -1c
+.RI "#define \fBFLSET2\fP   0x08"
+.br
+.ti -1c
+.RI "#define \fBFLSET4\fP   0x10"
+.br
+.ti -1c
+.RI "#define \fBFLSET8\fP   0x20"
+.br
+.ti -1c
+.RI "#define \fBFLSET100\fP   0x40"
+.br
+.ti -1c
+.RI "#define \fBFLSET200\fP   0x80"
+.br
+.ti -1c
+.RI "#define \fBP4_UNUSED\fP   0x02"
+.br
+.ti -1c
+.RI "#define \fBFLASH_nCS\fP   0x01"
+.br
+.ti -1c
+.RI "#define \fBFLASH_SIMO\fP   0x02"
+.br
+.ti -1c
+.RI "#define \fBFLASH_SOMI\fP   0x04"
+.br
+.ti -1c
+.RI "#define \fBFLASH_SCLK\fP   0x08"
+.br
+.ti -1c
+.RI "#define \fBFAN_FB2\fP   0x10"
+.br
+.ti -1c
+.RI "#define \fBFLASH_HOLD\fP   0x20"
+.br
+.ti -1c
+.RI "#define \fBP5_UNUSED\fP   0x40"
+.br
+.ti -1c
+.RI "#define \fBGF_ONOFF\fP   0x80"
+.br
+.ti -1c
+.RI "#define \fBP6_UNUSED\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBIO_INBREAKER_OPEN\fP   (0)"
+.br
+.ti -1c
+.RI "#define \fBIO_OUTBREAKER_OPEN\fP   (0)"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBIO_setFanDutyCycle\fP (unsigned int fanDuty)"
+.br
+.ti -1c
+.RI "void \fBIO_fanSenseSpeed\fP (void)"
+.br
+.ti -1c
+.RI "void \fBIO_fanSetSpeed\fP (void)"
+.br
+.ti -1c
+.RI "void \fBIO_fanDrvPWM\fP (void)"
+.br
+.ti -1c
+.RI "int \fBIO_getOnOff\fP (void)"
+.br
+.ti -1c
+.RI "int \fBIO_getGroundFault\fP (void)"
+.br
+.ti -1c
+.RI "int \fBIO_getDigitalTemp\fP (void)"
+.br
+.ti -1c
+.RI "int \fBIO_getIsSlave\fP (void)"
+.br
+.ti -1c
+.RI "void \fBIO_init\fP (void)"
+.br
+.ti -1c
+.RI "void \fBIO_setRelay\fP (unsigned long long bitfield)"
+.br
+.ti -1c
+.RI "void \fBIO_enablePwmCtrl\fP (void)"
+.br
+.ti -1c
+.RI "void \fBIO_disablePwmCtrl\fP (void)"
+.br
+.ti -1c
+.RI "void \fBIO_controlSyncRect\fP (void)"
+.br
+.ti -1c
+.RI "void \fBIO_flset\fP (unsigned int fls)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define CA_OUT   0x04"
+
+.PP
+Definition at line 37 of file io\&.h\&.
+.SS "#define CAN_MISO   0x04"
+
+.PP
+Definition at line 47 of file io\&.h\&.
+.SS "#define CAN_MOSI   0x02"
+
+.PP
+Definition at line 46 of file io\&.h\&.
+.SS "#define CAN_nCS   0x01"
+
+.PP
+Definition at line 45 of file io\&.h\&.
+.SS "#define CAN_nINT   0x02"
+
+.PP
+Definition at line 36 of file io\&.h\&.
+.SS "#define CAN_SCLK   0x08"
+
+.PP
+Definition at line 48 of file io\&.h\&.
+.SS "#define DCONTROL   0x01"
+
+.PP
+Definition at line 55 of file io\&.h\&.
+.SS "#define ENABLE   0x01"
+
+.PP
+Definition at line 35 of file io\&.h\&.
+.SS "#define FAN_DRV   0x01"
+
+.PP
+Definition at line 25 of file io\&.h\&.
+.SS "#define FAN_FB   0x04"
+
+.PP
+Definition at line 27 of file io\&.h\&.
+.SS "#define FAN_FB2   0x10"
+
+.PP
+Definition at line 69 of file io\&.h\&.
+.SS "#define FLASH_HOLD   0x20"
+
+.PP
+Definition at line 70 of file io\&.h\&.
+.SS "#define FLASH_nCS   0x01"
+
+.PP
+Definition at line 65 of file io\&.h\&.
+.SS "#define FLASH_SCLK   0x08"
+
+.PP
+Definition at line 68 of file io\&.h\&.
+.SS "#define FLASH_SIMO   0x02"
+
+.PP
+Definition at line 66 of file io\&.h\&.
+.SS "#define FLASH_SOMI   0x04"
+
+.PP
+Definition at line 67 of file io\&.h\&.
+.SS "#define FLSET1   0x04"
+
+.PP
+Definition at line 56 of file io\&.h\&.
+.SS "#define FLSET10   0x10"
+
+.PP
+Definition at line 29 of file io\&.h\&.
+.SS "#define FLSET100   0x40"
+
+.PP
+Definition at line 60 of file io\&.h\&.
+.SS "#define FLSET2   0x08"
+
+.PP
+Definition at line 57 of file io\&.h\&.
+.SS "#define FLSET20   0x20"
+
+.PP
+Definition at line 30 of file io\&.h\&.
+.SS "#define FLSET200   0x80"
+
+.PP
+Definition at line 61 of file io\&.h\&.
+.SS "#define FLSET4   0x10"
+
+.PP
+Definition at line 58 of file io\&.h\&.
+.SS "#define FLSET40   0x40"
+
+.PP
+Definition at line 31 of file io\&.h\&.
+.SS "#define FLSET8   0x20"
+
+.PP
+Definition at line 59 of file io\&.h\&.
+.SS "#define FLSET80   0x80"
+
+.PP
+Definition at line 32 of file io\&.h\&.
+.SS "#define FLTRIM_PWM   0x08"
+
+.PP
+Definition at line 38 of file io\&.h\&.
+.SS "#define GF_ONOFF   0x80"
+
+.PP
+Definition at line 72 of file io\&.h\&.
+.SS "#define IO_INBREAKER_OPEN   (0)"
+
+.PP
+Definition at line 102 of file io\&.h\&.
+.SS "#define IO_OUTBREAKER_OPEN   (0)"
+
+.PP
+Definition at line 103 of file io\&.h\&.
+.SS "#define IOUTSP_CA   0x20"
+
+.PP
+Definition at line 40 of file io\&.h\&.
+.SS "#define LCD_RX   0x20"
+
+.PP
+Definition at line 50 of file io\&.h\&.
+.SS "#define LCD_TX   0x10"
+
+.PP
+Definition at line 49 of file io\&.h\&.
+.SS "#define nHISIDE_EN   0x40"
+
+.PP
+Definition at line 51 of file io\&.h\&.
+.SS "#define ONOFF   0x40"
+
+.PP
+Definition at line 41 of file io\&.h\&.
+.SS "#define P4_UNUSED   0x02"
+
+.PP
+Definition at line 62 of file io\&.h\&.
+.SS "#define P5_UNUSED   0x40"
+
+.PP
+Definition at line 71 of file io\&.h\&.
+.SS "#define P6_UNUSED   0x00"
+
+.PP
+Definition at line 84 of file io\&.h\&.
+.SS "#define RELAY   0x80"
+
+.PP
+Definition at line 52 of file io\&.h\&.
+.SS "#define SAMPLE_PWM   0x10"
+
+.PP
+Definition at line 39 of file io\&.h\&.
+.SS "#define TMPCMP_DIGITAL   0x08"
+
+.PP
+Definition at line 28 of file io\&.h\&.
+.SS "#define TWO_FAN"
+
+.PP
+Definition at line 18 of file io\&.h\&.
+.SS "#define UNUSED   0x02"
+
+.PP
+Definition at line 26 of file io\&.h\&.
+.SS "#define VINLIM_PWM   0x80"
+
+.PP
+Definition at line 42 of file io\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "void IO_controlSyncRect (void)"
+
+.SS "void IO_disablePwmCtrl (void)"
+RDD statusFlags\&.CONTROL_STOP=1;
+.PP
+Definition at line 107 of file pwm\&.c\&.
+.SS "void IO_enablePwmCtrl (void)"
+RDD statusFlags\&.CONTROL_START=1;
+.PP
+Definition at line 97 of file pwm\&.c\&.
+.SS "void IO_fanDrvPWM (void)"
+
+.PP
+Definition at line 273 of file io\&.c\&.
+.SS "void IO_fanSenseSpeed (void)"
+
+.PP
+Definition at line 298 of file io\&.c\&.
+.SS "void IO_fanSetSpeed (void)"
+
+.PP
+Definition at line 329 of file io\&.c\&.
+.SS "void IO_flset (unsigned int fls)"
+
+.SS "int IO_getDigitalTemp (void)"
+
+.PP
+Definition at line 168 of file io\&.c\&.
+.SS "int IO_getGroundFault (void)"
+
+.PP
+Definition at line 162 of file io\&.c\&.
+.SS "int IO_getIsSlave (void)"
+
+.PP
+Definition at line 234 of file io\&.c\&.
+.SS "int IO_getOnOff (void)"
+
+.PP
+Definition at line 156 of file io\&.c\&.
+.SS "void IO_init (void)"
+
+.PP
+Definition at line 99 of file io\&.c\&.
+.SS "void IO_setFanDutyCycle (unsigned int fanDuty)"
+
+.PP
+Definition at line 146 of file io\&.c\&.
+.SS "void IO_setRelay (unsigned long long bitfield)"
+
+.PP
+Definition at line 244 of file io\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.

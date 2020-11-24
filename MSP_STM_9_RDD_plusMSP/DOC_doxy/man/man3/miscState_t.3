@@ -1,0 +1,94 @@
+.TH "miscState_t" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+miscState_t
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <protocol\&.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "struct {"
+.br
+.ti -1c
+.RI "   \fBuint16_t\fP \fBtoggleSwitchMode\fP"
+.br
+.ti -1c
+.RI "   \fBuint16_t\fP \fB_enableSmartShutdown\fP"
+.br
+.ti -1c
+.RI "   float \fBoutVoltCutoffOffset\fP"
+.br
+.ti -1c
+.RI "   float \fBoutVoltCutoffScale\fP"
+.br
+.ti -1c
+.RI "   \fBuint16_t\fP \fB__pad0__\fP: 16"
+.br
+.ti -1c
+.RI "   \fBuint16_t\fP \fB__pad1__\fP: 16"
+.br
+.ti -1c
+.RI "   \fBuint16_t\fP \fB__pad2__\fP: 16"
+.br
+.ti -1c
+.RI "   \fBuint16_t\fP \fB__pad3__\fP: 16"
+.br
+.ti -1c
+.RI "}; "
+.br
+.ti -1c
+.RI "unsigned char \fBbytes\fP [1]"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 227 of file protocol\&.h\&.
+.SH "Field Documentation"
+.PP 
+.SS "struct { \&.\&.\&. } "
+
+.SS "\fBuint16_t\fP __pad0__"
+
+.PP
+Definition at line 233 of file protocol\&.h\&.
+.SS "\fBuint16_t\fP __pad1__"
+
+.PP
+Definition at line 234 of file protocol\&.h\&.
+.SS "\fBuint16_t\fP __pad2__"
+
+.PP
+Definition at line 235 of file protocol\&.h\&.
+.SS "\fBuint16_t\fP __pad3__"
+
+.PP
+Definition at line 236 of file protocol\&.h\&.
+.SS "\fBuint16_t\fP _enableSmartShutdown"
+
+.PP
+Definition at line 230 of file protocol\&.h\&.
+.SS "unsigned char bytes[1]"
+
+.PP
+Definition at line 238 of file protocol\&.h\&.
+.SS "float outVoltCutoffOffset"
+
+.PP
+Definition at line 231 of file protocol\&.h\&.
+.SS "float outVoltCutoffScale"
+
+.PP
+Definition at line 232 of file protocol\&.h\&.
+.SS "\fBuint16_t\fP toggleSwitchMode"
+
+.PP
+Definition at line 229 of file protocol\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.

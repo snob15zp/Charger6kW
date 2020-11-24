@@ -1,0 +1,64 @@
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/mainMSP.h" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/mainMSP.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'debug\&.h'\fP
+.br
+\fC#include 'variant\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBMAIN_resetAllAndStart\fP (void)"
+.br
+.ti -1c
+.RI "void \fBMAIN_resetRemoteCfg\fP (void)"
+.br
+.ti -1c
+.RI "void \fBbrief_pause\fP (register unsigned int n)"
+.br
+.RI "void \fBinline\fP "
+.ti -1c
+.RI "int \fBmainMSPinit\fP (void)"
+.br
+.ti -1c
+.RI "int \fBmainMSPloop\fP (char l)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void brief_pause (register unsigned int n)"
+
+.PP
+void \fBinline\fP \fBasm\fP \fBvolatile\fP ( '1: \\n' ' dec  %[n] \\n' ' jne  1b \\n' : [n] '+r'(n));
+.PP
+Definition at line 183 of file main\&.c\&.
+.SS "void MAIN_resetAllAndStart (void)"
+dint(); //RDD comment Disable interrupts ?
+.PP
+eint();
+.PP
+Definition at line 101 of file main\&.c\&.
+.SS "void MAIN_resetRemoteCfg (void)"
+
+.PP
+Definition at line 169 of file main\&.c\&.
+.SS "int mainMSPinit (void)"
+WDTCTL = WDTPW + WDTHOLD;
+.PP
+SVSCTL=VLD3|VLD1|VLD0|PORON; //RDD comment Vcc control
+.PP
+Definition at line 103 of file mainMSP\&.c\&.
+.SS "int mainMSPloop (char l)"
+
+.PP
+Definition at line 119 of file mainMSP\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.

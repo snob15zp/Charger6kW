@@ -1,0 +1,82 @@
+\hypertarget{adc__msp_8h}{}\doxysection{D\+:/user\+S\+S\+D/github/\+Charger6k\+W/\+M\+S\+P\+\_\+\+S\+T\+M\+\_\+9\+\_\+\+R\+D\+D\+\_\+plus\+M\+S\+P/\+M\+S\+P430/adc\+\_\+msp.h File Reference}
+\label{adc__msp_8h}\index{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/adc\_msp.h@{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/adc\_msp.h}}
+{\ttfamily \#include \char`\"{}debug.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}meas.\+h\char`\"{}}\newline
+Include dependency graph for adc\+\_\+msp.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{adc__msp_8h_af830c2443672e922986cbdeef62f4b6d}{A\+D\+C\+\_\+\+R\+E\+A\+D\+A\+N\+D\+F\+I\+L\+T\+ER}}(c\+Meas,  c\+Adc\+Value,  do\+Update)
+\item 
+\#define \mbox{\hyperlink{adc__msp_8h_affeb01c14024d21717e79d40df43f114}{A\+D\+C\+\_\+\+R\+E\+A\+D\+A\+N\+D\+F\+I\+L\+T\+E\+R\+\_\+\+B\+I\+D\+IR}}(c\+Meas,  c\+Adc\+Value,  do\+Update)
+\item 
+\#define \mbox{\hyperlink{adc__msp_8h_adeb652336faf5791e074560ffd05b6ed}{A\+D\+C\+\_\+\+S\+T\+A\+R\+T\+I\+F\+D\+O\+NE}}~if ( !( A\+D\+C12\+C\+T\+L1 \& A\+D\+C12\+B\+U\+SY ) ) A\+D\+C12\+C\+T\+L0 $\vert$= A\+D\+C12\+SC
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{adc__msp_8h_a69f491a768a81c2cf99ee2653ad3002d}{A\+D\+C\+\_\+init}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{adc__msp_8h_af830c2443672e922986cbdeef62f4b6d}\label{adc__msp_8h_af830c2443672e922986cbdeef62f4b6d}} 
+\index{adc\_msp.h@{adc\_msp.h}!ADC\_READANDFILTER@{ADC\_READANDFILTER}}
+\index{ADC\_READANDFILTER@{ADC\_READANDFILTER}!adc\_msp.h@{adc\_msp.h}}
+\doxysubsubsection{\texorpdfstring{ADC\_READANDFILTER}{ADC\_READANDFILTER}}
+{\footnotesize\ttfamily \#define A\+D\+C\+\_\+\+R\+E\+A\+D\+A\+N\+D\+F\+I\+L\+T\+ER(\begin{DoxyParamCaption}\item[{}]{c\+Meas,  }\item[{}]{c\+Adc\+Value,  }\item[{}]{do\+Update }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    cMeas.valPreFilter = \mbox{\hyperlink{iqmath_8c_a3602eaafd15397aa969429a8f6a375fb}{IQ\_mpy}}( cAdcValue + cMeas.offset, cMeas.scale ); \(\backslash\)}
+\DoxyCodeLine{    if ( doUpdate ) cMeas.val = \mbox{\hyperlink{meas_8c_a4b81997899bac7a3ca87fee7a2ded013}{MEAS\_filter}}( cMeas.val, cMeas.valPreFilter );}
+
+\end{DoxyCode}
+
+
+Definition at line 30 of file adc\+\_\+msp.\+h.
+
+\mbox{\Hypertarget{adc__msp_8h_affeb01c14024d21717e79d40df43f114}\label{adc__msp_8h_affeb01c14024d21717e79d40df43f114}} 
+\index{adc\_msp.h@{adc\_msp.h}!ADC\_READANDFILTER\_BIDIR@{ADC\_READANDFILTER\_BIDIR}}
+\index{ADC\_READANDFILTER\_BIDIR@{ADC\_READANDFILTER\_BIDIR}!adc\_msp.h@{adc\_msp.h}}
+\doxysubsubsection{\texorpdfstring{ADC\_READANDFILTER\_BIDIR}{ADC\_READANDFILTER\_BIDIR}}
+{\footnotesize\ttfamily \#define A\+D\+C\+\_\+\+R\+E\+A\+D\+A\+N\+D\+F\+I\+L\+T\+E\+R\+\_\+\+B\+I\+D\+IR(\begin{DoxyParamCaption}\item[{}]{c\+Meas,  }\item[{}]{c\+Adc\+Value,  }\item[{}]{do\+Update }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{        if(cAdcValue == \mbox{\hyperlink{meas_8c_a5fddfeaf3ed96a77ccc6e8739ea5b8a1}{momentValue}}.iInSensor)   \(\backslash\)}
+\DoxyCodeLine{            cMeas.valPreFilter = \mbox{\hyperlink{iqmath_8c_a3602eaafd15397aa969429a8f6a375fb}{IQ\_mpy}}( (1<<11) -\/ cAdcValue + cMeas.offset, cMeas.scale ); \(\backslash\)}
+\DoxyCodeLine{        else cMeas.valPreFilter = \mbox{\hyperlink{iqmath_8c_a3602eaafd15397aa969429a8f6a375fb}{IQ\_mpy}}( cAdcValue -\/ (1<<11) + cMeas.offset, cMeas.scale ); \(\backslash\)}
+\DoxyCodeLine{        if ( doUpdate ) cMeas.val = \mbox{\hyperlink{meas_8c_a4b81997899bac7a3ca87fee7a2ded013}{MEAS\_filter}}( cMeas.val, cMeas.valPreFilter ); \(\backslash\)}
+\DoxyCodeLine{    \}}
+
+\end{DoxyCode}
+
+
+Definition at line 61 of file adc\+\_\+msp.\+h.
+
+\mbox{\Hypertarget{adc__msp_8h_adeb652336faf5791e074560ffd05b6ed}\label{adc__msp_8h_adeb652336faf5791e074560ffd05b6ed}} 
+\index{adc\_msp.h@{adc\_msp.h}!ADC\_STARTIFDONE@{ADC\_STARTIFDONE}}
+\index{ADC\_STARTIFDONE@{ADC\_STARTIFDONE}!adc\_msp.h@{adc\_msp.h}}
+\doxysubsubsection{\texorpdfstring{ADC\_STARTIFDONE}{ADC\_STARTIFDONE}}
+{\footnotesize\ttfamily \#define A\+D\+C\+\_\+\+S\+T\+A\+R\+T\+I\+F\+D\+O\+NE~if ( !( A\+D\+C12\+C\+T\+L1 \& A\+D\+C12\+B\+U\+SY ) ) A\+D\+C12\+C\+T\+L0 $\vert$= A\+D\+C12\+SC}
+
+
+
+Definition at line 72 of file adc\+\_\+msp.\+h.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{adc__msp_8h_a69f491a768a81c2cf99ee2653ad3002d}\label{adc__msp_8h_a69f491a768a81c2cf99ee2653ad3002d}} 
+\index{adc\_msp.h@{adc\_msp.h}!ADC\_init@{ADC\_init}}
+\index{ADC\_init@{ADC\_init}!adc\_msp.h@{adc\_msp.h}}
+\doxysubsubsection{\texorpdfstring{ADC\_init()}{ADC\_init()}}
+{\footnotesize\ttfamily void A\+D\+C\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 2

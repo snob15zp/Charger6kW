@@ -1,0 +1,140 @@
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/sch.c" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/sch.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'main\&.h'\fP
+.br
+\fC#include 'sch\&.h'\fP
+.br
+\fC#include 'comms\&.h'\fP
+.br
+\fC#include 'meas\&.h'\fP
+.br
+\fC#include 'time\&.h'\fP
+.br
+\fC#include 'telem\&.h'\fP
+.br
+\fC#include 'io\&.h'\fP
+.br
+\fC#include 'ctrl\&.h'\fP
+.br
+\fC#include 'can\&.h'\fP
+.br
+\fC#include 'flag\&.h'\fP
+.br
+\fC#include 'stats\&.h'\fP
+.br
+\fC#include 'safety\&.h'\fP
+.br
+\fC#include 'usci\&.h'\fP
+.br
+\fC#include 'lcd\&.h'\fP
+.br
+\fC#include 'temp\&.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBTaskDef_\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct \fBTaskDef_\fP \fBTaskDef\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBSCH_init\fP ()"
+.br
+.ti -1c
+.RI "void \fBSCH_incrMs\fP ()"
+.br
+.ti -1c
+.RI "void \fBSCH_runActiveTasks\fP ()"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBTaskDef\fP \fBtasks\fP []"
+.br
+.ti -1c
+.RI "unsigned int \fBnumTasks\fP"
+.br
+.ti -1c
+.RI "volatile unsigned long \fBtimeSinceLastRun_ms\fP"
+.br
+.in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef struct \fBTaskDef_\fP \fBTaskDef\fP"
+
+.SH "Function Documentation"
+.PP 
+.SS "void SCH_incrMs ()"
+
+.PP
+Definition at line 95 of file sch\&.c\&.
+.SS "void SCH_init ()"
+
+.PP
+Definition at line 89 of file sch\&.c\&.
+.SS "void SCH_runActiveTasks ()"
+
+.PP
+Definition at line 100 of file sch\&.c\&.
+.SH "Variable Documentation"
+.PP 
+.SS "unsigned int numTasks"
+
+.PP
+Definition at line 86 of file sch\&.c\&.
+.SS "\fBTaskDef\fP tasks[]"
+\fBInitial value:\fP
+.PP
+.nf
+= 
+{   
+    {   (int)(1000\&.0 / CHARGE_UPDATE_RATE_HZ),   20,     MEAS_updateCharge },
+    {   2000,                                   10,     MEAS_updateTempr },
+    {   2000,                                   1010,   CTRL_calcOutVoltSetpoints },
+    {   100,                                    60,     STATS_updateAll },
+    {   200,                                    0,      FLAG_checkAndWrite },
+    {   TELEM_BASE_PERIOD_MS,                   100,    TELEM_logIfPeriodElapsed },
+    {   CTRL_SLOW_PERIOD_MS,                    80,     CTRL_checkBulkFloat },
+    {   1000,                                   140,    COMMS_sendHeartbeat },
+    {   1000,                                   240,    COMMS_sendStatus },
+    {   2000,                                   340,    COMMS_sendPvMeas },
+    {   2000,                                   440,    COMMS_sendOutMeas },
+    {   2000,                                   540,    COMMS_sendOcQMeas },
+    {   2000,                                   640,    COMMS_sendPowTemprMeas },
+    {   2000,                                   740,    COMMS_sendFlag },
+    {   2000,                                   840,    COMMS_sendTime },
+    {   2000,                                   940,    COMMS_sendOutVoltCmd },
+    {   LCD_PERIOD_MS,                          0,      lcd_update },
+    {   2,                                      0,      COMMS_sendP2pPacket },
+    {   1,                                      1000,   IO_fanDrvPWM },
+    {   2000,                                   2000,   IO_fanSetSpeed }
+}
+.fi
+.PP
+Definition at line 60 of file sch\&.c\&.
+.SS "volatile unsigned long timeSinceLastRun_ms"
+
+.PP
+Definition at line 87 of file sch\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.

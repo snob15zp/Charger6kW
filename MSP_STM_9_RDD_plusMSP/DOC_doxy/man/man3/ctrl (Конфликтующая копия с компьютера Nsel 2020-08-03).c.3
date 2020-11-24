@@ -1,0 +1,522 @@
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/ctrl (Конфликтующая копия с компьютера Nsel 2020-08-03).c" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/ctrl (Конфликтующая копия с компьютера Nsel 2020-08-03).c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdint\&.h>\fP
+.br
+\fC#include <stdbool\&.h>\fP
+.br
+\fC#include 'variant\&.h'\fP
+.br
+\fC#include 'ctrl\&.h'\fP
+.br
+\fC#include 'pwm\&.h'\fP
+.br
+\fC#include 'meas\&.h'\fP
+.br
+\fC#include 'iqmath\&.h'\fP
+.br
+\fC#include 'io\&.h'\fP
+.br
+\fC#include 'cfg\&.h'\fP
+.br
+\fC#include 'util\&.h'\fP
+.br
+\fC#include 'comms\&.h'\fP
+.br
+\fC#include 'safety\&.h'\fP
+.br
+\fC#include 'debug\&.h'\fP
+.br
+\fC#include 'usci\&.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBCtrl_\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBCTRL_SAMPLE_PERIOD_TICKS\fP   (unsigned long)( 30\&.0 * 1000000\&.0 / (float)\fBPWM_PERIOD_US\fP )"
+.br
+.ti -1c
+.RI "#define \fBCTRL_OPEN_CIRCUIT_TIME_TICKS\fP   (unsigned long)( 0\&.10 * 1000000\&.0 / (float)\fBPWM_PERIOD_US\fP )"
+.br
+.ti -1c
+.RI "#define \fBCTRL_NO_MEAS_TIME_TICKS\fP   (unsigned long)( 0\&.50 * 1000000\&.0 / (float)\fBPWM_PERIOD_US\fP )"
+.br
+.ti -1c
+.RI "#define \fBCTRL_OUT_VOLT_BLANK_TICKS\fP   ( 10 * \fBCTRL_OPEN_CIRCUIT_TIME_TICKS\fP )"
+.br
+.ti -1c
+.RI "#define \fBCTRL_ABOUT_TO_SAMPLE_TICKS\fP   (unsigned long)( 28\&.0 * 1000000\&.0 / (float)\fBPWM_PERIOD_US\fP )"
+.br
+.ti -1c
+.RI "#define \fBCTRL_VINLIM_FRAC\fP   1\&.2"
+.br
+.ti -1c
+.RI "#define \fBCTRL_VINLIM_DIODE_VOLT\fP   0\&.2"
+.br
+.ti -1c
+.RI "#define \fBCTRL_NOMINAL_TO_FLOAT_RATIO\fP   ( 2\&.0 / 2\&.35 )"
+.br
+.ti -1c
+.RI "#define \fBCTRL_OFFSET_FLSET_NEW\fP   24\&.93"
+.br
+.ti -1c
+.RI "#define \fBCTRL_SCALE_FLSET_NEW\fP   1\&.22"
+.br
+.ti -1c
+.RI "#define \fBCTRL_FLTRIM_OFFSET_ONVCCG_NEW\fP   2\&.9412"
+.br
+.ti -1c
+.RI "#define \fBCTRL_BASE_FLTRIM_ONVCCG_NEW\fP   3\&.1359"
+.br
+.ti -1c
+.RI "#define \fBCTRL_OFFSET_FLSET_OLD\fP   29\&.3957"
+.br
+.ti -1c
+.RI "#define \fBCTRL_SCALE_FLSET_OLD\fP   1\&.2"
+.br
+.ti -1c
+.RI "#define \fBCTRL_FLTRIM_OFFSET_ONVCCG_OLD\fP   2\&.9412"
+.br
+.ti -1c
+.RI "#define \fBCTRL_BASE_FLTRIM_ONVCCG_OLD\fP   3\&.1359"
+.br
+.ti -1c
+.RI "#define \fBCTRL_KP_VINLIM\fP   ( 3\&.0 / 125\&.0 * \fBMEAS_PVCURR_BASE\fP )"
+.br
+.ti -1c
+.RI "#define \fBCTRL_KI_VINLIM\fP   ( 10\&.0 / \fBPWM_RATE_HZ\fP / 125\&.0 * \fBMEAS_PVCURR_BASE\fP )"
+.br
+.ti -1c
+.RI "#define \fBCTRL_VMP_SETPOINT_DURING_SAMPLE\fP   \fBIQ_cnst\fP(1\&.05)"
+.br
+.ti -1c
+.RI "#define \fBCTRL_ONOFF_DELAY_TICKS\fP   (unsigned long)(0\&.5 * 1000000\&.0 / (float)\fBPWM_PERIOD_US\fP)"
+.br
+.ti -1c
+.RI "#define \fBCTRL_ONOFF_HOLD_TICKS\fP   (unsigned long)(2\&.0 * 1000000\&.0 / (float)\fBPWM_PERIOD_US\fP)"
+.br
+.ti -1c
+.RI "#define \fBAPPLY_CURRENT_LIMITATION\fP"
+.br
+.ti -1c
+.RI "#define \fBCNTRL_OUTCURR_LIMIT\fP   45\&.0"
+.br
+.ti -1c
+.RI "#define \fBCNTRL_OUTCURR_OVERTEMP_LIMIT_1\fP   (90\&.0 / \fBMEAS_CASETEMPR_BASE\fP)"
+.br
+.ti -1c
+.RI "#define \fBCNTRL_OUTCURR_OVERTEMP_REDUC_1\fP   0\&.8"
+.br
+.ti -1c
+.RI "#define \fBCNTRL_OUTCURR_OVERTEMP_LIMIT_2\fP   (100\&.0 / \fBMEAS_CASETEMPR_BASE\fP)"
+.br
+.ti -1c
+.RI "#define \fBCNTRL_OUTCURR_OVERTEMP_REDUC_2\fP   0\&.7"
+.br
+.ti -1c
+.RI "#define \fBCNTRL_OUTCURR_HYST_PERCENT\fP   90\&.0"
+.br
+.ti -1c
+.RI "#define \fBCURR_LIMIT_HYST_COUNT\fP   200"
+.br
+.ti -1c
+.RI "#define \fBENABLE_START_UP_PWM_DELAY\fP"
+.br
+.ti -1c
+.RI "#define \fBPWM_START_UP_DELAY\fP   10"
+.br
+.ti -1c
+.RI "#define \fBPWM_START_UP_DELAY_TICKS\fP   (unsigned long)(\fBPWM_START_UP_DELAY\fP * 1000000\&.0 / \fBPWM_PERIOD_US\fP)"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef enum \fBCTRL_Mode_\fP \fBCTRL_Mode\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBCtrl_\fP \fBCtrl\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBCTRL_Mode_\fP { \fBCTRL_MODE_MPPT_REG\fP, \fBCTRL_MODE_OUT_REG\fP, \fBCTRL_MODE_VIN_LIM\fP, \fBCTRL_MODE_MPPT_REG\fP, \fBCTRL_MODE_OUT_REG\fP, \fBCTRL_MODE_VIN_LIM\fP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBCTRL_init\fP ()"
+.br
+.ti -1c
+.RI "void \fBCTRL_setFltrimParams_new\fP ()"
+.br
+.ti -1c
+.RI "void \fBCTRL_setFltrimParams_old\fP ()"
+.br
+.ti -1c
+.RI "void \fBCTRL_setOutVoltCmd\fP (float outVoltCmd)"
+.br
+.ti -1c
+.RI "float \fBCTRL_getOutVoltCmd\fP ()"
+.br
+.ti -1c
+.RI "void \fBCTRL_calcOutVoltSetpoints\fP ()"
+.br
+.ti -1c
+.RI "void \fBCTRL_enableOutput\fP (int enable)"
+.br
+.ti -1c
+.RI "int \fBCTRL_isOutputEnabled\fP ()"
+.br
+.ti -1c
+.RI "int \fBCTRL_isGroundFault\fP ()"
+.br
+.ti -1c
+.RI "int \fBCTRL_isTurbineLoadEnabled\fP ()"
+.br
+.ti -1c
+.RI "void \fBCTRL_tick\fP ()"
+.br
+.ti -1c
+.RI "void \fBCTRL_vmpHigh\fP ()"
+.br
+.ti -1c
+.RI "unsigned char \fBCTRL_getStatus\fP ()"
+.br
+.ti -1c
+.RI "void \fBCTRL_checkBulkFloat\fP ()"
+.br
+.ti -1c
+.RI "int \fBCTRL_setpointIsBulk\fP ()"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "unsigned int \fBIO_pwmEnabled\fP"
+.br
+.ti -1c
+.RI "int \fBupdate_persistent\fP"
+.br
+.ti -1c
+.RI "float \fBCTRL_offsetFlset\fP"
+.br
+.ti -1c
+.RI "float \fBCTRL_scaleFlset\fP"
+.br
+.ti -1c
+.RI "float \fBCTRL_fltrimOffsetOnVCCG\fP"
+.br
+.ti -1c
+.RI "float \fBCTRL_baseFltrimOnVCCG\fP"
+.br
+.ti -1c
+.RI "\fBIq\fP \fBCTRL_MpptSamplePtNow\fP"
+.br
+.ti -1c
+.RI "\fBIq\fP \fBCTRL_MpptSamplePtTarget\fP"
+.br
+.ti -1c
+.RI "int \fBfirstMPPTPoint\fP"
+.br
+.ti -1c
+.RI "int \fBCTRL_enableTurbineLoad\fP"
+.br
+.ti -1c
+.RI "\fBCtrl\fP \fBctrl\fP"
+.br
+.ti -1c
+.RI "int \fBctrl_initialised\fP = 0"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define APPLY_CURRENT_LIMITATION"
+
+.PP
+Definition at line 80 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CNTRL_OUTCURR_HYST_PERCENT   90\&.0"
+
+.PP
+Definition at line 96 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CNTRL_OUTCURR_LIMIT   45\&.0"
+
+.PP
+Definition at line 84 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CNTRL_OUTCURR_OVERTEMP_LIMIT_1   (90\&.0 / \fBMEAS_CASETEMPR_BASE\fP)"
+
+.PP
+Definition at line 91 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CNTRL_OUTCURR_OVERTEMP_LIMIT_2   (100\&.0 / \fBMEAS_CASETEMPR_BASE\fP)"
+
+.PP
+Definition at line 93 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CNTRL_OUTCURR_OVERTEMP_REDUC_1   0\&.8"
+
+.PP
+Definition at line 92 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CNTRL_OUTCURR_OVERTEMP_REDUC_2   0\&.7"
+
+.PP
+Definition at line 94 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CTRL_ABOUT_TO_SAMPLE_TICKS   (unsigned long)( 28\&.0 * 1000000\&.0 / (float)\fBPWM_PERIOD_US\fP )"
+
+.PP
+Definition at line 38 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CTRL_BASE_FLTRIM_ONVCCG_NEW   3\&.1359"
+
+.PP
+Definition at line 47 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CTRL_BASE_FLTRIM_ONVCCG_OLD   3\&.1359"
+
+.PP
+Definition at line 52 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CTRL_FLTRIM_OFFSET_ONVCCG_NEW   2\&.9412"
+
+.PP
+Definition at line 46 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CTRL_FLTRIM_OFFSET_ONVCCG_OLD   2\&.9412"
+
+.PP
+Definition at line 51 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CTRL_KI_VINLIM   ( 10\&.0 / \fBPWM_RATE_HZ\fP / 125\&.0 * \fBMEAS_PVCURR_BASE\fP )"
+
+.PP
+Definition at line 55 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CTRL_KP_VINLIM   ( 3\&.0 / 125\&.0 * \fBMEAS_PVCURR_BASE\fP )"
+
+.PP
+Definition at line 54 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CTRL_NO_MEAS_TIME_TICKS   (unsigned long)( 0\&.50 * 1000000\&.0 / (float)\fBPWM_PERIOD_US\fP )"
+
+.PP
+Definition at line 36 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CTRL_NOMINAL_TO_FLOAT_RATIO   ( 2\&.0 / 2\&.35 )"
+
+.PP
+Definition at line 43 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CTRL_OFFSET_FLSET_NEW   24\&.93"
+
+.PP
+Definition at line 44 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CTRL_OFFSET_FLSET_OLD   29\&.3957"
+
+.PP
+Definition at line 49 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CTRL_ONOFF_DELAY_TICKS   (unsigned long)(0\&.5 * 1000000\&.0 / (float)\fBPWM_PERIOD_US\fP)"
+
+.PP
+Definition at line 60 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CTRL_ONOFF_HOLD_TICKS   (unsigned long)(2\&.0 * 1000000\&.0 / (float)\fBPWM_PERIOD_US\fP)"
+
+.PP
+Definition at line 62 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CTRL_OPEN_CIRCUIT_TIME_TICKS   (unsigned long)( 0\&.10 * 1000000\&.0 / (float)\fBPWM_PERIOD_US\fP )"
+
+.PP
+Definition at line 35 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CTRL_OUT_VOLT_BLANK_TICKS   ( 10 * \fBCTRL_OPEN_CIRCUIT_TIME_TICKS\fP )"
+
+.PP
+Definition at line 37 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CTRL_SAMPLE_PERIOD_TICKS   (unsigned long)( 30\&.0 * 1000000\&.0 / (float)\fBPWM_PERIOD_US\fP )"
+
+.PP
+Definition at line 34 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CTRL_SCALE_FLSET_NEW   1\&.22"
+
+.PP
+Definition at line 45 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CTRL_SCALE_FLSET_OLD   1\&.2"
+
+.PP
+Definition at line 50 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CTRL_VINLIM_DIODE_VOLT   0\&.2"
+
+.PP
+Definition at line 41 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CTRL_VINLIM_FRAC   1\&.2"
+
+.PP
+Definition at line 40 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CTRL_VMP_SETPOINT_DURING_SAMPLE   \fBIQ_cnst\fP(1\&.05)"
+
+.PP
+Definition at line 57 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define CURR_LIMIT_HYST_COUNT   200"
+
+.PP
+Definition at line 97 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define ENABLE_START_UP_PWM_DELAY"
+
+.PP
+Definition at line 110 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define PWM_START_UP_DELAY   10"
+
+.PP
+Definition at line 111 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "#define PWM_START_UP_DELAY_TICKS   (unsigned long)(\fBPWM_START_UP_DELAY\fP * 1000000\&.0 / \fBPWM_PERIOD_US\fP)"
+
+.PP
+Definition at line 112 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef struct \fBCtrl_\fP \fBCtrl\fP"
+
+.SS "typedef enum \fBCTRL_Mode_\fP \fBCTRL_Mode\fP"
+
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBCTRL_Mode_\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICTRL_MODE_MPPT_REG \fP\fP
+.TP
+\fB\fICTRL_MODE_OUT_REG \fP\fP
+.TP
+\fB\fICTRL_MODE_VIN_LIM \fP\fP
+.TP
+\fB\fICTRL_MODE_MPPT_REG \fP\fP
+.TP
+\fB\fICTRL_MODE_OUT_REG \fP\fP
+.TP
+\fB\fICTRL_MODE_VIN_LIM \fP\fP
+.PP
+Definition at line 122 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SH "Function Documentation"
+.PP 
+.SS "void CTRL_calcOutVoltSetpoints ()"
+
+.PP
+Definition at line 277 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "void CTRL_checkBulkFloat ()"
+
+.PP
+Definition at line 850 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "void CTRL_enableOutput (int enable)"
+
+.PP
+Definition at line 369 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "float CTRL_getOutVoltCmd ()"
+
+.PP
+Definition at line 271 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "unsigned char CTRL_getStatus ()"
+
+.PP
+Definition at line 842 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "void CTRL_init ()"
+
+.PP
+Definition at line 167 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "int CTRL_isGroundFault ()"
+
+.PP
+Definition at line 380 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "int CTRL_isOutputEnabled ()"
+
+.PP
+Definition at line 375 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "int CTRL_isTurbineLoadEnabled ()"
+
+.PP
+Definition at line 385 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "void CTRL_setFltrimParams_new ()"
+
+.PP
+Definition at line 246 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "void CTRL_setFltrimParams_old ()"
+
+.PP
+Definition at line 254 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "void CTRL_setOutVoltCmd (float outVoltCmd)"
+
+.PP
+Definition at line 262 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "int CTRL_setpointIsBulk ()"
+
+.PP
+Definition at line 926 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "void CTRL_tick ()"
+
+.PP
+Definition at line 391 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "void CTRL_vmpHigh ()"
+
+.PP
+Definition at line 822 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SH "Variable Documentation"
+.PP 
+.SS "\fBCtrl\fP ctrl"
+
+.PP
+Definition at line 161 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "float CTRL_baseFltrimOnVCCG"
+
+.PP
+Definition at line 67 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "int CTRL_enableTurbineLoad"
+
+.PP
+Definition at line 120 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "float CTRL_fltrimOffsetOnVCCG"
+
+.PP
+Definition at line 66 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "int ctrl_initialised = 0"
+
+.PP
+Definition at line 165 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "\fBIq\fP CTRL_MpptSamplePtNow"
+
+.PP
+Definition at line 69 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "\fBIq\fP CTRL_MpptSamplePtTarget"
+
+.PP
+Definition at line 70 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "float CTRL_offsetFlset"
+
+.PP
+Definition at line 64 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "float CTRL_scaleFlset"
+
+.PP
+Definition at line 65 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "int firstMPPTPoint"
+
+.PP
+Definition at line 119 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "unsigned int IO_pwmEnabled\fC [extern]\fP"
+
+.PP
+Definition at line 84 of file io\&.c\&.
+.SS "int update_persistent\fC [extern]\fP"
+
+.PP
+Definition at line 46 of file lcd\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.

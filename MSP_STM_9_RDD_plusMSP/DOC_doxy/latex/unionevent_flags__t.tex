@@ -1,0 +1,288 @@
+\hypertarget{unionevent_flags__t}{}\doxysection{event\+Flags\+\_\+t Union Reference}
+\label{unionevent_flags__t}\index{eventFlags\_t@{eventFlags\_t}}
+
+
+{\ttfamily \#include $<$protocol.\+h$>$}
+
+\doxysubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>\mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\_t}} \mbox{\hyperlink{unionevent_flags__t_add564a0ba6c47f6db7e627a554e789b7}{systemPower}}: 1\\
+\>\mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\_t}} \mbox{\hyperlink{unionevent_flags__t_ad4e1141ad572cdc700689edf1246b196}{lowOutVoltWarn}}: 1\\
+\>\mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\_t}} \mbox{\hyperlink{unionevent_flags__t_a23ac379f6064cf4c83f2a41e757fcb14}{lowOutVoltFault}}: 1\\
+\>\mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\_t}} \mbox{\hyperlink{unionevent_flags__t_ae3e1477d914b15568d0508ed5c49ecb9}{lowOutVoltGenSet}}: 1\\
+\>\mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\_t}} \mbox{\hyperlink{unionevent_flags__t_a01984b86cdb266172fdeadfa33768ddb}{highOutVoltFault}}: 1\\
+\>\mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\_t}} \mbox{\hyperlink{unionevent_flags__t_aebbef41571c4f0073d7a64c0d4cb0e21}{highOutCurrentFault}}: 1\\
+\>\mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\_t}} \mbox{\hyperlink{unionevent_flags__t_a344506f860c9bf42c8879ac1a15d5200}{highDischargeCurrentFault}}: 1\\
+\>\mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\_t}} \mbox{\hyperlink{unionevent_flags__t_a9e2392c437faa1eb62dca796e699bc61}{highBatteryTempFault}}: 1\\
+\>\mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\_t}} \mbox{\hyperlink{unionevent_flags__t_aa7d16ef1dad7258656d743676ab9c4bf}{inputBreakerOpen}}: 1\\
+\>\mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\_t}} \mbox{\hyperlink{unionevent_flags__t_aea83bd0e8cc45e2df5028f335e815b19}{outputBreakerOpen}}: 1\\
+\>\mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\_t}} \mbox{\hyperlink{unionevent_flags__t_a7db9d7722f89204e8d8c866412e031e2}{tempSensorFault}}: 1\\
+\>\mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\_t}} \mbox{\hyperlink{unionevent_flags__t_a777424af149a45314bfe5b5f5c04f465}{negativePVCurrentSutdown}}: 1\\
+\>\mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\_t}} \mbox{\hyperlink{unionevent_flags__t_ae099fcad746105bbbc8467e00e95cb43}{highPVCurrentShutdown}}: 1\\
+\>\mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\_t}} \mbox{\hyperlink{unionevent_flags__t_aa94a13211a160b2da01fc74593c19f22}{highPVVoltShutdown}}: 1\\
+\>\mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\_t}} \mbox{\hyperlink{unionevent_flags__t_ace33bff59b8f416b286c92c1e5c5a5df}{highOutCurrentShutdown}}: 1\\
+\>\mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\_t}} \mbox{\hyperlink{unionevent_flags__t_a1451ae5a34d01f7a2001e42396f47693}{highOutVoltShutdown}}: 1\\
+\>\mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\_t}} \mbox{\hyperlink{unionevent_flags__t_afcec8126ab40e9c98456530384bb26a8}{highHeatSinkTemp}}: 1\\
+\>\mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\_t}} \mbox{\hyperlink{unionevent_flags__t_a52d3d197a6cf43c5c1a311c90a2efe16}{fanFault}}: 1\\
+\>\mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\_t}} \mbox{\hyperlink{unionevent_flags__t_a95b1a168116a616bcd47dfc6365d1655}{logFull}}: 1\\
+\>\mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\_t}} \mbox{\hyperlink{unionevent_flags__t_a8b3f3418e850d9feb3e24054dc94806e}{solarPanelMissing}}: 1\\
+\>\mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\_t}} \mbox{\hyperlink{unionevent_flags__t_a86edf36abcb2a5b2551f0ac4c42ebd25}{configValueOutOfRange}}: 1\\
+\>\mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\_t}} \mbox{\hyperlink{unionevent_flags__t_a3e57c2ef1c3ffb36722f000cc1156824}{\_\_pad0\_\_}}: 11\\
+\}; \\
+
+\end{tabbing}\item 
+\mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}} \mbox{\hyperlink{unionevent_flags__t_a773b39d480759f67926cb18ae2219281}{flags}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 7 of file protocol.\+h.
+
+
+
+\doxysubsection{Field Documentation}
+\mbox{\Hypertarget{unionevent_flags__t_adad8ca975874b6b1286b506f9998cc4a}\label{unionevent_flags__t_adad8ca975874b6b1286b506f9998cc4a}} 
+\doxysubsubsection{\texorpdfstring{"@1}{@1}}
+{\footnotesize\ttfamily struct \{ ... \} }
+
+\mbox{\Hypertarget{unionevent_flags__t_a3e57c2ef1c3ffb36722f000cc1156824}\label{unionevent_flags__t_a3e57c2ef1c3ffb36722f000cc1156824}} 
+\index{eventFlags\_t@{eventFlags\_t}!\_\_pad0\_\_@{\_\_pad0\_\_}}
+\index{\_\_pad0\_\_@{\_\_pad0\_\_}!eventFlags\_t@{eventFlags\_t}}
+\doxysubsubsection{\texorpdfstring{\_\_pad0\_\_}{\_\_pad0\_\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}} \+\_\+\+\_\+pad0\+\_\+\+\_\+}
+
+
+
+Definition at line 31 of file protocol.\+h.
+
+\mbox{\Hypertarget{unionevent_flags__t_a86edf36abcb2a5b2551f0ac4c42ebd25}\label{unionevent_flags__t_a86edf36abcb2a5b2551f0ac4c42ebd25}} 
+\index{eventFlags\_t@{eventFlags\_t}!configValueOutOfRange@{configValueOutOfRange}}
+\index{configValueOutOfRange@{configValueOutOfRange}!eventFlags\_t@{eventFlags\_t}}
+\doxysubsubsection{\texorpdfstring{configValueOutOfRange}{configValueOutOfRange}}
+{\footnotesize\ttfamily \mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}} config\+Value\+Out\+Of\+Range}
+
+
+
+Definition at line 30 of file protocol.\+h.
+
+\mbox{\Hypertarget{unionevent_flags__t_a52d3d197a6cf43c5c1a311c90a2efe16}\label{unionevent_flags__t_a52d3d197a6cf43c5c1a311c90a2efe16}} 
+\index{eventFlags\_t@{eventFlags\_t}!fanFault@{fanFault}}
+\index{fanFault@{fanFault}!eventFlags\_t@{eventFlags\_t}}
+\doxysubsubsection{\texorpdfstring{fanFault}{fanFault}}
+{\footnotesize\ttfamily \mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}} fan\+Fault}
+
+
+
+Definition at line 27 of file protocol.\+h.
+
+\mbox{\Hypertarget{unionevent_flags__t_a773b39d480759f67926cb18ae2219281}\label{unionevent_flags__t_a773b39d480759f67926cb18ae2219281}} 
+\index{eventFlags\_t@{eventFlags\_t}!flags@{flags}}
+\index{flags@{flags}!eventFlags\_t@{eventFlags\_t}}
+\doxysubsubsection{\texorpdfstring{flags}{flags}}
+{\footnotesize\ttfamily \mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}} flags}
+
+
+
+Definition at line 33 of file protocol.\+h.
+
+\mbox{\Hypertarget{unionevent_flags__t_a9e2392c437faa1eb62dca796e699bc61}\label{unionevent_flags__t_a9e2392c437faa1eb62dca796e699bc61}} 
+\index{eventFlags\_t@{eventFlags\_t}!highBatteryTempFault@{highBatteryTempFault}}
+\index{highBatteryTempFault@{highBatteryTempFault}!eventFlags\_t@{eventFlags\_t}}
+\doxysubsubsection{\texorpdfstring{highBatteryTempFault}{highBatteryTempFault}}
+{\footnotesize\ttfamily \mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}} high\+Battery\+Temp\+Fault}
+
+
+
+Definition at line 17 of file protocol.\+h.
+
+\mbox{\Hypertarget{unionevent_flags__t_a344506f860c9bf42c8879ac1a15d5200}\label{unionevent_flags__t_a344506f860c9bf42c8879ac1a15d5200}} 
+\index{eventFlags\_t@{eventFlags\_t}!highDischargeCurrentFault@{highDischargeCurrentFault}}
+\index{highDischargeCurrentFault@{highDischargeCurrentFault}!eventFlags\_t@{eventFlags\_t}}
+\doxysubsubsection{\texorpdfstring{highDischargeCurrentFault}{highDischargeCurrentFault}}
+{\footnotesize\ttfamily \mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}} high\+Discharge\+Current\+Fault}
+
+
+
+Definition at line 16 of file protocol.\+h.
+
+\mbox{\Hypertarget{unionevent_flags__t_afcec8126ab40e9c98456530384bb26a8}\label{unionevent_flags__t_afcec8126ab40e9c98456530384bb26a8}} 
+\index{eventFlags\_t@{eventFlags\_t}!highHeatSinkTemp@{highHeatSinkTemp}}
+\index{highHeatSinkTemp@{highHeatSinkTemp}!eventFlags\_t@{eventFlags\_t}}
+\doxysubsubsection{\texorpdfstring{highHeatSinkTemp}{highHeatSinkTemp}}
+{\footnotesize\ttfamily \mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}} high\+Heat\+Sink\+Temp}
+
+
+
+Definition at line 26 of file protocol.\+h.
+
+\mbox{\Hypertarget{unionevent_flags__t_aebbef41571c4f0073d7a64c0d4cb0e21}\label{unionevent_flags__t_aebbef41571c4f0073d7a64c0d4cb0e21}} 
+\index{eventFlags\_t@{eventFlags\_t}!highOutCurrentFault@{highOutCurrentFault}}
+\index{highOutCurrentFault@{highOutCurrentFault}!eventFlags\_t@{eventFlags\_t}}
+\doxysubsubsection{\texorpdfstring{highOutCurrentFault}{highOutCurrentFault}}
+{\footnotesize\ttfamily \mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}} high\+Out\+Current\+Fault}
+
+
+
+Definition at line 15 of file protocol.\+h.
+
+\mbox{\Hypertarget{unionevent_flags__t_ace33bff59b8f416b286c92c1e5c5a5df}\label{unionevent_flags__t_ace33bff59b8f416b286c92c1e5c5a5df}} 
+\index{eventFlags\_t@{eventFlags\_t}!highOutCurrentShutdown@{highOutCurrentShutdown}}
+\index{highOutCurrentShutdown@{highOutCurrentShutdown}!eventFlags\_t@{eventFlags\_t}}
+\doxysubsubsection{\texorpdfstring{highOutCurrentShutdown}{highOutCurrentShutdown}}
+{\footnotesize\ttfamily \mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}} high\+Out\+Current\+Shutdown}
+
+
+
+Definition at line 24 of file protocol.\+h.
+
+\mbox{\Hypertarget{unionevent_flags__t_a01984b86cdb266172fdeadfa33768ddb}\label{unionevent_flags__t_a01984b86cdb266172fdeadfa33768ddb}} 
+\index{eventFlags\_t@{eventFlags\_t}!highOutVoltFault@{highOutVoltFault}}
+\index{highOutVoltFault@{highOutVoltFault}!eventFlags\_t@{eventFlags\_t}}
+\doxysubsubsection{\texorpdfstring{highOutVoltFault}{highOutVoltFault}}
+{\footnotesize\ttfamily \mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}} high\+Out\+Volt\+Fault}
+
+
+
+Definition at line 14 of file protocol.\+h.
+
+\mbox{\Hypertarget{unionevent_flags__t_a1451ae5a34d01f7a2001e42396f47693}\label{unionevent_flags__t_a1451ae5a34d01f7a2001e42396f47693}} 
+\index{eventFlags\_t@{eventFlags\_t}!highOutVoltShutdown@{highOutVoltShutdown}}
+\index{highOutVoltShutdown@{highOutVoltShutdown}!eventFlags\_t@{eventFlags\_t}}
+\doxysubsubsection{\texorpdfstring{highOutVoltShutdown}{highOutVoltShutdown}}
+{\footnotesize\ttfamily \mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}} high\+Out\+Volt\+Shutdown}
+
+
+
+Definition at line 25 of file protocol.\+h.
+
+\mbox{\Hypertarget{unionevent_flags__t_ae099fcad746105bbbc8467e00e95cb43}\label{unionevent_flags__t_ae099fcad746105bbbc8467e00e95cb43}} 
+\index{eventFlags\_t@{eventFlags\_t}!highPVCurrentShutdown@{highPVCurrentShutdown}}
+\index{highPVCurrentShutdown@{highPVCurrentShutdown}!eventFlags\_t@{eventFlags\_t}}
+\doxysubsubsection{\texorpdfstring{highPVCurrentShutdown}{highPVCurrentShutdown}}
+{\footnotesize\ttfamily \mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}} high\+P\+V\+Current\+Shutdown}
+
+
+
+Definition at line 22 of file protocol.\+h.
+
+\mbox{\Hypertarget{unionevent_flags__t_aa94a13211a160b2da01fc74593c19f22}\label{unionevent_flags__t_aa94a13211a160b2da01fc74593c19f22}} 
+\index{eventFlags\_t@{eventFlags\_t}!highPVVoltShutdown@{highPVVoltShutdown}}
+\index{highPVVoltShutdown@{highPVVoltShutdown}!eventFlags\_t@{eventFlags\_t}}
+\doxysubsubsection{\texorpdfstring{highPVVoltShutdown}{highPVVoltShutdown}}
+{\footnotesize\ttfamily \mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}} high\+P\+V\+Volt\+Shutdown}
+
+
+
+Definition at line 23 of file protocol.\+h.
+
+\mbox{\Hypertarget{unionevent_flags__t_aa7d16ef1dad7258656d743676ab9c4bf}\label{unionevent_flags__t_aa7d16ef1dad7258656d743676ab9c4bf}} 
+\index{eventFlags\_t@{eventFlags\_t}!inputBreakerOpen@{inputBreakerOpen}}
+\index{inputBreakerOpen@{inputBreakerOpen}!eventFlags\_t@{eventFlags\_t}}
+\doxysubsubsection{\texorpdfstring{inputBreakerOpen}{inputBreakerOpen}}
+{\footnotesize\ttfamily \mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}} input\+Breaker\+Open}
+
+
+
+Definition at line 18 of file protocol.\+h.
+
+\mbox{\Hypertarget{unionevent_flags__t_a95b1a168116a616bcd47dfc6365d1655}\label{unionevent_flags__t_a95b1a168116a616bcd47dfc6365d1655}} 
+\index{eventFlags\_t@{eventFlags\_t}!logFull@{logFull}}
+\index{logFull@{logFull}!eventFlags\_t@{eventFlags\_t}}
+\doxysubsubsection{\texorpdfstring{logFull}{logFull}}
+{\footnotesize\ttfamily \mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}} log\+Full}
+
+
+
+Definition at line 28 of file protocol.\+h.
+
+\mbox{\Hypertarget{unionevent_flags__t_a23ac379f6064cf4c83f2a41e757fcb14}\label{unionevent_flags__t_a23ac379f6064cf4c83f2a41e757fcb14}} 
+\index{eventFlags\_t@{eventFlags\_t}!lowOutVoltFault@{lowOutVoltFault}}
+\index{lowOutVoltFault@{lowOutVoltFault}!eventFlags\_t@{eventFlags\_t}}
+\doxysubsubsection{\texorpdfstring{lowOutVoltFault}{lowOutVoltFault}}
+{\footnotesize\ttfamily \mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}} low\+Out\+Volt\+Fault}
+
+
+
+Definition at line 12 of file protocol.\+h.
+
+\mbox{\Hypertarget{unionevent_flags__t_ae3e1477d914b15568d0508ed5c49ecb9}\label{unionevent_flags__t_ae3e1477d914b15568d0508ed5c49ecb9}} 
+\index{eventFlags\_t@{eventFlags\_t}!lowOutVoltGenSet@{lowOutVoltGenSet}}
+\index{lowOutVoltGenSet@{lowOutVoltGenSet}!eventFlags\_t@{eventFlags\_t}}
+\doxysubsubsection{\texorpdfstring{lowOutVoltGenSet}{lowOutVoltGenSet}}
+{\footnotesize\ttfamily \mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}} low\+Out\+Volt\+Gen\+Set}
+
+
+
+Definition at line 13 of file protocol.\+h.
+
+\mbox{\Hypertarget{unionevent_flags__t_ad4e1141ad572cdc700689edf1246b196}\label{unionevent_flags__t_ad4e1141ad572cdc700689edf1246b196}} 
+\index{eventFlags\_t@{eventFlags\_t}!lowOutVoltWarn@{lowOutVoltWarn}}
+\index{lowOutVoltWarn@{lowOutVoltWarn}!eventFlags\_t@{eventFlags\_t}}
+\doxysubsubsection{\texorpdfstring{lowOutVoltWarn}{lowOutVoltWarn}}
+{\footnotesize\ttfamily \mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}} low\+Out\+Volt\+Warn}
+
+
+
+Definition at line 11 of file protocol.\+h.
+
+\mbox{\Hypertarget{unionevent_flags__t_a777424af149a45314bfe5b5f5c04f465}\label{unionevent_flags__t_a777424af149a45314bfe5b5f5c04f465}} 
+\index{eventFlags\_t@{eventFlags\_t}!negativePVCurrentSutdown@{negativePVCurrentSutdown}}
+\index{negativePVCurrentSutdown@{negativePVCurrentSutdown}!eventFlags\_t@{eventFlags\_t}}
+\doxysubsubsection{\texorpdfstring{negativePVCurrentSutdown}{negativePVCurrentSutdown}}
+{\footnotesize\ttfamily \mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}} negative\+P\+V\+Current\+Sutdown}
+
+
+
+Definition at line 21 of file protocol.\+h.
+
+\mbox{\Hypertarget{unionevent_flags__t_aea83bd0e8cc45e2df5028f335e815b19}\label{unionevent_flags__t_aea83bd0e8cc45e2df5028f335e815b19}} 
+\index{eventFlags\_t@{eventFlags\_t}!outputBreakerOpen@{outputBreakerOpen}}
+\index{outputBreakerOpen@{outputBreakerOpen}!eventFlags\_t@{eventFlags\_t}}
+\doxysubsubsection{\texorpdfstring{outputBreakerOpen}{outputBreakerOpen}}
+{\footnotesize\ttfamily \mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}} output\+Breaker\+Open}
+
+
+
+Definition at line 19 of file protocol.\+h.
+
+\mbox{\Hypertarget{unionevent_flags__t_a8b3f3418e850d9feb3e24054dc94806e}\label{unionevent_flags__t_a8b3f3418e850d9feb3e24054dc94806e}} 
+\index{eventFlags\_t@{eventFlags\_t}!solarPanelMissing@{solarPanelMissing}}
+\index{solarPanelMissing@{solarPanelMissing}!eventFlags\_t@{eventFlags\_t}}
+\doxysubsubsection{\texorpdfstring{solarPanelMissing}{solarPanelMissing}}
+{\footnotesize\ttfamily \mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}} solar\+Panel\+Missing}
+
+
+
+Definition at line 29 of file protocol.\+h.
+
+\mbox{\Hypertarget{unionevent_flags__t_add564a0ba6c47f6db7e627a554e789b7}\label{unionevent_flags__t_add564a0ba6c47f6db7e627a554e789b7}} 
+\index{eventFlags\_t@{eventFlags\_t}!systemPower@{systemPower}}
+\index{systemPower@{systemPower}!eventFlags\_t@{eventFlags\_t}}
+\doxysubsubsection{\texorpdfstring{systemPower}{systemPower}}
+{\footnotesize\ttfamily \mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}} system\+Power}
+
+
+
+Definition at line 10 of file protocol.\+h.
+
+\mbox{\Hypertarget{unionevent_flags__t_a7db9d7722f89204e8d8c866412e031e2}\label{unionevent_flags__t_a7db9d7722f89204e8d8c866412e031e2}} 
+\index{eventFlags\_t@{eventFlags\_t}!tempSensorFault@{tempSensorFault}}
+\index{tempSensorFault@{tempSensorFault}!eventFlags\_t@{eventFlags\_t}}
+\doxysubsubsection{\texorpdfstring{tempSensorFault}{tempSensorFault}}
+{\footnotesize\ttfamily \mbox{\hyperlink{inttype_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}} temp\+Sensor\+Fault}
+
+
+
+Definition at line 20 of file protocol.\+h.
+
+
+
+The documentation for this union was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/user\+S\+S\+D/github/\+Charger6k\+W/\+M\+S\+P\+\_\+\+S\+T\+M\+\_\+9\+\_\+\+R\+D\+D\+\_\+plus\+M\+S\+P/\+M\+S\+P430/\mbox{\hyperlink{protocol_8h}{protocol.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,128 @@
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/stats.c" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/stats.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'stats\&.h'\fP
+.br
+\fC#include 'time\&.h'\fP
+.br
+\fC#include 'flash\&.h'\fP
+.br
+\fC#include 'meas\&.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBStat_\fP"
+.br
+.ti -1c
+.RI "struct \fBStatHelper_\fP"
+.br
+.ti -1c
+.RI "struct \fBStatistics\fP"
+.br
+.ti -1c
+.RI "struct \fBStats_\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBSTATS_MAX_ENTRIES\fP   366"
+.br
+.RI "#include 'comms\&.h' "
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct \fBStat_\fP \fBStatistic\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBStatHelper_\fP \fBStatHelper\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBStatistics\fP \fBStatistics\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBStats_\fP \fBStats\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBSTATS_initEntryAddr\fP ()"
+.br
+.ti -1c
+.RI "void \fBSTATS_tryNextEntry\fP ()"
+.br
+.ti -1c
+.RI "void \fBSTATS_init\fP ()"
+.br
+.ti -1c
+.RI "unsigned char \fBSTATS_getStatus\fP ()"
+.br
+.ti -1c
+.RI "void \fBSTATS_updateAll\fP ()"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBStats\fP \fBstats\fP"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define STATS_MAX_ENTRIES   366"
+
+.PP
+#include 'comms\&.h' 
+.PP
+Definition at line 18 of file stats\&.c\&.
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef struct \fBStatHelper_\fP \fBStatHelper\fP"
+
+.SS "typedef struct \fBStat_\fP \fBStatistic\fP"
+
+.SS "typedef struct \fBStatistics\fP \fBStatistics\fP"
+
+.SS "typedef struct \fBStats_\fP \fBStats\fP"
+
+.SH "Function Documentation"
+.PP 
+.SS "unsigned char STATS_getStatus (void)"
+
+.PP
+Definition at line 145 of file stats\&.c\&.
+.SS "void STATS_init (void)"
+
+.PP
+Definition at line 65 of file stats\&.c\&.
+.SS "int STATS_initEntryAddr ()"
+
+.SS "void STATS_tryNextEntry ()"
+
+.SS "void STATS_updateAll (void)"
+
+.PP
+Definition at line 199 of file stats\&.c\&.
+.SH "Variable Documentation"
+.PP 
+.SS "\fBStats\fP stats"
+
+.PP
+Definition at line 59 of file stats\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.

@@ -1,0 +1,324 @@
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/telem.h" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/telem.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'debug\&.h'\fP
+.br
+\fC#include 'time\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBTELEM_OUTVOLT_BIT\fP   0"
+.br
+.ti -1c
+.RI "#define \fBTELEM_OUTCURR_BIT\fP   1"
+.br
+.ti -1c
+.RI "#define \fBTELEM_OUTCHARGE_BIT\fP   2"
+.br
+.ti -1c
+.RI "#define \fBTELEM_PVVOLT_BIT\fP   3"
+.br
+.ti -1c
+.RI "#define \fBTELEM_PVCURR_BIT\fP   4"
+.br
+.ti -1c
+.RI "#define \fBTELEM_PVPOWER_BIT\fP   5"
+.br
+.ti -1c
+.RI "#define \fBTELEM_PVOCVOLT_BIT\fP   6"
+.br
+.ti -1c
+.RI "#define \fBTELEM_OUTVOLT_MASK\fP   ( 1 << \fBTELEM_OUTVOLT_BIT\fP )"
+.br
+.ti -1c
+.RI "#define \fBTELEM_OUTCURR_MASK\fP   ( 1 << \fBTELEM_OUTCURR_BIT\fP )"
+.br
+.ti -1c
+.RI "#define \fBTELEM_OUTCHARGE_MASK\fP   ( 1 << \fBTELEM_OUTCHARGE_BIT\fP )"
+.br
+.ti -1c
+.RI "#define \fBTELEM_PVVOLT_MASK\fP   ( 1 << \fBTELEM_PVVOLT_BIT\fP )"
+.br
+.ti -1c
+.RI "#define \fBTELEM_PVCURR_MASK\fP   ( 1 << \fBTELEM_PVCURR_BIT\fP )"
+.br
+.ti -1c
+.RI "#define \fBTELEM_PVPOWER_MASK\fP   ( 1 << \fBTELEM_PVPOWER_BIT\fP )"
+.br
+.ti -1c
+.RI "#define \fBTELEM_PVOCVOLT_MASK\fP   ( 1 << \fBTELEM_PVOCVOLT_BIT\fP )"
+.br
+.ti -1c
+.RI "#define \fBTELEM_OUTVOLT_SIZE\fP   2"
+.br
+.ti -1c
+.RI "#define \fBTELEM_OUTCURR_SIZE\fP   2"
+.br
+.ti -1c
+.RI "#define \fBTELEM_OUTCHARGE_SIZE\fP   4"
+.br
+.ti -1c
+.RI "#define \fBTELEM_PVVOLT_SIZE\fP   2"
+.br
+.ti -1c
+.RI "#define \fBTELEM_PVCURR_SIZE\fP   2"
+.br
+.ti -1c
+.RI "#define \fBTELEM_PVPOWER_SIZE\fP   2"
+.br
+.ti -1c
+.RI "#define \fBTELEM_PVOCVOLT_SIZE\fP   2"
+.br
+.ti -1c
+.RI "#define \fBTELEM_MAX_SIZE\fP"
+.br
+.ti -1c
+.RI "#define \fBTELEM_NUM_CHANNELS\fP   ( \fBTELEM_PVOCVOLT_BIT\fP + 1 )"
+.br
+.ti -1c
+.RI "#define \fBTELEM_BASE_PERIOD_MS\fP   200"
+.br
+.ti -1c
+.RI "#define \fBTELEM_PERIOD_NUM\fP   ( \fBTELEM_PERIOD_END\fP \- \fBTELEM_PERIOD_START\fP )"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef enum \fBTELEM_SamplePeriod_\fP \fBTELEM_SamplePeriod\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBTELEM_SamplePeriod_\fP { \fBTELEM_PERIOD_START\fP = 0, \fBTELEM_PERIOD_200MS\fP = 0, \fBTELEM_PERIOD_1S\fP, \fBTELEM_PERIOD_10S\fP, \fBTELEM_PERIOD_1MIN\fP, \fBTELEM_PERIOD_10MIN\fP, \fBTELEM_PERIOD_1H\fP, \fBTELEM_PERIOD_END\fP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBTELEM_init\fP (void)"
+.br
+.ti -1c
+.RI "void \fBTELEM_timeHasUpdated\fP (void)"
+.br
+.ti -1c
+.RI "int \fBTELEM_switchToNextSector\fP (void)"
+.br
+.ti -1c
+.RI "unsigned char \fBTELEM_getStatus\fP (void)"
+.br
+.ti -1c
+.RI "int \fBTELEM_isFull\fP (void)"
+.br
+.ti -1c
+.RI "void \fBTELEM_eraseStarted\fP (void)"
+.br
+.ti -1c
+.RI "void \fBTELEM_eraseDoneCallback\fP (int retVal)"
+.br
+.ti -1c
+.RI "unsigned int \fBTELEM_getMostRecentBlock\fP (void)"
+.br
+.ti -1c
+.RI "unsigned int \fBTELEM_getNumBlocksByTime\fP (\fBTime\fP minTm)"
+.br
+.ti -1c
+.RI "unsigned long \fBTELEM_getTelemLen\fP (unsigned long blockAddr)"
+.br
+.ti -1c
+.RI "unsigned int \fBTELEM_getNumBlocks\fP (void)"
+.br
+.ti -1c
+.RI "int \fBTELEM_getIsReady\fP (void)"
+.br
+.ti -1c
+.RI "void \fBTELEM_logIfPeriodElapsed\fP (void)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define TELEM_BASE_PERIOD_MS   200"
+
+.PP
+Definition at line 48 of file telem\&.h\&.
+.SS "#define TELEM_MAX_SIZE"
+\fBValue:\fP
+.PP
+.nf
+                                      (       TELEM_OUTVOLT_SIZE + TELEM_OUTCURR_SIZE + TELEM_OUTCHARGE_SIZE \
+                                        +   TELEM_PVVOLT_SIZE + TELEM_PVCURR_SIZE + TELEM_PVPOWER_SIZE + TELEM_PVOCVOLT_SIZE )
+.fi
+.PP
+Definition at line 43 of file telem\&.h\&.
+.SS "#define TELEM_NUM_CHANNELS   ( \fBTELEM_PVOCVOLT_BIT\fP + 1 )"
+
+.PP
+Definition at line 46 of file telem\&.h\&.
+.SS "#define TELEM_OUTCHARGE_BIT   2"
+
+.PP
+Definition at line 21 of file telem\&.h\&.
+.SS "#define TELEM_OUTCHARGE_MASK   ( 1 << \fBTELEM_OUTCHARGE_BIT\fP )"
+
+.PP
+Definition at line 29 of file telem\&.h\&.
+.SS "#define TELEM_OUTCHARGE_SIZE   4"
+
+.PP
+Definition at line 38 of file telem\&.h\&.
+.SS "#define TELEM_OUTCURR_BIT   1"
+
+.PP
+Definition at line 20 of file telem\&.h\&.
+.SS "#define TELEM_OUTCURR_MASK   ( 1 << \fBTELEM_OUTCURR_BIT\fP )"
+
+.PP
+Definition at line 28 of file telem\&.h\&.
+.SS "#define TELEM_OUTCURR_SIZE   2"
+
+.PP
+Definition at line 37 of file telem\&.h\&.
+.SS "#define TELEM_OUTVOLT_BIT   0"
+
+.PP
+Definition at line 19 of file telem\&.h\&.
+.SS "#define TELEM_OUTVOLT_MASK   ( 1 << \fBTELEM_OUTVOLT_BIT\fP )"
+
+.PP
+Definition at line 27 of file telem\&.h\&.
+.SS "#define TELEM_OUTVOLT_SIZE   2"
+
+.PP
+Definition at line 36 of file telem\&.h\&.
+.SS "#define TELEM_PERIOD_NUM   ( \fBTELEM_PERIOD_END\fP \- \fBTELEM_PERIOD_START\fP )"
+
+.PP
+Definition at line 61 of file telem\&.h\&.
+.SS "#define TELEM_PVCURR_BIT   4"
+
+.PP
+Definition at line 23 of file telem\&.h\&.
+.SS "#define TELEM_PVCURR_MASK   ( 1 << \fBTELEM_PVCURR_BIT\fP )"
+
+.PP
+Definition at line 31 of file telem\&.h\&.
+.SS "#define TELEM_PVCURR_SIZE   2"
+
+.PP
+Definition at line 40 of file telem\&.h\&.
+.SS "#define TELEM_PVOCVOLT_BIT   6"
+
+.PP
+Definition at line 25 of file telem\&.h\&.
+.SS "#define TELEM_PVOCVOLT_MASK   ( 1 << \fBTELEM_PVOCVOLT_BIT\fP )"
+
+.PP
+Definition at line 33 of file telem\&.h\&.
+.SS "#define TELEM_PVOCVOLT_SIZE   2"
+
+.PP
+Definition at line 42 of file telem\&.h\&.
+.SS "#define TELEM_PVPOWER_BIT   5"
+
+.PP
+Definition at line 24 of file telem\&.h\&.
+.SS "#define TELEM_PVPOWER_MASK   ( 1 << \fBTELEM_PVPOWER_BIT\fP )"
+
+.PP
+Definition at line 32 of file telem\&.h\&.
+.SS "#define TELEM_PVPOWER_SIZE   2"
+
+.PP
+Definition at line 41 of file telem\&.h\&.
+.SS "#define TELEM_PVVOLT_BIT   3"
+
+.PP
+Definition at line 22 of file telem\&.h\&.
+.SS "#define TELEM_PVVOLT_MASK   ( 1 << \fBTELEM_PVVOLT_BIT\fP )"
+
+.PP
+Definition at line 30 of file telem\&.h\&.
+.SS "#define TELEM_PVVOLT_SIZE   2"
+
+.PP
+Definition at line 39 of file telem\&.h\&.
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef enum \fBTELEM_SamplePeriod_\fP \fBTELEM_SamplePeriod\fP"
+
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBTELEM_SamplePeriod_\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fITELEM_PERIOD_START \fP\fP
+.TP
+\fB\fITELEM_PERIOD_200MS \fP\fP
+.TP
+\fB\fITELEM_PERIOD_1S \fP\fP
+.TP
+\fB\fITELEM_PERIOD_10S \fP\fP
+.TP
+\fB\fITELEM_PERIOD_1MIN \fP\fP
+.TP
+\fB\fITELEM_PERIOD_10MIN \fP\fP
+.TP
+\fB\fITELEM_PERIOD_1H \fP\fP
+.TP
+\fB\fITELEM_PERIOD_END \fP\fP
+.PP
+Definition at line 50 of file telem\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "void TELEM_eraseDoneCallback (int retVal)"
+
+.SS "void TELEM_eraseStarted (void)"
+
+.SS "int TELEM_getIsReady (void)"
+
+.SS "unsigned int TELEM_getMostRecentBlock (void)"
+
+.SS "unsigned int TELEM_getNumBlocks (void)"
+
+.SS "unsigned int TELEM_getNumBlocksByTime (\fBTime\fP minTm)"
+
+.SS "unsigned char TELEM_getStatus (void)"
+
+.PP
+Definition at line 175 of file telem\&.c\&.
+.SS "unsigned long TELEM_getTelemLen (unsigned long blockAddr)"
+
+.SS "void TELEM_init (void)"
+
+.PP
+Definition at line 88 of file telem\&.c\&.
+.SS "int TELEM_isFull (void)"
+
+.PP
+Definition at line 180 of file telem\&.c\&.
+.SS "void TELEM_logIfPeriodElapsed (void)"
+
+.PP
+Definition at line 414 of file telem\&.c\&.
+.SS "int TELEM_switchToNextSector (void)"
+
+.SS "void TELEM_timeHasUpdated (void)"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.

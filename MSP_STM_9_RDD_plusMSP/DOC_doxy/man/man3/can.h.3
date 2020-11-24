@@ -1,0 +1,420 @@
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/can.h" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/can.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'Stm32f3xx\&.h'\fP
+.br
+\fC#include 'debug\&.h'\fP
+.br
+\fC#include 'util\&.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBCAN_TxBuffer_\fP"
+.br
+.ti -1c
+.RI "struct \fBCAN_Rx_\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBCAN_HB_ID\fP   0"
+.br
+.ti -1c
+.RI "#define \fBCAN_PV_MEAS_ID\fP   1"
+.br
+.ti -1c
+.RI "#define \fBCAN_OUT_MEAS_ID\fP   2"
+.br
+.ti -1c
+.RI "#define \fBCAN_OC_Q_MEAS_ID\fP   3"
+.br
+.ti -1c
+.RI "#define \fBCAN_POW_TEMPR_MEAS_ID\fP   4"
+.br
+.ti -1c
+.RI "#define \fBCAN_FLAG_SEND_ID\fP   5"
+.br
+.ti -1c
+.RI "#define \fBCAN_STATUS_ID\fP   6"
+.br
+.ti -1c
+.RI "#define \fBCAN_TIME_SEND_ID\fP   7"
+.br
+.ti -1c
+.RI "#define \fBCAN_P2P_REQ_ID\fP   18"
+.br
+.ti -1c
+.RI "#define \fBCAN_P2P_REPLY_ID\fP   19"
+.br
+.ti -1c
+.RI "#define \fBCAN_P2P_MOSI_ID\fP   20"
+.br
+.ti -1c
+.RI "#define \fBCAN_P2P_MISO_ID\fP   21"
+.br
+.ti -1c
+.RI "#define \fBCAN_BOOTLOAD_ID\fP   22"
+.br
+.ti -1c
+.RI "#define \fBCAN_RESET_ID\fP   23"
+.br
+.ti -1c
+.RI "#define \fBCAN_DEBUG_ID\fP   31"
+.br
+.ti -1c
+.RI "#define \fBCAN_BC_BASE\fP   0x760"
+.br
+.ti -1c
+.RI "#define \fBCAN_BC_TIME_ID\fP   1"
+.br
+.ti -1c
+.RI "#define \fBCAN_BC_OUTVOLT_CMD_ID\fP   2"
+.br
+.ti -1c
+.RI "#define \fBCAN_BC_REQID_ID\fP   3"
+.br
+.ti -1c
+.RI "#define \fBCAN_BC_ISSUEID_ID\fP   4"
+.br
+.ti -1c
+.RI "#define \fBCAN_ERROR\fP   0xFFFF"
+.br
+.ti -1c
+.RI "#define \fBCAN_MERROR\fP   0xFFFE"
+.br
+.ti -1c
+.RI "#define \fBCAN_WAKE\fP   0xFFFD"
+.br
+.ti -1c
+.RI "#define \fBCAN_RTR\fP   0xFFFC"
+.br
+.ti -1c
+.RI "#define \fBCAN_OK\fP   0x0001"
+.br
+.ti -1c
+.RI "#define \fBIS_CAN_INT\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef enum \fBCAN_TxBufferInd_\fP \fBCAN_TxBufferInd\fP"
+.br
+.ti -1c
+.RI "typedef enum \fBCAN_BaudRate_\fP \fBCAN_BaudRate\fP"
+.br
+.ti -1c
+.RI "typedef enum \fBCAN_TxBufferStatus_\fP \fBCAN_TxBufferStatus\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBCAN_TxBuffer_\fP \fBCAN_TxBuffer\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBCAN_Rx_\fP \fBCAN_Rx\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBCAN_TxBufferInd_\fP { \fBCAN_TxBufferInd_MIN\fP = 0, \fBCAN_HB_INDEX\fP = CAN_TxBufferInd_MIN, \fBCAN_BC_REQID_INDEX\fP, \fBCAN_DEBUG_INDEX\fP, \fBCAN_P2P_MISO_INDEX\fP, \fBCAN_P2P_REPLY_INDEX\fP, \fBCAN_FLAG_SEND_INDEX\fP, \fBCAN_BC_OUTVOLT_CMD_INDEX\fP, \fBCAN_PV_MEAS_INDEX\fP, \fBCAN_OUT_MEAS_INDEX\fP, \fBCAN_OC_Q_MEAS_INDEX\fP, \fBCAN_POW_TEMPR_MEAS_INDEX\fP, \fBCAN_TIME_SEND_INDEX\fP, \fBCAN_STATUS_INDEX\fP, \fBCAN_RESET_INDEX\fP, \fBCAN_TxBufferInd_MAX\fP = CAN_RESET_INDEX }"
+.br
+.ti -1c
+.RI "enum { \fBCAN_TxBufferInd_NUM\fP = (CAN_TxBufferInd_MAX - CAN_TxBufferInd_MIN) + 1, \fBFLAG_CODE_NUM\fP = (FLAG_CODE_MAX - FLAG_CODE_MIN) + 1, \fBStatId_NUM\fP = (StatId_MAX - StatId_MIN) + 1 }"
+.br
+.ti -1c
+.RI "enum \fBCAN_BaudRate_\fP { \fBBAUD_50\fP = 0, \fBBAUD_100\fP, \fBBAUD_125\fP, \fBBAUD_250\fP, \fBBAUD_500\fP, \fBBAUD_1000\fP }"
+.br
+.ti -1c
+.RI "enum \fBCAN_TxBufferStatus_\fP { \fBCAN_TXBUFFER_EMPTY\fP = 0, \fBCAN_TXBUFFER_WAITING\fP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBCAN_init\fP (unsigned long newBaseId)"
+.br
+.ti -1c
+.RI "void \fBCAN_receive\fP (void)"
+.br
+.ti -1c
+.RI "void \fBCAN_transmit\fP (void)"
+.br
+.ti -1c
+.RI "unsigned long \fBCAN_getBaseId\fP (void)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "unsigned long \fBCAN_txBufferAddr\fP [\fBCAN_TxBufferInd_NUM\fP]"
+.br
+.ti -1c
+.RI "unsigned int \fBCAN_status\fP"
+.br
+.ti -1c
+.RI "\fBCAN_TxBuffer\fP \fBCAN_txBuffer\fP [\fBCAN_TxBufferInd_NUM\fP]"
+.br
+.ti -1c
+.RI "\fBCAN_Rx\fP \fBCAN_rx\fP"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define CAN_BC_BASE   0x760"
+
+.PP
+Definition at line 66 of file can\&.h\&.
+.SS "#define CAN_BC_ISSUEID_ID   4"
+
+.PP
+Definition at line 70 of file can\&.h\&.
+.SS "#define CAN_BC_OUTVOLT_CMD_ID   2"
+
+.PP
+Definition at line 68 of file can\&.h\&.
+.SS "#define CAN_BC_REQID_ID   3"
+
+.PP
+Definition at line 69 of file can\&.h\&.
+.SS "#define CAN_BC_TIME_ID   1"
+
+.PP
+Definition at line 67 of file can\&.h\&.
+.SS "#define CAN_BOOTLOAD_ID   22"
+
+.PP
+Definition at line 61 of file can\&.h\&.
+.SS "#define CAN_DEBUG_ID   31"
+
+.PP
+Definition at line 63 of file can\&.h\&.
+.SS "#define CAN_ERROR   0xFFFF"
+
+.PP
+Definition at line 140 of file can\&.h\&.
+.SS "#define CAN_FLAG_SEND_ID   5"
+
+.PP
+Definition at line 49 of file can\&.h\&.
+.SS "#define CAN_HB_ID   0"
+
+.PP
+Definition at line 44 of file can\&.h\&.
+.SS "#define CAN_MERROR   0xFFFE"
+
+.PP
+Definition at line 141 of file can\&.h\&.
+.SS "#define CAN_OC_Q_MEAS_ID   3"
+
+.PP
+Definition at line 47 of file can\&.h\&.
+.SS "#define CAN_OK   0x0001"
+
+.PP
+Definition at line 144 of file can\&.h\&.
+.SS "#define CAN_OUT_MEAS_ID   2"
+
+.PP
+Definition at line 46 of file can\&.h\&.
+.SS "#define CAN_P2P_MISO_ID   21"
+
+.PP
+Definition at line 60 of file can\&.h\&.
+.SS "#define CAN_P2P_MOSI_ID   20"
+
+.PP
+Definition at line 59 of file can\&.h\&.
+.SS "#define CAN_P2P_REPLY_ID   19"
+
+.PP
+Definition at line 58 of file can\&.h\&.
+.SS "#define CAN_P2P_REQ_ID   18"
+
+.PP
+Definition at line 57 of file can\&.h\&.
+.SS "#define CAN_POW_TEMPR_MEAS_ID   4"
+
+.PP
+Definition at line 48 of file can\&.h\&.
+.SS "#define CAN_PV_MEAS_ID   1"
+
+.PP
+Definition at line 45 of file can\&.h\&.
+.SS "#define CAN_RESET_ID   23"
+
+.PP
+Definition at line 62 of file can\&.h\&.
+.SS "#define CAN_RTR   0xFFFC"
+
+.PP
+Definition at line 143 of file can\&.h\&.
+.SS "#define CAN_STATUS_ID   6"
+
+.PP
+Definition at line 50 of file can\&.h\&.
+.SS "#define CAN_TIME_SEND_ID   7"
+
+.PP
+Definition at line 51 of file can\&.h\&.
+.SS "#define CAN_WAKE   0xFFFD"
+
+.PP
+Definition at line 142 of file can\&.h\&.
+.SS "#define IS_CAN_INT"
+\fBValue:\fP
+.PP
+.nf
+                                      ((CAN->RF0R & CAN_RF0R_FULL0) | (CAN->RF1R & CAN_RF1R_FULL1) | \
+                                        (CAN->TSR & CAN_TSR_RQCP0) | (CAN->TSR & CAN_TSR_RQCP1) | \
+                                        (CAN->TSR & CAN_TSR_RQCP2) | (CAN->MSR & CAN_MSR_ERRI) | \
+                                        (CAN->MSR & CAN_MSR_WKUI))
+.fi
+.PP
+Definition at line 164 of file can\&.h\&.
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef enum \fBCAN_BaudRate_\fP \fBCAN_BaudRate\fP"
+
+.SS "typedef struct \fBCAN_Rx_\fP \fBCAN_Rx\fP"
+
+.SS "typedef struct \fBCAN_TxBuffer_\fP \fBCAN_TxBuffer\fP"
+
+.SS "typedef enum \fBCAN_TxBufferInd_\fP \fBCAN_TxBufferInd\fP"
+
+.SS "typedef enum \fBCAN_TxBufferStatus_\fP \fBCAN_TxBufferStatus\fP"
+
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICAN_TxBufferInd_NUM \fP\fP
+.TP
+\fB\fIFLAG_CODE_NUM \fP\fP
+.TP
+\fB\fIStatId_NUM \fP\fP
+.PP
+Definition at line 94 of file can\&.h\&.
+.SS "enum \fBCAN_BaudRate_\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIBAUD_50 \fP\fP
+.TP
+\fB\fIBAUD_100 \fP\fP
+.TP
+\fB\fIBAUD_125 \fP\fP
+.TP
+\fB\fIBAUD_250 \fP\fP
+.TP
+\fB\fIBAUD_500 \fP\fP
+.TP
+\fB\fIBAUD_1000 \fP\fP
+.PP
+Definition at line 101 of file can\&.h\&.
+.SS "enum \fBCAN_TxBufferInd_\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICAN_TxBufferInd_MIN \fP\fP
+.TP
+\fB\fICAN_HB_INDEX \fP\fP
+.TP
+\fB\fICAN_BC_REQID_INDEX \fP\fP
+.TP
+\fB\fICAN_DEBUG_INDEX \fP\fP
+.TP
+\fB\fICAN_P2P_MISO_INDEX \fP\fP
+.TP
+\fB\fICAN_P2P_REPLY_INDEX \fP\fP
+.TP
+\fB\fICAN_FLAG_SEND_INDEX \fP\fP
+.TP
+\fB\fICAN_BC_OUTVOLT_CMD_INDEX \fP\fP
+.TP
+\fB\fICAN_PV_MEAS_INDEX \fP\fP
+.TP
+\fB\fICAN_OUT_MEAS_INDEX \fP\fP
+.TP
+\fB\fICAN_OC_Q_MEAS_INDEX \fP\fP
+.TP
+\fB\fICAN_POW_TEMPR_MEAS_INDEX \fP\fP
+.TP
+\fB\fICAN_TIME_SEND_INDEX \fP\fP
+.TP
+\fB\fICAN_STATUS_INDEX \fP\fP
+.TP
+\fB\fICAN_RESET_INDEX \fP\fP
+.TP
+\fB\fICAN_TxBufferInd_MAX \fP\fP
+.PP
+Definition at line 73 of file can\&.h\&.
+.SS "enum \fBCAN_TxBufferStatus_\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICAN_TXBUFFER_EMPTY \fP\fP
+.TP
+\fB\fICAN_TXBUFFER_WAITING \fP\fP
+.PP
+Definition at line 111 of file can\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "unsigned long CAN_getBaseId (void)"
+
+.PP
+Definition at line 73 of file can\&.c\&.
+.SS "void CAN_init (unsigned long newBaseId)"
+
+.PP
+Definition at line 78 of file can\&.c\&.
+.SS "void CAN_receive (void)"
+
+.PP
+Definition at line 267 of file can\&.c\&.
+.SS "void CAN_transmit (void)"
+
+.PP
+Definition at line 427 of file can\&.c\&.
+.SH "Variable Documentation"
+.PP 
+.SS "\fBCAN_Rx\fP CAN_rx\fC [extern]\fP"
+
+.PP
+Definition at line 48 of file can\&.c\&.
+.SS "unsigned int CAN_status\fC [extern]\fP"
+
+.SS "\fBCAN_TxBuffer\fP CAN_txBuffer[\fBCAN_TxBufferInd_NUM\fP]\fC [extern]\fP"
+
+.PP
+Definition at line 47 of file can\&.c\&.
+.SS "unsigned long CAN_txBufferAddr[\fBCAN_TxBufferInd_NUM\fP]\fC [extern]\fP"
+
+.PP
+Definition at line 43 of file can\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.

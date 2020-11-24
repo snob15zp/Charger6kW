@@ -1,0 +1,41 @@
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/spi.h" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/spi.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'debug\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBSPI_init\fP (void)"
+.br
+.RI "#include <msp430x24x\&.h> "
+.ti -1c
+.RI "unsigned char \fBSPI_writeRead\fP (unsigned char byte)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void SPI_init (void)"
+
+.PP
+#include <msp430x24x\&.h> RDD OLD hardware UCB1CTL1 |= UCSWRST; // Set UCSWRST
+.PP
+RDD OLD hardware UCB1CTL0 = UCCKPH | UCMSB | UCMST; RDD OLD hardware UCB1CTL1 |= UCSSEL_2; RDD OLD hardware UCB1BR0 = 16; // 16 Mhz / 16 = 1 MHz? Doesn't seem to work at faster speeds??
+.PP
+RDD OLD hardware UCB1CTL1 &= ~( UCSWRST ); // Clear UCSWRST to enable SPI operation
+.PP
+Definition at line 15 of file spi\&.c\&.
+.SS "unsigned char SPI_writeRead (unsigned char byte)"
+RDD OLD hardware UCB1TXBUF = byte; // write the byte to be sent into the TXBUF RDD OLD hardware while ( ( UC1IFG & UCB1TXIFG ) == 0 ); // wait for the byte to be written out RDD OLD hardware while ( ( UC1IFG & UCB1RXIFG ) == 0 ); // wait for a byte to be read in RDD OLD hardware return ( UCB1RXBUF ); // return the recieved byte
+.PP
+Definition at line 26 of file spi\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.

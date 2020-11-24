@@ -1,0 +1,12 @@
+digraph "VAR_SAFETY_setLimits"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="VAR_SAFETY_setLimits",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="SAFETY_setLimitsHV",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$safety_8c.html#a45ac21912db5ff24183d7fe440cc1a5a",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="SAFETY_setLimitsMV",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$safety_8c.html#aad0d410848ba4b16f845889a6645b4f4",tooltip=" "];
+}

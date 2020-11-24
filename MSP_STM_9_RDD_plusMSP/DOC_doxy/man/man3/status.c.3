@@ -1,0 +1,132 @@
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/status.c" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/status.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'status\&.h'\fP
+.br
+\fC#include 'cfg\&.h'\fP
+.br
+\fC#include 'stats\&.h'\fP
+.br
+\fC#include 'flag\&.h'\fP
+.br
+\fC#include 'telem\&.h'\fP
+.br
+\fC#include 'comms\&.h'\fP
+.br
+\fC#include 'flash\&.h'\fP
+.br
+\fC#include 'ctrl\&.h'\fP
+.br
+\fC#include 'safety\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBSTATUS_NUM_FIELD_BITS\fP   4"
+.br
+.ti -1c
+.RI "#define \fBSTATUS_NUM_FIELDS\fP   ( 64 / \fBSTATUS_NUM_FIELD_BITS\fP )"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef unsigned char(* \fBStatusFunc\fP) ()"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBSTATUS_init\fP ()"
+.br
+.ti -1c
+.RI "void \fBSTATUS_update\fP ()"
+.br
+.ti -1c
+.RI "unsigned long long \fBSTATUS_getStatus\fP ()"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "const \fBStatusFunc\fP \fBstatusFuncs\fP [\fBSTATUS_NUM_FIELDS\fP]"
+.br
+.ti -1c
+.RI "unsigned long long \fBstatusBitfield\fP"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define STATUS_NUM_FIELD_BITS   4"
+
+.PP
+Definition at line 26 of file status\&.c\&.
+.SS "#define STATUS_NUM_FIELDS   ( 64 / \fBSTATUS_NUM_FIELD_BITS\fP )"
+
+.PP
+Definition at line 27 of file status\&.c\&.
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef unsigned char(* StatusFunc) ()"
+
+.PP
+Definition at line 22 of file status\&.c\&.
+.SH "Function Documentation"
+.PP 
+.SS "unsigned long long STATUS_getStatus ()"
+
+.PP
+Definition at line 68 of file status\&.c\&.
+.SS "void STATUS_init ()"
+
+.PP
+Definition at line 50 of file status\&.c\&.
+.SS "void STATUS_update ()"
+
+.PP
+Definition at line 55 of file status\&.c\&.
+.SH "Variable Documentation"
+.PP 
+.SS "unsigned long long statusBitfield"
+
+.PP
+Definition at line 48 of file status\&.c\&.
+.SS "const \fBStatusFunc\fP statusFuncs[\fBSTATUS_NUM_FIELDS\fP]"
+\fBInitial value:\fP
+.PP
+.nf
+= 
+{
+    &CFG_getStatus,
+    &STATS_getStatus,
+    &FLAG_getStatus,
+    &TELEM_getStatus,
+    &COMMS_getStatus,
+    &FLASH_getStatus,
+    &CTRL_getStatus,
+    &SAFETY_getStatus,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+}
+.fi
+.PP
+Definition at line 28 of file status\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.

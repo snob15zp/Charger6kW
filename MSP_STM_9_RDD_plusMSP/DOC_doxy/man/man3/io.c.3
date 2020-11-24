@@ -1,0 +1,274 @@
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/io.c" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/io.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'Stm32f3xx\&.h'\fP
+.br
+\fC#include 'variant\&.h'\fP
+.br
+\fC#include 'io\&.h'\fP
+.br
+\fC#include 'ctrl\&.h'\fP
+.br
+\fC#include 'flag\&.h'\fP
+.br
+\fC#include 'meas\&.h'\fP
+.br
+\fC#include 'safety\&.h'\fP
+.br
+\fC#include 'pwm\&.h'\fP
+.br
+\fC#include 'comms\&.h'\fP
+.br
+\fC#include 'cfg\&.h'\fP
+.br
+\fC#include 'adc\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBIO_FAN_PWM_PERIOD\fP   10"
+.br
+.ti -1c
+.RI "#define \fBIO_HEATSINK_TEMP_FAN_THRESHOLD\fP   31\&.0"
+.br
+.ti -1c
+.RI "#define \fBIO_HEATSINK_TEMP_FAN_RESET\fP   10\&.0"
+.br
+.ti -1c
+.RI "#define \fBIO_FAN_MINIMUM_CURRENT\fP   0\&.0"
+.br
+.ti -1c
+.RI "#define \fBIO_FAN_COUNT_TIMEOUT\fP   100"
+.br
+.ti -1c
+.RI "#define \fBIO_SYNCRECT_UPPER_THRESHOLD\fP   (10\&.0 / \fBMEAS_OUTCURR_BASE\fP)"
+.br
+.ti -1c
+.RI "#define \fBIO_SYNCRECT_LOWER_THRESHOLD\fP   (4\&.0 / \fBMEAS_OUTCURR_BASE\fP)"
+.br
+.ti -1c
+.RI "#define \fBIO_SYNCRECT_TIME_HYST_TICKS\fP   (unsigned long)( 1\&.0 * 1000000\&.0 / (float)\fBPWM_PERIOD_US\fP )"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBIO_init\fP (void)"
+.br
+.ti -1c
+.RI "void \fBIO_setFanDutyCycle\fP (unsigned int fanDuty)"
+.br
+.ti -1c
+.RI "int \fBIO_getOnOff\fP ()"
+.br
+.ti -1c
+.RI "int \fBIO_getGroundFault\fP ()"
+.br
+.ti -1c
+.RI "int \fBIO_getDigitalTemp\fP ()"
+.br
+.ti -1c
+.RI "int \fBIO_getIsSlave\fP ()"
+.br
+.ti -1c
+.RI "void \fBIO_setRelay\fP (unsigned long long bitfield)"
+.br
+.ti -1c
+.RI "void \fBIO_fanDrvPWM\fP ()"
+.br
+.ti -1c
+.RI "void \fBIO_fanSenseSpeed\fP ()"
+.br
+.ti -1c
+.RI "void \fBIO_fanSetSpeed\fP ()"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "unsigned int \fBfanPWMCounter\fP =0"
+.br
+.ti -1c
+.RI "unsigned int \fBfanDutyCompare\fP"
+.br
+.ti -1c
+.RI "floatValue_t \fBcalculatedValue\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBIO_pwmEnabled\fP"
+.br
+.ti -1c
+.RI "long \fBTicksUntilHiSideAllowed\fP"
+.br
+.ti -1c
+.RI "float \fBheatsinkTempFanHysThresh\fP = \fBIO_HEATSINK_TEMP_FAN_THRESHOLD\fP"
+.br
+.ti -1c
+.RI "int \fBfanFBCount1\fP"
+.br
+.ti -1c
+.RI "int \fBfanFBCount2\fP"
+.br
+.ti -1c
+.RI "int \fBprevFan2State\fP"
+.br
+.ti -1c
+.RI "int \fBfanFBTransition1\fP"
+.br
+.ti -1c
+.RI "int \fBfanFBTransition2\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBfanDriven\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBfanShutdown\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBfanRestartTimer\fP"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define IO_FAN_COUNT_TIMEOUT   100"
+
+.PP
+Definition at line 71 of file io\&.c\&.
+.SS "#define IO_FAN_MINIMUM_CURRENT   0\&.0"
+
+.PP
+Definition at line 66 of file io\&.c\&.
+.SS "#define IO_FAN_PWM_PERIOD   10"
+
+.PP
+Definition at line 55 of file io\&.c\&.
+.SS "#define IO_HEATSINK_TEMP_FAN_RESET   10\&.0"
+
+.PP
+Definition at line 61 of file io\&.c\&.
+.SS "#define IO_HEATSINK_TEMP_FAN_THRESHOLD   31\&.0"
+
+.PP
+Definition at line 60 of file io\&.c\&.
+.SS "#define IO_SYNCRECT_LOWER_THRESHOLD   (4\&.0 / \fBMEAS_OUTCURR_BASE\fP)"
+
+.PP
+Definition at line 74 of file io\&.c\&.
+.SS "#define IO_SYNCRECT_TIME_HYST_TICKS   (unsigned long)( 1\&.0 * 1000000\&.0 / (float)\fBPWM_PERIOD_US\fP )"
+
+.PP
+Definition at line 76 of file io\&.c\&.
+.SS "#define IO_SYNCRECT_UPPER_THRESHOLD   (10\&.0 / \fBMEAS_OUTCURR_BASE\fP)"
+
+.PP
+Definition at line 73 of file io\&.c\&.
+.SH "Function Documentation"
+.PP 
+.SS "void IO_fanDrvPWM (void)"
+
+.PP
+Definition at line 273 of file io\&.c\&.
+.SS "void IO_fanSenseSpeed (void)"
+
+.PP
+Definition at line 298 of file io\&.c\&.
+.SS "void IO_fanSetSpeed (void)"
+
+.PP
+Definition at line 329 of file io\&.c\&.
+.SS "int IO_getDigitalTemp (void)"
+
+.PP
+Definition at line 168 of file io\&.c\&.
+.SS "int IO_getGroundFault (void)"
+
+.PP
+Definition at line 162 of file io\&.c\&.
+.SS "int IO_getIsSlave (void)"
+
+.PP
+Definition at line 234 of file io\&.c\&.
+.SS "int IO_getOnOff (void)"
+
+.PP
+Definition at line 156 of file io\&.c\&.
+.SS "void IO_init (void)"
+
+.PP
+Definition at line 99 of file io\&.c\&.
+.SS "void IO_setFanDutyCycle (unsigned int fanDuty)"
+
+.PP
+Definition at line 146 of file io\&.c\&.
+.SS "void IO_setRelay (unsigned long long bitfield)"
+
+.PP
+Definition at line 244 of file io\&.c\&.
+.SH "Variable Documentation"
+.PP 
+.SS "floatValue_t calculatedValue\fC [extern]\fP"
+
+.SS "unsigned int fanDriven"
+
+.PP
+Definition at line 95 of file io\&.c\&.
+.SS "unsigned int fanDutyCompare"
+
+.PP
+Definition at line 80 of file io\&.c\&.
+.SS "int fanFBCount1"
+
+.PP
+Definition at line 88 of file io\&.c\&.
+.SS "int fanFBCount2"
+
+.PP
+Definition at line 90 of file io\&.c\&.
+.SS "int fanFBTransition1"
+
+.PP
+Definition at line 93 of file io\&.c\&.
+.SS "int fanFBTransition2"
+
+.PP
+Definition at line 94 of file io\&.c\&.
+.SS "unsigned int fanPWMCounter =0"
+
+.PP
+Definition at line 79 of file io\&.c\&.
+.SS "unsigned int fanRestartTimer"
+
+.PP
+Definition at line 97 of file io\&.c\&.
+.SS "unsigned int fanShutdown"
+
+.PP
+Definition at line 96 of file io\&.c\&.
+.SS "float heatsinkTempFanHysThresh = \fBIO_HEATSINK_TEMP_FAN_THRESHOLD\fP"
+
+.PP
+Definition at line 86 of file io\&.c\&.
+.SS "unsigned int IO_pwmEnabled"
+
+.PP
+Definition at line 84 of file io\&.c\&.
+.SS "int prevFan2State"
+
+.PP
+Definition at line 91 of file io\&.c\&.
+.SS "long TicksUntilHiSideAllowed"
+
+.PP
+Definition at line 85 of file io\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.

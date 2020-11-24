@@ -1,0 +1,210 @@
+.TH "Ctrl_" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Ctrl_
+.SH SYNOPSIS
+.br
+.PP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "unsigned long \fBtickCount\fP"
+.br
+.ti -1c
+.RI "\fBIq\fP \fBpvVoltFrac\fP"
+.br
+.ti -1c
+.RI "\fBIq\fP \fBpvVinLim\fP"
+.br
+.ti -1c
+.RI "\fBIq\fP \fBpvVinLimInt\fP"
+.br
+.ti -1c
+.RI "int \fBpvVinLimSat\fP"
+.br
+.ti -1c
+.RI "float \fBtmpCmpV\fP"
+.br
+.ti -1c
+.RI "\fBTimeShort\fP \fBbulkTime\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBflsetFloat\fP"
+.br
+.ti -1c
+.RI "\fBIq\fP \fBfltrimDutyFloat\fP"
+.br
+.ti -1c
+.RI "\fBIq\fP \fBfloatVolt\fP"
+.br
+.ti -1c
+.RI "\fBIq\fP \fBfltrimDutyBulk\fP"
+.br
+.ti -1c
+.RI "\fBIq\fP \fBbulkVolt\fP"
+.br
+.ti -1c
+.RI "\fBIq\fP \fBbulkResetVolt\fP"
+.br
+.ti -1c
+.RI "float \fBoutVoltSetpoint\fP"
+.br
+.ti -1c
+.RI "int \fBoutVoltSetpointValid\fP"
+.br
+.ti -1c
+.RI "unsigned char \fBmode\fP"
+.br
+.ti -1c
+.RI "unsigned char \fBsetpointIsBulk\fP"
+.br
+.ti -1c
+.RI "\fBTimeShort\fP \fBtimeAtSetpoint\fP"
+.br
+.ti -1c
+.RI "\fBTimeShort\fP \fBnotBulkTime\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBonOffTickCount\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBonOffDelayTickCount\fP"
+.br
+.ti -1c
+.RI "int \fBpwmDisabledByOnOff\fP"
+.br
+.ti -1c
+.RI "int \fBpwmChangeState\fP"
+.br
+.ti -1c
+.RI "int \fBpwmRemoteShutdown\fP"
+.br
+.ti -1c
+.RI "int \fBpwmGroundFaultShutdown\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBgroundFaultTickCount\fP"
+.br
+.ti -1c
+.RI "int \fBpwmShutdown\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 129 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SH "Field Documentation"
+.PP 
+.SS "\fBIq\fP bulkResetVolt"
+
+.PP
+Definition at line 144 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "\fBTimeShort\fP bulkTime"
+
+.PP
+Definition at line 137 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "\fBIq\fP bulkVolt"
+
+.PP
+Definition at line 143 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "\fBIq\fP floatVolt"
+
+.PP
+Definition at line 140 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "unsigned int flsetFloat"
+
+.PP
+Definition at line 138 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "\fBIq\fP fltrimDutyBulk"
+
+.PP
+Definition at line 142 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "\fBIq\fP fltrimDutyFloat"
+
+.PP
+Definition at line 139 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "unsigned int groundFaultTickCount"
+
+.PP
+Definition at line 157 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "unsigned char mode"
+
+.PP
+Definition at line 147 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "\fBTimeShort\fP notBulkTime"
+
+.PP
+Definition at line 150 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "unsigned int onOffDelayTickCount"
+
+.PP
+Definition at line 152 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "unsigned int onOffTickCount"
+
+.PP
+Definition at line 151 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "float outVoltSetpoint"
+
+.PP
+Definition at line 145 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "int outVoltSetpointValid"
+
+.PP
+Definition at line 146 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "\fBIq\fP pvVinLim"
+
+.PP
+Definition at line 133 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "\fBIq\fP pvVinLimInt"
+
+.PP
+Definition at line 134 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "int pvVinLimSat"
+
+.PP
+Definition at line 135 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "\fBIq\fP pvVoltFrac"
+
+.PP
+Definition at line 132 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "int pwmChangeState"
+
+.PP
+Definition at line 154 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "int pwmDisabledByOnOff"
+
+.PP
+Definition at line 153 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "int pwmGroundFaultShutdown"
+
+.PP
+Definition at line 156 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "int pwmRemoteShutdown"
+
+.PP
+Definition at line 155 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "int pwmShutdown"
+
+.PP
+Definition at line 158 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "unsigned char setpointIsBulk"
+
+.PP
+Definition at line 148 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "unsigned long tickCount"
+
+.PP
+Definition at line 131 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "\fBTimeShort\fP timeAtSetpoint"
+
+.PP
+Definition at line 149 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+.SS "float tmpCmpV"
+
+.PP
+Definition at line 136 of file ctrl (Конфликтующая копия с компьютера Nsel 2020\-08\-03)\&.c\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.

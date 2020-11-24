@@ -1,0 +1,172 @@
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/stats.h" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/stats.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'debug\&.h'\fP
+.br
+\fC#include 'iqmath\&.h'\fP
+.br
+
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef enum \fBStatId_\fP \fBStatId\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBStatId_\fP { \fBStatId_MIN\fP = 0, \fBOUT_VOLT\fP = StatId_MIN, \fBOUT_CURR\fP, \fBPV_VOLT\fP, \fBPV_CURR\fP, \fBPV_POWER\fP, \fBPV_OC_VOLT\fP, \fBStatId_MAX\fP = PV_OC_VOLT }"
+.br
+.ti -1c
+.RI "enum { \fBCAN_TxBufferInd_NUM\fP = (CAN_TxBufferInd_MAX - CAN_TxBufferInd_MIN) + 1, \fBFLAG_CODE_NUM\fP = (FLAG_CODE_MAX - FLAG_CODE_MIN) + 1, \fBStatId_NUM\fP = (StatId_MAX - StatId_MIN) + 1 }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBSTATS_init\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSTATS_initStats\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSTATS_timeHasUpdated\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSTATS_eraseStarted\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSTATS_eraseDoneCallback\fP (int retVal)"
+.br
+.ti -1c
+.RI "unsigned char \fBSTATS_getStatus\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSTATS_resetAddr\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSTATS_queueNextEntry\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSTATS_updateCharge\fP (\fBIqLong\fP val)"
+.br
+.ti -1c
+.RI "void \fBSTATS_updateAll\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSTATS_updateStat\fP (\fBStatId\fP, \fBIq\fP val)"
+.br
+.ti -1c
+.RI "int \fBSTATS_saveToFlash\fP (void)"
+.br
+.ti -1c
+.RI "unsigned long \fBSTATS_getStatsLenTotal\fP (void)"
+.br
+.ti -1c
+.RI "unsigned char * \fBSTATS_getStatsMemAddr\fP (void)"
+.br
+.ti -1c
+.RI "unsigned int \fBSTATS_getCurrentBlock\fP (void)"
+.br
+.ti -1c
+.RI "unsigned long \fBSTATS_getStatsLen\fP (unsigned long blockAddr)"
+.br
+.ti -1c
+.RI "unsigned int \fBSTATS_getNumBlocks\fP (void)"
+.br
+.in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef enum \fBStatId_\fP \fBStatId\fP"
+
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICAN_TxBufferInd_NUM \fP\fP
+.TP
+\fB\fIFLAG_CODE_NUM \fP\fP
+.TP
+\fB\fIStatId_NUM \fP\fP
+.PP
+Definition at line 30 of file stats\&.h\&.
+.SS "enum \fBStatId_\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIStatId_MIN \fP\fP
+.TP
+\fB\fIOUT_VOLT \fP\fP
+.TP
+\fB\fIOUT_CURR \fP\fP
+.TP
+\fB\fIPV_VOLT \fP\fP
+.TP
+\fB\fIPV_CURR \fP\fP
+.TP
+\fB\fIPV_POWER \fP\fP
+.TP
+\fB\fIPV_OC_VOLT \fP\fP
+.TP
+\fB\fIStatId_MAX \fP\fP
+.PP
+Definition at line 19 of file stats\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "void STATS_eraseDoneCallback (int retVal)"
+
+.SS "void STATS_eraseStarted (void)"
+
+.SS "unsigned int STATS_getCurrentBlock (void)"
+
+.SS "unsigned int STATS_getNumBlocks (void)"
+
+.SS "unsigned long STATS_getStatsLen (unsigned long blockAddr)"
+
+.SS "unsigned long STATS_getStatsLenTotal (void)"
+
+.SS "unsigned char* STATS_getStatsMemAddr (void)"
+
+.SS "unsigned char STATS_getStatus (void)"
+
+.PP
+Definition at line 145 of file stats\&.c\&.
+.SS "void STATS_init (void)"
+
+.PP
+Definition at line 65 of file stats\&.c\&.
+.SS "void STATS_initStats (void)"
+
+.SS "void STATS_queueNextEntry (void)"
+
+.SS "void STATS_resetAddr (void)"
+
+.SS "int STATS_saveToFlash (void)"
+
+.SS "void STATS_timeHasUpdated (void)"
+
+.SS "void STATS_updateAll (void)"
+
+.PP
+Definition at line 199 of file stats\&.c\&.
+.SS "void STATS_updateCharge (\fBIqLong\fP val)"
+
+.SS "void STATS_updateStat (\fBStatId\fP, \fBIq\fP val)"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.

@@ -1,0 +1,128 @@
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/comms.h" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/comms.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'debug\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBCOMMS_init\fP ()"
+.br
+.ti -1c
+.RI "unsigned char \fBCOMMS_getStatus\fP ()"
+.br
+.ti -1c
+.RI "void \fBCOMMS_sendHeartbeat\fP ()"
+.br
+.ti -1c
+.RI "void \fBCOMMS_sendStatus\fP ()"
+.br
+.ti -1c
+.RI "void \fBCOMMS_sendPvMeas\fP ()"
+.br
+.ti -1c
+.RI "void \fBCOMMS_sendOutMeas\fP ()"
+.br
+.ti -1c
+.RI "void \fBCOMMS_sendOcQMeas\fP ()"
+.br
+.ti -1c
+.RI "void \fBCOMMS_sendPowTemprMeas\fP ()"
+.br
+.ti -1c
+.RI "void \fBCOMMS_sendTime\fP ()"
+.br
+.ti -1c
+.RI "void \fBCOMMS_sendFlag\fP ()"
+.br
+.ti -1c
+.RI "void \fBCOMMS_sendOutVoltCmd\fP ()"
+.br
+.ti -1c
+.RI "void \fBCOMMS_receive\fP ()"
+.br
+.ti -1c
+.RI "void \fBCOMMS_sendP2pPacket\fP ()"
+.br
+.ti -1c
+.RI "void \fBCOMMS_sendDebugPacket\fP (unsigned int val1, unsigned int val2, unsigned int val3, unsigned int val4)"
+.br
+.ti -1c
+.RI "void \fBCOMMS_sendDebugPacketU64\fP (unsigned long long val)"
+.br
+.ti -1c
+.RI "void \fBCOMMS_sendDebugPacketFloat\fP (float val1, float val2)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "unsigned char COMMS_getStatus ()"
+
+.PP
+Definition at line 111 of file comms\&.c\&.
+.SS "void COMMS_init ()"
+
+.PP
+Definition at line 106 of file comms\&.c\&.
+.SS "void COMMS_receive ()"
+
+.PP
+Definition at line 280 of file comms\&.c\&.
+.SS "void COMMS_sendDebugPacket (unsigned int val1, unsigned int val2, unsigned int val3, unsigned int val4)"
+
+.PP
+Definition at line 232 of file comms\&.c\&.
+.SS "void COMMS_sendDebugPacketFloat (float val1, float val2)"
+
+.SS "void COMMS_sendDebugPacketU64 (unsigned long long val)"
+
+.SS "void COMMS_sendFlag ()"
+
+.PP
+Definition at line 213 of file comms\&.c\&.
+.SS "void COMMS_sendHeartbeat ()"
+
+.PP
+Definition at line 116 of file comms\&.c\&.
+.SS "void COMMS_sendOcQMeas ()"
+
+.PP
+Definition at line 182 of file comms\&.c\&.
+.SS "void COMMS_sendOutMeas ()"
+
+.PP
+Definition at line 170 of file comms\&.c\&.
+.SS "void COMMS_sendOutVoltCmd ()"
+
+.PP
+Definition at line 222 of file comms\&.c\&.
+.SS "void COMMS_sendP2pPacket ()"
+
+.PP
+Definition at line 575 of file comms\&.c\&.
+.SS "void COMMS_sendPowTemprMeas ()"
+
+.PP
+Definition at line 194 of file comms\&.c\&.
+.SS "void COMMS_sendPvMeas ()"
+
+.PP
+Definition at line 158 of file comms\&.c\&.
+.SS "void COMMS_sendStatus ()"
+
+.PP
+Definition at line 139 of file comms\&.c\&.
+.SS "void COMMS_sendTime ()"
+
+.PP
+Definition at line 149 of file comms\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.

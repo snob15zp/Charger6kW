@@ -1,0 +1,575 @@
+\hypertarget{flag_8h}{}\doxysection{D\+:/user\+S\+S\+D/github/\+Charger6k\+W/\+M\+S\+P\+\_\+\+S\+T\+M\+\_\+9\+\_\+\+R\+D\+D\+\_\+plus\+M\+S\+P/\+M\+S\+P430/flag.h File Reference}
+\label{flag_8h}\index{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/flag.h@{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/flag.h}}
+{\ttfamily \#include \char`\"{}debug.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}iqmath.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}time.\+h\char`\"{}}\newline
+Include dependency graph for flag.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_flag_cfg_simple__}{Flag\+Cfg\+Simple\+\_\+}}
+\item 
+struct \mbox{\hyperlink{struct_flag_cfg_trig__}{Flag\+Cfg\+Trig\+\_\+}}
+\item 
+struct \mbox{\hyperlink{struct_flag_cfg_hold__}{Flag\+Cfg\+Hold\+\_\+}}
+\item 
+struct \mbox{\hyperlink{struct_flag_cfg_sched__}{Flag\+Cfg\+Sched\+\_\+}}
+\item 
+struct \mbox{\hyperlink{struct_flag_state__}{Flag\+State\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{flag_8h_a398b7df2d64e8a7666f2fce3c10f84a1}{F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+F\+I\+R\+S\+T\+\_\+\+SD}}~\mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a2d627d85b4c8866a339e9c50ed014724}{F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+P\+V\+C\+U\+R\+R\+\_\+\+N\+E\+G\+\_\+\+SD}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef unsigned long long \mbox{\hyperlink{flag_8h_a9206b3246d892fa62e8cd3bc727d3897}{Flag\+Bitfield}}
+\item 
+typedef enum \mbox{\hyperlink{flag_8h_afb16efb705559340bbe479f742e7a4c9}{F\+L\+A\+G\+\_\+\+Mode\+\_\+}} \mbox{\hyperlink{flag_8h_ab8b6b0c0a937f3f24ed0e9e305f886da}{F\+L\+A\+G\+\_\+\+Mode}}
+\item 
+typedef struct \mbox{\hyperlink{struct_flag_cfg_simple__}{Flag\+Cfg\+Simple\+\_\+}} \mbox{\hyperlink{flag_8h_addd94eadb39c679c997a5bd52ad6c395}{Flag\+Cfg\+Simple}}
+\item 
+typedef struct \mbox{\hyperlink{struct_flag_cfg_trig__}{Flag\+Cfg\+Trig\+\_\+}} \mbox{\hyperlink{flag_8h_a5b1f3b9a37d109ddc339652dbf48b164}{Flag\+Cfg\+Trig}}
+\item 
+typedef struct \mbox{\hyperlink{struct_flag_cfg_hold__}{Flag\+Cfg\+Hold\+\_\+}} \mbox{\hyperlink{flag_8h_a0e540fa49a81f0fc2b9c196b983b76d9}{Flag\+Cfg\+Hold}}
+\item 
+typedef struct \mbox{\hyperlink{struct_flag_cfg_sched__}{Flag\+Cfg\+Sched\+\_\+}} \mbox{\hyperlink{flag_8h_aa9ada3d7095821a2ed837bbcaa14cb74}{Flag\+Cfg\+Sched}}
+\item 
+typedef enum \mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648}{F\+L\+A\+G\+\_\+\+Code\+\_\+}} \mbox{\hyperlink{flag_8h_a0979fdb1457f3b974b2e4e22922839ba}{F\+L\+A\+G\+\_\+\+Code}}
+\item 
+typedef enum \mbox{\hyperlink{flag_8h_a2e99616a4cdcb67cd518be23c5bbdb30}{F\+L\+A\+G\+\_\+\+State\+\_\+}} \mbox{\hyperlink{flag_8h_a5175b1cbec917c270b76a468b7710d58}{F\+L\+A\+G\+\_\+\+State}}
+\item 
+typedef struct \mbox{\hyperlink{struct_flag_state__}{Flag\+State\+\_\+}} \mbox{\hyperlink{flag_8h_a9bbc6cdafe37aabb46c9eeefbdad3562}{Flag\+State}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{flag_8h_afb16efb705559340bbe479f742e7a4c9}{F\+L\+A\+G\+\_\+\+Mode\+\_\+}} \{ \mbox{\hyperlink{flag_8h_afb16efb705559340bbe479f742e7a4c9acb0408b9c4c36bddfdfeb1a95be62e80}{F\+L\+A\+G\+\_\+\+D\+I\+S\+A\+B\+L\+ED}} = 0, 
+\mbox{\hyperlink{flag_8h_afb16efb705559340bbe479f742e7a4c9a9575d2290e5a15e4f12e9da1490c9177}{F\+L\+A\+G\+\_\+\+L\+OG}}, 
+\mbox{\hyperlink{flag_8h_afb16efb705559340bbe479f742e7a4c9a1d27687d9c17100999f3cf7b178d7993}{F\+L\+A\+G\+\_\+\+L\+O\+G\+\_\+\+A\+N\+D\+\_\+\+R\+E\+L\+AY}}
+ \}
+\item 
+enum \mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648}{F\+L\+A\+G\+\_\+\+Code\+\_\+}} \{ \newline
+\mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648aca2bc7eade338f153cf3bcbcde04e07c}{F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+M\+IN}} = 0, 
+\mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648aeb3db3c64f20bc0c5739b9eb627bbb91}{F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+I\+N\+IT}} = F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+M\+IN, 
+\mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a636e271db8fc768aaed72f96ffe8cb94}{F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+L\+O\+W\+\_\+\+O\+U\+T\+\_\+\+V\+O\+L\+T\+\_\+\+W\+A\+RN}}, 
+\mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a2b50f4d54116de8c8f40317a5d2d217a}{F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+L\+O\+W\+\_\+\+O\+U\+T\+\_\+\+V\+O\+L\+T\+\_\+\+F\+A\+U\+LT}}, 
+\newline
+\mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648ac44e90119e0c271251614ffca092fa8d}{F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+L\+O\+W\+\_\+\+O\+U\+T\+\_\+\+V\+O\+L\+T\+\_\+\+G\+E\+N\+S\+ET}}, 
+\mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a04b70dc70399923a874a3ddac6757352}{F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+H\+I\+G\+H\+\_\+\+O\+U\+T\+\_\+\+V\+O\+L\+T\+\_\+\+F\+A\+U\+LT}}, 
+\mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a13bf85a1e5dc5321f9363170ef801d95}{F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+H\+I\+G\+H\+\_\+\+O\+U\+T\+\_\+\+C\+U\+R\+R\+\_\+\+F\+A\+U\+LT}}, 
+\mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648aeff1b15770d803d50df90ae862bf9b21}{F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+H\+I\+G\+H\+\_\+\+D\+I\+S\+\_\+\+C\+U\+R\+R\+\_\+\+F\+A\+U\+LT}}, 
+\newline
+\mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a0a1b0f71d883585a5c47382d1bc5fadf}{F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+H\+I\+G\+H\+\_\+\+T\+E\+M\+P\+\_\+\+F\+A\+U\+LT}}, 
+\mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a26f43827c14540c6a20606264598065f}{F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+I\+N\+\_\+\+B\+R\+E\+A\+K\+E\+R\+\_\+\+O\+P\+EN}}, 
+\mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a7e0c000dec72360452262043080c936e}{F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+O\+U\+T\+\_\+\+B\+R\+E\+A\+K\+E\+R\+\_\+\+O\+P\+EN}}, 
+\mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648acc3d873e9945b3b22486957e646f1154}{F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+T\+E\+M\+P\+\_\+\+S\+E\+N\+S\+E\+\_\+\+F\+A\+U\+LT}}, 
+\newline
+\mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a2d627d85b4c8866a339e9c50ed014724}{F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+P\+V\+C\+U\+R\+R\+\_\+\+N\+E\+G\+\_\+\+SD}}, 
+\mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a171b11a1837e0e5664e0f63419c82176}{F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+P\+V\+C\+U\+R\+R\+\_\+\+P\+O\+S\+\_\+\+SD}}, 
+\mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a33a0e1b21ef7c094bf0b8c90d4440009}{F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+P\+V\+V\+O\+L\+T\+\_\+\+SD}}, 
+\mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a64fa2fdf9dbc270c866afaa62fdbb163}{F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+O\+U\+T\+C\+U\+R\+R\+\_\+\+P\+O\+S\+\_\+\+SD}}, 
+\newline
+\mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648abdb6942b6118f2cd10d459596e9cfeff}{F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+O\+U\+T\+V\+O\+L\+T\+\_\+\+SD}}, 
+\mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a89a1aed68df43f99d4abe37f53929d88}{F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+C\+A\+S\+E\+T\+M\+P\+\_\+\+SD}}, 
+\mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a52377b099145ce38d59ec289fab45cd5}{F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+F\+A\+N\+\_\+\+SD}}, 
+\mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a01ae454c2d16e05aa462ce9c18dabeff}{F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+L\+O\+G\+\_\+\+F\+U\+LL}}, 
+\newline
+\mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a0e4ca2e664d2f791534be7858d1d919c}{F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+P\+A\+N\+E\+L\+\_\+\+M\+I\+S\+S\+I\+NG}}, 
+\mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a82eac092c8bd13b575315f4a73eaff71}{F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+B\+A\+D\+\_\+\+C\+F\+G\+\_\+\+R\+A\+N\+GE}}, 
+\mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648ab5ff19750eaf96cc6351e351e7760ebd}{F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+M\+AX}} = F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+B\+A\+D\+\_\+\+C\+F\+G\+\_\+\+R\+A\+N\+GE
+ \}
+\item 
+enum \{ \mbox{\hyperlink{can_8h_a06fc87d81c62e9abb8790b6e5713c55ba5f0b9c658a4afd7645a858b4e29a4648}{C\+A\+N\+\_\+\+Tx\+Buffer\+Ind\+\_\+\+N\+UM}} = (C\+A\+N\+\_\+\+Tx\+Buffer\+Ind\+\_\+\+M\+AX -\/ C\+A\+N\+\_\+\+Tx\+Buffer\+Ind\+\_\+\+M\+IN) + 1, 
+\mbox{\hyperlink{flag_8h_a06fc87d81c62e9abb8790b6e5713c55ba5a403bb281c1b231f0af904ce6e57c09}{F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+N\+UM}} = (F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+M\+AX -\/ F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+M\+IN) + 1, 
+\mbox{\hyperlink{stats_8h_a06fc87d81c62e9abb8790b6e5713c55badcf4fa6904791f9effad290ca89500f5}{Stat\+Id\+\_\+\+N\+UM}} = (Stat\+Id\+\_\+\+M\+AX -\/ Stat\+Id\+\_\+\+M\+IN) + 1
+ \}
+\item 
+enum \mbox{\hyperlink{flag_8h_a2e99616a4cdcb67cd518be23c5bbdb30}{F\+L\+A\+G\+\_\+\+State\+\_\+}} \{ \mbox{\hyperlink{flag_8h_a2e99616a4cdcb67cd518be23c5bbdb30a1d252f42799b35988e1736e0a039af1f}{F\+L\+A\+G\+\_\+\+S\+T\+A\+T\+E\+\_\+\+I\+N\+A\+C\+T\+I\+VE}}, 
+\mbox{\hyperlink{flag_8h_a2e99616a4cdcb67cd518be23c5bbdb30a178ff7a33b5ab9aa9e2a149ff144345d}{F\+L\+A\+G\+\_\+\+S\+T\+A\+T\+E\+\_\+\+A\+C\+T\+I\+VE}}, 
+\mbox{\hyperlink{flag_8h_a2e99616a4cdcb67cd518be23c5bbdb30a31b24f54094b6234ab30cf9ff2ccbfb5}{F\+L\+A\+G\+\_\+\+S\+T\+A\+T\+E\+\_\+\+I\+N\+A\+C\+T\+I\+V\+E\+\_\+\+H\+Y\+ST}}, 
+\mbox{\hyperlink{flag_8h_a2e99616a4cdcb67cd518be23c5bbdb30a224fdfbe9f3e65245f3cc8ed770a7077}{F\+L\+A\+G\+\_\+\+S\+T\+A\+T\+E\+\_\+\+A\+C\+T\+I\+V\+E\+\_\+\+H\+Y\+ST}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{flag_8h_af1e384a896629d690755efb5496005b6}{F\+L\+A\+G\+\_\+init}} (void)
+\item 
+void \mbox{\hyperlink{flag_8h_aca929b2ff9043d2ccb2ba63217d87094}{F\+L\+A\+G\+\_\+init\+Trigs}} (void)
+\item 
+void \mbox{\hyperlink{flag_8h_ac472ddbe41e156a7174f926287a43c4b}{F\+L\+A\+G\+\_\+time\+Has\+Updated}} (void)
+\item 
+unsigned char \mbox{\hyperlink{flag_8h_a4802475e4bd18405f54f989159673921}{F\+L\+A\+G\+\_\+get\+Status}} (void)
+\item 
+\mbox{\hyperlink{flag_8h_a9206b3246d892fa62e8cd3bc727d3897}{Flag\+Bitfield}} \mbox{\hyperlink{flag_8h_ab422bfe8ad33c4503144a508451cbb84}{F\+L\+A\+G\+\_\+get\+Flag\+Bitfield}} (void)
+\item 
+void \mbox{\hyperlink{flag_8h_ad8dd4c09516a95fabbf683abf17e4df3}{F\+L\+A\+G\+\_\+check\+All\+Flags}} (void)
+\item 
+int \mbox{\hyperlink{flag_8h_a05e46a08ca0eb3286e50c210b58f779e}{F\+L\+A\+G\+\_\+check\+Flag\+Trig}} (\mbox{\hyperlink{flag_8h_a9bbc6cdafe37aabb46c9eeefbdad3562}{Flag\+State}} $\ast$p\+State, \mbox{\hyperlink{flag_8h_a5b1f3b9a37d109ddc339652dbf48b164}{Flag\+Cfg\+Trig}} $\ast$p\+Cfg, \mbox{\hyperlink{flag_8h_a0979fdb1457f3b974b2e4e22922839ba}{F\+L\+A\+G\+\_\+\+Code}} code)
+\item 
+int \mbox{\hyperlink{flag_8h_ad7e060124da21f3ed10800be4f36a08b}{F\+L\+A\+G\+\_\+check\+Flag\+Hold}} (\mbox{\hyperlink{flag_8h_a9bbc6cdafe37aabb46c9eeefbdad3562}{Flag\+State}} $\ast$p\+State, \mbox{\hyperlink{flag_8h_a0e540fa49a81f0fc2b9c196b983b76d9}{Flag\+Cfg\+Hold}} $\ast$p\+Cfg, \mbox{\hyperlink{flag_8h_a0979fdb1457f3b974b2e4e22922839ba}{F\+L\+A\+G\+\_\+\+Code}} code)
+\item 
+int \mbox{\hyperlink{flag_8h_a4dd8d8002de067bab2d7b3e567d890e4}{F\+L\+A\+G\+\_\+check\+Flag\+Sched}} (\mbox{\hyperlink{flag_8h_a9bbc6cdafe37aabb46c9eeefbdad3562}{Flag\+State}} $\ast$p\+State, \mbox{\hyperlink{flag_8h_aa9ada3d7095821a2ed837bbcaa14cb74}{Flag\+Cfg\+Sched}} $\ast$p\+Cfg, \mbox{\hyperlink{flag_8h_a0979fdb1457f3b974b2e4e22922839ba}{F\+L\+A\+G\+\_\+\+Code}} code)
+\item 
+void \mbox{\hyperlink{flag_8h_aa1dbaf2631cf74d8be01d658469703bd}{F\+L\+A\+G\+\_\+log\+Flag}} (\mbox{\hyperlink{flag_8h_a0979fdb1457f3b974b2e4e22922839ba}{F\+L\+A\+G\+\_\+\+Code}} code, int is\+Active)
+\item 
+void \mbox{\hyperlink{flag_8h_ab3ff960238742c47ed6d322b0a18b8f2}{F\+L\+A\+G\+\_\+check\+And\+Write}} (void)
+\item 
+void \mbox{\hyperlink{flag_8h_a571475aba4730fc723b5a660f42b1900}{F\+L\+A\+G\+\_\+erase\+Started}} (void)
+\item 
+void \mbox{\hyperlink{flag_8h_a92cfe34941d4c588f3d8d4b58017a3b6}{F\+L\+A\+G\+\_\+erase\+Done\+Callback}} (int ret\+Val)
+\item 
+unsigned long \mbox{\hyperlink{flag_8h_aadf482ca38539792c16b2d96017140c6}{F\+L\+A\+G\+\_\+get\+Flag\+Len}} (void)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{flag_8h_a398b7df2d64e8a7666f2fce3c10f84a1}\label{flag_8h_a398b7df2d64e8a7666f2fce3c10f84a1}} 
+\index{flag.h@{flag.h}!FLAG\_CODE\_FIRST\_SD@{FLAG\_CODE\_FIRST\_SD}}
+\index{FLAG\_CODE\_FIRST\_SD@{FLAG\_CODE\_FIRST\_SD}!flag.h@{flag.h}}
+\doxysubsubsection{\texorpdfstring{FLAG\_CODE\_FIRST\_SD}{FLAG\_CODE\_FIRST\_SD}}
+{\footnotesize\ttfamily \#define F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+F\+I\+R\+S\+T\+\_\+\+SD~\mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a2d627d85b4c8866a339e9c50ed014724}{F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+P\+V\+C\+U\+R\+R\+\_\+\+N\+E\+G\+\_\+\+SD}}}
+
+
+
+Definition at line 89 of file flag.\+h.
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{flag_8h_a0979fdb1457f3b974b2e4e22922839ba}\label{flag_8h_a0979fdb1457f3b974b2e4e22922839ba}} 
+\index{flag.h@{flag.h}!FLAG\_Code@{FLAG\_Code}}
+\index{FLAG\_Code@{FLAG\_Code}!flag.h@{flag.h}}
+\doxysubsubsection{\texorpdfstring{FLAG\_Code}{FLAG\_Code}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648}{F\+L\+A\+G\+\_\+\+Code\+\_\+}} \mbox{\hyperlink{flag_8h_a0979fdb1457f3b974b2e4e22922839ba}{F\+L\+A\+G\+\_\+\+Code}}}
+
+\mbox{\Hypertarget{flag_8h_ab8b6b0c0a937f3f24ed0e9e305f886da}\label{flag_8h_ab8b6b0c0a937f3f24ed0e9e305f886da}} 
+\index{flag.h@{flag.h}!FLAG\_Mode@{FLAG\_Mode}}
+\index{FLAG\_Mode@{FLAG\_Mode}!flag.h@{flag.h}}
+\doxysubsubsection{\texorpdfstring{FLAG\_Mode}{FLAG\_Mode}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{flag_8h_afb16efb705559340bbe479f742e7a4c9}{F\+L\+A\+G\+\_\+\+Mode\+\_\+}} \mbox{\hyperlink{flag_8h_ab8b6b0c0a937f3f24ed0e9e305f886da}{F\+L\+A\+G\+\_\+\+Mode}}}
+
+\mbox{\Hypertarget{flag_8h_a5175b1cbec917c270b76a468b7710d58}\label{flag_8h_a5175b1cbec917c270b76a468b7710d58}} 
+\index{flag.h@{flag.h}!FLAG\_State@{FLAG\_State}}
+\index{FLAG\_State@{FLAG\_State}!flag.h@{flag.h}}
+\doxysubsubsection{\texorpdfstring{FLAG\_State}{FLAG\_State}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{flag_8h_a2e99616a4cdcb67cd518be23c5bbdb30}{F\+L\+A\+G\+\_\+\+State\+\_\+}} \mbox{\hyperlink{flag_8h_a5175b1cbec917c270b76a468b7710d58}{F\+L\+A\+G\+\_\+\+State}}}
+
+\mbox{\Hypertarget{flag_8h_a9206b3246d892fa62e8cd3bc727d3897}\label{flag_8h_a9206b3246d892fa62e8cd3bc727d3897}} 
+\index{flag.h@{flag.h}!FlagBitfield@{FlagBitfield}}
+\index{FlagBitfield@{FlagBitfield}!flag.h@{flag.h}}
+\doxysubsubsection{\texorpdfstring{FlagBitfield}{FlagBitfield}}
+{\footnotesize\ttfamily typedef unsigned long long \mbox{\hyperlink{flag_8h_a9206b3246d892fa62e8cd3bc727d3897}{Flag\+Bitfield}}}
+
+
+
+Definition at line 19 of file flag.\+h.
+
+\mbox{\Hypertarget{flag_8h_a0e540fa49a81f0fc2b9c196b983b76d9}\label{flag_8h_a0e540fa49a81f0fc2b9c196b983b76d9}} 
+\index{flag.h@{flag.h}!FlagCfgHold@{FlagCfgHold}}
+\index{FlagCfgHold@{FlagCfgHold}!flag.h@{flag.h}}
+\doxysubsubsection{\texorpdfstring{FlagCfgHold}{FlagCfgHold}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_flag_cfg_hold__}{Flag\+Cfg\+Hold\+\_\+}} \mbox{\hyperlink{flag_8h_a0e540fa49a81f0fc2b9c196b983b76d9}{Flag\+Cfg\+Hold}}}
+
+\mbox{\Hypertarget{flag_8h_aa9ada3d7095821a2ed837bbcaa14cb74}\label{flag_8h_aa9ada3d7095821a2ed837bbcaa14cb74}} 
+\index{flag.h@{flag.h}!FlagCfgSched@{FlagCfgSched}}
+\index{FlagCfgSched@{FlagCfgSched}!flag.h@{flag.h}}
+\doxysubsubsection{\texorpdfstring{FlagCfgSched}{FlagCfgSched}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_flag_cfg_sched__}{Flag\+Cfg\+Sched\+\_\+}} \mbox{\hyperlink{flag_8h_aa9ada3d7095821a2ed837bbcaa14cb74}{Flag\+Cfg\+Sched}}}
+
+\mbox{\Hypertarget{flag_8h_addd94eadb39c679c997a5bd52ad6c395}\label{flag_8h_addd94eadb39c679c997a5bd52ad6c395}} 
+\index{flag.h@{flag.h}!FlagCfgSimple@{FlagCfgSimple}}
+\index{FlagCfgSimple@{FlagCfgSimple}!flag.h@{flag.h}}
+\doxysubsubsection{\texorpdfstring{FlagCfgSimple}{FlagCfgSimple}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_flag_cfg_simple__}{Flag\+Cfg\+Simple\+\_\+}} \mbox{\hyperlink{flag_8h_addd94eadb39c679c997a5bd52ad6c395}{Flag\+Cfg\+Simple}}}
+
+\mbox{\Hypertarget{flag_8h_a5b1f3b9a37d109ddc339652dbf48b164}\label{flag_8h_a5b1f3b9a37d109ddc339652dbf48b164}} 
+\index{flag.h@{flag.h}!FlagCfgTrig@{FlagCfgTrig}}
+\index{FlagCfgTrig@{FlagCfgTrig}!flag.h@{flag.h}}
+\doxysubsubsection{\texorpdfstring{FlagCfgTrig}{FlagCfgTrig}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_flag_cfg_trig__}{Flag\+Cfg\+Trig\+\_\+}} \mbox{\hyperlink{flag_8h_a5b1f3b9a37d109ddc339652dbf48b164}{Flag\+Cfg\+Trig}}}
+
+\mbox{\Hypertarget{flag_8h_a9bbc6cdafe37aabb46c9eeefbdad3562}\label{flag_8h_a9bbc6cdafe37aabb46c9eeefbdad3562}} 
+\index{flag.h@{flag.h}!FlagState@{FlagState}}
+\index{FlagState@{FlagState}!flag.h@{flag.h}}
+\doxysubsubsection{\texorpdfstring{FlagState}{FlagState}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_flag_state__}{Flag\+State\+\_\+}} \mbox{\hyperlink{flag_8h_a9bbc6cdafe37aabb46c9eeefbdad3562}{Flag\+State}}}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{flag_8h_a06fc87d81c62e9abb8790b6e5713c55b}\label{flag_8h_a06fc87d81c62e9abb8790b6e5713c55b}} 
+\doxysubsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_TxBufferInd\_NUM@{CAN\_TxBufferInd\_NUM}!flag.h@{flag.h}}\index{flag.h@{flag.h}!CAN\_TxBufferInd\_NUM@{CAN\_TxBufferInd\_NUM}}}\mbox{\Hypertarget{flag_8h_a06fc87d81c62e9abb8790b6e5713c55ba5f0b9c658a4afd7645a858b4e29a4648}\label{flag_8h_a06fc87d81c62e9abb8790b6e5713c55ba5f0b9c658a4afd7645a858b4e29a4648}} 
+C\+A\+N\+\_\+\+Tx\+Buffer\+Ind\+\_\+\+N\+UM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_CODE\_NUM@{FLAG\_CODE\_NUM}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_CODE\_NUM@{FLAG\_CODE\_NUM}}}\mbox{\Hypertarget{flag_8h_a06fc87d81c62e9abb8790b6e5713c55ba5a403bb281c1b231f0af904ce6e57c09}\label{flag_8h_a06fc87d81c62e9abb8790b6e5713c55ba5a403bb281c1b231f0af904ce6e57c09}} 
+F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+N\+UM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{StatId\_NUM@{StatId\_NUM}!flag.h@{flag.h}}\index{flag.h@{flag.h}!StatId\_NUM@{StatId\_NUM}}}\mbox{\Hypertarget{flag_8h_a06fc87d81c62e9abb8790b6e5713c55badcf4fa6904791f9effad290ca89500f5}\label{flag_8h_a06fc87d81c62e9abb8790b6e5713c55badcf4fa6904791f9effad290ca89500f5}} 
+Stat\+Id\+\_\+\+N\+UM&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 87 of file flag.\+h.
+
+\mbox{\Hypertarget{flag_8h_a4ddc0d63fffb880def92d3d06aff1648}\label{flag_8h_a4ddc0d63fffb880def92d3d06aff1648}} 
+\index{flag.h@{flag.h}!FLAG\_Code\_@{FLAG\_Code\_}}
+\index{FLAG\_Code\_@{FLAG\_Code\_}!flag.h@{flag.h}}
+\doxysubsubsection{\texorpdfstring{FLAG\_Code\_}{FLAG\_Code\_}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{flag_8h_a4ddc0d63fffb880def92d3d06aff1648}{F\+L\+A\+G\+\_\+\+Code\+\_\+}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_CODE\_MIN@{FLAG\_CODE\_MIN}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_CODE\_MIN@{FLAG\_CODE\_MIN}}}\mbox{\Hypertarget{flag_8h_a4ddc0d63fffb880def92d3d06aff1648aca2bc7eade338f153cf3bcbcde04e07c}\label{flag_8h_a4ddc0d63fffb880def92d3d06aff1648aca2bc7eade338f153cf3bcbcde04e07c}} 
+F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+M\+IN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_CODE\_SYSTEM\_INIT@{FLAG\_CODE\_SYSTEM\_INIT}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_CODE\_SYSTEM\_INIT@{FLAG\_CODE\_SYSTEM\_INIT}}}\mbox{\Hypertarget{flag_8h_a4ddc0d63fffb880def92d3d06aff1648aeb3db3c64f20bc0c5739b9eb627bbb91}\label{flag_8h_a4ddc0d63fffb880def92d3d06aff1648aeb3db3c64f20bc0c5739b9eb627bbb91}} 
+F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+I\+N\+IT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_CODE\_LOW\_OUT\_VOLT\_WARN@{FLAG\_CODE\_LOW\_OUT\_VOLT\_WARN}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_CODE\_LOW\_OUT\_VOLT\_WARN@{FLAG\_CODE\_LOW\_OUT\_VOLT\_WARN}}}\mbox{\Hypertarget{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a636e271db8fc768aaed72f96ffe8cb94}\label{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a636e271db8fc768aaed72f96ffe8cb94}} 
+F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+L\+O\+W\+\_\+\+O\+U\+T\+\_\+\+V\+O\+L\+T\+\_\+\+W\+A\+RN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_CODE\_LOW\_OUT\_VOLT\_FAULT@{FLAG\_CODE\_LOW\_OUT\_VOLT\_FAULT}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_CODE\_LOW\_OUT\_VOLT\_FAULT@{FLAG\_CODE\_LOW\_OUT\_VOLT\_FAULT}}}\mbox{\Hypertarget{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a2b50f4d54116de8c8f40317a5d2d217a}\label{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a2b50f4d54116de8c8f40317a5d2d217a}} 
+F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+L\+O\+W\+\_\+\+O\+U\+T\+\_\+\+V\+O\+L\+T\+\_\+\+F\+A\+U\+LT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_CODE\_LOW\_OUT\_VOLT\_GENSET@{FLAG\_CODE\_LOW\_OUT\_VOLT\_GENSET}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_CODE\_LOW\_OUT\_VOLT\_GENSET@{FLAG\_CODE\_LOW\_OUT\_VOLT\_GENSET}}}\mbox{\Hypertarget{flag_8h_a4ddc0d63fffb880def92d3d06aff1648ac44e90119e0c271251614ffca092fa8d}\label{flag_8h_a4ddc0d63fffb880def92d3d06aff1648ac44e90119e0c271251614ffca092fa8d}} 
+F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+L\+O\+W\+\_\+\+O\+U\+T\+\_\+\+V\+O\+L\+T\+\_\+\+G\+E\+N\+S\+ET&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_CODE\_HIGH\_OUT\_VOLT\_FAULT@{FLAG\_CODE\_HIGH\_OUT\_VOLT\_FAULT}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_CODE\_HIGH\_OUT\_VOLT\_FAULT@{FLAG\_CODE\_HIGH\_OUT\_VOLT\_FAULT}}}\mbox{\Hypertarget{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a04b70dc70399923a874a3ddac6757352}\label{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a04b70dc70399923a874a3ddac6757352}} 
+F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+H\+I\+G\+H\+\_\+\+O\+U\+T\+\_\+\+V\+O\+L\+T\+\_\+\+F\+A\+U\+LT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_CODE\_HIGH\_OUT\_CURR\_FAULT@{FLAG\_CODE\_HIGH\_OUT\_CURR\_FAULT}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_CODE\_HIGH\_OUT\_CURR\_FAULT@{FLAG\_CODE\_HIGH\_OUT\_CURR\_FAULT}}}\mbox{\Hypertarget{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a13bf85a1e5dc5321f9363170ef801d95}\label{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a13bf85a1e5dc5321f9363170ef801d95}} 
+F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+H\+I\+G\+H\+\_\+\+O\+U\+T\+\_\+\+C\+U\+R\+R\+\_\+\+F\+A\+U\+LT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_CODE\_HIGH\_DIS\_CURR\_FAULT@{FLAG\_CODE\_HIGH\_DIS\_CURR\_FAULT}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_CODE\_HIGH\_DIS\_CURR\_FAULT@{FLAG\_CODE\_HIGH\_DIS\_CURR\_FAULT}}}\mbox{\Hypertarget{flag_8h_a4ddc0d63fffb880def92d3d06aff1648aeff1b15770d803d50df90ae862bf9b21}\label{flag_8h_a4ddc0d63fffb880def92d3d06aff1648aeff1b15770d803d50df90ae862bf9b21}} 
+F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+H\+I\+G\+H\+\_\+\+D\+I\+S\+\_\+\+C\+U\+R\+R\+\_\+\+F\+A\+U\+LT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_CODE\_HIGH\_TEMP\_FAULT@{FLAG\_CODE\_HIGH\_TEMP\_FAULT}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_CODE\_HIGH\_TEMP\_FAULT@{FLAG\_CODE\_HIGH\_TEMP\_FAULT}}}\mbox{\Hypertarget{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a0a1b0f71d883585a5c47382d1bc5fadf}\label{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a0a1b0f71d883585a5c47382d1bc5fadf}} 
+F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+H\+I\+G\+H\+\_\+\+T\+E\+M\+P\+\_\+\+F\+A\+U\+LT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_CODE\_IN\_BREAKER\_OPEN@{FLAG\_CODE\_IN\_BREAKER\_OPEN}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_CODE\_IN\_BREAKER\_OPEN@{FLAG\_CODE\_IN\_BREAKER\_OPEN}}}\mbox{\Hypertarget{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a26f43827c14540c6a20606264598065f}\label{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a26f43827c14540c6a20606264598065f}} 
+F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+I\+N\+\_\+\+B\+R\+E\+A\+K\+E\+R\+\_\+\+O\+P\+EN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_CODE\_OUT\_BREAKER\_OPEN@{FLAG\_CODE\_OUT\_BREAKER\_OPEN}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_CODE\_OUT\_BREAKER\_OPEN@{FLAG\_CODE\_OUT\_BREAKER\_OPEN}}}\mbox{\Hypertarget{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a7e0c000dec72360452262043080c936e}\label{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a7e0c000dec72360452262043080c936e}} 
+F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+O\+U\+T\+\_\+\+B\+R\+E\+A\+K\+E\+R\+\_\+\+O\+P\+EN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_CODE\_TEMP\_SENSE\_FAULT@{FLAG\_CODE\_TEMP\_SENSE\_FAULT}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_CODE\_TEMP\_SENSE\_FAULT@{FLAG\_CODE\_TEMP\_SENSE\_FAULT}}}\mbox{\Hypertarget{flag_8h_a4ddc0d63fffb880def92d3d06aff1648acc3d873e9945b3b22486957e646f1154}\label{flag_8h_a4ddc0d63fffb880def92d3d06aff1648acc3d873e9945b3b22486957e646f1154}} 
+F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+T\+E\+M\+P\+\_\+\+S\+E\+N\+S\+E\+\_\+\+F\+A\+U\+LT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_CODE\_PVCURR\_NEG\_SD@{FLAG\_CODE\_PVCURR\_NEG\_SD}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_CODE\_PVCURR\_NEG\_SD@{FLAG\_CODE\_PVCURR\_NEG\_SD}}}\mbox{\Hypertarget{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a2d627d85b4c8866a339e9c50ed014724}\label{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a2d627d85b4c8866a339e9c50ed014724}} 
+F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+P\+V\+C\+U\+R\+R\+\_\+\+N\+E\+G\+\_\+\+SD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_CODE\_PVCURR\_POS\_SD@{FLAG\_CODE\_PVCURR\_POS\_SD}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_CODE\_PVCURR\_POS\_SD@{FLAG\_CODE\_PVCURR\_POS\_SD}}}\mbox{\Hypertarget{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a171b11a1837e0e5664e0f63419c82176}\label{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a171b11a1837e0e5664e0f63419c82176}} 
+F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+P\+V\+C\+U\+R\+R\+\_\+\+P\+O\+S\+\_\+\+SD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_CODE\_PVVOLT\_SD@{FLAG\_CODE\_PVVOLT\_SD}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_CODE\_PVVOLT\_SD@{FLAG\_CODE\_PVVOLT\_SD}}}\mbox{\Hypertarget{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a33a0e1b21ef7c094bf0b8c90d4440009}\label{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a33a0e1b21ef7c094bf0b8c90d4440009}} 
+F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+P\+V\+V\+O\+L\+T\+\_\+\+SD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_CODE\_OUTCURR\_POS\_SD@{FLAG\_CODE\_OUTCURR\_POS\_SD}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_CODE\_OUTCURR\_POS\_SD@{FLAG\_CODE\_OUTCURR\_POS\_SD}}}\mbox{\Hypertarget{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a64fa2fdf9dbc270c866afaa62fdbb163}\label{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a64fa2fdf9dbc270c866afaa62fdbb163}} 
+F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+O\+U\+T\+C\+U\+R\+R\+\_\+\+P\+O\+S\+\_\+\+SD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_CODE\_OUTVOLT\_SD@{FLAG\_CODE\_OUTVOLT\_SD}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_CODE\_OUTVOLT\_SD@{FLAG\_CODE\_OUTVOLT\_SD}}}\mbox{\Hypertarget{flag_8h_a4ddc0d63fffb880def92d3d06aff1648abdb6942b6118f2cd10d459596e9cfeff}\label{flag_8h_a4ddc0d63fffb880def92d3d06aff1648abdb6942b6118f2cd10d459596e9cfeff}} 
+F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+O\+U\+T\+V\+O\+L\+T\+\_\+\+SD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_CODE\_CASETMP\_SD@{FLAG\_CODE\_CASETMP\_SD}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_CODE\_CASETMP\_SD@{FLAG\_CODE\_CASETMP\_SD}}}\mbox{\Hypertarget{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a89a1aed68df43f99d4abe37f53929d88}\label{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a89a1aed68df43f99d4abe37f53929d88}} 
+F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+C\+A\+S\+E\+T\+M\+P\+\_\+\+SD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_CODE\_FAN\_SD@{FLAG\_CODE\_FAN\_SD}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_CODE\_FAN\_SD@{FLAG\_CODE\_FAN\_SD}}}\mbox{\Hypertarget{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a52377b099145ce38d59ec289fab45cd5}\label{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a52377b099145ce38d59ec289fab45cd5}} 
+F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+F\+A\+N\+\_\+\+SD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_CODE\_LOG\_FULL@{FLAG\_CODE\_LOG\_FULL}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_CODE\_LOG\_FULL@{FLAG\_CODE\_LOG\_FULL}}}\mbox{\Hypertarget{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a01ae454c2d16e05aa462ce9c18dabeff}\label{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a01ae454c2d16e05aa462ce9c18dabeff}} 
+F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+L\+O\+G\+\_\+\+F\+U\+LL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_CODE\_PANEL\_MISSING@{FLAG\_CODE\_PANEL\_MISSING}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_CODE\_PANEL\_MISSING@{FLAG\_CODE\_PANEL\_MISSING}}}\mbox{\Hypertarget{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a0e4ca2e664d2f791534be7858d1d919c}\label{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a0e4ca2e664d2f791534be7858d1d919c}} 
+F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+P\+A\+N\+E\+L\+\_\+\+M\+I\+S\+S\+I\+NG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_CODE\_BAD\_CFG\_RANGE@{FLAG\_CODE\_BAD\_CFG\_RANGE}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_CODE\_BAD\_CFG\_RANGE@{FLAG\_CODE\_BAD\_CFG\_RANGE}}}\mbox{\Hypertarget{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a82eac092c8bd13b575315f4a73eaff71}\label{flag_8h_a4ddc0d63fffb880def92d3d06aff1648a82eac092c8bd13b575315f4a73eaff71}} 
+F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+B\+A\+D\+\_\+\+C\+F\+G\+\_\+\+R\+A\+N\+GE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_CODE\_MAX@{FLAG\_CODE\_MAX}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_CODE\_MAX@{FLAG\_CODE\_MAX}}}\mbox{\Hypertarget{flag_8h_a4ddc0d63fffb880def92d3d06aff1648ab5ff19750eaf96cc6351e351e7760ebd}\label{flag_8h_a4ddc0d63fffb880def92d3d06aff1648ab5ff19750eaf96cc6351e351e7760ebd}} 
+F\+L\+A\+G\+\_\+\+C\+O\+D\+E\+\_\+\+M\+AX&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 61 of file flag.\+h.
+
+\mbox{\Hypertarget{flag_8h_afb16efb705559340bbe479f742e7a4c9}\label{flag_8h_afb16efb705559340bbe479f742e7a4c9}} 
+\index{flag.h@{flag.h}!FLAG\_Mode\_@{FLAG\_Mode\_}}
+\index{FLAG\_Mode\_@{FLAG\_Mode\_}!flag.h@{flag.h}}
+\doxysubsubsection{\texorpdfstring{FLAG\_Mode\_}{FLAG\_Mode\_}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{flag_8h_afb16efb705559340bbe479f742e7a4c9}{F\+L\+A\+G\+\_\+\+Mode\+\_\+}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_DISABLED@{FLAG\_DISABLED}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_DISABLED@{FLAG\_DISABLED}}}\mbox{\Hypertarget{flag_8h_afb16efb705559340bbe479f742e7a4c9acb0408b9c4c36bddfdfeb1a95be62e80}\label{flag_8h_afb16efb705559340bbe479f742e7a4c9acb0408b9c4c36bddfdfeb1a95be62e80}} 
+F\+L\+A\+G\+\_\+\+D\+I\+S\+A\+B\+L\+ED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_LOG@{FLAG\_LOG}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_LOG@{FLAG\_LOG}}}\mbox{\Hypertarget{flag_8h_afb16efb705559340bbe479f742e7a4c9a9575d2290e5a15e4f12e9da1490c9177}\label{flag_8h_afb16efb705559340bbe479f742e7a4c9a9575d2290e5a15e4f12e9da1490c9177}} 
+F\+L\+A\+G\+\_\+\+L\+OG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_LOG\_AND\_RELAY@{FLAG\_LOG\_AND\_RELAY}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_LOG\_AND\_RELAY@{FLAG\_LOG\_AND\_RELAY}}}\mbox{\Hypertarget{flag_8h_afb16efb705559340bbe479f742e7a4c9a1d27687d9c17100999f3cf7b178d7993}\label{flag_8h_afb16efb705559340bbe479f742e7a4c9a1d27687d9c17100999f3cf7b178d7993}} 
+F\+L\+A\+G\+\_\+\+L\+O\+G\+\_\+\+A\+N\+D\+\_\+\+R\+E\+L\+AY&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 21 of file flag.\+h.
+
+\mbox{\Hypertarget{flag_8h_a2e99616a4cdcb67cd518be23c5bbdb30}\label{flag_8h_a2e99616a4cdcb67cd518be23c5bbdb30}} 
+\index{flag.h@{flag.h}!FLAG\_State\_@{FLAG\_State\_}}
+\index{FLAG\_State\_@{FLAG\_State\_}!flag.h@{flag.h}}
+\doxysubsubsection{\texorpdfstring{FLAG\_State\_}{FLAG\_State\_}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{flag_8h_a2e99616a4cdcb67cd518be23c5bbdb30}{F\+L\+A\+G\+\_\+\+State\+\_\+}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_STATE\_INACTIVE@{FLAG\_STATE\_INACTIVE}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_STATE\_INACTIVE@{FLAG\_STATE\_INACTIVE}}}\mbox{\Hypertarget{flag_8h_a2e99616a4cdcb67cd518be23c5bbdb30a1d252f42799b35988e1736e0a039af1f}\label{flag_8h_a2e99616a4cdcb67cd518be23c5bbdb30a1d252f42799b35988e1736e0a039af1f}} 
+F\+L\+A\+G\+\_\+\+S\+T\+A\+T\+E\+\_\+\+I\+N\+A\+C\+T\+I\+VE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_STATE\_ACTIVE@{FLAG\_STATE\_ACTIVE}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_STATE\_ACTIVE@{FLAG\_STATE\_ACTIVE}}}\mbox{\Hypertarget{flag_8h_a2e99616a4cdcb67cd518be23c5bbdb30a178ff7a33b5ab9aa9e2a149ff144345d}\label{flag_8h_a2e99616a4cdcb67cd518be23c5bbdb30a178ff7a33b5ab9aa9e2a149ff144345d}} 
+F\+L\+A\+G\+\_\+\+S\+T\+A\+T\+E\+\_\+\+A\+C\+T\+I\+VE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_STATE\_INACTIVE\_HYST@{FLAG\_STATE\_INACTIVE\_HYST}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_STATE\_INACTIVE\_HYST@{FLAG\_STATE\_INACTIVE\_HYST}}}\mbox{\Hypertarget{flag_8h_a2e99616a4cdcb67cd518be23c5bbdb30a31b24f54094b6234ab30cf9ff2ccbfb5}\label{flag_8h_a2e99616a4cdcb67cd518be23c5bbdb30a31b24f54094b6234ab30cf9ff2ccbfb5}} 
+F\+L\+A\+G\+\_\+\+S\+T\+A\+T\+E\+\_\+\+I\+N\+A\+C\+T\+I\+V\+E\+\_\+\+H\+Y\+ST&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAG\_STATE\_ACTIVE\_HYST@{FLAG\_STATE\_ACTIVE\_HYST}!flag.h@{flag.h}}\index{flag.h@{flag.h}!FLAG\_STATE\_ACTIVE\_HYST@{FLAG\_STATE\_ACTIVE\_HYST}}}\mbox{\Hypertarget{flag_8h_a2e99616a4cdcb67cd518be23c5bbdb30a224fdfbe9f3e65245f3cc8ed770a7077}\label{flag_8h_a2e99616a4cdcb67cd518be23c5bbdb30a224fdfbe9f3e65245f3cc8ed770a7077}} 
+F\+L\+A\+G\+\_\+\+S\+T\+A\+T\+E\+\_\+\+A\+C\+T\+I\+V\+E\+\_\+\+H\+Y\+ST&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 91 of file flag.\+h.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{flag_8h_ad8dd4c09516a95fabbf683abf17e4df3}\label{flag_8h_ad8dd4c09516a95fabbf683abf17e4df3}} 
+\index{flag.h@{flag.h}!FLAG\_checkAllFlags@{FLAG\_checkAllFlags}}
+\index{FLAG\_checkAllFlags@{FLAG\_checkAllFlags}!flag.h@{flag.h}}
+\doxysubsubsection{\texorpdfstring{FLAG\_checkAllFlags()}{FLAG\_checkAllFlags()}}
+{\footnotesize\ttfamily void F\+L\+A\+G\+\_\+check\+All\+Flags (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+R\+D\+Dtemp flag\+States.\+log\+Full\+Flag = ( \mbox{\hyperlink{telem_8c_af109ff33f76498aa7ee0f5ab813ff486}{T\+E\+L\+E\+M\+\_\+is\+Full()}} ) ? F\+L\+A\+G\+\_\+\+S\+T\+A\+T\+E\+\_\+\+A\+C\+T\+I\+VE \+: F\+L\+A\+G\+\_\+\+S\+T\+A\+T\+E\+\_\+\+I\+N\+A\+C\+T\+I\+VE;
+
+R\+D\+Dtemp I\+O\+\_\+set\+Relay( flag.\+flag\+Bitfield\+Relay );
+
+Definition at line 213 of file flag.\+c.
+
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{flag_8h_ab3ff960238742c47ed6d322b0a18b8f2}\label{flag_8h_ab3ff960238742c47ed6d322b0a18b8f2}} 
+\index{flag.h@{flag.h}!FLAG\_checkAndWrite@{FLAG\_checkAndWrite}}
+\index{FLAG\_checkAndWrite@{FLAG\_checkAndWrite}!flag.h@{flag.h}}
+\doxysubsubsection{\texorpdfstring{FLAG\_checkAndWrite()}{FLAG\_checkAndWrite()}}
+{\footnotesize\ttfamily void F\+L\+A\+G\+\_\+check\+And\+Write (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 535 of file flag.\+c.
+
+Here is the call graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{flag_8h_ad7e060124da21f3ed10800be4f36a08b}\label{flag_8h_ad7e060124da21f3ed10800be4f36a08b}} 
+\index{flag.h@{flag.h}!FLAG\_checkFlagHold@{FLAG\_checkFlagHold}}
+\index{FLAG\_checkFlagHold@{FLAG\_checkFlagHold}!flag.h@{flag.h}}
+\doxysubsubsection{\texorpdfstring{FLAG\_checkFlagHold()}{FLAG\_checkFlagHold()}}
+{\footnotesize\ttfamily int F\+L\+A\+G\+\_\+check\+Flag\+Hold (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{flag_8h_a9bbc6cdafe37aabb46c9eeefbdad3562}{Flag\+State}} $\ast$}]{p\+State,  }\item[{\mbox{\hyperlink{flag_8h_a0e540fa49a81f0fc2b9c196b983b76d9}{Flag\+Cfg\+Hold}} $\ast$}]{p\+Cfg,  }\item[{\mbox{\hyperlink{flag_8h_a0979fdb1457f3b974b2e4e22922839ba}{F\+L\+A\+G\+\_\+\+Code}}}]{code }\end{DoxyParamCaption})}
+
+
+
+Definition at line 425 of file flag.\+c.
+
+Here is the call graph for this function\+:
+% FIG 5
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{flag_8h_a4dd8d8002de067bab2d7b3e567d890e4}\label{flag_8h_a4dd8d8002de067bab2d7b3e567d890e4}} 
+\index{flag.h@{flag.h}!FLAG\_checkFlagSched@{FLAG\_checkFlagSched}}
+\index{FLAG\_checkFlagSched@{FLAG\_checkFlagSched}!flag.h@{flag.h}}
+\doxysubsubsection{\texorpdfstring{FLAG\_checkFlagSched()}{FLAG\_checkFlagSched()}}
+{\footnotesize\ttfamily int F\+L\+A\+G\+\_\+check\+Flag\+Sched (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{flag_8h_a9bbc6cdafe37aabb46c9eeefbdad3562}{Flag\+State}} $\ast$}]{p\+State,  }\item[{\mbox{\hyperlink{flag_8h_aa9ada3d7095821a2ed837bbcaa14cb74}{Flag\+Cfg\+Sched}} $\ast$}]{p\+Cfg,  }\item[{\mbox{\hyperlink{flag_8h_a0979fdb1457f3b974b2e4e22922839ba}{F\+L\+A\+G\+\_\+\+Code}}}]{code }\end{DoxyParamCaption})}
+
+
+
+Definition at line 475 of file flag.\+c.
+
+Here is the call graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{flag_8h_a05e46a08ca0eb3286e50c210b58f779e}\label{flag_8h_a05e46a08ca0eb3286e50c210b58f779e}} 
+\index{flag.h@{flag.h}!FLAG\_checkFlagTrig@{FLAG\_checkFlagTrig}}
+\index{FLAG\_checkFlagTrig@{FLAG\_checkFlagTrig}!flag.h@{flag.h}}
+\doxysubsubsection{\texorpdfstring{FLAG\_checkFlagTrig()}{FLAG\_checkFlagTrig()}}
+{\footnotesize\ttfamily int F\+L\+A\+G\+\_\+check\+Flag\+Trig (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{flag_8h_a9bbc6cdafe37aabb46c9eeefbdad3562}{Flag\+State}} $\ast$}]{p\+State,  }\item[{\mbox{\hyperlink{flag_8h_a5b1f3b9a37d109ddc339652dbf48b164}{Flag\+Cfg\+Trig}} $\ast$}]{p\+Cfg,  }\item[{\mbox{\hyperlink{flag_8h_a0979fdb1457f3b974b2e4e22922839ba}{F\+L\+A\+G\+\_\+\+Code}}}]{code }\end{DoxyParamCaption})}
+
+
+
+Definition at line 378 of file flag.\+c.
+
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{flag_8h_a92cfe34941d4c588f3d8d4b58017a3b6}\label{flag_8h_a92cfe34941d4c588f3d8d4b58017a3b6}} 
+\index{flag.h@{flag.h}!FLAG\_eraseDoneCallback@{FLAG\_eraseDoneCallback}}
+\index{FLAG\_eraseDoneCallback@{FLAG\_eraseDoneCallback}!flag.h@{flag.h}}
+\doxysubsubsection{\texorpdfstring{FLAG\_eraseDoneCallback()}{FLAG\_eraseDoneCallback()}}
+{\footnotesize\ttfamily void F\+L\+A\+G\+\_\+erase\+Done\+Callback (\begin{DoxyParamCaption}\item[{int}]{ret\+Val }\end{DoxyParamCaption})}
+
+
+
+Definition at line 596 of file flag.\+c.
+
+Here is the call graph for this function\+:
+% FIG 10
+Here is the caller graph for this function\+:
+% FIG 11
+\mbox{\Hypertarget{flag_8h_a571475aba4730fc723b5a660f42b1900}\label{flag_8h_a571475aba4730fc723b5a660f42b1900}} 
+\index{flag.h@{flag.h}!FLAG\_eraseStarted@{FLAG\_eraseStarted}}
+\index{FLAG\_eraseStarted@{FLAG\_eraseStarted}!flag.h@{flag.h}}
+\doxysubsubsection{\texorpdfstring{FLAG\_eraseStarted()}{FLAG\_eraseStarted()}}
+{\footnotesize\ttfamily void F\+L\+A\+G\+\_\+erase\+Started (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 591 of file flag.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 12
+\mbox{\Hypertarget{flag_8h_ab422bfe8ad33c4503144a508451cbb84}\label{flag_8h_ab422bfe8ad33c4503144a508451cbb84}} 
+\index{flag.h@{flag.h}!FLAG\_getFlagBitfield@{FLAG\_getFlagBitfield}}
+\index{FLAG\_getFlagBitfield@{FLAG\_getFlagBitfield}!flag.h@{flag.h}}
+\doxysubsubsection{\texorpdfstring{FLAG\_getFlagBitfield()}{FLAG\_getFlagBitfield()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{flag_8h_a9206b3246d892fa62e8cd3bc727d3897}{Flag\+Bitfield}} F\+L\+A\+G\+\_\+get\+Flag\+Bitfield (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 192 of file flag.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 13
+\mbox{\Hypertarget{flag_8h_aadf482ca38539792c16b2d96017140c6}\label{flag_8h_aadf482ca38539792c16b2d96017140c6}} 
+\index{flag.h@{flag.h}!FLAG\_getFlagLen@{FLAG\_getFlagLen}}
+\index{FLAG\_getFlagLen@{FLAG\_getFlagLen}!flag.h@{flag.h}}
+\doxysubsubsection{\texorpdfstring{FLAG\_getFlagLen()}{FLAG\_getFlagLen()}}
+{\footnotesize\ttfamily unsigned long F\+L\+A\+G\+\_\+get\+Flag\+Len (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 631 of file flag.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 14
+\mbox{\Hypertarget{flag_8h_a4802475e4bd18405f54f989159673921}\label{flag_8h_a4802475e4bd18405f54f989159673921}} 
+\index{flag.h@{flag.h}!FLAG\_getStatus@{FLAG\_getStatus}}
+\index{FLAG\_getStatus@{FLAG\_getStatus}!flag.h@{flag.h}}
+\doxysubsubsection{\texorpdfstring{FLAG\_getStatus()}{FLAG\_getStatus()}}
+{\footnotesize\ttfamily unsigned char F\+L\+A\+G\+\_\+get\+Status (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 187 of file flag.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 15
+\mbox{\Hypertarget{flag_8h_af1e384a896629d690755efb5496005b6}\label{flag_8h_af1e384a896629d690755efb5496005b6}} 
+\index{flag.h@{flag.h}!FLAG\_init@{FLAG\_init}}
+\index{FLAG\_init@{FLAG\_init}!flag.h@{flag.h}}
+\doxysubsubsection{\texorpdfstring{FLAG\_init()}{FLAG\_init()}}
+{\footnotesize\ttfamily void F\+L\+A\+G\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 74 of file flag.\+c.
+
+Here is the call graph for this function\+:
+% FIG 16
+Here is the caller graph for this function\+:
+% FIG 17
+\mbox{\Hypertarget{flag_8h_aca929b2ff9043d2ccb2ba63217d87094}\label{flag_8h_aca929b2ff9043d2ccb2ba63217d87094}} 
+\index{flag.h@{flag.h}!FLAG\_initTrigs@{FLAG\_initTrigs}}
+\index{FLAG\_initTrigs@{FLAG\_initTrigs}!flag.h@{flag.h}}
+\doxysubsubsection{\texorpdfstring{FLAG\_initTrigs()}{FLAG\_initTrigs()}}
+{\footnotesize\ttfamily void F\+L\+A\+G\+\_\+init\+Trigs (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+not now flag\+States.\+low\+Out\+Volt\+Warn\+Flag.\+trigger\+Val = I\+Q\+\_\+cnst( C\+F\+G\+\_\+remote\+Cfg.\+low\+Out\+Volt\+Warn\+Flag.\+trigger\+Val / M\+E\+A\+S\+\_\+\+O\+U\+T\+V\+O\+L\+T\+\_\+\+B\+A\+SE ); not now flag\+States.\+low\+Out\+Volt\+Warn\+Flag.\+reset\+Val = I\+Q\+\_\+cnst( C\+F\+G\+\_\+remote\+Cfg.\+low\+Out\+Volt\+Warn\+Flag.\+reset\+Val / M\+E\+A\+S\+\_\+\+O\+U\+T\+V\+O\+L\+T\+\_\+\+B\+A\+SE ); not now flag\+States.\+low\+Out\+Volt\+Fault\+Flag.\+trigger\+Val = I\+Q\+\_\+cnst( C\+F\+G\+\_\+remote\+Cfg.\+low\+Out\+Volt\+Fault\+Flag.\+trigger\+Val / M\+E\+A\+S\+\_\+\+O\+U\+T\+V\+O\+L\+T\+\_\+\+B\+A\+SE );
+
+not now flag\+States.\+high\+Out\+Curr\+Fault\+Flag.\+trigger\+Val = I\+Q\+\_\+cnst( C\+F\+G\+\_\+remote\+Cfg.\+high\+Out\+Curr\+Fault\+Flag.\+trigger\+Val / M\+E\+A\+S\+\_\+\+O\+U\+T\+C\+U\+R\+R\+\_\+\+B\+A\+SE ); not now flag\+States.\+high\+Out\+Curr\+Fault\+Flag.\+reset\+Val = I\+Q\+\_\+cnst( C\+F\+G\+\_\+remote\+Cfg.\+high\+Out\+Curr\+Fault\+Flag.\+reset\+Val / M\+E\+A\+S\+\_\+\+O\+U\+T\+C\+U\+R\+R\+\_\+\+B\+A\+SE ); not now flag\+States.\+high\+Dis\+Curr\+Fault\+Flag.\+trigger\+Val = I\+Q\+\_\+cnst( C\+F\+G\+\_\+remote\+Cfg.\+high\+Dis\+Curr\+Fault\+Flag.\+trigger\+Val / M\+E\+A\+S\+\_\+\+O\+U\+T\+C\+U\+R\+R\+\_\+\+B\+A\+SE );
+
+not now flag\+States.\+high\+Temp\+Fault\+Flag.\+trigger\+Val = I\+Q\+\_\+cnst( C\+F\+G\+\_\+remote\+Cfg.\+high\+Temp\+Fault\+Flag.\+trigger\+Val / M\+E\+A\+S\+\_\+\+T\+E\+M\+P\+R\+\_\+\+B\+A\+SE ); not now flag\+States.\+high\+Temp\+Fault\+Flag.\+reset\+Val = I\+Q\+\_\+cnst( C\+F\+G\+\_\+remote\+Cfg.\+high\+Temp\+Fault\+Flag.\+reset\+Val / M\+E\+A\+S\+\_\+\+T\+E\+M\+P\+R\+\_\+\+B\+A\+SE ); not now flag\+States.\+panel\+Missing\+Flag.\+trigger\+Val = I\+Q\+\_\+cnst( C\+F\+G\+\_\+remote\+Cfg.\+panel\+Missing\+Flag.\+trigger\+Val / M\+E\+A\+S\+\_\+\+P\+V\+V\+O\+L\+T\+\_\+\+B\+A\+SE );
+
+Definition at line 158 of file flag.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 18
+\mbox{\Hypertarget{flag_8h_aa1dbaf2631cf74d8be01d658469703bd}\label{flag_8h_aa1dbaf2631cf74d8be01d658469703bd}} 
+\index{flag.h@{flag.h}!FLAG\_logFlag@{FLAG\_logFlag}}
+\index{FLAG\_logFlag@{FLAG\_logFlag}!flag.h@{flag.h}}
+\doxysubsubsection{\texorpdfstring{FLAG\_logFlag()}{FLAG\_logFlag()}}
+{\footnotesize\ttfamily void F\+L\+A\+G\+\_\+log\+Flag (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{flag_8h_a0979fdb1457f3b974b2e4e22922839ba}{F\+L\+A\+G\+\_\+\+Code}}}]{code,  }\item[{int}]{is\+Active }\end{DoxyParamCaption})}
+
+
+
+Definition at line 518 of file flag.\+c.
+
+Here is the call graph for this function\+:
+% FIG 19
+Here is the caller graph for this function\+:
+% FIG 20
+\mbox{\Hypertarget{flag_8h_ac472ddbe41e156a7174f926287a43c4b}\label{flag_8h_ac472ddbe41e156a7174f926287a43c4b}} 
+\index{flag.h@{flag.h}!FLAG\_timeHasUpdated@{FLAG\_timeHasUpdated}}
+\index{FLAG\_timeHasUpdated@{FLAG\_timeHasUpdated}!flag.h@{flag.h}}
+\doxysubsubsection{\texorpdfstring{FLAG\_timeHasUpdated()}{FLAG\_timeHasUpdated()}}
+{\footnotesize\ttfamily void F\+L\+A\+G\+\_\+time\+Has\+Updated (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 178 of file flag.\+c.
+
+Here is the call graph for this function\+:
+% FIG 21
+Here is the caller graph for this function\+:
+% FIG 22

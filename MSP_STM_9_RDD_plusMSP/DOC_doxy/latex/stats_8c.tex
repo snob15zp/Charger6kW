@@ -1,0 +1,167 @@
+\hypertarget{stats_8c}{}\doxysection{D\+:/user\+S\+S\+D/github/\+Charger6k\+W/\+M\+S\+P\+\_\+\+S\+T\+M\+\_\+9\+\_\+\+R\+D\+D\+\_\+plus\+M\+S\+P/\+M\+S\+P430/stats.c File Reference}
+\label{stats_8c}\index{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/stats.c@{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/stats.c}}
+{\ttfamily \#include \char`\"{}stats.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}time.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}flash.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}meas.\+h\char`\"{}}\newline
+Include dependency graph for stats.\+c\+:
+% FIG 0
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_stat__}{Stat\+\_\+}}
+\item 
+struct \mbox{\hyperlink{struct_stat_helper__}{Stat\+Helper\+\_\+}}
+\item 
+struct \mbox{\hyperlink{struct_statistics}{Statistics}}
+\item 
+struct \mbox{\hyperlink{struct_stats__}{Stats\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{stats_8c_a45d770f151a94090e37dcd72441d1555}{S\+T\+A\+T\+S\+\_\+\+M\+A\+X\+\_\+\+E\+N\+T\+R\+I\+ES}}~366
+\begin{DoxyCompactList}\small\item\em \#include \char`\"{}comms.\+h\char`\"{} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct_stat__}{Stat\+\_\+}} \mbox{\hyperlink{stats_8c_ac9006cb179d4e986f7cd036db092695d}{Statistic}}
+\item 
+typedef struct \mbox{\hyperlink{struct_stat_helper__}{Stat\+Helper\+\_\+}} \mbox{\hyperlink{stats_8c_ae86a8289eebf89ea3543e6923a3e0b5f}{Stat\+Helper}}
+\item 
+typedef struct \mbox{\hyperlink{struct_statistics}{Statistics}} \mbox{\hyperlink{stats_8c_a2ed1f9e1b5665900508ba386316099d5}{Statistics}}
+\item 
+typedef struct \mbox{\hyperlink{struct_stats__}{Stats\+\_\+}} \mbox{\hyperlink{stats_8c_a5a241ccb8e651e4791afa66bb8a3367c}{Stats}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{stats_8c_a5010c6fd4793e2b469cade2608651f84}{S\+T\+A\+T\+S\+\_\+init\+Entry\+Addr}} ()
+\item 
+void \mbox{\hyperlink{stats_8c_a08a4ea6c05e927743f857607b8f503a3}{S\+T\+A\+T\+S\+\_\+try\+Next\+Entry}} ()
+\item 
+void \mbox{\hyperlink{stats_8c_a70f8101df6100edd6f0d5b3b9ab9a3cc}{S\+T\+A\+T\+S\+\_\+init}} ()
+\item 
+unsigned char \mbox{\hyperlink{stats_8c_a5d1f1c2a30457863657b8638dfd89b0b}{S\+T\+A\+T\+S\+\_\+get\+Status}} ()
+\item 
+void \mbox{\hyperlink{stats_8c_a64c38f8b98fc21d34e709db5c8619236}{S\+T\+A\+T\+S\+\_\+update\+All}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{stats_8c_a5a241ccb8e651e4791afa66bb8a3367c}{Stats}} \mbox{\hyperlink{stats_8c_a5925d216740c89f43482df806fd14e8c}{stats}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{stats_8c_a45d770f151a94090e37dcd72441d1555}\label{stats_8c_a45d770f151a94090e37dcd72441d1555}} 
+\index{stats.c@{stats.c}!STATS\_MAX\_ENTRIES@{STATS\_MAX\_ENTRIES}}
+\index{STATS\_MAX\_ENTRIES@{STATS\_MAX\_ENTRIES}!stats.c@{stats.c}}
+\doxysubsubsection{\texorpdfstring{STATS\_MAX\_ENTRIES}{STATS\_MAX\_ENTRIES}}
+{\footnotesize\ttfamily \#define S\+T\+A\+T\+S\+\_\+\+M\+A\+X\+\_\+\+E\+N\+T\+R\+I\+ES~366}
+
+
+
+\#include \char`\"{}comms.\+h\char`\"{} 
+
+
+
+Definition at line 18 of file stats.\+c.
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{stats_8c_ae86a8289eebf89ea3543e6923a3e0b5f}\label{stats_8c_ae86a8289eebf89ea3543e6923a3e0b5f}} 
+\index{stats.c@{stats.c}!StatHelper@{StatHelper}}
+\index{StatHelper@{StatHelper}!stats.c@{stats.c}}
+\doxysubsubsection{\texorpdfstring{StatHelper}{StatHelper}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_stat_helper__}{Stat\+Helper\+\_\+}} \mbox{\hyperlink{stats_8c_ae86a8289eebf89ea3543e6923a3e0b5f}{Stat\+Helper}}}
+
+\mbox{\Hypertarget{stats_8c_ac9006cb179d4e986f7cd036db092695d}\label{stats_8c_ac9006cb179d4e986f7cd036db092695d}} 
+\index{stats.c@{stats.c}!Statistic@{Statistic}}
+\index{Statistic@{Statistic}!stats.c@{stats.c}}
+\doxysubsubsection{\texorpdfstring{Statistic}{Statistic}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_stat__}{Stat\+\_\+}} \mbox{\hyperlink{stats_8c_ac9006cb179d4e986f7cd036db092695d}{Statistic}}}
+
+\mbox{\Hypertarget{stats_8c_a2ed1f9e1b5665900508ba386316099d5}\label{stats_8c_a2ed1f9e1b5665900508ba386316099d5}} 
+\index{stats.c@{stats.c}!Statistics@{Statistics}}
+\index{Statistics@{Statistics}!stats.c@{stats.c}}
+\doxysubsubsection{\texorpdfstring{Statistics}{Statistics}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_statistics}{Statistics}} \mbox{\hyperlink{struct_statistics}{Statistics}}}
+
+\mbox{\Hypertarget{stats_8c_a5a241ccb8e651e4791afa66bb8a3367c}\label{stats_8c_a5a241ccb8e651e4791afa66bb8a3367c}} 
+\index{stats.c@{stats.c}!Stats@{Stats}}
+\index{Stats@{Stats}!stats.c@{stats.c}}
+\doxysubsubsection{\texorpdfstring{Stats}{Stats}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_stats__}{Stats\+\_\+}} \mbox{\hyperlink{stats_8c_a5a241ccb8e651e4791afa66bb8a3367c}{Stats}}}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{stats_8c_a5d1f1c2a30457863657b8638dfd89b0b}\label{stats_8c_a5d1f1c2a30457863657b8638dfd89b0b}} 
+\index{stats.c@{stats.c}!STATS\_getStatus@{STATS\_getStatus}}
+\index{STATS\_getStatus@{STATS\_getStatus}!stats.c@{stats.c}}
+\doxysubsubsection{\texorpdfstring{STATS\_getStatus()}{STATS\_getStatus()}}
+{\footnotesize\ttfamily unsigned char S\+T\+A\+T\+S\+\_\+get\+Status (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 145 of file stats.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{stats_8c_a70f8101df6100edd6f0d5b3b9ab9a3cc}\label{stats_8c_a70f8101df6100edd6f0d5b3b9ab9a3cc}} 
+\index{stats.c@{stats.c}!STATS\_init@{STATS\_init}}
+\index{STATS\_init@{STATS\_init}!stats.c@{stats.c}}
+\doxysubsubsection{\texorpdfstring{STATS\_init()}{STATS\_init()}}
+{\footnotesize\ttfamily void S\+T\+A\+T\+S\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 65 of file stats.\+c.
+
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{stats_8c_a5010c6fd4793e2b469cade2608651f84}\label{stats_8c_a5010c6fd4793e2b469cade2608651f84}} 
+\index{stats.c@{stats.c}!STATS\_initEntryAddr@{STATS\_initEntryAddr}}
+\index{STATS\_initEntryAddr@{STATS\_initEntryAddr}!stats.c@{stats.c}}
+\doxysubsubsection{\texorpdfstring{STATS\_initEntryAddr()}{STATS\_initEntryAddr()}}
+{\footnotesize\ttfamily int S\+T\+A\+T\+S\+\_\+init\+Entry\+Addr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{stats_8c_a08a4ea6c05e927743f857607b8f503a3}\label{stats_8c_a08a4ea6c05e927743f857607b8f503a3}} 
+\index{stats.c@{stats.c}!STATS\_tryNextEntry@{STATS\_tryNextEntry}}
+\index{STATS\_tryNextEntry@{STATS\_tryNextEntry}!stats.c@{stats.c}}
+\doxysubsubsection{\texorpdfstring{STATS\_tryNextEntry()}{STATS\_tryNextEntry()}}
+{\footnotesize\ttfamily void S\+T\+A\+T\+S\+\_\+try\+Next\+Entry (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{stats_8c_a64c38f8b98fc21d34e709db5c8619236}\label{stats_8c_a64c38f8b98fc21d34e709db5c8619236}} 
+\index{stats.c@{stats.c}!STATS\_updateAll@{STATS\_updateAll}}
+\index{STATS\_updateAll@{STATS\_updateAll}!stats.c@{stats.c}}
+\doxysubsubsection{\texorpdfstring{STATS\_updateAll()}{STATS\_updateAll()}}
+{\footnotesize\ttfamily void S\+T\+A\+T\+S\+\_\+update\+All (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 199 of file stats.\+c.
+
+Here is the call graph for this function\+:
+% FIG 6
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{stats_8c_a5925d216740c89f43482df806fd14e8c}\label{stats_8c_a5925d216740c89f43482df806fd14e8c}} 
+\index{stats.c@{stats.c}!stats@{stats}}
+\index{stats@{stats}!stats.c@{stats.c}}
+\doxysubsubsection{\texorpdfstring{stats}{stats}}
+{\footnotesize\ttfamily \mbox{\hyperlink{stats_8c_a5a241ccb8e651e4791afa66bb8a3367c}{Stats}} stats}
+
+
+
+Definition at line 59 of file stats.\+c.
+

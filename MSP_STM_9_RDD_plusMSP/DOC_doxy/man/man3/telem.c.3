@@ -1,0 +1,185 @@
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/telem.c" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/telem.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'telem\&.h'\fP
+.br
+\fC#include 'cfg\&.h'\fP
+.br
+\fC#include 'flash\&.h'\fP
+.br
+\fC#include 'util\&.h'\fP
+.br
+\fC#include 'meas\&.h'\fP
+.br
+\fC#include 'iqmath\&.h'\fP
+.br
+\fC#include 'comms\&.h'\fP
+.br
+\fC#include 'flag\&.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBTelemHeader_\fP"
+.br
+.ti -1c
+.RI "struct \fBTelem_\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBTELEM_VALID_SECTOR_MARKER\fP   0x5A5A"
+.br
+.ti -1c
+.RI "#define \fBTELEM_HEADER_OFFSET\fP   2"
+.br
+.ti -1c
+.RI "#define \fBTELEM_BLOCKNUM_OFFSET\fP   \fBTELEM_HEADER_OFFSET\fP"
+.br
+.ti -1c
+.RI "#define \fBTELEM_TIMESTAMP_OFFSET\fP   ( \fBTELEM_BLOCKNUM_OFFSET\fP + sizeof(unsigned int) )"
+.br
+.ti -1c
+.RI "#define \fBTELEM_SAMPLE_PERIOD_OFFSET\fP   ( \fBTELEM_TIMESTAMP_OFFSET\fP + sizeof(\fBTime\fP) )"
+.br
+.ti -1c
+.RI "#define \fBTELEM_ENABLE_BITFIELD_OFFSET\fP   ( \fBTELEM_SAMPLE_PERIOD_OFFSET\fP + sizeof(\fBTELEM_SamplePeriod\fP) )"
+.br
+.ti -1c
+.RI "#define \fBTELEM_DATA_OFFSET\fP   ( \fBTELEM_ENABLE_BITFIELD_OFFSET\fP + sizeof(unsigned int) )"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct \fBTelemHeader_\fP \fBTelemHeader\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBTelem_\fP \fBTelem\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBTELEM_findCurrentSector\fP ()"
+.br
+.ti -1c
+.RI "int \fBTELEM_prepareSector\fP ()"
+.br
+.ti -1c
+.RI "void \fBTELEM_init\fP ()"
+.br
+.ti -1c
+.RI "unsigned char \fBTELEM_getStatus\fP ()"
+.br
+.ti -1c
+.RI "int \fBTELEM_isFull\fP ()"
+.br
+.ti -1c
+.RI "void \fBTELEM_logIfPeriodElapsed\fP ()"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "const unsigned int \fBTELEM_PERIOD_MULTIPLIERS\fP [\fBTELEM_PERIOD_NUM\fP]"
+.br
+.ti -1c
+.RI "\fBTelem\fP \fBtelem\fP"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define TELEM_BLOCKNUM_OFFSET   \fBTELEM_HEADER_OFFSET\fP"
+
+.PP
+Definition at line 43 of file telem\&.c\&.
+.SS "#define TELEM_DATA_OFFSET   ( \fBTELEM_ENABLE_BITFIELD_OFFSET\fP + sizeof(unsigned int) )"
+
+.PP
+Definition at line 47 of file telem\&.c\&.
+.SS "#define TELEM_ENABLE_BITFIELD_OFFSET   ( \fBTELEM_SAMPLE_PERIOD_OFFSET\fP + sizeof(\fBTELEM_SamplePeriod\fP) )"
+
+.PP
+Definition at line 46 of file telem\&.c\&.
+.SS "#define TELEM_HEADER_OFFSET   2"
+
+.PP
+Definition at line 42 of file telem\&.c\&.
+.SS "#define TELEM_SAMPLE_PERIOD_OFFSET   ( \fBTELEM_TIMESTAMP_OFFSET\fP + sizeof(\fBTime\fP) )"
+
+.PP
+Definition at line 45 of file telem\&.c\&.
+.SS "#define TELEM_TIMESTAMP_OFFSET   ( \fBTELEM_BLOCKNUM_OFFSET\fP + sizeof(unsigned int) )"
+
+.PP
+Definition at line 44 of file telem\&.c\&.
+.SS "#define TELEM_VALID_SECTOR_MARKER   0x5A5A"
+
+.PP
+Definition at line 40 of file telem\&.c\&.
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef struct \fBTelem_\fP \fBTelem\fP"
+
+.SS "typedef struct \fBTelemHeader_\fP \fBTelemHeader\fP"
+
+.SH "Function Documentation"
+.PP 
+.SS "void TELEM_findCurrentSector ()"
+
+.SS "unsigned char TELEM_getStatus (void)"
+
+.PP
+Definition at line 175 of file telem\&.c\&.
+.SS "void TELEM_init (void)"
+
+.PP
+Definition at line 88 of file telem\&.c\&.
+.SS "int TELEM_isFull (void)"
+
+.PP
+Definition at line 180 of file telem\&.c\&.
+.SS "void TELEM_logIfPeriodElapsed (void)"
+
+.PP
+Definition at line 414 of file telem\&.c\&.
+.SS "int TELEM_prepareSector ()"
+
+.SH "Variable Documentation"
+.PP 
+.SS "\fBTelem\fP telem"
+
+.PP
+Definition at line 83 of file telem\&.c\&.
+.SS "const unsigned int TELEM_PERIOD_MULTIPLIERS[\fBTELEM_PERIOD_NUM\fP]"
+\fBInitial value:\fP
+.PP
+.nf
+= 
+{
+    200 / TELEM_BASE_PERIOD_MS,
+    ( 1000 / TELEM_BASE_PERIOD_MS),
+    10 * ( 1000 / TELEM_BASE_PERIOD_MS),
+    60 * ( 1000 / TELEM_BASE_PERIOD_MS),
+    10 * 60 * ( 1000 / TELEM_BASE_PERIOD_MS),
+    60 * 60 * ( 1000 / TELEM_BASE_PERIOD_MS) 
+}
+.fi
+.PP
+Definition at line 49 of file telem\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.

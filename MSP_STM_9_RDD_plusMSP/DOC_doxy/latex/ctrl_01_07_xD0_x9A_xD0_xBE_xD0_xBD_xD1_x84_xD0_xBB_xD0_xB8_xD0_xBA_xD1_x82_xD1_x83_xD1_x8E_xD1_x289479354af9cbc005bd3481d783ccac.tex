@@ -1,0 +1,845 @@
+\hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac}{}\doxysection{D\+:/user\+S\+S\+D/github/\+Charger6k\+W/\+M\+S\+P\+\_\+\+S\+T\+M\+\_\+9\+\_\+\+R\+D\+D\+\_\+plus\+M\+S\+P/\+M\+S\+P430/ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c File Reference}
+\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac}\index{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}variant.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ctrl.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}pwm.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}meas.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}iqmath.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}io.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cfg.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}util.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}comms.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}safety.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}debug.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}usci.\+h\char`\"{}}\newline
+Include dependency graph for ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c\+:
+% FIG 0
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_ctrl__}{Ctrl\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a6d6896fd956129551d3c243e6cd7d3b3}{C\+T\+R\+L\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+P\+E\+R\+I\+O\+D\+\_\+\+T\+I\+C\+KS}}~(unsigned long)( 30.\+0 $\ast$ 1000000.\+0 / (float)\mbox{\hyperlink{pwm_8h_a9eab62582ed1f922e9da46272d96944f}{P\+W\+M\+\_\+\+P\+E\+R\+I\+O\+D\+\_\+\+US}} )
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a0360c53337f09e198ea7f55f01f9306d}{C\+T\+R\+L\+\_\+\+O\+P\+E\+N\+\_\+\+C\+I\+R\+C\+U\+I\+T\+\_\+\+T\+I\+M\+E\+\_\+\+T\+I\+C\+KS}}~(unsigned long)( 0.\+10 $\ast$ 1000000.\+0 / (float)\mbox{\hyperlink{pwm_8h_a9eab62582ed1f922e9da46272d96944f}{P\+W\+M\+\_\+\+P\+E\+R\+I\+O\+D\+\_\+\+US}} )
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ae9df7f9850e760ef4da5fdf7a928d347}{C\+T\+R\+L\+\_\+\+N\+O\+\_\+\+M\+E\+A\+S\+\_\+\+T\+I\+M\+E\+\_\+\+T\+I\+C\+KS}}~(unsigned long)( 0.\+50 $\ast$ 1000000.\+0 / (float)\mbox{\hyperlink{pwm_8h_a9eab62582ed1f922e9da46272d96944f}{P\+W\+M\+\_\+\+P\+E\+R\+I\+O\+D\+\_\+\+US}} )
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a38d384742b148d83dfe47bfebe414741}{C\+T\+R\+L\+\_\+\+O\+U\+T\+\_\+\+V\+O\+L\+T\+\_\+\+B\+L\+A\+N\+K\+\_\+\+T\+I\+C\+KS}}~( 10 $\ast$ \mbox{\hyperlink{ctrl_8c_a0360c53337f09e198ea7f55f01f9306d}{C\+T\+R\+L\+\_\+\+O\+P\+E\+N\+\_\+\+C\+I\+R\+C\+U\+I\+T\+\_\+\+T\+I\+M\+E\+\_\+\+T\+I\+C\+KS}} )
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ad804d201133f7f880bd83ad93a861e1a}{C\+T\+R\+L\+\_\+\+A\+B\+O\+U\+T\+\_\+\+T\+O\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+T\+I\+C\+KS}}~(unsigned long)( 28.\+0 $\ast$ 1000000.\+0 / (float)\mbox{\hyperlink{pwm_8h_a9eab62582ed1f922e9da46272d96944f}{P\+W\+M\+\_\+\+P\+E\+R\+I\+O\+D\+\_\+\+US}} )
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a49a20fd4619311460bd2ee46313c7fbe}{C\+T\+R\+L\+\_\+\+V\+I\+N\+L\+I\+M\+\_\+\+F\+R\+AC}}~1.\+2
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a465a8e8d1ee6c4cc99eefc34a2c91ca4}{C\+T\+R\+L\+\_\+\+V\+I\+N\+L\+I\+M\+\_\+\+D\+I\+O\+D\+E\+\_\+\+V\+O\+LT}}~0.\+2
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_aaed971682f347a6ada469c33a155c7c9}{C\+T\+R\+L\+\_\+\+N\+O\+M\+I\+N\+A\+L\+\_\+\+T\+O\+\_\+\+F\+L\+O\+A\+T\+\_\+\+R\+A\+T\+IO}}~( 2.\+0 / 2.\+35 )
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a75f6a5770f0d12298a5632f72c2ee85a}{C\+T\+R\+L\+\_\+\+O\+F\+F\+S\+E\+T\+\_\+\+F\+L\+S\+E\+T\+\_\+\+N\+EW}}~24.\+93
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_aaf76a4b43f0709b0977a07d59ae9d298}{C\+T\+R\+L\+\_\+\+S\+C\+A\+L\+E\+\_\+\+F\+L\+S\+E\+T\+\_\+\+N\+EW}}~1.\+22
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ae8596bea4764d5fe9e35b162c0b4a168}{C\+T\+R\+L\+\_\+\+F\+L\+T\+R\+I\+M\+\_\+\+O\+F\+F\+S\+E\+T\+\_\+\+O\+N\+V\+C\+C\+G\+\_\+\+N\+EW}}~2.\+9412
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ac2bbf4bfa5748a806eeeca94160df59f}{C\+T\+R\+L\+\_\+\+B\+A\+S\+E\+\_\+\+F\+L\+T\+R\+I\+M\+\_\+\+O\+N\+V\+C\+C\+G\+\_\+\+N\+EW}}~3.\+1359
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_af171d2db8e8b8152844f2eb3f430bb1b}{C\+T\+R\+L\+\_\+\+O\+F\+F\+S\+E\+T\+\_\+\+F\+L\+S\+E\+T\+\_\+\+O\+LD}}~29.\+3957
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a31dac8b5eb92a91b0fdaba734d9fd77e}{C\+T\+R\+L\+\_\+\+S\+C\+A\+L\+E\+\_\+\+F\+L\+S\+E\+T\+\_\+\+O\+LD}}~1.\+2
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a71909a76c431ad34b8ee64071b642324}{C\+T\+R\+L\+\_\+\+F\+L\+T\+R\+I\+M\+\_\+\+O\+F\+F\+S\+E\+T\+\_\+\+O\+N\+V\+C\+C\+G\+\_\+\+O\+LD}}~2.\+9412
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ae4d8dfbde6f3806a65e24729d321f666}{C\+T\+R\+L\+\_\+\+B\+A\+S\+E\+\_\+\+F\+L\+T\+R\+I\+M\+\_\+\+O\+N\+V\+C\+C\+G\+\_\+\+O\+LD}}~3.\+1359
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ac93f28214b5bd4aefda4f5021ec3830d}{C\+T\+R\+L\+\_\+\+K\+P\+\_\+\+V\+I\+N\+L\+IM}}~( 3.\+0 / 125.\+0 $\ast$ \mbox{\hyperlink{meas_8h_a8342728698d245d8eaa64fda84b2102e}{M\+E\+A\+S\+\_\+\+P\+V\+C\+U\+R\+R\+\_\+\+B\+A\+SE}} )
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a649c6ea44f1094e4427287e45e5346fe}{C\+T\+R\+L\+\_\+\+K\+I\+\_\+\+V\+I\+N\+L\+IM}}~( 10.\+0 / \mbox{\hyperlink{pwm_8h_af70d63868b503908cccd99aeb60634b7}{P\+W\+M\+\_\+\+R\+A\+T\+E\+\_\+\+HZ}} / 125.\+0 $\ast$ \mbox{\hyperlink{meas_8h_a8342728698d245d8eaa64fda84b2102e}{M\+E\+A\+S\+\_\+\+P\+V\+C\+U\+R\+R\+\_\+\+B\+A\+SE}} )
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_af2dcf833389144f1432a10bb2359a446}{C\+T\+R\+L\+\_\+\+V\+M\+P\+\_\+\+S\+E\+T\+P\+O\+I\+N\+T\+\_\+\+D\+U\+R\+I\+N\+G\+\_\+\+S\+A\+M\+P\+LE}}~\mbox{\hyperlink{iqmath_8h_af9759b8b0d18bc1ef336969dba68a340}{I\+Q\+\_\+cnst}}(1.\+05)
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a6ffcccdc9e9450f4dfccfc961c6689ee}{C\+T\+R\+L\+\_\+\+O\+N\+O\+F\+F\+\_\+\+D\+E\+L\+A\+Y\+\_\+\+T\+I\+C\+KS}}~(unsigned long)(0.\+5 $\ast$ 1000000.\+0 / (float)\mbox{\hyperlink{pwm_8h_a9eab62582ed1f922e9da46272d96944f}{P\+W\+M\+\_\+\+P\+E\+R\+I\+O\+D\+\_\+\+US}})
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a073a46e079935c2bba1b6f6b21371b78}{C\+T\+R\+L\+\_\+\+O\+N\+O\+F\+F\+\_\+\+H\+O\+L\+D\+\_\+\+T\+I\+C\+KS}}~(unsigned long)(2.\+0 $\ast$ 1000000.\+0 / (float)\mbox{\hyperlink{pwm_8h_a9eab62582ed1f922e9da46272d96944f}{P\+W\+M\+\_\+\+P\+E\+R\+I\+O\+D\+\_\+\+US}})
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a620056838ec6a46d871854307ff0c447}{A\+P\+P\+L\+Y\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+L\+I\+M\+I\+T\+A\+T\+I\+ON}}
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a2f13f1e1b79edc93d49b0b5a6b470e87}{C\+N\+T\+R\+L\+\_\+\+O\+U\+T\+C\+U\+R\+R\+\_\+\+L\+I\+M\+IT}}~45.\+0
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a23470ddbcb7c7cedcf730dcd2ee44e3b}{C\+N\+T\+R\+L\+\_\+\+O\+U\+T\+C\+U\+R\+R\+\_\+\+O\+V\+E\+R\+T\+E\+M\+P\+\_\+\+L\+I\+M\+I\+T\+\_\+1}}~(90.\+0 / \mbox{\hyperlink{meas_8h_afebe1560f6ce5d37adf3e27b7b3a8e37}{M\+E\+A\+S\+\_\+\+C\+A\+S\+E\+T\+E\+M\+P\+R\+\_\+\+B\+A\+SE}})
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a16243d65f64e6481eb86a37cb74ad1fb}{C\+N\+T\+R\+L\+\_\+\+O\+U\+T\+C\+U\+R\+R\+\_\+\+O\+V\+E\+R\+T\+E\+M\+P\+\_\+\+R\+E\+D\+U\+C\+\_\+1}}~0.\+8
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a3a005fc24a052ca18c228e4b16448979}{C\+N\+T\+R\+L\+\_\+\+O\+U\+T\+C\+U\+R\+R\+\_\+\+O\+V\+E\+R\+T\+E\+M\+P\+\_\+\+L\+I\+M\+I\+T\+\_\+2}}~(100.\+0 / \mbox{\hyperlink{meas_8h_afebe1560f6ce5d37adf3e27b7b3a8e37}{M\+E\+A\+S\+\_\+\+C\+A\+S\+E\+T\+E\+M\+P\+R\+\_\+\+B\+A\+SE}})
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a4cd0af7e1dd3e2ecc48ac6fb9b9f3680}{C\+N\+T\+R\+L\+\_\+\+O\+U\+T\+C\+U\+R\+R\+\_\+\+O\+V\+E\+R\+T\+E\+M\+P\+\_\+\+R\+E\+D\+U\+C\+\_\+2}}~0.\+7
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ab1674aadcfa6eb76a26775c279a4e10d}{C\+N\+T\+R\+L\+\_\+\+O\+U\+T\+C\+U\+R\+R\+\_\+\+H\+Y\+S\+T\+\_\+\+P\+E\+R\+C\+E\+NT}}~90.\+0
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a2776b8e84bfbdd8787625b6519bc3657}{C\+U\+R\+R\+\_\+\+L\+I\+M\+I\+T\+\_\+\+H\+Y\+S\+T\+\_\+\+C\+O\+U\+NT}}~200
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a8899523af66f555110bfe035463c139f}{E\+N\+A\+B\+L\+E\+\_\+\+S\+T\+A\+R\+T\+\_\+\+U\+P\+\_\+\+P\+W\+M\+\_\+\+D\+E\+L\+AY}}
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_afc7a9e1f6435fab3485f104530537e0f}{P\+W\+M\+\_\+\+S\+T\+A\+R\+T\+\_\+\+U\+P\+\_\+\+D\+E\+L\+AY}}~10
+\item 
+\#define \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a24be8b0455c07fe5e02caae7e26c5ea4}{P\+W\+M\+\_\+\+S\+T\+A\+R\+T\+\_\+\+U\+P\+\_\+\+D\+E\+L\+A\+Y\+\_\+\+T\+I\+C\+KS}}~(unsigned long)(\mbox{\hyperlink{ctrl_8c_afc7a9e1f6435fab3485f104530537e0f}{P\+W\+M\+\_\+\+S\+T\+A\+R\+T\+\_\+\+U\+P\+\_\+\+D\+E\+L\+AY}} $\ast$ 1000000.\+0 / \mbox{\hyperlink{pwm_8h_a9eab62582ed1f922e9da46272d96944f}{P\+W\+M\+\_\+\+P\+E\+R\+I\+O\+D\+\_\+\+US}})
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a7da505e015f6fb041378e00a234a61d2}{C\+T\+R\+L\+\_\+\+Mode\+\_\+}} \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a8d71d48db7184da6b52eb126097306d3}{C\+T\+R\+L\+\_\+\+Mode}}
+\item 
+typedef struct \mbox{\hyperlink{struct_ctrl__}{Ctrl\+\_\+}} \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a3d8319ffa17adf5f76e8c02c3edd5594}{Ctrl}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a7da505e015f6fb041378e00a234a61d2}{C\+T\+R\+L\+\_\+\+Mode\+\_\+}} \{ \newline
+\mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a7da505e015f6fb041378e00a234a61d2ae70fcbd3c05e93f8e50755a8582d794a}{C\+T\+R\+L\+\_\+\+M\+O\+D\+E\+\_\+\+M\+P\+P\+T\+\_\+\+R\+EG}}, 
+\mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a7da505e015f6fb041378e00a234a61d2ab8dbe30d9d8847e1d6bbee185453d37b}{C\+T\+R\+L\+\_\+\+M\+O\+D\+E\+\_\+\+O\+U\+T\+\_\+\+R\+EG}}, 
+\mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a7da505e015f6fb041378e00a234a61d2aac2655fd12ac1736b9b0abeb6c41ef55}{C\+T\+R\+L\+\_\+\+M\+O\+D\+E\+\_\+\+V\+I\+N\+\_\+\+L\+IM}}, 
+\mbox{\hyperlink{ctrl_8c_a7da505e015f6fb041378e00a234a61d2ae70fcbd3c05e93f8e50755a8582d794a}{C\+T\+R\+L\+\_\+\+M\+O\+D\+E\+\_\+\+M\+P\+P\+T\+\_\+\+R\+EG}}, 
+\newline
+\mbox{\hyperlink{ctrl_8c_a7da505e015f6fb041378e00a234a61d2ab8dbe30d9d8847e1d6bbee185453d37b}{C\+T\+R\+L\+\_\+\+M\+O\+D\+E\+\_\+\+O\+U\+T\+\_\+\+R\+EG}}, 
+\mbox{\hyperlink{ctrl_8c_a7da505e015f6fb041378e00a234a61d2aac2655fd12ac1736b9b0abeb6c41ef55}{C\+T\+R\+L\+\_\+\+M\+O\+D\+E\+\_\+\+V\+I\+N\+\_\+\+L\+IM}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a4a0290966c5015c292041efb98500d0c}{C\+T\+R\+L\+\_\+init}} ()
+\item 
+void \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_afbc982b0ca9c4f4d71c7e533fd7366fb}{C\+T\+R\+L\+\_\+set\+Fltrim\+Params\+\_\+new}} ()
+\item 
+void \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a6521ea78518504ddefddcd5cb8bd75e6}{C\+T\+R\+L\+\_\+set\+Fltrim\+Params\+\_\+old}} ()
+\item 
+void \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a57614fc72bc43ea04d77e9a0cd1d8194}{C\+T\+R\+L\+\_\+set\+Out\+Volt\+Cmd}} (float out\+Volt\+Cmd)
+\item 
+float \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ac9234919a0ea38346bec231330fb2a2c}{C\+T\+R\+L\+\_\+get\+Out\+Volt\+Cmd}} ()
+\item 
+void \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a179e6efb5839fd58f47e482d08b4dd36}{C\+T\+R\+L\+\_\+calc\+Out\+Volt\+Setpoints}} ()
+\item 
+void \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ac0276232d492f0a177646889ceb91471}{C\+T\+R\+L\+\_\+enable\+Output}} (int enable)
+\item 
+int \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_af1bbd1177737b2eb16b0744a21050392}{C\+T\+R\+L\+\_\+is\+Output\+Enabled}} ()
+\item 
+int \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_aa927a25088e2fae994622e86109a6333}{C\+T\+R\+L\+\_\+is\+Ground\+Fault}} ()
+\item 
+int \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a280e482bfd33be53e24f016826ebb5d2}{C\+T\+R\+L\+\_\+is\+Turbine\+Load\+Enabled}} ()
+\item 
+void \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a0b295af2ff0548129f198da3b642a10d}{C\+T\+R\+L\+\_\+tick}} ()
+\item 
+void \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_aa4bac94dced262e199b4cd8cf8eaceb4}{C\+T\+R\+L\+\_\+vmp\+High}} ()
+\item 
+unsigned char \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_aba9e453bd910ac5c262baa6206a23849}{C\+T\+R\+L\+\_\+get\+Status}} ()
+\item 
+void \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a61c3c1d3b657a30771dda4744901728a}{C\+T\+R\+L\+\_\+check\+Bulk\+Float}} ()
+\item 
+int \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a958621ef16064ef6370f513c1767ed26}{C\+T\+R\+L\+\_\+setpoint\+Is\+Bulk}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a47ad01f48516435bfa1c659cb25f3694}{I\+O\+\_\+pwm\+Enabled}}
+\item 
+int \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a77d9c2e6cb4d5acf2a026ea807d930fc}{update\+\_\+persistent}}
+\item 
+float \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a5fd9b72290ff3aae254537f99965f956}{C\+T\+R\+L\+\_\+offset\+Flset}}
+\item 
+float \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ac91eccf0ec654f8599ad4e6690d6603a}{C\+T\+R\+L\+\_\+scale\+Flset}}
+\item 
+float \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a5d1ba1fd23c959870204630915826369}{C\+T\+R\+L\+\_\+fltrim\+Offset\+On\+V\+C\+CG}}
+\item 
+float \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a36a10c20cc280b7cd9f6799060522b7b}{C\+T\+R\+L\+\_\+base\+Fltrim\+On\+V\+C\+CG}}
+\item 
+\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ab3dea9ef2afe15b2742210bb3b0f941b}{C\+T\+R\+L\+\_\+\+Mppt\+Sample\+Pt\+Now}}
+\item 
+\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a55591fe2cf206466119c52286feda4af}{C\+T\+R\+L\+\_\+\+Mppt\+Sample\+Pt\+Target}}
+\item 
+int \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_aad8c01f4a8d63b82238ed1c88426eb77}{first\+M\+P\+P\+T\+Point}}
+\item 
+int \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a9f39aba3dc4d09ac7afac17189505822}{C\+T\+R\+L\+\_\+enable\+Turbine\+Load}}
+\item 
+\mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a3d8319ffa17adf5f76e8c02c3edd5594}{Ctrl}} \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a2d2db06545af6f2b94328795d480518b}{ctrl}}
+\item 
+int \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a0aef32b2d8dd60f6926bd3d7693d0c62}{ctrl\+\_\+initialised}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a620056838ec6a46d871854307ff0c447}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a620056838ec6a46d871854307ff0c447}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!APPLY\_CURRENT\_LIMITATION@{APPLY\_CURRENT\_LIMITATION}}
+\index{APPLY\_CURRENT\_LIMITATION@{APPLY\_CURRENT\_LIMITATION}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{APPLY\_CURRENT\_LIMITATION}{APPLY\_CURRENT\_LIMITATION}}
+{\footnotesize\ttfamily \#define A\+P\+P\+L\+Y\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+L\+I\+M\+I\+T\+A\+T\+I\+ON}
+
+
+
+Definition at line 80 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ab1674aadcfa6eb76a26775c279a4e10d}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ab1674aadcfa6eb76a26775c279a4e10d}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CNTRL\_OUTCURR\_HYST\_PERCENT@{CNTRL\_OUTCURR\_HYST\_PERCENT}}
+\index{CNTRL\_OUTCURR\_HYST\_PERCENT@{CNTRL\_OUTCURR\_HYST\_PERCENT}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CNTRL\_OUTCURR\_HYST\_PERCENT}{CNTRL\_OUTCURR\_HYST\_PERCENT}}
+{\footnotesize\ttfamily \#define C\+N\+T\+R\+L\+\_\+\+O\+U\+T\+C\+U\+R\+R\+\_\+\+H\+Y\+S\+T\+\_\+\+P\+E\+R\+C\+E\+NT~90.\+0}
+
+
+
+Definition at line 96 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a2f13f1e1b79edc93d49b0b5a6b470e87}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a2f13f1e1b79edc93d49b0b5a6b470e87}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CNTRL\_OUTCURR\_LIMIT@{CNTRL\_OUTCURR\_LIMIT}}
+\index{CNTRL\_OUTCURR\_LIMIT@{CNTRL\_OUTCURR\_LIMIT}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CNTRL\_OUTCURR\_LIMIT}{CNTRL\_OUTCURR\_LIMIT}}
+{\footnotesize\ttfamily \#define C\+N\+T\+R\+L\+\_\+\+O\+U\+T\+C\+U\+R\+R\+\_\+\+L\+I\+M\+IT~45.\+0}
+
+
+
+Definition at line 84 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a23470ddbcb7c7cedcf730dcd2ee44e3b}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a23470ddbcb7c7cedcf730dcd2ee44e3b}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CNTRL\_OUTCURR\_OVERTEMP\_LIMIT\_1@{CNTRL\_OUTCURR\_OVERTEMP\_LIMIT\_1}}
+\index{CNTRL\_OUTCURR\_OVERTEMP\_LIMIT\_1@{CNTRL\_OUTCURR\_OVERTEMP\_LIMIT\_1}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CNTRL\_OUTCURR\_OVERTEMP\_LIMIT\_1}{CNTRL\_OUTCURR\_OVERTEMP\_LIMIT\_1}}
+{\footnotesize\ttfamily \#define C\+N\+T\+R\+L\+\_\+\+O\+U\+T\+C\+U\+R\+R\+\_\+\+O\+V\+E\+R\+T\+E\+M\+P\+\_\+\+L\+I\+M\+I\+T\+\_\+1~(90.\+0 / \mbox{\hyperlink{meas_8h_afebe1560f6ce5d37adf3e27b7b3a8e37}{M\+E\+A\+S\+\_\+\+C\+A\+S\+E\+T\+E\+M\+P\+R\+\_\+\+B\+A\+SE}})}
+
+
+
+Definition at line 91 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a3a005fc24a052ca18c228e4b16448979}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a3a005fc24a052ca18c228e4b16448979}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CNTRL\_OUTCURR\_OVERTEMP\_LIMIT\_2@{CNTRL\_OUTCURR\_OVERTEMP\_LIMIT\_2}}
+\index{CNTRL\_OUTCURR\_OVERTEMP\_LIMIT\_2@{CNTRL\_OUTCURR\_OVERTEMP\_LIMIT\_2}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CNTRL\_OUTCURR\_OVERTEMP\_LIMIT\_2}{CNTRL\_OUTCURR\_OVERTEMP\_LIMIT\_2}}
+{\footnotesize\ttfamily \#define C\+N\+T\+R\+L\+\_\+\+O\+U\+T\+C\+U\+R\+R\+\_\+\+O\+V\+E\+R\+T\+E\+M\+P\+\_\+\+L\+I\+M\+I\+T\+\_\+2~(100.\+0 / \mbox{\hyperlink{meas_8h_afebe1560f6ce5d37adf3e27b7b3a8e37}{M\+E\+A\+S\+\_\+\+C\+A\+S\+E\+T\+E\+M\+P\+R\+\_\+\+B\+A\+SE}})}
+
+
+
+Definition at line 93 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a16243d65f64e6481eb86a37cb74ad1fb}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a16243d65f64e6481eb86a37cb74ad1fb}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CNTRL\_OUTCURR\_OVERTEMP\_REDUC\_1@{CNTRL\_OUTCURR\_OVERTEMP\_REDUC\_1}}
+\index{CNTRL\_OUTCURR\_OVERTEMP\_REDUC\_1@{CNTRL\_OUTCURR\_OVERTEMP\_REDUC\_1}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CNTRL\_OUTCURR\_OVERTEMP\_REDUC\_1}{CNTRL\_OUTCURR\_OVERTEMP\_REDUC\_1}}
+{\footnotesize\ttfamily \#define C\+N\+T\+R\+L\+\_\+\+O\+U\+T\+C\+U\+R\+R\+\_\+\+O\+V\+E\+R\+T\+E\+M\+P\+\_\+\+R\+E\+D\+U\+C\+\_\+1~0.\+8}
+
+
+
+Definition at line 92 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a4cd0af7e1dd3e2ecc48ac6fb9b9f3680}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a4cd0af7e1dd3e2ecc48ac6fb9b9f3680}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CNTRL\_OUTCURR\_OVERTEMP\_REDUC\_2@{CNTRL\_OUTCURR\_OVERTEMP\_REDUC\_2}}
+\index{CNTRL\_OUTCURR\_OVERTEMP\_REDUC\_2@{CNTRL\_OUTCURR\_OVERTEMP\_REDUC\_2}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CNTRL\_OUTCURR\_OVERTEMP\_REDUC\_2}{CNTRL\_OUTCURR\_OVERTEMP\_REDUC\_2}}
+{\footnotesize\ttfamily \#define C\+N\+T\+R\+L\+\_\+\+O\+U\+T\+C\+U\+R\+R\+\_\+\+O\+V\+E\+R\+T\+E\+M\+P\+\_\+\+R\+E\+D\+U\+C\+\_\+2~0.\+7}
+
+
+
+Definition at line 94 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ad804d201133f7f880bd83ad93a861e1a}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ad804d201133f7f880bd83ad93a861e1a}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_ABOUT\_TO\_SAMPLE\_TICKS@{CTRL\_ABOUT\_TO\_SAMPLE\_TICKS}}
+\index{CTRL\_ABOUT\_TO\_SAMPLE\_TICKS@{CTRL\_ABOUT\_TO\_SAMPLE\_TICKS}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_ABOUT\_TO\_SAMPLE\_TICKS}{CTRL\_ABOUT\_TO\_SAMPLE\_TICKS}}
+{\footnotesize\ttfamily \#define C\+T\+R\+L\+\_\+\+A\+B\+O\+U\+T\+\_\+\+T\+O\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+T\+I\+C\+KS~(unsigned long)( 28.\+0 $\ast$ 1000000.\+0 / (float)\mbox{\hyperlink{pwm_8h_a9eab62582ed1f922e9da46272d96944f}{P\+W\+M\+\_\+\+P\+E\+R\+I\+O\+D\+\_\+\+US}} )}
+
+
+
+Definition at line 38 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ac2bbf4bfa5748a806eeeca94160df59f}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ac2bbf4bfa5748a806eeeca94160df59f}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_BASE\_FLTRIM\_ONVCCG\_NEW@{CTRL\_BASE\_FLTRIM\_ONVCCG\_NEW}}
+\index{CTRL\_BASE\_FLTRIM\_ONVCCG\_NEW@{CTRL\_BASE\_FLTRIM\_ONVCCG\_NEW}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_BASE\_FLTRIM\_ONVCCG\_NEW}{CTRL\_BASE\_FLTRIM\_ONVCCG\_NEW}}
+{\footnotesize\ttfamily \#define C\+T\+R\+L\+\_\+\+B\+A\+S\+E\+\_\+\+F\+L\+T\+R\+I\+M\+\_\+\+O\+N\+V\+C\+C\+G\+\_\+\+N\+EW~3.\+1359}
+
+
+
+Definition at line 47 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ae4d8dfbde6f3806a65e24729d321f666}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ae4d8dfbde6f3806a65e24729d321f666}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_BASE\_FLTRIM\_ONVCCG\_OLD@{CTRL\_BASE\_FLTRIM\_ONVCCG\_OLD}}
+\index{CTRL\_BASE\_FLTRIM\_ONVCCG\_OLD@{CTRL\_BASE\_FLTRIM\_ONVCCG\_OLD}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_BASE\_FLTRIM\_ONVCCG\_OLD}{CTRL\_BASE\_FLTRIM\_ONVCCG\_OLD}}
+{\footnotesize\ttfamily \#define C\+T\+R\+L\+\_\+\+B\+A\+S\+E\+\_\+\+F\+L\+T\+R\+I\+M\+\_\+\+O\+N\+V\+C\+C\+G\+\_\+\+O\+LD~3.\+1359}
+
+
+
+Definition at line 52 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ae8596bea4764d5fe9e35b162c0b4a168}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ae8596bea4764d5fe9e35b162c0b4a168}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_FLTRIM\_OFFSET\_ONVCCG\_NEW@{CTRL\_FLTRIM\_OFFSET\_ONVCCG\_NEW}}
+\index{CTRL\_FLTRIM\_OFFSET\_ONVCCG\_NEW@{CTRL\_FLTRIM\_OFFSET\_ONVCCG\_NEW}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_FLTRIM\_OFFSET\_ONVCCG\_NEW}{CTRL\_FLTRIM\_OFFSET\_ONVCCG\_NEW}}
+{\footnotesize\ttfamily \#define C\+T\+R\+L\+\_\+\+F\+L\+T\+R\+I\+M\+\_\+\+O\+F\+F\+S\+E\+T\+\_\+\+O\+N\+V\+C\+C\+G\+\_\+\+N\+EW~2.\+9412}
+
+
+
+Definition at line 46 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a71909a76c431ad34b8ee64071b642324}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a71909a76c431ad34b8ee64071b642324}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_FLTRIM\_OFFSET\_ONVCCG\_OLD@{CTRL\_FLTRIM\_OFFSET\_ONVCCG\_OLD}}
+\index{CTRL\_FLTRIM\_OFFSET\_ONVCCG\_OLD@{CTRL\_FLTRIM\_OFFSET\_ONVCCG\_OLD}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_FLTRIM\_OFFSET\_ONVCCG\_OLD}{CTRL\_FLTRIM\_OFFSET\_ONVCCG\_OLD}}
+{\footnotesize\ttfamily \#define C\+T\+R\+L\+\_\+\+F\+L\+T\+R\+I\+M\+\_\+\+O\+F\+F\+S\+E\+T\+\_\+\+O\+N\+V\+C\+C\+G\+\_\+\+O\+LD~2.\+9412}
+
+
+
+Definition at line 51 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a649c6ea44f1094e4427287e45e5346fe}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a649c6ea44f1094e4427287e45e5346fe}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_KI\_VINLIM@{CTRL\_KI\_VINLIM}}
+\index{CTRL\_KI\_VINLIM@{CTRL\_KI\_VINLIM}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_KI\_VINLIM}{CTRL\_KI\_VINLIM}}
+{\footnotesize\ttfamily \#define C\+T\+R\+L\+\_\+\+K\+I\+\_\+\+V\+I\+N\+L\+IM~( 10.\+0 / \mbox{\hyperlink{pwm_8h_af70d63868b503908cccd99aeb60634b7}{P\+W\+M\+\_\+\+R\+A\+T\+E\+\_\+\+HZ}} / 125.\+0 $\ast$ \mbox{\hyperlink{meas_8h_a8342728698d245d8eaa64fda84b2102e}{M\+E\+A\+S\+\_\+\+P\+V\+C\+U\+R\+R\+\_\+\+B\+A\+SE}} )}
+
+
+
+Definition at line 55 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ac93f28214b5bd4aefda4f5021ec3830d}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ac93f28214b5bd4aefda4f5021ec3830d}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_KP\_VINLIM@{CTRL\_KP\_VINLIM}}
+\index{CTRL\_KP\_VINLIM@{CTRL\_KP\_VINLIM}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_KP\_VINLIM}{CTRL\_KP\_VINLIM}}
+{\footnotesize\ttfamily \#define C\+T\+R\+L\+\_\+\+K\+P\+\_\+\+V\+I\+N\+L\+IM~( 3.\+0 / 125.\+0 $\ast$ \mbox{\hyperlink{meas_8h_a8342728698d245d8eaa64fda84b2102e}{M\+E\+A\+S\+\_\+\+P\+V\+C\+U\+R\+R\+\_\+\+B\+A\+SE}} )}
+
+
+
+Definition at line 54 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ae9df7f9850e760ef4da5fdf7a928d347}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ae9df7f9850e760ef4da5fdf7a928d347}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_NO\_MEAS\_TIME\_TICKS@{CTRL\_NO\_MEAS\_TIME\_TICKS}}
+\index{CTRL\_NO\_MEAS\_TIME\_TICKS@{CTRL\_NO\_MEAS\_TIME\_TICKS}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_NO\_MEAS\_TIME\_TICKS}{CTRL\_NO\_MEAS\_TIME\_TICKS}}
+{\footnotesize\ttfamily \#define C\+T\+R\+L\+\_\+\+N\+O\+\_\+\+M\+E\+A\+S\+\_\+\+T\+I\+M\+E\+\_\+\+T\+I\+C\+KS~(unsigned long)( 0.\+50 $\ast$ 1000000.\+0 / (float)\mbox{\hyperlink{pwm_8h_a9eab62582ed1f922e9da46272d96944f}{P\+W\+M\+\_\+\+P\+E\+R\+I\+O\+D\+\_\+\+US}} )}
+
+
+
+Definition at line 36 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_aaed971682f347a6ada469c33a155c7c9}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_aaed971682f347a6ada469c33a155c7c9}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_NOMINAL\_TO\_FLOAT\_RATIO@{CTRL\_NOMINAL\_TO\_FLOAT\_RATIO}}
+\index{CTRL\_NOMINAL\_TO\_FLOAT\_RATIO@{CTRL\_NOMINAL\_TO\_FLOAT\_RATIO}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_NOMINAL\_TO\_FLOAT\_RATIO}{CTRL\_NOMINAL\_TO\_FLOAT\_RATIO}}
+{\footnotesize\ttfamily \#define C\+T\+R\+L\+\_\+\+N\+O\+M\+I\+N\+A\+L\+\_\+\+T\+O\+\_\+\+F\+L\+O\+A\+T\+\_\+\+R\+A\+T\+IO~( 2.\+0 / 2.\+35 )}
+
+
+
+Definition at line 43 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a75f6a5770f0d12298a5632f72c2ee85a}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a75f6a5770f0d12298a5632f72c2ee85a}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_OFFSET\_FLSET\_NEW@{CTRL\_OFFSET\_FLSET\_NEW}}
+\index{CTRL\_OFFSET\_FLSET\_NEW@{CTRL\_OFFSET\_FLSET\_NEW}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_OFFSET\_FLSET\_NEW}{CTRL\_OFFSET\_FLSET\_NEW}}
+{\footnotesize\ttfamily \#define C\+T\+R\+L\+\_\+\+O\+F\+F\+S\+E\+T\+\_\+\+F\+L\+S\+E\+T\+\_\+\+N\+EW~24.\+93}
+
+
+
+Definition at line 44 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_af171d2db8e8b8152844f2eb3f430bb1b}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_af171d2db8e8b8152844f2eb3f430bb1b}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_OFFSET\_FLSET\_OLD@{CTRL\_OFFSET\_FLSET\_OLD}}
+\index{CTRL\_OFFSET\_FLSET\_OLD@{CTRL\_OFFSET\_FLSET\_OLD}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_OFFSET\_FLSET\_OLD}{CTRL\_OFFSET\_FLSET\_OLD}}
+{\footnotesize\ttfamily \#define C\+T\+R\+L\+\_\+\+O\+F\+F\+S\+E\+T\+\_\+\+F\+L\+S\+E\+T\+\_\+\+O\+LD~29.\+3957}
+
+
+
+Definition at line 49 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a6ffcccdc9e9450f4dfccfc961c6689ee}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a6ffcccdc9e9450f4dfccfc961c6689ee}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_ONOFF\_DELAY\_TICKS@{CTRL\_ONOFF\_DELAY\_TICKS}}
+\index{CTRL\_ONOFF\_DELAY\_TICKS@{CTRL\_ONOFF\_DELAY\_TICKS}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_ONOFF\_DELAY\_TICKS}{CTRL\_ONOFF\_DELAY\_TICKS}}
+{\footnotesize\ttfamily \#define C\+T\+R\+L\+\_\+\+O\+N\+O\+F\+F\+\_\+\+D\+E\+L\+A\+Y\+\_\+\+T\+I\+C\+KS~(unsigned long)(0.\+5 $\ast$ 1000000.\+0 / (float)\mbox{\hyperlink{pwm_8h_a9eab62582ed1f922e9da46272d96944f}{P\+W\+M\+\_\+\+P\+E\+R\+I\+O\+D\+\_\+\+US}})}
+
+
+
+Definition at line 60 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a073a46e079935c2bba1b6f6b21371b78}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a073a46e079935c2bba1b6f6b21371b78}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_ONOFF\_HOLD\_TICKS@{CTRL\_ONOFF\_HOLD\_TICKS}}
+\index{CTRL\_ONOFF\_HOLD\_TICKS@{CTRL\_ONOFF\_HOLD\_TICKS}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_ONOFF\_HOLD\_TICKS}{CTRL\_ONOFF\_HOLD\_TICKS}}
+{\footnotesize\ttfamily \#define C\+T\+R\+L\+\_\+\+O\+N\+O\+F\+F\+\_\+\+H\+O\+L\+D\+\_\+\+T\+I\+C\+KS~(unsigned long)(2.\+0 $\ast$ 1000000.\+0 / (float)\mbox{\hyperlink{pwm_8h_a9eab62582ed1f922e9da46272d96944f}{P\+W\+M\+\_\+\+P\+E\+R\+I\+O\+D\+\_\+\+US}})}
+
+
+
+Definition at line 62 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a0360c53337f09e198ea7f55f01f9306d}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a0360c53337f09e198ea7f55f01f9306d}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_OPEN\_CIRCUIT\_TIME\_TICKS@{CTRL\_OPEN\_CIRCUIT\_TIME\_TICKS}}
+\index{CTRL\_OPEN\_CIRCUIT\_TIME\_TICKS@{CTRL\_OPEN\_CIRCUIT\_TIME\_TICKS}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_OPEN\_CIRCUIT\_TIME\_TICKS}{CTRL\_OPEN\_CIRCUIT\_TIME\_TICKS}}
+{\footnotesize\ttfamily \#define C\+T\+R\+L\+\_\+\+O\+P\+E\+N\+\_\+\+C\+I\+R\+C\+U\+I\+T\+\_\+\+T\+I\+M\+E\+\_\+\+T\+I\+C\+KS~(unsigned long)( 0.\+10 $\ast$ 1000000.\+0 / (float)\mbox{\hyperlink{pwm_8h_a9eab62582ed1f922e9da46272d96944f}{P\+W\+M\+\_\+\+P\+E\+R\+I\+O\+D\+\_\+\+US}} )}
+
+
+
+Definition at line 35 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a38d384742b148d83dfe47bfebe414741}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a38d384742b148d83dfe47bfebe414741}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_OUT\_VOLT\_BLANK\_TICKS@{CTRL\_OUT\_VOLT\_BLANK\_TICKS}}
+\index{CTRL\_OUT\_VOLT\_BLANK\_TICKS@{CTRL\_OUT\_VOLT\_BLANK\_TICKS}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_OUT\_VOLT\_BLANK\_TICKS}{CTRL\_OUT\_VOLT\_BLANK\_TICKS}}
+{\footnotesize\ttfamily \#define C\+T\+R\+L\+\_\+\+O\+U\+T\+\_\+\+V\+O\+L\+T\+\_\+\+B\+L\+A\+N\+K\+\_\+\+T\+I\+C\+KS~( 10 $\ast$ \mbox{\hyperlink{ctrl_8c_a0360c53337f09e198ea7f55f01f9306d}{C\+T\+R\+L\+\_\+\+O\+P\+E\+N\+\_\+\+C\+I\+R\+C\+U\+I\+T\+\_\+\+T\+I\+M\+E\+\_\+\+T\+I\+C\+KS}} )}
+
+
+
+Definition at line 37 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a6d6896fd956129551d3c243e6cd7d3b3}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a6d6896fd956129551d3c243e6cd7d3b3}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_SAMPLE\_PERIOD\_TICKS@{CTRL\_SAMPLE\_PERIOD\_TICKS}}
+\index{CTRL\_SAMPLE\_PERIOD\_TICKS@{CTRL\_SAMPLE\_PERIOD\_TICKS}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_SAMPLE\_PERIOD\_TICKS}{CTRL\_SAMPLE\_PERIOD\_TICKS}}
+{\footnotesize\ttfamily \#define C\+T\+R\+L\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+P\+E\+R\+I\+O\+D\+\_\+\+T\+I\+C\+KS~(unsigned long)( 30.\+0 $\ast$ 1000000.\+0 / (float)\mbox{\hyperlink{pwm_8h_a9eab62582ed1f922e9da46272d96944f}{P\+W\+M\+\_\+\+P\+E\+R\+I\+O\+D\+\_\+\+US}} )}
+
+
+
+Definition at line 34 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_aaf76a4b43f0709b0977a07d59ae9d298}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_aaf76a4b43f0709b0977a07d59ae9d298}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_SCALE\_FLSET\_NEW@{CTRL\_SCALE\_FLSET\_NEW}}
+\index{CTRL\_SCALE\_FLSET\_NEW@{CTRL\_SCALE\_FLSET\_NEW}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_SCALE\_FLSET\_NEW}{CTRL\_SCALE\_FLSET\_NEW}}
+{\footnotesize\ttfamily \#define C\+T\+R\+L\+\_\+\+S\+C\+A\+L\+E\+\_\+\+F\+L\+S\+E\+T\+\_\+\+N\+EW~1.\+22}
+
+
+
+Definition at line 45 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a31dac8b5eb92a91b0fdaba734d9fd77e}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a31dac8b5eb92a91b0fdaba734d9fd77e}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_SCALE\_FLSET\_OLD@{CTRL\_SCALE\_FLSET\_OLD}}
+\index{CTRL\_SCALE\_FLSET\_OLD@{CTRL\_SCALE\_FLSET\_OLD}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_SCALE\_FLSET\_OLD}{CTRL\_SCALE\_FLSET\_OLD}}
+{\footnotesize\ttfamily \#define C\+T\+R\+L\+\_\+\+S\+C\+A\+L\+E\+\_\+\+F\+L\+S\+E\+T\+\_\+\+O\+LD~1.\+2}
+
+
+
+Definition at line 50 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a465a8e8d1ee6c4cc99eefc34a2c91ca4}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a465a8e8d1ee6c4cc99eefc34a2c91ca4}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_VINLIM\_DIODE\_VOLT@{CTRL\_VINLIM\_DIODE\_VOLT}}
+\index{CTRL\_VINLIM\_DIODE\_VOLT@{CTRL\_VINLIM\_DIODE\_VOLT}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_VINLIM\_DIODE\_VOLT}{CTRL\_VINLIM\_DIODE\_VOLT}}
+{\footnotesize\ttfamily \#define C\+T\+R\+L\+\_\+\+V\+I\+N\+L\+I\+M\+\_\+\+D\+I\+O\+D\+E\+\_\+\+V\+O\+LT~0.\+2}
+
+
+
+Definition at line 41 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a49a20fd4619311460bd2ee46313c7fbe}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a49a20fd4619311460bd2ee46313c7fbe}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_VINLIM\_FRAC@{CTRL\_VINLIM\_FRAC}}
+\index{CTRL\_VINLIM\_FRAC@{CTRL\_VINLIM\_FRAC}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_VINLIM\_FRAC}{CTRL\_VINLIM\_FRAC}}
+{\footnotesize\ttfamily \#define C\+T\+R\+L\+\_\+\+V\+I\+N\+L\+I\+M\+\_\+\+F\+R\+AC~1.\+2}
+
+
+
+Definition at line 40 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_af2dcf833389144f1432a10bb2359a446}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_af2dcf833389144f1432a10bb2359a446}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_VMP\_SETPOINT\_DURING\_SAMPLE@{CTRL\_VMP\_SETPOINT\_DURING\_SAMPLE}}
+\index{CTRL\_VMP\_SETPOINT\_DURING\_SAMPLE@{CTRL\_VMP\_SETPOINT\_DURING\_SAMPLE}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_VMP\_SETPOINT\_DURING\_SAMPLE}{CTRL\_VMP\_SETPOINT\_DURING\_SAMPLE}}
+{\footnotesize\ttfamily \#define C\+T\+R\+L\+\_\+\+V\+M\+P\+\_\+\+S\+E\+T\+P\+O\+I\+N\+T\+\_\+\+D\+U\+R\+I\+N\+G\+\_\+\+S\+A\+M\+P\+LE~\mbox{\hyperlink{iqmath_8h_af9759b8b0d18bc1ef336969dba68a340}{I\+Q\+\_\+cnst}}(1.\+05)}
+
+
+
+Definition at line 57 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a2776b8e84bfbdd8787625b6519bc3657}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a2776b8e84bfbdd8787625b6519bc3657}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CURR\_LIMIT\_HYST\_COUNT@{CURR\_LIMIT\_HYST\_COUNT}}
+\index{CURR\_LIMIT\_HYST\_COUNT@{CURR\_LIMIT\_HYST\_COUNT}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CURR\_LIMIT\_HYST\_COUNT}{CURR\_LIMIT\_HYST\_COUNT}}
+{\footnotesize\ttfamily \#define C\+U\+R\+R\+\_\+\+L\+I\+M\+I\+T\+\_\+\+H\+Y\+S\+T\+\_\+\+C\+O\+U\+NT~200}
+
+
+
+Definition at line 97 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a8899523af66f555110bfe035463c139f}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a8899523af66f555110bfe035463c139f}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!ENABLE\_START\_UP\_PWM\_DELAY@{ENABLE\_START\_UP\_PWM\_DELAY}}
+\index{ENABLE\_START\_UP\_PWM\_DELAY@{ENABLE\_START\_UP\_PWM\_DELAY}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{ENABLE\_START\_UP\_PWM\_DELAY}{ENABLE\_START\_UP\_PWM\_DELAY}}
+{\footnotesize\ttfamily \#define E\+N\+A\+B\+L\+E\+\_\+\+S\+T\+A\+R\+T\+\_\+\+U\+P\+\_\+\+P\+W\+M\+\_\+\+D\+E\+L\+AY}
+
+
+
+Definition at line 110 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_afc7a9e1f6435fab3485f104530537e0f}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_afc7a9e1f6435fab3485f104530537e0f}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!PWM\_START\_UP\_DELAY@{PWM\_START\_UP\_DELAY}}
+\index{PWM\_START\_UP\_DELAY@{PWM\_START\_UP\_DELAY}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{PWM\_START\_UP\_DELAY}{PWM\_START\_UP\_DELAY}}
+{\footnotesize\ttfamily \#define P\+W\+M\+\_\+\+S\+T\+A\+R\+T\+\_\+\+U\+P\+\_\+\+D\+E\+L\+AY~10}
+
+
+
+Definition at line 111 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a24be8b0455c07fe5e02caae7e26c5ea4}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a24be8b0455c07fe5e02caae7e26c5ea4}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!PWM\_START\_UP\_DELAY\_TICKS@{PWM\_START\_UP\_DELAY\_TICKS}}
+\index{PWM\_START\_UP\_DELAY\_TICKS@{PWM\_START\_UP\_DELAY\_TICKS}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{PWM\_START\_UP\_DELAY\_TICKS}{PWM\_START\_UP\_DELAY\_TICKS}}
+{\footnotesize\ttfamily \#define P\+W\+M\+\_\+\+S\+T\+A\+R\+T\+\_\+\+U\+P\+\_\+\+D\+E\+L\+A\+Y\+\_\+\+T\+I\+C\+KS~(unsigned long)(\mbox{\hyperlink{ctrl_8c_afc7a9e1f6435fab3485f104530537e0f}{P\+W\+M\+\_\+\+S\+T\+A\+R\+T\+\_\+\+U\+P\+\_\+\+D\+E\+L\+AY}} $\ast$ 1000000.\+0 / \mbox{\hyperlink{pwm_8h_a9eab62582ed1f922e9da46272d96944f}{P\+W\+M\+\_\+\+P\+E\+R\+I\+O\+D\+\_\+\+US}})}
+
+
+
+Definition at line 112 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a3d8319ffa17adf5f76e8c02c3edd5594}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a3d8319ffa17adf5f76e8c02c3edd5594}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!Ctrl@{Ctrl}}
+\index{Ctrl@{Ctrl}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{Ctrl}{Ctrl}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_ctrl__}{Ctrl\+\_\+}} \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a3d8319ffa17adf5f76e8c02c3edd5594}{Ctrl}}}
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a8d71d48db7184da6b52eb126097306d3}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a8d71d48db7184da6b52eb126097306d3}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_Mode@{CTRL\_Mode}}
+\index{CTRL\_Mode@{CTRL\_Mode}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_Mode}{CTRL\_Mode}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a7da505e015f6fb041378e00a234a61d2}{C\+T\+R\+L\+\_\+\+Mode\+\_\+}} \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a8d71d48db7184da6b52eb126097306d3}{C\+T\+R\+L\+\_\+\+Mode}}}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a7da505e015f6fb041378e00a234a61d2}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a7da505e015f6fb041378e00a234a61d2}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_Mode\_@{CTRL\_Mode\_}}
+\index{CTRL\_Mode\_@{CTRL\_Mode\_}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_Mode\_}{CTRL\_Mode\_}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a7da505e015f6fb041378e00a234a61d2}{C\+T\+R\+L\+\_\+\+Mode\+\_\+}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CTRL\_MODE\_MPPT\_REG@{CTRL\_MODE\_MPPT\_REG}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_MODE\_MPPT\_REG@{CTRL\_MODE\_MPPT\_REG}}}\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a7da505e015f6fb041378e00a234a61d2ae70fcbd3c05e93f8e50755a8582d794a}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a7da505e015f6fb041378e00a234a61d2ae70fcbd3c05e93f8e50755a8582d794a}} 
+C\+T\+R\+L\+\_\+\+M\+O\+D\+E\+\_\+\+M\+P\+P\+T\+\_\+\+R\+EG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CTRL\_MODE\_OUT\_REG@{CTRL\_MODE\_OUT\_REG}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_MODE\_OUT\_REG@{CTRL\_MODE\_OUT\_REG}}}\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a7da505e015f6fb041378e00a234a61d2ab8dbe30d9d8847e1d6bbee185453d37b}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a7da505e015f6fb041378e00a234a61d2ab8dbe30d9d8847e1d6bbee185453d37b}} 
+C\+T\+R\+L\+\_\+\+M\+O\+D\+E\+\_\+\+O\+U\+T\+\_\+\+R\+EG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CTRL\_MODE\_VIN\_LIM@{CTRL\_MODE\_VIN\_LIM}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_MODE\_VIN\_LIM@{CTRL\_MODE\_VIN\_LIM}}}\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a7da505e015f6fb041378e00a234a61d2aac2655fd12ac1736b9b0abeb6c41ef55}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a7da505e015f6fb041378e00a234a61d2aac2655fd12ac1736b9b0abeb6c41ef55}} 
+C\+T\+R\+L\+\_\+\+M\+O\+D\+E\+\_\+\+V\+I\+N\+\_\+\+L\+IM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CTRL\_MODE\_MPPT\_REG@{CTRL\_MODE\_MPPT\_REG}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_MODE\_MPPT\_REG@{CTRL\_MODE\_MPPT\_REG}}}\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a7da505e015f6fb041378e00a234a61d2ae70fcbd3c05e93f8e50755a8582d794a}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a7da505e015f6fb041378e00a234a61d2ae70fcbd3c05e93f8e50755a8582d794a}} 
+C\+T\+R\+L\+\_\+\+M\+O\+D\+E\+\_\+\+M\+P\+P\+T\+\_\+\+R\+EG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CTRL\_MODE\_OUT\_REG@{CTRL\_MODE\_OUT\_REG}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_MODE\_OUT\_REG@{CTRL\_MODE\_OUT\_REG}}}\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a7da505e015f6fb041378e00a234a61d2ab8dbe30d9d8847e1d6bbee185453d37b}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a7da505e015f6fb041378e00a234a61d2ab8dbe30d9d8847e1d6bbee185453d37b}} 
+C\+T\+R\+L\+\_\+\+M\+O\+D\+E\+\_\+\+O\+U\+T\+\_\+\+R\+EG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CTRL\_MODE\_VIN\_LIM@{CTRL\_MODE\_VIN\_LIM}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_MODE\_VIN\_LIM@{CTRL\_MODE\_VIN\_LIM}}}\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a7da505e015f6fb041378e00a234a61d2aac2655fd12ac1736b9b0abeb6c41ef55}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a7da505e015f6fb041378e00a234a61d2aac2655fd12ac1736b9b0abeb6c41ef55}} 
+C\+T\+R\+L\+\_\+\+M\+O\+D\+E\+\_\+\+V\+I\+N\+\_\+\+L\+IM&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 122 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a179e6efb5839fd58f47e482d08b4dd36}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a179e6efb5839fd58f47e482d08b4dd36}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_calcOutVoltSetpoints@{CTRL\_calcOutVoltSetpoints}}
+\index{CTRL\_calcOutVoltSetpoints@{CTRL\_calcOutVoltSetpoints}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_calcOutVoltSetpoints()}{CTRL\_calcOutVoltSetpoints()}}
+{\footnotesize\ttfamily void C\+T\+R\+L\+\_\+calc\+Out\+Volt\+Setpoints (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 277 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a61c3c1d3b657a30771dda4744901728a}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a61c3c1d3b657a30771dda4744901728a}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_checkBulkFloat@{CTRL\_checkBulkFloat}}
+\index{CTRL\_checkBulkFloat@{CTRL\_checkBulkFloat}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_checkBulkFloat()}{CTRL\_checkBulkFloat()}}
+{\footnotesize\ttfamily void C\+T\+R\+L\+\_\+check\+Bulk\+Float (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 850 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ac0276232d492f0a177646889ceb91471}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ac0276232d492f0a177646889ceb91471}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_enableOutput@{CTRL\_enableOutput}}
+\index{CTRL\_enableOutput@{CTRL\_enableOutput}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_enableOutput()}{CTRL\_enableOutput()}}
+{\footnotesize\ttfamily void C\+T\+R\+L\+\_\+enable\+Output (\begin{DoxyParamCaption}\item[{int}]{enable }\end{DoxyParamCaption})}
+
+
+
+Definition at line 369 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ac9234919a0ea38346bec231330fb2a2c}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ac9234919a0ea38346bec231330fb2a2c}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_getOutVoltCmd@{CTRL\_getOutVoltCmd}}
+\index{CTRL\_getOutVoltCmd@{CTRL\_getOutVoltCmd}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_getOutVoltCmd()}{CTRL\_getOutVoltCmd()}}
+{\footnotesize\ttfamily float C\+T\+R\+L\+\_\+get\+Out\+Volt\+Cmd (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 271 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_aba9e453bd910ac5c262baa6206a23849}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_aba9e453bd910ac5c262baa6206a23849}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_getStatus@{CTRL\_getStatus}}
+\index{CTRL\_getStatus@{CTRL\_getStatus}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_getStatus()}{CTRL\_getStatus()}}
+{\footnotesize\ttfamily unsigned char C\+T\+R\+L\+\_\+get\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 842 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a4a0290966c5015c292041efb98500d0c}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a4a0290966c5015c292041efb98500d0c}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_init@{CTRL\_init}}
+\index{CTRL\_init@{CTRL\_init}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_init()}{CTRL\_init()}}
+{\footnotesize\ttfamily void C\+T\+R\+L\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 167 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_aa927a25088e2fae994622e86109a6333}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_aa927a25088e2fae994622e86109a6333}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_isGroundFault@{CTRL\_isGroundFault}}
+\index{CTRL\_isGroundFault@{CTRL\_isGroundFault}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_isGroundFault()}{CTRL\_isGroundFault()}}
+{\footnotesize\ttfamily int C\+T\+R\+L\+\_\+is\+Ground\+Fault (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 380 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_af1bbd1177737b2eb16b0744a21050392}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_af1bbd1177737b2eb16b0744a21050392}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_isOutputEnabled@{CTRL\_isOutputEnabled}}
+\index{CTRL\_isOutputEnabled@{CTRL\_isOutputEnabled}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_isOutputEnabled()}{CTRL\_isOutputEnabled()}}
+{\footnotesize\ttfamily int C\+T\+R\+L\+\_\+is\+Output\+Enabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 375 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a280e482bfd33be53e24f016826ebb5d2}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a280e482bfd33be53e24f016826ebb5d2}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_isTurbineLoadEnabled@{CTRL\_isTurbineLoadEnabled}}
+\index{CTRL\_isTurbineLoadEnabled@{CTRL\_isTurbineLoadEnabled}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_isTurbineLoadEnabled()}{CTRL\_isTurbineLoadEnabled()}}
+{\footnotesize\ttfamily int C\+T\+R\+L\+\_\+is\+Turbine\+Load\+Enabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 385 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_afbc982b0ca9c4f4d71c7e533fd7366fb}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_afbc982b0ca9c4f4d71c7e533fd7366fb}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_setFltrimParams\_new@{CTRL\_setFltrimParams\_new}}
+\index{CTRL\_setFltrimParams\_new@{CTRL\_setFltrimParams\_new}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_setFltrimParams\_new()}{CTRL\_setFltrimParams\_new()}}
+{\footnotesize\ttfamily void C\+T\+R\+L\+\_\+set\+Fltrim\+Params\+\_\+new (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 246 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a6521ea78518504ddefddcd5cb8bd75e6}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a6521ea78518504ddefddcd5cb8bd75e6}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_setFltrimParams\_old@{CTRL\_setFltrimParams\_old}}
+\index{CTRL\_setFltrimParams\_old@{CTRL\_setFltrimParams\_old}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_setFltrimParams\_old()}{CTRL\_setFltrimParams\_old()}}
+{\footnotesize\ttfamily void C\+T\+R\+L\+\_\+set\+Fltrim\+Params\+\_\+old (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 254 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+Here is the caller graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a57614fc72bc43ea04d77e9a0cd1d8194}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a57614fc72bc43ea04d77e9a0cd1d8194}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_setOutVoltCmd@{CTRL\_setOutVoltCmd}}
+\index{CTRL\_setOutVoltCmd@{CTRL\_setOutVoltCmd}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_setOutVoltCmd()}{CTRL\_setOutVoltCmd()}}
+{\footnotesize\ttfamily void C\+T\+R\+L\+\_\+set\+Out\+Volt\+Cmd (\begin{DoxyParamCaption}\item[{float}]{out\+Volt\+Cmd }\end{DoxyParamCaption})}
+
+
+
+Definition at line 262 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+Here is the caller graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a958621ef16064ef6370f513c1767ed26}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a958621ef16064ef6370f513c1767ed26}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_setpointIsBulk@{CTRL\_setpointIsBulk}}
+\index{CTRL\_setpointIsBulk@{CTRL\_setpointIsBulk}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_setpointIsBulk()}{CTRL\_setpointIsBulk()}}
+{\footnotesize\ttfamily int C\+T\+R\+L\+\_\+setpoint\+Is\+Bulk (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 926 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+Here is the caller graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a0b295af2ff0548129f198da3b642a10d}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a0b295af2ff0548129f198da3b642a10d}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_tick@{CTRL\_tick}}
+\index{CTRL\_tick@{CTRL\_tick}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_tick()}{CTRL\_tick()}}
+{\footnotesize\ttfamily void C\+T\+R\+L\+\_\+tick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 391 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+Here is the caller graph for this function\+:
+% FIG 11
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_aa4bac94dced262e199b4cd8cf8eaceb4}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_aa4bac94dced262e199b4cd8cf8eaceb4}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_vmpHigh@{CTRL\_vmpHigh}}
+\index{CTRL\_vmpHigh@{CTRL\_vmpHigh}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_vmpHigh()}{CTRL\_vmpHigh()}}
+{\footnotesize\ttfamily void C\+T\+R\+L\+\_\+vmp\+High (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 822 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a2d2db06545af6f2b94328795d480518b}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a2d2db06545af6f2b94328795d480518b}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!ctrl@{ctrl}}
+\index{ctrl@{ctrl}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{ctrl}{ctrl}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a3d8319ffa17adf5f76e8c02c3edd5594}{Ctrl}} ctrl}
+
+
+
+Definition at line 161 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a36a10c20cc280b7cd9f6799060522b7b}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a36a10c20cc280b7cd9f6799060522b7b}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_baseFltrimOnVCCG@{CTRL\_baseFltrimOnVCCG}}
+\index{CTRL\_baseFltrimOnVCCG@{CTRL\_baseFltrimOnVCCG}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_baseFltrimOnVCCG}{CTRL\_baseFltrimOnVCCG}}
+{\footnotesize\ttfamily float C\+T\+R\+L\+\_\+base\+Fltrim\+On\+V\+C\+CG}
+
+
+
+Definition at line 67 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a9f39aba3dc4d09ac7afac17189505822}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a9f39aba3dc4d09ac7afac17189505822}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_enableTurbineLoad@{CTRL\_enableTurbineLoad}}
+\index{CTRL\_enableTurbineLoad@{CTRL\_enableTurbineLoad}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_enableTurbineLoad}{CTRL\_enableTurbineLoad}}
+{\footnotesize\ttfamily int C\+T\+R\+L\+\_\+enable\+Turbine\+Load}
+
+
+
+Definition at line 120 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a5d1ba1fd23c959870204630915826369}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a5d1ba1fd23c959870204630915826369}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_fltrimOffsetOnVCCG@{CTRL\_fltrimOffsetOnVCCG}}
+\index{CTRL\_fltrimOffsetOnVCCG@{CTRL\_fltrimOffsetOnVCCG}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_fltrimOffsetOnVCCG}{CTRL\_fltrimOffsetOnVCCG}}
+{\footnotesize\ttfamily float C\+T\+R\+L\+\_\+fltrim\+Offset\+On\+V\+C\+CG}
+
+
+
+Definition at line 66 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a0aef32b2d8dd60f6926bd3d7693d0c62}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a0aef32b2d8dd60f6926bd3d7693d0c62}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!ctrl\_initialised@{ctrl\_initialised}}
+\index{ctrl\_initialised@{ctrl\_initialised}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{ctrl\_initialised}{ctrl\_initialised}}
+{\footnotesize\ttfamily int ctrl\+\_\+initialised = 0}
+
+
+
+Definition at line 165 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ab3dea9ef2afe15b2742210bb3b0f941b}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ab3dea9ef2afe15b2742210bb3b0f941b}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_MpptSamplePtNow@{CTRL\_MpptSamplePtNow}}
+\index{CTRL\_MpptSamplePtNow@{CTRL\_MpptSamplePtNow}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_MpptSamplePtNow}{CTRL\_MpptSamplePtNow}}
+{\footnotesize\ttfamily \mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} C\+T\+R\+L\+\_\+\+Mppt\+Sample\+Pt\+Now}
+
+
+
+Definition at line 69 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a55591fe2cf206466119c52286feda4af}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a55591fe2cf206466119c52286feda4af}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_MpptSamplePtTarget@{CTRL\_MpptSamplePtTarget}}
+\index{CTRL\_MpptSamplePtTarget@{CTRL\_MpptSamplePtTarget}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_MpptSamplePtTarget}{CTRL\_MpptSamplePtTarget}}
+{\footnotesize\ttfamily \mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} C\+T\+R\+L\+\_\+\+Mppt\+Sample\+Pt\+Target}
+
+
+
+Definition at line 70 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a5fd9b72290ff3aae254537f99965f956}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a5fd9b72290ff3aae254537f99965f956}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_offsetFlset@{CTRL\_offsetFlset}}
+\index{CTRL\_offsetFlset@{CTRL\_offsetFlset}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_offsetFlset}{CTRL\_offsetFlset}}
+{\footnotesize\ttfamily float C\+T\+R\+L\+\_\+offset\+Flset}
+
+
+
+Definition at line 64 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ac91eccf0ec654f8599ad4e6690d6603a}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_ac91eccf0ec654f8599ad4e6690d6603a}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!CTRL\_scaleFlset@{CTRL\_scaleFlset}}
+\index{CTRL\_scaleFlset@{CTRL\_scaleFlset}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_scaleFlset}{CTRL\_scaleFlset}}
+{\footnotesize\ttfamily float C\+T\+R\+L\+\_\+scale\+Flset}
+
+
+
+Definition at line 65 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_aad8c01f4a8d63b82238ed1c88426eb77}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_aad8c01f4a8d63b82238ed1c88426eb77}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!firstMPPTPoint@{firstMPPTPoint}}
+\index{firstMPPTPoint@{firstMPPTPoint}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{firstMPPTPoint}{firstMPPTPoint}}
+{\footnotesize\ttfamily int first\+M\+P\+P\+T\+Point}
+
+
+
+Definition at line 119 of file ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a47ad01f48516435bfa1c659cb25f3694}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a47ad01f48516435bfa1c659cb25f3694}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!IO\_pwmEnabled@{IO\_pwmEnabled}}
+\index{IO\_pwmEnabled@{IO\_pwmEnabled}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{IO\_pwmEnabled}{IO\_pwmEnabled}}
+{\footnotesize\ttfamily unsigned int I\+O\+\_\+pwm\+Enabled\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line 84 of file io.\+c.
+
+\mbox{\Hypertarget{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a77d9c2e6cb4d5acf2a026ea807d930fc}\label{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a77d9c2e6cb4d5acf2a026ea807d930fc}} 
+\index{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}!update\_persistent@{update\_persistent}}
+\index{update\_persistent@{update\_persistent}!ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c@{ctrl (Конфликтующая копия с компьютера Nsel 2020-\/08-\/03).c}}
+\doxysubsubsection{\texorpdfstring{update\_persistent}{update\_persistent}}
+{\footnotesize\ttfamily int update\+\_\+persistent\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line 46 of file lcd.\+c.
+

@@ -1,0 +1,264 @@
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/comms.c" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/comms.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'variant\&.h'\fP
+.br
+\fC#include 'comms\&.h'\fP
+.br
+\fC#include 'can\&.h'\fP
+.br
+\fC#include 'io\&.h'\fP
+.br
+\fC#include 'meas\&.h'\fP
+.br
+\fC#include 'iqmath\&.h'\fP
+.br
+\fC#include 'pwm\&.h'\fP
+.br
+\fC#include 'flash\&.h'\fP
+.br
+\fC#include 'cfg\&.h'\fP
+.br
+\fC#include 'stats\&.h'\fP
+.br
+\fC#include 'flag\&.h'\fP
+.br
+\fC#include 'telem\&.h'\fP
+.br
+\fC#include 'main\&.h'\fP
+.br
+\fC#include 'time\&.h'\fP
+.br
+\fC#include 'status\&.h'\fP
+.br
+\fC#include 'util\&.h'\fP
+.br
+\fC#include 'ctrl\&.h'\fP
+.br
+\fC#include 'lcd\&.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBP2p_\fP"
+.br
+.ti -1c
+.RI "struct \fBComms_\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef enum \fBP2pMode_\fP \fBP2pMode\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBP2p_\fP \fBP2p\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBComms_\fP \fBComms\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBP2pMode_\fP { \fBP2P_IDLE\fP = 0, \fBP2P_FLASH_SEND_ACTIVE\fP, \fBP2P_MEM_SEND_ACTIVE\fP, \fBP2P_FLASH_REC_PAUSED\fP, \fBP2P_FLASH_REC_ACTIVE\fP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBCOMMS_startFlashSend\fP (unsigned long addr, unsigned long len)"
+.br
+.ti -1c
+.RI "int \fBCOMMS_startMemSend\fP (unsigned char *addr, unsigned int len)"
+.br
+.ti -1c
+.RI "int \fBCOMMS_startFlashRec\fP (unsigned long addr, unsigned long len)"
+.br
+.ti -1c
+.RI "void \fBCOMMS_endFlashSend\fP ()"
+.br
+.ti -1c
+.RI "void \fBCOMMS_endMemSend\fP ()"
+.br
+.ti -1c
+.RI "void \fBCOMMS_endFlashRec\fP ()"
+.br
+.ti -1c
+.RI "void \fBCOMMS_init\fP ()"
+.br
+.ti -1c
+.RI "unsigned char \fBCOMMS_getStatus\fP ()"
+.br
+.ti -1c
+.RI "void \fBCOMMS_sendHeartbeat\fP ()"
+.br
+.ti -1c
+.RI "void \fBCOMMS_sendStatus\fP ()"
+.br
+.ti -1c
+.RI "void \fBCOMMS_sendTime\fP ()"
+.br
+.ti -1c
+.RI "void \fBCOMMS_sendPvMeas\fP ()"
+.br
+.ti -1c
+.RI "void \fBCOMMS_sendOutMeas\fP ()"
+.br
+.ti -1c
+.RI "void \fBCOMMS_sendOcQMeas\fP ()"
+.br
+.ti -1c
+.RI "void \fBCOMMS_sendPowTemprMeas\fP ()"
+.br
+.ti -1c
+.RI "void \fBCOMMS_sendFlag\fP ()"
+.br
+.ti -1c
+.RI "void \fBCOMMS_sendOutVoltCmd\fP ()"
+.br
+.ti -1c
+.RI "void \fBCOMMS_sendDebugPacket\fP (unsigned int val1, unsigned int val2, unsigned int val3, unsigned int val4)"
+.br
+.ti -1c
+.RI "void \fBCOMMS_receive\fP ()"
+.br
+.ti -1c
+.RI "void \fBCOMMS_sendP2pPacket\fP ()"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBComms\fP \fBcomms\fP"
+.br
+.in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef struct \fBComms_\fP \fBComms\fP"
+
+.SS "typedef struct \fBP2p_\fP \fBP2p\fP"
+
+.SS "typedef enum \fBP2pMode_\fP \fBP2pMode\fP"
+
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBP2pMode_\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIP2P_IDLE \fP\fP
+.TP
+\fB\fIP2P_FLASH_SEND_ACTIVE \fP\fP
+.TP
+\fB\fIP2P_MEM_SEND_ACTIVE \fP\fP
+.TP
+\fB\fIP2P_FLASH_REC_PAUSED \fP\fP
+.TP
+\fB\fIP2P_FLASH_REC_ACTIVE \fP\fP
+.PP
+Definition at line 73 of file comms\&.c\&.
+.SH "Function Documentation"
+.PP 
+.SS "void COMMS_endFlashRec ()"
+
+.PP
+Definition at line 687 of file comms\&.c\&.
+.SS "void COMMS_endFlashSend ()"
+
+.PP
+Definition at line 657 of file comms\&.c\&.
+.SS "void COMMS_endMemSend ()"
+
+.PP
+Definition at line 673 of file comms\&.c\&.
+.SS "unsigned char COMMS_getStatus ()"
+
+.PP
+Definition at line 111 of file comms\&.c\&.
+.SS "void COMMS_init ()"
+
+.PP
+Definition at line 106 of file comms\&.c\&.
+.SS "void COMMS_receive ()"
+
+.PP
+Definition at line 280 of file comms\&.c\&.
+.SS "void COMMS_sendDebugPacket (unsigned int val1, unsigned int val2, unsigned int val3, unsigned int val4)"
+
+.PP
+Definition at line 232 of file comms\&.c\&.
+.SS "void COMMS_sendFlag ()"
+
+.PP
+Definition at line 213 of file comms\&.c\&.
+.SS "void COMMS_sendHeartbeat ()"
+
+.PP
+Definition at line 116 of file comms\&.c\&.
+.SS "void COMMS_sendOcQMeas ()"
+
+.PP
+Definition at line 182 of file comms\&.c\&.
+.SS "void COMMS_sendOutMeas ()"
+
+.PP
+Definition at line 170 of file comms\&.c\&.
+.SS "void COMMS_sendOutVoltCmd ()"
+
+.PP
+Definition at line 222 of file comms\&.c\&.
+.SS "void COMMS_sendP2pPacket ()"
+
+.PP
+Definition at line 575 of file comms\&.c\&.
+.SS "void COMMS_sendPowTemprMeas ()"
+
+.PP
+Definition at line 194 of file comms\&.c\&.
+.SS "void COMMS_sendPvMeas ()"
+
+.PP
+Definition at line 158 of file comms\&.c\&.
+.SS "void COMMS_sendStatus ()"
+
+.PP
+Definition at line 139 of file comms\&.c\&.
+.SS "void COMMS_sendTime ()"
+
+.PP
+Definition at line 149 of file comms\&.c\&.
+.SS "int COMMS_startFlashRec (unsigned long addr, unsigned long len)"
+
+.PP
+Definition at line 545 of file comms\&.c\&.
+.SS "int COMMS_startFlashSend (unsigned long addr, unsigned long len)"
+
+.PP
+Definition at line 517 of file comms\&.c\&.
+.SS "int COMMS_startMemSend (unsigned char * addr, unsigned int len)"
+
+.PP
+Definition at line 531 of file comms\&.c\&.
+.SH "Variable Documentation"
+.PP 
+.SS "\fBComms\fP comms"
+
+.PP
+Definition at line 97 of file comms\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.

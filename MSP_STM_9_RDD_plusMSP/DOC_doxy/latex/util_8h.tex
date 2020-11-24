@@ -1,0 +1,190 @@
+\hypertarget{util_8h}{}\doxysection{D\+:/user\+S\+S\+D/github/\+Charger6k\+W/\+M\+S\+P\+\_\+\+S\+T\+M\+\_\+9\+\_\+\+R\+D\+D\+\_\+plus\+M\+S\+P/\+M\+S\+P430/util.h File Reference}
+\label{util_8h}\index{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/util.h@{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/util.h}}
+{\ttfamily \#include \char`\"{}debug.\+h\char`\"{}}\newline
+Include dependency graph for util.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{union__group__64}{\+\_\+group\+\_\+64}}
+\item 
+union \mbox{\hyperlink{union__group__32}{\+\_\+group\+\_\+32}}
+\item 
+union \mbox{\hyperlink{union__group__16}{\+\_\+group\+\_\+16}}
+\item 
+struct \mbox{\hyperlink{struct_circ_buffer__}{Circ\+Buffer\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{util_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{T\+R\+UE}}~1
+\item 
+\#define \mbox{\hyperlink{util_8h_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}}~0
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef union \mbox{\hyperlink{union__group__64}{\+\_\+group\+\_\+64}} \mbox{\hyperlink{util_8h_a5d5e8acf0ab5f8f506dcb430b91202cb}{group\+\_\+64}}
+\item 
+typedef union \mbox{\hyperlink{union__group__32}{\+\_\+group\+\_\+32}} \mbox{\hyperlink{util_8h_acca2e6ee3200cc50c753057aaab87a02}{group\+\_\+32}}
+\item 
+typedef union \mbox{\hyperlink{union__group__16}{\+\_\+group\+\_\+16}} \mbox{\hyperlink{util_8h_aa7677ea5d96b558b28e0142bf8da349f}{group\+\_\+16}}
+\item 
+typedef struct \mbox{\hyperlink{struct_circ_buffer__}{Circ\+Buffer\+\_\+}} \mbox{\hyperlink{util_8h_abfdd552439b94a21472fde0f0e4abb71}{Circ\+Buffer}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{util_8h_ae814ed393bade374040e928161feb70f}{U\+T\+I\+L\+\_\+mod\+Add}} (int x, int y, int M)
+\item 
+int \mbox{\hyperlink{util_8h_a2ed6f1c2ee8692e42e759920040e63d5}{U\+T\+I\+L\+\_\+get\+Circ\+Buffer\+Space}} (\mbox{\hyperlink{util_8h_abfdd552439b94a21472fde0f0e4abb71}{Circ\+Buffer}} $\ast$p\+Cb)
+\item 
+int \mbox{\hyperlink{util_8h_adcd1908fd8788c7dd4bc84201269d89d}{U\+T\+I\+L\+\_\+put\+To\+Circ\+Buffer}} (\mbox{\hyperlink{util_8h_abfdd552439b94a21472fde0f0e4abb71}{Circ\+Buffer}} $\ast$p\+Cb, unsigned char x)
+\item 
+unsigned char \mbox{\hyperlink{util_8h_af66c38fc2193fb03e35bd7924b738a9e}{U\+T\+I\+L\+\_\+get\+From\+Circ\+Buffer}} (\mbox{\hyperlink{util_8h_abfdd552439b94a21472fde0f0e4abb71}{Circ\+Buffer}} $\ast$p\+Cb)
+\item 
+unsigned int \mbox{\hyperlink{util_8h_a47a7021b66a04c8188313cf4146a50f5}{U\+T\+I\+L\+\_\+calc\+Checksum}} (unsigned char $\ast$p\+Start, unsigned int len)
+\item 
+unsigned int \mbox{\hyperlink{util_8h_a6ae9f2c80775fc30687d6ffb69a73af5}{U\+T\+I\+L\+\_\+calc\+Checksum\+Flash}} (unsigned long start\+Addr, unsigned int len)
+\item 
+unsigned int \mbox{\hyperlink{util_8h_ae8814b00b784005b7b466157d9ded603}{U\+T\+I\+L\+\_\+decimal\+To\+Bcd}} (unsigned int dec)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{util_8h_aa93f0eb578d23995850d61f7d61c55c1}\label{util_8h_aa93f0eb578d23995850d61f7d61c55c1}} 
+\index{util.h@{util.h}!FALSE@{FALSE}}
+\index{FALSE@{FALSE}!util.h@{util.h}}
+\doxysubsubsection{\texorpdfstring{FALSE}{FALSE}}
+{\footnotesize\ttfamily \#define F\+A\+L\+SE~0}
+
+
+
+Definition at line 18 of file util.\+h.
+
+\mbox{\Hypertarget{util_8h_aa8cecfc5c5c054d2875c03e77b7be15d}\label{util_8h_aa8cecfc5c5c054d2875c03e77b7be15d}} 
+\index{util.h@{util.h}!TRUE@{TRUE}}
+\index{TRUE@{TRUE}!util.h@{util.h}}
+\doxysubsubsection{\texorpdfstring{TRUE}{TRUE}}
+{\footnotesize\ttfamily \#define T\+R\+UE~1}
+
+
+
+Definition at line 17 of file util.\+h.
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{util_8h_abfdd552439b94a21472fde0f0e4abb71}\label{util_8h_abfdd552439b94a21472fde0f0e4abb71}} 
+\index{util.h@{util.h}!CircBuffer@{CircBuffer}}
+\index{CircBuffer@{CircBuffer}!util.h@{util.h}}
+\doxysubsubsection{\texorpdfstring{CircBuffer}{CircBuffer}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_circ_buffer__}{Circ\+Buffer\+\_\+}} \mbox{\hyperlink{util_8h_abfdd552439b94a21472fde0f0e4abb71}{Circ\+Buffer}}}
+
+\mbox{\Hypertarget{util_8h_aa7677ea5d96b558b28e0142bf8da349f}\label{util_8h_aa7677ea5d96b558b28e0142bf8da349f}} 
+\index{util.h@{util.h}!group\_16@{group\_16}}
+\index{group\_16@{group\_16}!util.h@{util.h}}
+\doxysubsubsection{\texorpdfstring{group\_16}{group\_16}}
+{\footnotesize\ttfamily typedef union \mbox{\hyperlink{union__group__16}{\+\_\+group\+\_\+16}} \mbox{\hyperlink{util_8h_aa7677ea5d96b558b28e0142bf8da349f}{group\+\_\+16}}}
+
+\mbox{\Hypertarget{util_8h_acca2e6ee3200cc50c753057aaab87a02}\label{util_8h_acca2e6ee3200cc50c753057aaab87a02}} 
+\index{util.h@{util.h}!group\_32@{group\_32}}
+\index{group\_32@{group\_32}!util.h@{util.h}}
+\doxysubsubsection{\texorpdfstring{group\_32}{group\_32}}
+{\footnotesize\ttfamily typedef union \mbox{\hyperlink{union__group__32}{\+\_\+group\+\_\+32}} \mbox{\hyperlink{util_8h_acca2e6ee3200cc50c753057aaab87a02}{group\+\_\+32}}}
+
+\mbox{\Hypertarget{util_8h_a5d5e8acf0ab5f8f506dcb430b91202cb}\label{util_8h_a5d5e8acf0ab5f8f506dcb430b91202cb}} 
+\index{util.h@{util.h}!group\_64@{group\_64}}
+\index{group\_64@{group\_64}!util.h@{util.h}}
+\doxysubsubsection{\texorpdfstring{group\_64}{group\_64}}
+{\footnotesize\ttfamily typedef union \mbox{\hyperlink{union__group__64}{\+\_\+group\+\_\+64}} \mbox{\hyperlink{util_8h_a5d5e8acf0ab5f8f506dcb430b91202cb}{group\+\_\+64}}}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{util_8h_a47a7021b66a04c8188313cf4146a50f5}\label{util_8h_a47a7021b66a04c8188313cf4146a50f5}} 
+\index{util.h@{util.h}!UTIL\_calcChecksum@{UTIL\_calcChecksum}}
+\index{UTIL\_calcChecksum@{UTIL\_calcChecksum}!util.h@{util.h}}
+\doxysubsubsection{\texorpdfstring{UTIL\_calcChecksum()}{UTIL\_calcChecksum()}}
+{\footnotesize\ttfamily unsigned int U\+T\+I\+L\+\_\+calc\+Checksum (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{p\+Start,  }\item[{unsigned int}]{len }\end{DoxyParamCaption})}
+
+
+
+Definition at line 51 of file util.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{util_8h_a6ae9f2c80775fc30687d6ffb69a73af5}\label{util_8h_a6ae9f2c80775fc30687d6ffb69a73af5}} 
+\index{util.h@{util.h}!UTIL\_calcChecksumFlash@{UTIL\_calcChecksumFlash}}
+\index{UTIL\_calcChecksumFlash@{UTIL\_calcChecksumFlash}!util.h@{util.h}}
+\doxysubsubsection{\texorpdfstring{UTIL\_calcChecksumFlash()}{UTIL\_calcChecksumFlash()}}
+{\footnotesize\ttfamily unsigned int U\+T\+I\+L\+\_\+calc\+Checksum\+Flash (\begin{DoxyParamCaption}\item[{unsigned long}]{start\+Addr,  }\item[{unsigned int}]{len }\end{DoxyParamCaption})}
+
+
+
+Definition at line 61 of file util.\+c.
+
+Here is the call graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{util_8h_ae8814b00b784005b7b466157d9ded603}\label{util_8h_ae8814b00b784005b7b466157d9ded603}} 
+\index{util.h@{util.h}!UTIL\_decimalToBcd@{UTIL\_decimalToBcd}}
+\index{UTIL\_decimalToBcd@{UTIL\_decimalToBcd}!util.h@{util.h}}
+\doxysubsubsection{\texorpdfstring{UTIL\_decimalToBcd()}{UTIL\_decimalToBcd()}}
+{\footnotesize\ttfamily unsigned int U\+T\+I\+L\+\_\+decimal\+To\+Bcd (\begin{DoxyParamCaption}\item[{unsigned int}]{dec }\end{DoxyParamCaption})}
+
+
+
+Definition at line 71 of file util.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{util_8h_a2ed6f1c2ee8692e42e759920040e63d5}\label{util_8h_a2ed6f1c2ee8692e42e759920040e63d5}} 
+\index{util.h@{util.h}!UTIL\_getCircBufferSpace@{UTIL\_getCircBufferSpace}}
+\index{UTIL\_getCircBufferSpace@{UTIL\_getCircBufferSpace}!util.h@{util.h}}
+\doxysubsubsection{\texorpdfstring{UTIL\_getCircBufferSpace()}{UTIL\_getCircBufferSpace()}}
+{\footnotesize\ttfamily int U\+T\+I\+L\+\_\+get\+Circ\+Buffer\+Space (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{util_8h_abfdd552439b94a21472fde0f0e4abb71}{Circ\+Buffer}} $\ast$}]{p\+Cb }\end{DoxyParamCaption})}
+
+
+
+Definition at line 23 of file util.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{util_8h_af66c38fc2193fb03e35bd7924b738a9e}\label{util_8h_af66c38fc2193fb03e35bd7924b738a9e}} 
+\index{util.h@{util.h}!UTIL\_getFromCircBuffer@{UTIL\_getFromCircBuffer}}
+\index{UTIL\_getFromCircBuffer@{UTIL\_getFromCircBuffer}!util.h@{util.h}}
+\doxysubsubsection{\texorpdfstring{UTIL\_getFromCircBuffer()}{UTIL\_getFromCircBuffer()}}
+{\footnotesize\ttfamily unsigned char U\+T\+I\+L\+\_\+get\+From\+Circ\+Buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{util_8h_abfdd552439b94a21472fde0f0e4abb71}{Circ\+Buffer}} $\ast$}]{p\+Cb }\end{DoxyParamCaption})}
+
+
+
+Definition at line 40 of file util.\+c.
+
+Here is the call graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{util_8h_ae814ed393bade374040e928161feb70f}\label{util_8h_ae814ed393bade374040e928161feb70f}} 
+\index{util.h@{util.h}!UTIL\_modAdd@{UTIL\_modAdd}}
+\index{UTIL\_modAdd@{UTIL\_modAdd}!util.h@{util.h}}
+\doxysubsubsection{\texorpdfstring{UTIL\_modAdd()}{UTIL\_modAdd()}}
+{\footnotesize\ttfamily int U\+T\+I\+L\+\_\+mod\+Add (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{M }\end{DoxyParamCaption})}
+
+
+
+Definition at line 15 of file util.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{util_8h_adcd1908fd8788c7dd4bc84201269d89d}\label{util_8h_adcd1908fd8788c7dd4bc84201269d89d}} 
+\index{util.h@{util.h}!UTIL\_putToCircBuffer@{UTIL\_putToCircBuffer}}
+\index{UTIL\_putToCircBuffer@{UTIL\_putToCircBuffer}!util.h@{util.h}}
+\doxysubsubsection{\texorpdfstring{UTIL\_putToCircBuffer()}{UTIL\_putToCircBuffer()}}
+{\footnotesize\ttfamily int U\+T\+I\+L\+\_\+put\+To\+Circ\+Buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{util_8h_abfdd552439b94a21472fde0f0e4abb71}{Circ\+Buffer}} $\ast$}]{p\+Cb,  }\item[{unsigned char}]{x }\end{DoxyParamCaption})}
+
+
+
+Definition at line 29 of file util.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 8

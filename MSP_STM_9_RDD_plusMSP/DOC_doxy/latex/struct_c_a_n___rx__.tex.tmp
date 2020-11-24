@@ -1,0 +1,23 @@
+\hypertarget{struct_c_a_n___rx__}{}\doxysection{C\+A\+N\+\_\+\+Rx\+\_\+ Struct Reference}
+\label{struct_c_a_n___rx__}\index{CAN\_Rx\_@{CAN\_Rx\_}}
+
+
+Collaboration diagram for C\+A\+N\+\_\+\+Rx\+\_\+\+:
+% FIG 0
+\doxysubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_c_a_n___rx___aeed08ea57af6f7be240e2bf66162389f}\label{struct_c_a_n___rx___aeed08ea57af6f7be240e2bf66162389f}} 
+unsigned int {\bfseries status}
+\item 
+\mbox{\Hypertarget{struct_c_a_n___rx___a2f55ff1f6cd45ca1b6431493ab5614eb}\label{struct_c_a_n___rx___a2f55ff1f6cd45ca1b6431493ab5614eb}} 
+unsigned int {\bfseries address}
+\item 
+\mbox{\Hypertarget{struct_c_a_n___rx___a507b23f2081b10186021186f71a6bdb3}\label{struct_c_a_n___rx___a507b23f2081b10186021186f71a6bdb3}} 
+\mbox{\hyperlink{union__group__64}{group\+\_\+64}} {\bfseries data}
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/user\+S\+S\+D/github/\+Charger6k\+W/\+M\+S\+P\+\_\+\+S\+T\+M\+\_\+9\+\_\+\+R\+D\+D\+\_\+plus\+M\+S\+P/\+M\+S\+P430/can.\+h\end{DoxyCompactItemize}

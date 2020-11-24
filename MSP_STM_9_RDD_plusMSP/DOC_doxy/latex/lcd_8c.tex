@@ -1,0 +1,661 @@
+\hypertarget{lcd_8c}{}\doxysection{D\+:/user\+S\+S\+D/github/\+Charger6k\+W/\+M\+S\+P\+\_\+\+S\+T\+M\+\_\+9\+\_\+\+R\+D\+D\+\_\+plus\+M\+S\+P/\+M\+S\+P430/lcd.c File Reference}
+\label{lcd_8c}\index{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/lcd.c@{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/lcd.c}}
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}variant.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}lcd.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}meas.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}usci.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cfg.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}flag.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}flash.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}util.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}comms.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}protocol.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}crc16.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}status.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}can.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stats.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ctrl.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}adc.\+h\char`\"{}}\newline
+Include dependency graph for lcd.\+c\+:
+% FIG 0
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{lcd_8c_ae78d593cdf7dd6098f8a5daef4ea4515}{S\+E\+G\+M\+E\+N\+T\+\_\+\+A\+\_\+\+A\+D\+D\+R\+E\+SS}}~0x10\+C0
+\item 
+\#define \mbox{\hyperlink{lcd_8c_a2370d5202507731fe45ca4117b941c57}{S\+E\+G\+M\+E\+N\+T\+\_\+\+A\+\_\+\+L\+E\+N\+G\+TH}}~64
+\item 
+\#define \mbox{\hyperlink{lcd_8c_a1c1fddc4f7b56b87eb771ddc19e5bda2}{F\+L\+A\+S\+H\+\_\+\+T\+Y\+P\+E\+\_\+\+P\+E\+R\+S\+I\+S\+T\+E\+NT}}~0x7\+F\+FE
+\item 
+\#define \mbox{\hyperlink{lcd_8c_a0107e011f6297e797a7148005a3318e8}{F\+L\+A\+S\+H\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+A\+L\+IB}}~0x7\+F\+FF
+\item 
+\#define \mbox{\hyperlink{lcd_8c_abcac8239e460e93573f8738a903a926e}{L\+C\+D\+\_\+\+F\+L\+A\+S\+H\+\_\+\+R\+E\+A\+D\+\_\+\+A\+T\+T\+E\+M\+P\+TS}}~2
+\item 
+\#define \mbox{\hyperlink{lcd_8c_a569191d9502a86f0ce3c05736372bf38}{L\+C\+D\+\_\+\+F\+L\+A\+S\+H\+\_\+\+W\+R\+I\+T\+E\+\_\+\+A\+T\+T\+E\+M\+P\+TS}}~2
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{lcd_8c_a73d5456aec2d1dd495da5dbca87f7aad}{lcd\+\_\+update\+\_\+local\+\_\+config}} (void)
+\item 
+void \mbox{\hyperlink{lcd_8c_a4debff6792eff95c5ca13a58ba94807c}{lcd\+\_\+update\+\_\+remote\+\_\+config}} (void)
+\item 
+void \mbox{\hyperlink{lcd_8c_a86059f000b3412dfc6261ada2b1e06ab}{lcd\+\_\+copy\+Product\+Info}} (void)
+\item 
+void \mbox{\hyperlink{lcd_8c_a533b144b3ac324ba05a546f78e62548e}{lcd\+\_\+load\+Telemetry}} (void)
+\item 
+void \mbox{\hyperlink{lcd_8c_a62c5ebd8284b07ad2557902a32fbfe37}{lcd\+\_\+load\+Sys\+Info}} (void)
+\item 
+void \mbox{\hyperlink{lcd_8c_aad05c1a0d08f3cd19f747c3cb525e390}{lcd\+\_\+load\+User\+Defaults}} (void)
+\item 
+void \mbox{\hyperlink{lcd_8c_a4e7740a619bd34dfd5821838c6dd4614}{lcd\+\_\+load\+Factory\+Defaults}} (void)
+\item 
+void \mbox{\hyperlink{lcd_8c_a2a6f77d8ae56841d26d03350661fad89}{lcd\+\_\+load\+Events\+Defaults}} (void)
+\item 
+void \mbox{\hyperlink{lcd_8c_a7d87bacdec3fe9cfd496ade79c856d5e}{lcd\+\_\+load\+Misc\+State\+Defaults}} (void)
+\item 
+void \mbox{\hyperlink{lcd_8c_aed9e3f7992882b9538f3390a82ee7376}{lcd\+\_\+load\+Persistent\+Defaults}} (void)
+\item 
+int \mbox{\hyperlink{lcd_8c_a191deb390d669499157204c558d04ce7}{lcd\+\_\+check\+\_\+calibration}} (unsigned char $\ast$calib)
+\item 
+int \mbox{\hyperlink{lcd_8c_a80e17ac2bfba654abd5afa1399568d65}{lcd\+\_\+calibration\+Changed}} (unsigned char $\ast$calib, unsigned char $\ast$calib\+Backup)
+\item 
+void \mbox{\hyperlink{lcd_8c_aea1ffc5bf4fc5a9436477382056bd9fc}{lcd\+\_\+restore\+Calibration}} (unsigned char $\ast$calib)
+\item 
+void \mbox{\hyperlink{lcd_8c_ac8a4dfbf9c9f3138367cc1ffbf92e2f8}{lcd\+\_\+start\+Write\+Calibration\+Backup}} (void)
+\item 
+int \mbox{\hyperlink{lcd_8c_a236f1fa7f21fdb5389dcc384faea2114}{lcd\+\_\+read\+\_\+flash}} (unsigned long addr, unsigned long len, unsigned char $\ast$\mbox{\hyperlink{can_8c_a2aa039eae5ea240f3cf5fd1a85f10efd}{buffer}}, int attempts)
+\item 
+void \mbox{\hyperlink{lcd_8c_a6842775ba83d166f02b8fef8bb63b1e6}{lcd\+\_\+init}} (void)
+\item 
+void \mbox{\hyperlink{lcd_8c_adf0a5938f7bf89fe5cec5d7275a73d1e}{lcd\+\_\+update}} (void)
+\item 
+void \mbox{\hyperlink{lcd_8c_a7d8dbee6d60ca7e2cc18615abf463889}{lcd\+\_\+start\+Write\+Packet}} (int write\+Type, unsigned long addr, unsigned long len, unsigned char $\ast$\mbox{\hyperlink{can_8c_a2aa039eae5ea240f3cf5fd1a85f10efd}{buffer}}, int attempts)
+\item 
+void \mbox{\hyperlink{lcd_8c_a7f800692aa226a3f52b48b3f95463579}{lcd\+\_\+start\+Write\+Factory}} (void)
+\item 
+void \mbox{\hyperlink{lcd_8c_a85c2fea96daabcbf2874876caa4ad2a7}{lcd\+\_\+start\+Write\+User}} (void)
+\item 
+void \mbox{\hyperlink{lcd_8c_a13bb71a64c925834c0db3fc09ceeea3d}{lcd\+\_\+start\+Write\+Events}} (void)
+\item 
+void \mbox{\hyperlink{lcd_8c_a1dc58bf5078e4e115ea6bc15aebd5426}{lcd\+\_\+start\+Write\+Misc\+State}} (void)
+\item 
+void \mbox{\hyperlink{lcd_8c_a927bd441fb8a946c250345b7a26550f2}{lcd\+\_\+start\+Write\+Persistent}} (void)
+\item 
+void \mbox{\hyperlink{lcd_8c_a6eb124736e24544036568a49ee05276a}{lcd\+\_\+check\+Persistent\+Update}} (void)
+\item 
+int \mbox{\hyperlink{lcd_8c_a978cdaed71121cc7ec77e5b1e89c2857}{lcd\+\_\+start\+Write}} ()
+\item 
+int \mbox{\hyperlink{lcd_8c_aad0ce170782fdfb3358befc08da9d42c}{lcd\+\_\+queue\+Write}} (int type)
+\item 
+void \mbox{\hyperlink{lcd_8c_a6f6dddc4b28ce0ab95155f74740d257f}{lcd\+\_\+can\+Recved}} (void)
+\item 
+void \mbox{\hyperlink{lcd_8c_a6ecd441ccb31e20f0f32f6c88982cdc1}{lcd\+\_\+erase\+Done\+Callback}} (int retval)
+\item 
+void \mbox{\hyperlink{lcd_8c_a5c83edb7f85a82cd96b9bee28c0ccbe1}{lcd\+\_\+run\+Cfg\+State\+Machine}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{lcd_8c_a704a19579a0144b9019fd7b497408a43}{lcd\+\_\+write\+Next}} = -\/1
+\item 
+int \mbox{\hyperlink{lcd_8c_a89fddd35a63909782304eaeffc5b7286}{lcd\+\_\+write\+Remaining\+Attempts}} = 0
+\item 
+\mbox{\hyperlink{lcd_8h_a6f3c1e898f3fec20cf85ee93ec995ade}{lcd\+\_\+\+Cfg\+State}} \mbox{\hyperlink{lcd_8c_aa633a5bb6a9dbcd8f5d31e4e526edbf1}{lcd\+\_\+cfg\+State}} = \mbox{\hyperlink{lcd_8h_af78b4f192ee4c5ca174d73d880cc0074aa6d8f17701751b34272d9f430dc1d405}{L\+C\+D\+C\+F\+G\+\_\+\+S\+T\+A\+T\+E\+\_\+\+C\+F\+G\+\_\+\+I\+D\+LE}}
+\item 
+int \mbox{\hyperlink{lcd_8c_ab18dc71ae6967897373352c8ec6d5e6b}{lcd\+\_\+write\+Type}} = \mbox{\hyperlink{protocol_8h_a953a7ca757a993c81a2d80defa27ffb3a76e569bb5e62ff664b40d662363e8092}{T\+Y\+P\+E\+\_\+\+T\+E\+L\+E\+M\+E\+T\+RY}}
+\item 
+unsigned char \mbox{\hyperlink{lcd_8c_a60f7116da9d1f1c075342df6a0a7a04f}{lcd\+\_\+write\+Buffer}} \mbox{[}\mbox{\hyperlink{flash_8h_aa73b24e0eddc9b36f0b3db415aca4f23}{F\+L\+A\+S\+H\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}\mbox{]}
+\item 
+unsigned long \mbox{\hyperlink{lcd_8c_ae09a6b7e814af94a5898a344546677f4}{lcd\+\_\+write\+Address}}
+\item 
+unsigned long \mbox{\hyperlink{lcd_8c_a2d7c833219c3010ae9a79261bdb98a6b}{lcd\+\_\+write\+Len}}
+\item 
+int \mbox{\hyperlink{lcd_8c_a77d9c2e6cb4d5acf2a026ea807d930fc}{update\+\_\+persistent}} = 0
+\item 
+float\+Value\+\_\+t \mbox{\hyperlink{lcd_8c_acfbfce159a34ddb79768ef9731b78529}{calculated\+Value}}
+\item 
+int \mbox{\hyperlink{lcd_8c_a42715f65f02da52edc5b22021d8ae670}{time}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{lcd_8c_a0107e011f6297e797a7148005a3318e8}\label{lcd_8c_a0107e011f6297e797a7148005a3318e8}} 
+\index{lcd.c@{lcd.c}!FLASH\_TYPE\_CALIB@{FLASH\_TYPE\_CALIB}}
+\index{FLASH\_TYPE\_CALIB@{FLASH\_TYPE\_CALIB}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{FLASH\_TYPE\_CALIB}{FLASH\_TYPE\_CALIB}}
+{\footnotesize\ttfamily \#define F\+L\+A\+S\+H\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+A\+L\+IB~0x7\+F\+FF}
+
+
+
+Definition at line 35 of file lcd.\+c.
+
+\mbox{\Hypertarget{lcd_8c_a1c1fddc4f7b56b87eb771ddc19e5bda2}\label{lcd_8c_a1c1fddc4f7b56b87eb771ddc19e5bda2}} 
+\index{lcd.c@{lcd.c}!FLASH\_TYPE\_PERSISTENT@{FLASH\_TYPE\_PERSISTENT}}
+\index{FLASH\_TYPE\_PERSISTENT@{FLASH\_TYPE\_PERSISTENT}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{FLASH\_TYPE\_PERSISTENT}{FLASH\_TYPE\_PERSISTENT}}
+{\footnotesize\ttfamily \#define F\+L\+A\+S\+H\+\_\+\+T\+Y\+P\+E\+\_\+\+P\+E\+R\+S\+I\+S\+T\+E\+NT~0x7\+F\+FE}
+
+
+
+Definition at line 34 of file lcd.\+c.
+
+\mbox{\Hypertarget{lcd_8c_abcac8239e460e93573f8738a903a926e}\label{lcd_8c_abcac8239e460e93573f8738a903a926e}} 
+\index{lcd.c@{lcd.c}!LCD\_FLASH\_READ\_ATTEMPTS@{LCD\_FLASH\_READ\_ATTEMPTS}}
+\index{LCD\_FLASH\_READ\_ATTEMPTS@{LCD\_FLASH\_READ\_ATTEMPTS}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{LCD\_FLASH\_READ\_ATTEMPTS}{LCD\_FLASH\_READ\_ATTEMPTS}}
+{\footnotesize\ttfamily \#define L\+C\+D\+\_\+\+F\+L\+A\+S\+H\+\_\+\+R\+E\+A\+D\+\_\+\+A\+T\+T\+E\+M\+P\+TS~2}
+
+
+
+Definition at line 36 of file lcd.\+c.
+
+\mbox{\Hypertarget{lcd_8c_a569191d9502a86f0ce3c05736372bf38}\label{lcd_8c_a569191d9502a86f0ce3c05736372bf38}} 
+\index{lcd.c@{lcd.c}!LCD\_FLASH\_WRITE\_ATTEMPTS@{LCD\_FLASH\_WRITE\_ATTEMPTS}}
+\index{LCD\_FLASH\_WRITE\_ATTEMPTS@{LCD\_FLASH\_WRITE\_ATTEMPTS}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{LCD\_FLASH\_WRITE\_ATTEMPTS}{LCD\_FLASH\_WRITE\_ATTEMPTS}}
+{\footnotesize\ttfamily \#define L\+C\+D\+\_\+\+F\+L\+A\+S\+H\+\_\+\+W\+R\+I\+T\+E\+\_\+\+A\+T\+T\+E\+M\+P\+TS~2}
+
+
+
+Definition at line 37 of file lcd.\+c.
+
+\mbox{\Hypertarget{lcd_8c_ae78d593cdf7dd6098f8a5daef4ea4515}\label{lcd_8c_ae78d593cdf7dd6098f8a5daef4ea4515}} 
+\index{lcd.c@{lcd.c}!SEGMENT\_A\_ADDRESS@{SEGMENT\_A\_ADDRESS}}
+\index{SEGMENT\_A\_ADDRESS@{SEGMENT\_A\_ADDRESS}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{SEGMENT\_A\_ADDRESS}{SEGMENT\_A\_ADDRESS}}
+{\footnotesize\ttfamily \#define S\+E\+G\+M\+E\+N\+T\+\_\+\+A\+\_\+\+A\+D\+D\+R\+E\+SS~0x10\+C0}
+
+
+
+Definition at line 32 of file lcd.\+c.
+
+\mbox{\Hypertarget{lcd_8c_a2370d5202507731fe45ca4117b941c57}\label{lcd_8c_a2370d5202507731fe45ca4117b941c57}} 
+\index{lcd.c@{lcd.c}!SEGMENT\_A\_LENGTH@{SEGMENT\_A\_LENGTH}}
+\index{SEGMENT\_A\_LENGTH@{SEGMENT\_A\_LENGTH}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{SEGMENT\_A\_LENGTH}{SEGMENT\_A\_LENGTH}}
+{\footnotesize\ttfamily \#define S\+E\+G\+M\+E\+N\+T\+\_\+\+A\+\_\+\+L\+E\+N\+G\+TH~64}
+
+
+
+Definition at line 33 of file lcd.\+c.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{lcd_8c_a80e17ac2bfba654abd5afa1399568d65}\label{lcd_8c_a80e17ac2bfba654abd5afa1399568d65}} 
+\index{lcd.c@{lcd.c}!lcd\_calibrationChanged@{lcd\_calibrationChanged}}
+\index{lcd\_calibrationChanged@{lcd\_calibrationChanged}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_calibrationChanged()}{lcd\_calibrationChanged()}}
+{\footnotesize\ttfamily int lcd\+\_\+calibration\+Changed (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{calib,  }\item[{unsigned char $\ast$}]{calib\+Backup }\end{DoxyParamCaption})}
+
+
+
+Definition at line 199 of file lcd.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{lcd_8c_a6f6dddc4b28ce0ab95155f74740d257f}\label{lcd_8c_a6f6dddc4b28ce0ab95155f74740d257f}} 
+\index{lcd.c@{lcd.c}!lcd\_canRecved@{lcd\_canRecved}}
+\index{lcd\_canRecved@{lcd\_canRecved}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_canRecved()}{lcd\_canRecved()}}
+{\footnotesize\ttfamily void lcd\+\_\+can\+Recved (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 731 of file lcd.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{lcd_8c_a191deb390d669499157204c558d04ce7}\label{lcd_8c_a191deb390d669499157204c558d04ce7}} 
+\index{lcd.c@{lcd.c}!lcd\_check\_calibration@{lcd\_check\_calibration}}
+\index{lcd\_check\_calibration@{lcd\_check\_calibration}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_check\_calibration()}{lcd\_check\_calibration()}}
+{\footnotesize\ttfamily int lcd\+\_\+check\+\_\+calibration (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{calib }\end{DoxyParamCaption})}
+
+
+
+Definition at line 172 of file lcd.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{lcd_8c_a6eb124736e24544036568a49ee05276a}\label{lcd_8c_a6eb124736e24544036568a49ee05276a}} 
+\index{lcd.c@{lcd.c}!lcd\_checkPersistentUpdate@{lcd\_checkPersistentUpdate}}
+\index{lcd\_checkPersistentUpdate@{lcd\_checkPersistentUpdate}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_checkPersistentUpdate()}{lcd\_checkPersistentUpdate()}}
+{\footnotesize\ttfamily void lcd\+\_\+check\+Persistent\+Update (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 668 of file lcd.\+c.
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{lcd_8c_a86059f000b3412dfc6261ada2b1e06ab}\label{lcd_8c_a86059f000b3412dfc6261ada2b1e06ab}} 
+\index{lcd.c@{lcd.c}!lcd\_copyProductInfo@{lcd\_copyProductInfo}}
+\index{lcd\_copyProductInfo@{lcd\_copyProductInfo}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_copyProductInfo()}{lcd\_copyProductInfo()}}
+{\footnotesize\ttfamily void lcd\+\_\+copy\+Product\+Info (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 379 of file lcd.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{lcd_8c_a6ecd441ccb31e20f0f32f6c88982cdc1}\label{lcd_8c_a6ecd441ccb31e20f0f32f6c88982cdc1}} 
+\index{lcd.c@{lcd.c}!lcd\_eraseDoneCallback@{lcd\_eraseDoneCallback}}
+\index{lcd\_eraseDoneCallback@{lcd\_eraseDoneCallback}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_eraseDoneCallback()}{lcd\_eraseDoneCallback()}}
+{\footnotesize\ttfamily void lcd\+\_\+erase\+Done\+Callback (\begin{DoxyParamCaption}\item[{int}]{retval }\end{DoxyParamCaption})}
+
+
+
+Definition at line 736 of file lcd.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{lcd_8c_a6842775ba83d166f02b8fef8bb63b1e6}\label{lcd_8c_a6842775ba83d166f02b8fef8bb63b1e6}} 
+\index{lcd.c@{lcd.c}!lcd\_init@{lcd\_init}}
+\index{lcd\_init@{lcd\_init}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_init()}{lcd\_init()}}
+{\footnotesize\ttfamily void lcd\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 91 of file lcd.\+c.
+
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{lcd_8c_a2a6f77d8ae56841d26d03350661fad89}\label{lcd_8c_a2a6f77d8ae56841d26d03350661fad89}} 
+\index{lcd.c@{lcd.c}!lcd\_loadEventsDefaults@{lcd\_loadEventsDefaults}}
+\index{lcd\_loadEventsDefaults@{lcd\_loadEventsDefaults}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_loadEventsDefaults()}{lcd\_loadEventsDefaults()}}
+{\footnotesize\ttfamily void lcd\+\_\+load\+Events\+Defaults (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 551 of file lcd.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{lcd_8c_a4e7740a619bd34dfd5821838c6dd4614}\label{lcd_8c_a4e7740a619bd34dfd5821838c6dd4614}} 
+\index{lcd.c@{lcd.c}!lcd\_loadFactoryDefaults@{lcd\_loadFactoryDefaults}}
+\index{lcd\_loadFactoryDefaults@{lcd\_loadFactoryDefaults}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_loadFactoryDefaults()}{lcd\_loadFactoryDefaults()}}
+{\footnotesize\ttfamily void lcd\+\_\+load\+Factory\+Defaults (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 492 of file lcd.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 11
+\mbox{\Hypertarget{lcd_8c_a7d87bacdec3fe9cfd496ade79c856d5e}\label{lcd_8c_a7d87bacdec3fe9cfd496ade79c856d5e}} 
+\index{lcd.c@{lcd.c}!lcd\_loadMiscStateDefaults@{lcd\_loadMiscStateDefaults}}
+\index{lcd\_loadMiscStateDefaults@{lcd\_loadMiscStateDefaults}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_loadMiscStateDefaults()}{lcd\_loadMiscStateDefaults()}}
+{\footnotesize\ttfamily void lcd\+\_\+load\+Misc\+State\+Defaults (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 601 of file lcd.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 12
+\mbox{\Hypertarget{lcd_8c_aed9e3f7992882b9538f3390a82ee7376}\label{lcd_8c_aed9e3f7992882b9538f3390a82ee7376}} 
+\index{lcd.c@{lcd.c}!lcd\_loadPersistentDefaults@{lcd\_loadPersistentDefaults}}
+\index{lcd\_loadPersistentDefaults@{lcd\_loadPersistentDefaults}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_loadPersistentDefaults()}{lcd\_loadPersistentDefaults()}}
+{\footnotesize\ttfamily void lcd\+\_\+load\+Persistent\+Defaults (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 614 of file lcd.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 13
+\mbox{\Hypertarget{lcd_8c_a62c5ebd8284b07ad2557902a32fbfe37}\label{lcd_8c_a62c5ebd8284b07ad2557902a32fbfe37}} 
+\index{lcd.c@{lcd.c}!lcd\_loadSysInfo@{lcd\_loadSysInfo}}
+\index{lcd\_loadSysInfo@{lcd\_loadSysInfo}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_loadSysInfo()}{lcd\_loadSysInfo()}}
+{\footnotesize\ttfamily void lcd\+\_\+load\+Sys\+Info (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 390 of file lcd.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 14
+\mbox{\Hypertarget{lcd_8c_a533b144b3ac324ba05a546f78e62548e}\label{lcd_8c_a533b144b3ac324ba05a546f78e62548e}} 
+\index{lcd.c@{lcd.c}!lcd\_loadTelemetry@{lcd\_loadTelemetry}}
+\index{lcd\_loadTelemetry@{lcd\_loadTelemetry}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_loadTelemetry()}{lcd\_loadTelemetry()}}
+{\footnotesize\ttfamily void lcd\+\_\+load\+Telemetry (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 416 of file lcd.\+c.
+
+Here is the call graph for this function\+:
+% FIG 15
+Here is the caller graph for this function\+:
+% FIG 16
+\mbox{\Hypertarget{lcd_8c_aad05c1a0d08f3cd19f747c3cb525e390}\label{lcd_8c_aad05c1a0d08f3cd19f747c3cb525e390}} 
+\index{lcd.c@{lcd.c}!lcd\_loadUserDefaults@{lcd\_loadUserDefaults}}
+\index{lcd\_loadUserDefaults@{lcd\_loadUserDefaults}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_loadUserDefaults()}{lcd\_loadUserDefaults()}}
+{\footnotesize\ttfamily void lcd\+\_\+load\+User\+Defaults (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 530 of file lcd.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 17
+\mbox{\Hypertarget{lcd_8c_aad0ce170782fdfb3358befc08da9d42c}\label{lcd_8c_aad0ce170782fdfb3358befc08da9d42c}} 
+\index{lcd.c@{lcd.c}!lcd\_queueWrite@{lcd\_queueWrite}}
+\index{lcd\_queueWrite@{lcd\_queueWrite}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_queueWrite()}{lcd\_queueWrite()}}
+{\footnotesize\ttfamily int lcd\+\_\+queue\+Write (\begin{DoxyParamCaption}\item[{int}]{type }\end{DoxyParamCaption})}
+
+
+
+Definition at line 714 of file lcd.\+c.
+
+Here is the call graph for this function\+:
+% FIG 18
+Here is the caller graph for this function\+:
+% FIG 19
+\mbox{\Hypertarget{lcd_8c_a236f1fa7f21fdb5389dcc384faea2114}\label{lcd_8c_a236f1fa7f21fdb5389dcc384faea2114}} 
+\index{lcd.c@{lcd.c}!lcd\_read\_flash@{lcd\_read\_flash}}
+\index{lcd\_read\_flash@{lcd\_read\_flash}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_read\_flash()}{lcd\_read\_flash()}}
+{\footnotesize\ttfamily int lcd\+\_\+read\+\_\+flash (\begin{DoxyParamCaption}\item[{unsigned long}]{addr,  }\item[{unsigned long}]{len,  }\item[{unsigned char $\ast$}]{buffer,  }\item[{int}]{attempts }\end{DoxyParamCaption})}
+
+
+
+Definition at line 67 of file lcd.\+c.
+
+Here is the call graph for this function\+:
+% FIG 20
+Here is the caller graph for this function\+:
+% FIG 21
+\mbox{\Hypertarget{lcd_8c_aea1ffc5bf4fc5a9436477382056bd9fc}\label{lcd_8c_aea1ffc5bf4fc5a9436477382056bd9fc}} 
+\index{lcd.c@{lcd.c}!lcd\_restoreCalibration@{lcd\_restoreCalibration}}
+\index{lcd\_restoreCalibration@{lcd\_restoreCalibration}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_restoreCalibration()}{lcd\_restoreCalibration()}}
+{\footnotesize\ttfamily void lcd\+\_\+restore\+Calibration (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{calib }\end{DoxyParamCaption})}
+
+
+
+Definition at line 212 of file lcd.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 22
+\mbox{\Hypertarget{lcd_8c_a5c83edb7f85a82cd96b9bee28c0ccbe1}\label{lcd_8c_a5c83edb7f85a82cd96b9bee28c0ccbe1}} 
+\index{lcd.c@{lcd.c}!lcd\_runCfgStateMachine@{lcd\_runCfgStateMachine}}
+\index{lcd\_runCfgStateMachine@{lcd\_runCfgStateMachine}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_runCfgStateMachine()}{lcd\_runCfgStateMachine()}}
+{\footnotesize\ttfamily void lcd\+\_\+run\+Cfg\+State\+Machine (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 741 of file lcd.\+c.
+
+Here is the call graph for this function\+:
+% FIG 23
+Here is the caller graph for this function\+:
+% FIG 24
+\mbox{\Hypertarget{lcd_8c_a978cdaed71121cc7ec77e5b1e89c2857}\label{lcd_8c_a978cdaed71121cc7ec77e5b1e89c2857}} 
+\index{lcd.c@{lcd.c}!lcd\_startWrite@{lcd\_startWrite}}
+\index{lcd\_startWrite@{lcd\_startWrite}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_startWrite()}{lcd\_startWrite()}}
+{\footnotesize\ttfamily int lcd\+\_\+start\+Write (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 677 of file lcd.\+c.
+
+Here is the call graph for this function\+:
+% FIG 25
+Here is the caller graph for this function\+:
+% FIG 26
+\mbox{\Hypertarget{lcd_8c_ac8a4dfbf9c9f3138367cc1ffbf92e2f8}\label{lcd_8c_ac8a4dfbf9c9f3138367cc1ffbf92e2f8}} 
+\index{lcd.c@{lcd.c}!lcd\_startWriteCalibrationBackup@{lcd\_startWriteCalibrationBackup}}
+\index{lcd\_startWriteCalibrationBackup@{lcd\_startWriteCalibrationBackup}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_startWriteCalibrationBackup()}{lcd\_startWriteCalibrationBackup()}}
+{\footnotesize\ttfamily void lcd\+\_\+start\+Write\+Calibration\+Backup (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 654 of file lcd.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 27
+\mbox{\Hypertarget{lcd_8c_a13bb71a64c925834c0db3fc09ceeea3d}\label{lcd_8c_a13bb71a64c925834c0db3fc09ceeea3d}} 
+\index{lcd.c@{lcd.c}!lcd\_startWriteEvents@{lcd\_startWriteEvents}}
+\index{lcd\_startWriteEvents@{lcd\_startWriteEvents}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_startWriteEvents()}{lcd\_startWriteEvents()}}
+{\footnotesize\ttfamily void lcd\+\_\+start\+Write\+Events (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 643 of file lcd.\+c.
+
+Here is the call graph for this function\+:
+% FIG 28
+Here is the caller graph for this function\+:
+% FIG 29
+\mbox{\Hypertarget{lcd_8c_a7f800692aa226a3f52b48b3f95463579}\label{lcd_8c_a7f800692aa226a3f52b48b3f95463579}} 
+\index{lcd.c@{lcd.c}!lcd\_startWriteFactory@{lcd\_startWriteFactory}}
+\index{lcd\_startWriteFactory@{lcd\_startWriteFactory}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_startWriteFactory()}{lcd\_startWriteFactory()}}
+{\footnotesize\ttfamily void lcd\+\_\+start\+Write\+Factory (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 631 of file lcd.\+c.
+
+Here is the call graph for this function\+:
+% FIG 30
+Here is the caller graph for this function\+:
+% FIG 31
+\mbox{\Hypertarget{lcd_8c_a1dc58bf5078e4e115ea6bc15aebd5426}\label{lcd_8c_a1dc58bf5078e4e115ea6bc15aebd5426}} 
+\index{lcd.c@{lcd.c}!lcd\_startWriteMiscState@{lcd\_startWriteMiscState}}
+\index{lcd\_startWriteMiscState@{lcd\_startWriteMiscState}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_startWriteMiscState()}{lcd\_startWriteMiscState()}}
+{\footnotesize\ttfamily void lcd\+\_\+start\+Write\+Misc\+State (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 649 of file lcd.\+c.
+
+Here is the call graph for this function\+:
+% FIG 32
+Here is the caller graph for this function\+:
+% FIG 33
+\mbox{\Hypertarget{lcd_8c_a7d8dbee6d60ca7e2cc18615abf463889}\label{lcd_8c_a7d8dbee6d60ca7e2cc18615abf463889}} 
+\index{lcd.c@{lcd.c}!lcd\_startWritePacket@{lcd\_startWritePacket}}
+\index{lcd\_startWritePacket@{lcd\_startWritePacket}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_startWritePacket()}{lcd\_startWritePacket()}}
+{\footnotesize\ttfamily void lcd\+\_\+start\+Write\+Packet (\begin{DoxyParamCaption}\item[{int}]{write\+Type,  }\item[{unsigned long}]{addr,  }\item[{unsigned long}]{len,  }\item[{unsigned char $\ast$}]{buffer,  }\item[{int}]{attempts }\end{DoxyParamCaption})}
+
+
+
+Definition at line 619 of file lcd.\+c.
+
+Here is the call graph for this function\+:
+% FIG 34
+Here is the caller graph for this function\+:
+% FIG 35
+\mbox{\Hypertarget{lcd_8c_a927bd441fb8a946c250345b7a26550f2}\label{lcd_8c_a927bd441fb8a946c250345b7a26550f2}} 
+\index{lcd.c@{lcd.c}!lcd\_startWritePersistent@{lcd\_startWritePersistent}}
+\index{lcd\_startWritePersistent@{lcd\_startWritePersistent}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_startWritePersistent()}{lcd\_startWritePersistent()}}
+{\footnotesize\ttfamily void lcd\+\_\+start\+Write\+Persistent (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 663 of file lcd.\+c.
+
+Here is the call graph for this function\+:
+% FIG 36
+Here is the caller graph for this function\+:
+% FIG 37
+\mbox{\Hypertarget{lcd_8c_a85c2fea96daabcbf2874876caa4ad2a7}\label{lcd_8c_a85c2fea96daabcbf2874876caa4ad2a7}} 
+\index{lcd.c@{lcd.c}!lcd\_startWriteUser@{lcd\_startWriteUser}}
+\index{lcd\_startWriteUser@{lcd\_startWriteUser}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_startWriteUser()}{lcd\_startWriteUser()}}
+{\footnotesize\ttfamily void lcd\+\_\+start\+Write\+User (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 637 of file lcd.\+c.
+
+Here is the call graph for this function\+:
+% FIG 38
+Here is the caller graph for this function\+:
+% FIG 39
+\mbox{\Hypertarget{lcd_8c_adf0a5938f7bf89fe5cec5d7275a73d1e}\label{lcd_8c_adf0a5938f7bf89fe5cec5d7275a73d1e}} 
+\index{lcd.c@{lcd.c}!lcd\_update@{lcd\_update}}
+\index{lcd\_update@{lcd\_update}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_update()}{lcd\_update()}}
+{\footnotesize\ttfamily void lcd\+\_\+update (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 368 of file lcd.\+c.
+
+Here is the call graph for this function\+:
+% FIG 40
+\mbox{\Hypertarget{lcd_8c_a73d5456aec2d1dd495da5dbca87f7aad}\label{lcd_8c_a73d5456aec2d1dd495da5dbca87f7aad}} 
+\index{lcd.c@{lcd.c}!lcd\_update\_local\_config@{lcd\_update\_local\_config}}
+\index{lcd\_update\_local\_config@{lcd\_update\_local\_config}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_update\_local\_config()}{lcd\_update\_local\_config()}}
+{\footnotesize\ttfamily void lcd\+\_\+update\+\_\+local\+\_\+config (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 244 of file lcd.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 41
+\mbox{\Hypertarget{lcd_8c_a4debff6792eff95c5ca13a58ba94807c}\label{lcd_8c_a4debff6792eff95c5ca13a58ba94807c}} 
+\index{lcd.c@{lcd.c}!lcd\_update\_remote\_config@{lcd\_update\_remote\_config}}
+\index{lcd\_update\_remote\_config@{lcd\_update\_remote\_config}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_update\_remote\_config()}{lcd\_update\_remote\_config()}}
+{\footnotesize\ttfamily void lcd\+\_\+update\+\_\+remote\+\_\+config (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 296 of file lcd.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 42
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{lcd_8c_acfbfce159a34ddb79768ef9731b78529}\label{lcd_8c_acfbfce159a34ddb79768ef9731b78529}} 
+\index{lcd.c@{lcd.c}!calculatedValue@{calculatedValue}}
+\index{calculatedValue@{calculatedValue}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{calculatedValue}{calculatedValue}}
+{\footnotesize\ttfamily float\+Value\+\_\+t calculated\+Value\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{lcd_8c_aa633a5bb6a9dbcd8f5d31e4e526edbf1}\label{lcd_8c_aa633a5bb6a9dbcd8f5d31e4e526edbf1}} 
+\index{lcd.c@{lcd.c}!lcd\_cfgState@{lcd\_cfgState}}
+\index{lcd\_cfgState@{lcd\_cfgState}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_cfgState}{lcd\_cfgState}}
+{\footnotesize\ttfamily \mbox{\hyperlink{lcd_8h_a6f3c1e898f3fec20cf85ee93ec995ade}{lcd\+\_\+\+Cfg\+State}} lcd\+\_\+cfg\+State = \mbox{\hyperlink{lcd_8h_af78b4f192ee4c5ca174d73d880cc0074aa6d8f17701751b34272d9f430dc1d405}{L\+C\+D\+C\+F\+G\+\_\+\+S\+T\+A\+T\+E\+\_\+\+C\+F\+G\+\_\+\+I\+D\+LE}}}
+
+
+
+Definition at line 41 of file lcd.\+c.
+
+\mbox{\Hypertarget{lcd_8c_ae09a6b7e814af94a5898a344546677f4}\label{lcd_8c_ae09a6b7e814af94a5898a344546677f4}} 
+\index{lcd.c@{lcd.c}!lcd\_writeAddress@{lcd\_writeAddress}}
+\index{lcd\_writeAddress@{lcd\_writeAddress}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_writeAddress}{lcd\_writeAddress}}
+{\footnotesize\ttfamily unsigned long lcd\+\_\+write\+Address}
+
+
+
+Definition at line 44 of file lcd.\+c.
+
+\mbox{\Hypertarget{lcd_8c_a60f7116da9d1f1c075342df6a0a7a04f}\label{lcd_8c_a60f7116da9d1f1c075342df6a0a7a04f}} 
+\index{lcd.c@{lcd.c}!lcd\_writeBuffer@{lcd\_writeBuffer}}
+\index{lcd\_writeBuffer@{lcd\_writeBuffer}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_writeBuffer}{lcd\_writeBuffer}}
+{\footnotesize\ttfamily unsigned char lcd\+\_\+write\+Buffer\mbox{[}\mbox{\hyperlink{flash_8h_aa73b24e0eddc9b36f0b3db415aca4f23}{F\+L\+A\+S\+H\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}\mbox{]}}
+
+
+
+Definition at line 43 of file lcd.\+c.
+
+\mbox{\Hypertarget{lcd_8c_a2d7c833219c3010ae9a79261bdb98a6b}\label{lcd_8c_a2d7c833219c3010ae9a79261bdb98a6b}} 
+\index{lcd.c@{lcd.c}!lcd\_writeLen@{lcd\_writeLen}}
+\index{lcd\_writeLen@{lcd\_writeLen}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_writeLen}{lcd\_writeLen}}
+{\footnotesize\ttfamily unsigned long lcd\+\_\+write\+Len}
+
+
+
+Definition at line 45 of file lcd.\+c.
+
+\mbox{\Hypertarget{lcd_8c_a704a19579a0144b9019fd7b497408a43}\label{lcd_8c_a704a19579a0144b9019fd7b497408a43}} 
+\index{lcd.c@{lcd.c}!lcd\_writeNext@{lcd\_writeNext}}
+\index{lcd\_writeNext@{lcd\_writeNext}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_writeNext}{lcd\_writeNext}}
+{\footnotesize\ttfamily int lcd\+\_\+write\+Next = -\/1}
+
+
+
+Definition at line 39 of file lcd.\+c.
+
+\mbox{\Hypertarget{lcd_8c_a89fddd35a63909782304eaeffc5b7286}\label{lcd_8c_a89fddd35a63909782304eaeffc5b7286}} 
+\index{lcd.c@{lcd.c}!lcd\_writeRemainingAttempts@{lcd\_writeRemainingAttempts}}
+\index{lcd\_writeRemainingAttempts@{lcd\_writeRemainingAttempts}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_writeRemainingAttempts}{lcd\_writeRemainingAttempts}}
+{\footnotesize\ttfamily int lcd\+\_\+write\+Remaining\+Attempts = 0}
+
+
+
+Definition at line 40 of file lcd.\+c.
+
+\mbox{\Hypertarget{lcd_8c_ab18dc71ae6967897373352c8ec6d5e6b}\label{lcd_8c_ab18dc71ae6967897373352c8ec6d5e6b}} 
+\index{lcd.c@{lcd.c}!lcd\_writeType@{lcd\_writeType}}
+\index{lcd\_writeType@{lcd\_writeType}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{lcd\_writeType}{lcd\_writeType}}
+{\footnotesize\ttfamily int lcd\+\_\+write\+Type = \mbox{\hyperlink{protocol_8h_a953a7ca757a993c81a2d80defa27ffb3a76e569bb5e62ff664b40d662363e8092}{T\+Y\+P\+E\+\_\+\+T\+E\+L\+E\+M\+E\+T\+RY}}}
+
+
+
+Definition at line 42 of file lcd.\+c.
+
+\mbox{\Hypertarget{lcd_8c_a42715f65f02da52edc5b22021d8ae670}\label{lcd_8c_a42715f65f02da52edc5b22021d8ae670}} 
+\index{lcd.c@{lcd.c}!time@{time}}
+\index{time@{time}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{time}{time}}
+{\footnotesize\ttfamily int time = 0}
+
+
+
+Definition at line 415 of file lcd.\+c.
+
+\mbox{\Hypertarget{lcd_8c_a77d9c2e6cb4d5acf2a026ea807d930fc}\label{lcd_8c_a77d9c2e6cb4d5acf2a026ea807d930fc}} 
+\index{lcd.c@{lcd.c}!update\_persistent@{update\_persistent}}
+\index{update\_persistent@{update\_persistent}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{update\_persistent}{update\_persistent}}
+{\footnotesize\ttfamily int update\+\_\+persistent = 0}
+
+
+
+Definition at line 46 of file lcd.\+c.
+

@@ -1,0 +1,214 @@
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/flag.c" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/flag.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'flag\&.h'\fP
+.br
+\fC#include 'flash\&.h'\fP
+.br
+\fC#include 'util\&.h'\fP
+.br
+\fC#include 'time\&.h'\fP
+.br
+\fC#include 'cfg\&.h'\fP
+.br
+\fC#include 'meas\&.h'\fP
+.br
+\fC#include 'io\&.h'\fP
+.br
+\fC#include 'safety\&.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBFlag_\fP"
+.br
+.ti -1c
+.RI "struct \fBFlagStates_\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBFLAG_LOG_ENTRY_SIZE\fP   8"
+.br
+.RI "#include <msp430x24x\&.h> "
+.ti -1c
+.RI "#define \fBFLAG_BUFFER_ENTRY_SIZE\fP   ( \fBFLAG_LOG_ENTRY_SIZE\fP \- sizeof(\fBFLAG_Code\fP) )"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct \fBFlag_\fP \fBFlag\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBFlagStates_\fP \fBFlagStates\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBFLAG_swapActiveSector\fP (void)"
+.br
+.ti -1c
+.RI "void \fBFLAG_init\fP (void)"
+.br
+.ti -1c
+.RI "void \fBFLAG_initTrigs\fP (void)"
+.br
+.ti -1c
+.RI "void \fBFLAG_timeHasUpdated\fP (void)"
+.br
+.ti -1c
+.RI "unsigned char \fBFLAG_getStatus\fP (void)"
+.br
+.ti -1c
+.RI "\fBFlagBitfield\fP \fBFLAG_getFlagBitfield\fP (void)"
+.br
+.ti -1c
+.RI "void \fBFLAG_checkAllFlags\fP (void)"
+.br
+.ti -1c
+.RI "int \fBFLAG_checkFlagTrig\fP (\fBFlagState\fP *pState, \fBFlagCfgTrig\fP *pCfg, \fBFLAG_Code\fP code)"
+.br
+.ti -1c
+.RI "int \fBFLAG_checkFlagHold\fP (\fBFlagState\fP *pState, \fBFlagCfgHold\fP *pCfg, \fBFLAG_Code\fP code)"
+.br
+.ti -1c
+.RI "int \fBFLAG_checkFlagSched\fP (\fBFlagState\fP *pState, \fBFlagCfgSched\fP *pCfg, \fBFLAG_Code\fP code)"
+.br
+.ti -1c
+.RI "void \fBFLAG_logFlag\fP (\fBFLAG_Code\fP code, int isActive)"
+.br
+.ti -1c
+.RI "void \fBFLAG_checkAndWrite\fP ()"
+.br
+.ti -1c
+.RI "void \fBFLAG_eraseStarted\fP ()"
+.br
+.ti -1c
+.RI "void \fBFLAG_eraseDoneCallback\fP (int retVal)"
+.br
+.ti -1c
+.RI "unsigned long \fBFLAG_getFlagLen\fP ()"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBFlag\fP \fBflag\fP"
+.br
+.ti -1c
+.RI "\fBFlagStates\fP \fBflagStates\fP"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define FLAG_BUFFER_ENTRY_SIZE   ( \fBFLAG_LOG_ENTRY_SIZE\fP \- sizeof(\fBFLAG_Code\fP) )"
+
+.PP
+Definition at line 28 of file flag\&.c\&.
+.SS "#define FLAG_LOG_ENTRY_SIZE   8"
+
+.PP
+#include <msp430x24x\&.h> #include 'comms\&.h' 
+.PP
+Definition at line 27 of file flag\&.c\&.
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef struct \fBFlag_\fP \fBFlag\fP"
+
+.SS "typedef struct \fBFlagStates_\fP \fBFlagStates\fP"
+
+.SH "Function Documentation"
+.PP 
+.SS "void FLAG_checkAllFlags (void)"
+RDDtemp flagStates\&.logFullFlag = ( \fBTELEM_isFull()\fP ) ? FLAG_STATE_ACTIVE : FLAG_STATE_INACTIVE;
+.PP
+RDDtemp IO_setRelay( flag\&.flagBitfieldRelay );
+.PP
+Definition at line 213 of file flag\&.c\&.
+.SS "void FLAG_checkAndWrite (void)"
+
+.PP
+Definition at line 535 of file flag\&.c\&.
+.SS "int FLAG_checkFlagHold (\fBFlagState\fP * pState, \fBFlagCfgHold\fP * pCfg, \fBFLAG_Code\fP code)"
+
+.PP
+Definition at line 425 of file flag\&.c\&.
+.SS "int FLAG_checkFlagSched (\fBFlagState\fP * pState, \fBFlagCfgSched\fP * pCfg, \fBFLAG_Code\fP code)"
+
+.PP
+Definition at line 475 of file flag\&.c\&.
+.SS "int FLAG_checkFlagTrig (\fBFlagState\fP * pState, \fBFlagCfgTrig\fP * pCfg, \fBFLAG_Code\fP code)"
+
+.PP
+Definition at line 378 of file flag\&.c\&.
+.SS "void FLAG_eraseDoneCallback (int retVal)"
+
+.PP
+Definition at line 596 of file flag\&.c\&.
+.SS "void FLAG_eraseStarted (void)"
+
+.PP
+Definition at line 591 of file flag\&.c\&.
+.SS "\fBFlagBitfield\fP FLAG_getFlagBitfield (void)"
+
+.PP
+Definition at line 192 of file flag\&.c\&.
+.SS "unsigned long FLAG_getFlagLen (void)"
+
+.PP
+Definition at line 631 of file flag\&.c\&.
+.SS "unsigned char FLAG_getStatus (void)"
+
+.PP
+Definition at line 187 of file flag\&.c\&.
+.SS "void FLAG_init (void)"
+
+.PP
+Definition at line 74 of file flag\&.c\&.
+.SS "void FLAG_initTrigs (void)"
+not now flagStates\&.lowOutVoltWarnFlag\&.triggerVal = IQ_cnst( CFG_remoteCfg\&.lowOutVoltWarnFlag\&.triggerVal / MEAS_OUTVOLT_BASE ); not now flagStates\&.lowOutVoltWarnFlag\&.resetVal = IQ_cnst( CFG_remoteCfg\&.lowOutVoltWarnFlag\&.resetVal / MEAS_OUTVOLT_BASE ); not now flagStates\&.lowOutVoltFaultFlag\&.triggerVal = IQ_cnst( CFG_remoteCfg\&.lowOutVoltFaultFlag\&.triggerVal / MEAS_OUTVOLT_BASE );
+.PP
+not now flagStates\&.highOutCurrFaultFlag\&.triggerVal = IQ_cnst( CFG_remoteCfg\&.highOutCurrFaultFlag\&.triggerVal / MEAS_OUTCURR_BASE ); not now flagStates\&.highOutCurrFaultFlag\&.resetVal = IQ_cnst( CFG_remoteCfg\&.highOutCurrFaultFlag\&.resetVal / MEAS_OUTCURR_BASE ); not now flagStates\&.highDisCurrFaultFlag\&.triggerVal = IQ_cnst( CFG_remoteCfg\&.highDisCurrFaultFlag\&.triggerVal / MEAS_OUTCURR_BASE );
+.PP
+not now flagStates\&.highTempFaultFlag\&.triggerVal = IQ_cnst( CFG_remoteCfg\&.highTempFaultFlag\&.triggerVal / MEAS_TEMPR_BASE ); not now flagStates\&.highTempFaultFlag\&.resetVal = IQ_cnst( CFG_remoteCfg\&.highTempFaultFlag\&.resetVal / MEAS_TEMPR_BASE ); not now flagStates\&.panelMissingFlag\&.triggerVal = IQ_cnst( CFG_remoteCfg\&.panelMissingFlag\&.triggerVal / MEAS_PVVOLT_BASE );
+.PP
+Definition at line 158 of file flag\&.c\&.
+.SS "void FLAG_logFlag (\fBFLAG_Code\fP code, int isActive)"
+
+.PP
+Definition at line 518 of file flag\&.c\&.
+.SS "int FLAG_swapActiveSector (void)"
+
+.PP
+Definition at line 197 of file flag\&.c\&.
+.SS "void FLAG_timeHasUpdated (void)"
+
+.PP
+Definition at line 178 of file flag\&.c\&.
+.SH "Variable Documentation"
+.PP 
+.SS "\fBFlag\fP flag"
+
+.PP
+Definition at line 68 of file flag\&.c\&.
+.SS "\fBFlagStates\fP flagStates"
+
+.PP
+Definition at line 70 of file flag\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.

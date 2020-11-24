@@ -1,0 +1,228 @@
+\hypertarget{can_8c}{}\doxysection{D\+:/user\+S\+S\+D/github/\+Charger6k\+W/\+M\+S\+P\+\_\+\+S\+T\+M\+\_\+9\+\_\+\+R\+D\+D\+\_\+plus\+M\+S\+P/\+M\+S\+P430/can.c File Reference}
+\label{can_8c}\index{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/can.c@{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/can.c}}
+{\ttfamily \#include \char`\"{}Stm32f3xx.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}can.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}usci.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}io.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cfg.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+Include dependency graph for can.\+c\+:
+% FIG 0
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{can_8c_a042b57b6eb819209d2d2e7e53828bea8}{A\+L\+T\+\_\+\+F\+U\+N\+C\+\_\+\+C\+AN}}~0x09
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{can_8c_a530821485162942b8902bf99a3b2012c}{C\+A\+N\+\_\+transmit}} (void)
+\item 
+void \mbox{\hyperlink{can_8c_a4eccfa3b8b0583ef6184416d1e92351e}{C\+A\+N\+\_\+receive}} (void)
+\item 
+void \mbox{\hyperlink{can_8c_ab480c481d1c6e0dacc09bb71aca4a71c}{C\+A\+N\+\_\+reset}} (void)
+\item 
+void \mbox{\hyperlink{can_8c_a2effa8cd46e2719f75cb9e59fc201e5e}{C\+A\+N\+\_\+read}} (unsigned char address, unsigned char $\ast$ptr, unsigned char bytes)
+\item 
+void \mbox{\hyperlink{can_8c_afd525386d142f3024b15bf250d33d9aa}{C\+A\+N\+\_\+read\+\_\+rx}} (unsigned char address, unsigned char $\ast$ptr)
+\item 
+void \mbox{\hyperlink{can_8c_aeac99bd367c7c35c0423d83b71abbef3}{C\+A\+N\+\_\+write}} (unsigned char address, unsigned char $\ast$ptr, unsigned char bytes)
+\item 
+void \mbox{\hyperlink{can_8c_a2cc5bb2d71b69c6aaea37c4a5cf4feea}{C\+A\+N\+\_\+write\+\_\+tx}} (unsigned char address, unsigned char $\ast$ptr)
+\item 
+void \mbox{\hyperlink{can_8c_aacff68e917164105c0c401956e67e502}{C\+A\+N\+\_\+rts}} (unsigned char address)
+\item 
+unsigned char \mbox{\hyperlink{can_8c_a9e6c90aebc81c81b44b66fe307d37103}{C\+A\+N\+\_\+read\+\_\+status}} (void)
+\item 
+unsigned char \mbox{\hyperlink{can_8c_a4a102cb5a27574c0a09c8e653815a8da}{C\+A\+N\+\_\+read\+\_\+filter}} (void)
+\item 
+void \mbox{\hyperlink{can_8c_a94276ebccd689e374092357410f27536}{C\+A\+N\+\_\+mod}} (unsigned char address, unsigned char mask, unsigned char data)
+\item 
+unsigned long \mbox{\hyperlink{can_8c_a4c0209a7cbb07e56e87eb00aa6d8fdf1}{C\+A\+N\+\_\+get\+Base\+Id}} (void)
+\item 
+void \mbox{\hyperlink{can_8c_a61a1348d614fbaff3c560113b1314a57}{C\+A\+N\+\_\+init}} (unsigned long new\+Base\+Id)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+unsigned long \mbox{\hyperlink{can_8c_aaff4a639f6f2dd4277eb3c33ee1668c1}{C\+A\+N\+\_\+tx\+Buffer\+Addr}} \mbox{[}\mbox{\hyperlink{can_8h_a06fc87d81c62e9abb8790b6e5713c55ba5f0b9c658a4afd7645a858b4e29a4648}{C\+A\+N\+\_\+\+Tx\+Buffer\+Ind\+\_\+\+N\+UM}}\mbox{]}
+\item 
+\mbox{\hyperlink{can_8h_a98c4ad301b4c4470649aa2ea0ad5b47c}{C\+A\+N\+\_\+\+Tx\+Buffer}} \mbox{\hyperlink{can_8c_a6ca019dedd1ee29e71a7e7942d1be3e9}{C\+A\+N\+\_\+tx\+Buffer}} \mbox{[}\mbox{\hyperlink{can_8h_a06fc87d81c62e9abb8790b6e5713c55ba5f0b9c658a4afd7645a858b4e29a4648}{C\+A\+N\+\_\+\+Tx\+Buffer\+Ind\+\_\+\+N\+UM}}\mbox{]}
+\item 
+\mbox{\hyperlink{can_8h_a0b19e0bccf7880fca41fd1b8a90df527}{C\+A\+N\+\_\+\+Rx}} \mbox{\hyperlink{can_8c_af18c7dfc2ab038240d17d757d8e9defb}{C\+A\+N\+\_\+rx}}
+\item 
+unsigned char \mbox{\hyperlink{can_8c_a2aa039eae5ea240f3cf5fd1a85f10efd}{buffer}} \mbox{[}16\mbox{]}
+\item 
+unsigned long \mbox{\hyperlink{can_8c_ade342ab5765140aec77012406bfb8fc6}{C\+A\+N\+\_\+base\+Id}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{can_8c_a042b57b6eb819209d2d2e7e53828bea8}\label{can_8c_a042b57b6eb819209d2d2e7e53828bea8}} 
+\index{can.c@{can.c}!ALT\_FUNC\_CAN@{ALT\_FUNC\_CAN}}
+\index{ALT\_FUNC\_CAN@{ALT\_FUNC\_CAN}!can.c@{can.c}}
+\doxysubsubsection{\texorpdfstring{ALT\_FUNC\_CAN}{ALT\_FUNC\_CAN}}
+{\footnotesize\ttfamily \#define A\+L\+T\+\_\+\+F\+U\+N\+C\+\_\+\+C\+AN~0x09}
+
+
+
+Definition at line 41 of file can.\+c.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{can_8c_a4c0209a7cbb07e56e87eb00aa6d8fdf1}\label{can_8c_a4c0209a7cbb07e56e87eb00aa6d8fdf1}} 
+\index{can.c@{can.c}!CAN\_getBaseId@{CAN\_getBaseId}}
+\index{CAN\_getBaseId@{CAN\_getBaseId}!can.c@{can.c}}
+\doxysubsubsection{\texorpdfstring{CAN\_getBaseId()}{CAN\_getBaseId()}}
+{\footnotesize\ttfamily unsigned long C\+A\+N\+\_\+get\+Base\+Id (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 73 of file can.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{can_8c_a61a1348d614fbaff3c560113b1314a57}\label{can_8c_a61a1348d614fbaff3c560113b1314a57}} 
+\index{can.c@{can.c}!CAN\_init@{CAN\_init}}
+\index{CAN\_init@{CAN\_init}!can.c@{can.c}}
+\doxysubsubsection{\texorpdfstring{CAN\_init()}{CAN\_init()}}
+{\footnotesize\ttfamily void C\+A\+N\+\_\+init (\begin{DoxyParamCaption}\item[{unsigned long}]{new\+Base\+Id }\end{DoxyParamCaption})}
+
+
+
+Definition at line 78 of file can.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{can_8c_a94276ebccd689e374092357410f27536}\label{can_8c_a94276ebccd689e374092357410f27536}} 
+\index{can.c@{can.c}!CAN\_mod@{CAN\_mod}}
+\index{CAN\_mod@{CAN\_mod}!can.c@{can.c}}
+\doxysubsubsection{\texorpdfstring{CAN\_mod()}{CAN\_mod()}}
+{\footnotesize\ttfamily void C\+A\+N\+\_\+mod (\begin{DoxyParamCaption}\item[{unsigned char}]{address,  }\item[{unsigned char}]{mask,  }\item[{unsigned char}]{data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{can_8c_a2effa8cd46e2719f75cb9e59fc201e5e}\label{can_8c_a2effa8cd46e2719f75cb9e59fc201e5e}} 
+\index{can.c@{can.c}!CAN\_read@{CAN\_read}}
+\index{CAN\_read@{CAN\_read}!can.c@{can.c}}
+\doxysubsubsection{\texorpdfstring{CAN\_read()}{CAN\_read()}}
+{\footnotesize\ttfamily void C\+A\+N\+\_\+read (\begin{DoxyParamCaption}\item[{unsigned char}]{address,  }\item[{unsigned char $\ast$}]{ptr,  }\item[{unsigned char}]{bytes }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{can_8c_a4a102cb5a27574c0a09c8e653815a8da}\label{can_8c_a4a102cb5a27574c0a09c8e653815a8da}} 
+\index{can.c@{can.c}!CAN\_read\_filter@{CAN\_read\_filter}}
+\index{CAN\_read\_filter@{CAN\_read\_filter}!can.c@{can.c}}
+\doxysubsubsection{\texorpdfstring{CAN\_read\_filter()}{CAN\_read\_filter()}}
+{\footnotesize\ttfamily unsigned char C\+A\+N\+\_\+read\+\_\+filter (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{can_8c_afd525386d142f3024b15bf250d33d9aa}\label{can_8c_afd525386d142f3024b15bf250d33d9aa}} 
+\index{can.c@{can.c}!CAN\_read\_rx@{CAN\_read\_rx}}
+\index{CAN\_read\_rx@{CAN\_read\_rx}!can.c@{can.c}}
+\doxysubsubsection{\texorpdfstring{CAN\_read\_rx()}{CAN\_read\_rx()}}
+{\footnotesize\ttfamily void C\+A\+N\+\_\+read\+\_\+rx (\begin{DoxyParamCaption}\item[{unsigned char}]{address,  }\item[{unsigned char $\ast$}]{ptr }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{can_8c_a9e6c90aebc81c81b44b66fe307d37103}\label{can_8c_a9e6c90aebc81c81b44b66fe307d37103}} 
+\index{can.c@{can.c}!CAN\_read\_status@{CAN\_read\_status}}
+\index{CAN\_read\_status@{CAN\_read\_status}!can.c@{can.c}}
+\doxysubsubsection{\texorpdfstring{CAN\_read\_status()}{CAN\_read\_status()}}
+{\footnotesize\ttfamily unsigned char C\+A\+N\+\_\+read\+\_\+status (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{can_8c_a4eccfa3b8b0583ef6184416d1e92351e}\label{can_8c_a4eccfa3b8b0583ef6184416d1e92351e}} 
+\index{can.c@{can.c}!CAN\_receive@{CAN\_receive}}
+\index{CAN\_receive@{CAN\_receive}!can.c@{can.c}}
+\doxysubsubsection{\texorpdfstring{CAN\_receive()}{CAN\_receive()}}
+{\footnotesize\ttfamily void C\+A\+N\+\_\+receive (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 267 of file can.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{can_8c_ab480c481d1c6e0dacc09bb71aca4a71c}\label{can_8c_ab480c481d1c6e0dacc09bb71aca4a71c}} 
+\index{can.c@{can.c}!CAN\_reset@{CAN\_reset}}
+\index{CAN\_reset@{CAN\_reset}!can.c@{can.c}}
+\doxysubsubsection{\texorpdfstring{CAN\_reset()}{CAN\_reset()}}
+{\footnotesize\ttfamily void C\+A\+N\+\_\+reset (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{can_8c_aacff68e917164105c0c401956e67e502}\label{can_8c_aacff68e917164105c0c401956e67e502}} 
+\index{can.c@{can.c}!CAN\_rts@{CAN\_rts}}
+\index{CAN\_rts@{CAN\_rts}!can.c@{can.c}}
+\doxysubsubsection{\texorpdfstring{CAN\_rts()}{CAN\_rts()}}
+{\footnotesize\ttfamily void C\+A\+N\+\_\+rts (\begin{DoxyParamCaption}\item[{unsigned char}]{address }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{can_8c_a530821485162942b8902bf99a3b2012c}\label{can_8c_a530821485162942b8902bf99a3b2012c}} 
+\index{can.c@{can.c}!CAN\_transmit@{CAN\_transmit}}
+\index{CAN\_transmit@{CAN\_transmit}!can.c@{can.c}}
+\doxysubsubsection{\texorpdfstring{CAN\_transmit()}{CAN\_transmit()}}
+{\footnotesize\ttfamily void C\+A\+N\+\_\+transmit (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 427 of file can.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{can_8c_aeac99bd367c7c35c0423d83b71abbef3}\label{can_8c_aeac99bd367c7c35c0423d83b71abbef3}} 
+\index{can.c@{can.c}!CAN\_write@{CAN\_write}}
+\index{CAN\_write@{CAN\_write}!can.c@{can.c}}
+\doxysubsubsection{\texorpdfstring{CAN\_write()}{CAN\_write()}}
+{\footnotesize\ttfamily void C\+A\+N\+\_\+write (\begin{DoxyParamCaption}\item[{unsigned char}]{address,  }\item[{unsigned char $\ast$}]{ptr,  }\item[{unsigned char}]{bytes }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{can_8c_a2cc5bb2d71b69c6aaea37c4a5cf4feea}\label{can_8c_a2cc5bb2d71b69c6aaea37c4a5cf4feea}} 
+\index{can.c@{can.c}!CAN\_write\_tx@{CAN\_write\_tx}}
+\index{CAN\_write\_tx@{CAN\_write\_tx}!can.c@{can.c}}
+\doxysubsubsection{\texorpdfstring{CAN\_write\_tx()}{CAN\_write\_tx()}}
+{\footnotesize\ttfamily void C\+A\+N\+\_\+write\+\_\+tx (\begin{DoxyParamCaption}\item[{unsigned char}]{address,  }\item[{unsigned char $\ast$}]{ptr }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{can_8c_a2aa039eae5ea240f3cf5fd1a85f10efd}\label{can_8c_a2aa039eae5ea240f3cf5fd1a85f10efd}} 
+\index{can.c@{can.c}!buffer@{buffer}}
+\index{buffer@{buffer}!can.c@{can.c}}
+\doxysubsubsection{\texorpdfstring{buffer}{buffer}}
+{\footnotesize\ttfamily unsigned char buffer\mbox{[}16\mbox{]}}
+
+
+
+Definition at line 51 of file can.\+c.
+
+\mbox{\Hypertarget{can_8c_ade342ab5765140aec77012406bfb8fc6}\label{can_8c_ade342ab5765140aec77012406bfb8fc6}} 
+\index{can.c@{can.c}!CAN\_baseId@{CAN\_baseId}}
+\index{CAN\_baseId@{CAN\_baseId}!can.c@{can.c}}
+\doxysubsubsection{\texorpdfstring{CAN\_baseId}{CAN\_baseId}}
+{\footnotesize\ttfamily unsigned long C\+A\+N\+\_\+base\+Id}
+
+
+
+Definition at line 52 of file can.\+c.
+
+\mbox{\Hypertarget{can_8c_af18c7dfc2ab038240d17d757d8e9defb}\label{can_8c_af18c7dfc2ab038240d17d757d8e9defb}} 
+\index{can.c@{can.c}!CAN\_rx@{CAN\_rx}}
+\index{CAN\_rx@{CAN\_rx}!can.c@{can.c}}
+\doxysubsubsection{\texorpdfstring{CAN\_rx}{CAN\_rx}}
+{\footnotesize\ttfamily \mbox{\hyperlink{can_8h_a0b19e0bccf7880fca41fd1b8a90df527}{C\+A\+N\+\_\+\+Rx}} C\+A\+N\+\_\+rx}
+
+
+
+Definition at line 48 of file can.\+c.
+
+\mbox{\Hypertarget{can_8c_a6ca019dedd1ee29e71a7e7942d1be3e9}\label{can_8c_a6ca019dedd1ee29e71a7e7942d1be3e9}} 
+\index{can.c@{can.c}!CAN\_txBuffer@{CAN\_txBuffer}}
+\index{CAN\_txBuffer@{CAN\_txBuffer}!can.c@{can.c}}
+\doxysubsubsection{\texorpdfstring{CAN\_txBuffer}{CAN\_txBuffer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{can_8h_a98c4ad301b4c4470649aa2ea0ad5b47c}{C\+A\+N\+\_\+\+Tx\+Buffer}} C\+A\+N\+\_\+tx\+Buffer\mbox{[}\mbox{\hyperlink{can_8h_a06fc87d81c62e9abb8790b6e5713c55ba5f0b9c658a4afd7645a858b4e29a4648}{C\+A\+N\+\_\+\+Tx\+Buffer\+Ind\+\_\+\+N\+UM}}\mbox{]}}
+
+
+
+Definition at line 47 of file can.\+c.
+
+\mbox{\Hypertarget{can_8c_aaff4a639f6f2dd4277eb3c33ee1668c1}\label{can_8c_aaff4a639f6f2dd4277eb3c33ee1668c1}} 
+\index{can.c@{can.c}!CAN\_txBufferAddr@{CAN\_txBufferAddr}}
+\index{CAN\_txBufferAddr@{CAN\_txBufferAddr}!can.c@{can.c}}
+\doxysubsubsection{\texorpdfstring{CAN\_txBufferAddr}{CAN\_txBufferAddr}}
+{\footnotesize\ttfamily unsigned long C\+A\+N\+\_\+tx\+Buffer\+Addr\mbox{[}\mbox{\hyperlink{can_8h_a06fc87d81c62e9abb8790b6e5713c55ba5f0b9c658a4afd7645a858b4e29a4648}{C\+A\+N\+\_\+\+Tx\+Buffer\+Ind\+\_\+\+N\+UM}}\mbox{]}}
+
+
+
+Definition at line 43 of file can.\+c.
+

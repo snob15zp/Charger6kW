@@ -1,0 +1,650 @@
+\hypertarget{usci_8c}{}\doxysection{D\+:/user\+S\+S\+D/github/\+Charger6k\+W/\+M\+S\+P\+\_\+\+S\+T\+M\+\_\+9\+\_\+\+R\+D\+D\+\_\+plus\+M\+S\+P/\+M\+S\+P430/usci.c File Reference}
+\label{usci_8c}\index{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/usci.c@{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/usci.c}}
+{\ttfamily \#include \char`\"{}Stm32f3xx.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}usci.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lcd.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}time.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}crc16.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ctrl.\+h\char`\"{}}\newline
+Include dependency graph for usci.\+c\+:
+% FIG 0
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{usci_8c_add7018db64fb17dd1e4664b4494be0ee}{D\+LE}}~0x10
+\begin{DoxyCompactList}\small\item\em \#include $<$msp430x24x.\+h$>$ \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{usci_8c_af02558e983dd26832a852bf186ed6726}{E\+TX}}~0x03
+\item 
+\#define \mbox{\hyperlink{usci_8c_aacd744a917e61146ec8b7175b4761683}{S\+TX}}~0x02
+\item 
+\#define \mbox{\hyperlink{usci_8c_acab225f3f77e6f83631f0dfa47037c84}{A\+L\+T\+\_\+\+F\+U\+N\+C\+\_\+\+U\+S\+A\+RT}}~0x07
+\item 
+\#define \mbox{\hyperlink{usci_8c_ad8638aa9458abc62257b2f30bc6a2fad}{U\+S\+A\+R\+T1\+\_\+\+B\+A\+UD}}~1200
+\item 
+\#define \mbox{\hyperlink{usci_8c_ac061ef024d23ef6e3bba1d1b1ade803e}{U\+S\+A\+R\+T1\+\_\+\+F\+C\+LK}}~72000000
+\item 
+\#define \mbox{\hyperlink{usci_8c_a1dea76f6866412218c44b7340ec0d485}{F\+O\+O\+T\+E\+R\+\_\+\+L\+E\+N\+G\+TH}}~6
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \mbox{\hyperlink{usci_8c_a5259f9d9e74e8c63d92061ee8d50eb1d}{uart\+\_\+\+State\+\_\+}} \mbox{\hyperlink{usci_8c_ab0c49ffb42440e17326c048b0008efaf}{uart\+\_\+\+State}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{usci_8c_a5259f9d9e74e8c63d92061ee8d50eb1d}{uart\+\_\+\+State\+\_\+}} \{ \mbox{\hyperlink{usci_8c_a5259f9d9e74e8c63d92061ee8d50eb1daa9299dd39590fa03f9c40b54eeaca22b}{U\+A\+R\+T\+\_\+\+S\+T\+A\+T\+E\+\_\+\+I\+D\+LE}} = 0, 
+\mbox{\hyperlink{usci_8c_a5259f9d9e74e8c63d92061ee8d50eb1daab0cd0e7ba7c8f76ed8f8e50694e577f}{U\+A\+R\+T\+\_\+\+S\+T\+A\+T\+E\+\_\+\+R\+E\+C\+E\+I\+V\+I\+N\+G\+\_\+\+P\+A\+C\+K\+ET}}, 
+\mbox{\hyperlink{usci_8c_a5259f9d9e74e8c63d92061ee8d50eb1da8428c19176ffaa1b0c971c4096651a46}{U\+A\+R\+T\+\_\+\+S\+T\+A\+T\+E\+\_\+\+R\+E\+C\+E\+I\+V\+E\+D\+\_\+\+P\+A\+C\+K\+ET}}, 
+\mbox{\hyperlink{usci_8c_a5259f9d9e74e8c63d92061ee8d50eb1daedc27546c1dc767b44838d837ae4202d}{U\+A\+R\+T\+\_\+\+S\+T\+A\+T\+E\+\_\+\+S\+E\+N\+D\+I\+N\+G\+\_\+\+P\+A\+C\+K\+ET}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{usci_8c_a0c0ca72359ddf28dcd15900dfba19343}{uart\+\_\+init}} (void)
+\begin{DoxyCompactList}\small\item\em 
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}\end{DoxyCompactList}\item 
+void \mbox{\hyperlink{usci_8c_a8165a8d6cc982155fdbb73cca5485206}{uart\+\_\+tx}} (void)
+\begin{DoxyCompactList}\small\item\em this must be plased to Hard\+Ware\+Level Group \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{usci_8c_a27dbf879f0ac9f3a2a4c52b064823a8e}{uart\+\_\+send\+\_\+response}} (\mbox{\hyperlink{protocol_8h_a1cb4921bc05522fdb3410e28e447aebf}{command\+\_\+\+Code}} cc, \mbox{\hyperlink{inttype_8h_a1f1825b69244eb3ad2c7165ddc99c956}{uint16\+\_\+t}} arg)
+\item 
+void \mbox{\hyperlink{usci_8c_a370299e239f2550d395ad9ea897dcac5}{uart\+\_\+send\+\_\+startup}} (void)
+\item 
+void \mbox{\hyperlink{usci_8c_a26fb8b32000f508f76dccb9c9d77f3fd}{uart\+\_\+send\+\_\+error}} (\mbox{\hyperlink{protocol_8h_aab11937e713aa5444a463701a7277d89}{error\+\_\+\+Code}} ec)
+\item 
+void \mbox{\hyperlink{usci_8c_ab252ee86fdf9965c2f53455c069f4976}{load\+Password}} ()
+\item 
+void \mbox{\hyperlink{usci_8c_a64bd3fadf45c225d0190b6718ef2573d}{uart\+\_\+receive}} (void)
+\item 
+int \mbox{\hyperlink{usci_8c_adc2a1a197144cfbe10c0f585f1e8008c}{uart\+\_\+send}} (int type)
+\item 
+void \mbox{\hyperlink{usci_8c_a7139cd4baabbbcbab0c1fe6d7d4ae1cc}{U\+S\+A\+R\+T1\+\_\+\+I\+R\+Q\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em remove old hardware interrupt(\+U\+S\+C\+I\+A\+B0\+T\+X\+\_\+\+V\+E\+C\+T\+O\+R) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+unsigned char \mbox{\hyperlink{usci_8c_acc6cf25ffc496483db52dde461252228}{tx\+\_\+buffer}} \mbox{[}\mbox{\hyperlink{usci_8h_af09b64f369b27803e9b840ebde07a532}{P\+A\+C\+K\+E\+T\+\_\+\+L\+E\+N\+G\+TH}}\mbox{]}
+\item 
+unsigned char \mbox{\hyperlink{usci_8c_af5bab3a07192a31cd3301640e9c2fb94}{rx\+\_\+buffer}} \mbox{[}\mbox{\hyperlink{usci_8h_af09b64f369b27803e9b840ebde07a532}{P\+A\+C\+K\+E\+T\+\_\+\+L\+E\+N\+G\+TH}}\mbox{]}
+\item 
+unsigned char \mbox{\hyperlink{usci_8c_aac2b5dea7099061084fe4dc0b1deac38}{tx\+\_\+count}} = 0
+\item 
+unsigned char \mbox{\hyperlink{usci_8c_a1001089df0efac2a840d60fee2103936}{rx\+\_\+count}} = 0
+\item 
+unsigned char \mbox{\hyperlink{usci_8c_a9857c8912de5cf9d79221584f8b9f965}{expected\+\_\+rx\+\_\+count}} = 0
+\item 
+unsigned char \mbox{\hyperlink{usci_8c_a8dbd1a821eef07c2677e228e316e9183}{prev\+\_\+rx}} = 0x\+FF
+\item 
+\mbox{\hyperlink{usci_8c_ab0c49ffb42440e17326c048b0008efaf}{uart\+\_\+\+State}} \mbox{\hyperlink{usci_8c_af80c724dde66ceed3ec0a0320650a742}{uart\+\_\+state}} = \mbox{\hyperlink{usci_8c_a5259f9d9e74e8c63d92061ee8d50eb1daa9299dd39590fa03f9c40b54eeaca22b}{U\+A\+R\+T\+\_\+\+S\+T\+A\+T\+E\+\_\+\+I\+D\+LE}}
+\item 
+int \mbox{\hyperlink{usci_8c_a25a4352570ed4d84f8c7de3a20d00c55}{sent\+\_\+startup}} = 0
+\item 
+\mbox{\hyperlink{time_8h_acec39cfa27244239e16da42f602e2561}{Time}} \mbox{\hyperlink{usci_8c_a9fc11015142a0f77187da5e1f04442fc}{prev\+\_\+time}} = 0
+\item 
+unsigned int \mbox{\hyperlink{usci_8c_a335d4f398e67d5896e3ef1d16762fc0e}{tx\+\_\+buf\+\_\+len}} = 0
+\item 
+\mbox{\hyperlink{uniontelemetry__t}{telemetry\+\_\+t}} \mbox{\hyperlink{usci_8c_aef74520283abdbfcb98606b3b263c510}{telemetry\+\_\+R}}
+\item 
+\mbox{\hyperlink{unionfactory_config__t}{factory\+Config\+\_\+t}} \mbox{\hyperlink{usci_8c_a05274e7df3bf0274e0871b33e535561d}{factory\+Config\+\_\+R}}
+\item 
+\mbox{\hyperlink{unionuser_config__t}{user\+Config\+\_\+t}} \mbox{\hyperlink{usci_8c_a583b8ce9ecc0fe179fdaf931179bca99}{user\+Config\+\_\+R}}
+\item 
+\mbox{\hyperlink{unionevent_config__t}{event\+Config\+\_\+t}} \mbox{\hyperlink{usci_8c_a37b5f1dcfa7d5fec121d0ba39dab872a}{event\+Config\+\_\+R}}
+\item 
+\mbox{\hyperlink{unionsys_info__t}{sys\+Info\+\_\+t}} \mbox{\hyperlink{usci_8c_adb710811d67ace9be48684affb20917a}{sys\+Info\+\_\+R}}
+\item 
+\mbox{\hyperlink{unioncommand__t}{command\+\_\+t}} \mbox{\hyperlink{usci_8c_a4486beb2c2599e09e95075cd248015b4}{command\+\_\+R}}
+\item 
+\mbox{\hyperlink{unionpassword__t}{password\+\_\+t}} \mbox{\hyperlink{usci_8c_a56a73ad7cbd77d209ebf7f6ad642fd23}{password\+\_\+R}}
+\item 
+\mbox{\hyperlink{unionmisc_state__t}{misc\+State\+\_\+t}} \mbox{\hyperlink{usci_8c_a2516a27be3e229d4ebce75743b3e1708}{misc\+State\+\_\+R}}
+\item 
+\mbox{\hyperlink{unionfactory_config__t}{factory\+Config\+\_\+t}} \mbox{\hyperlink{usci_8c_aa81777861ee144bfa001f2a7675fb67e}{factory\+Config\+\_\+W}}
+\item 
+\mbox{\hyperlink{unionuser_config__t}{user\+Config\+\_\+t}} \mbox{\hyperlink{usci_8c_a55d5f19e832528899b6567d9ecef2275}{user\+Config\+\_\+W}}
+\item 
+\mbox{\hyperlink{unionevent_config__t}{event\+Config\+\_\+t}} \mbox{\hyperlink{usci_8c_a613071d9d7fd412d77f9546f9b4120d5}{event\+Config\+\_\+W}}
+\item 
+\mbox{\hyperlink{unioncommand__t}{command\+\_\+t}} \mbox{\hyperlink{usci_8c_ac533e9393da82020032f2805260d01d8}{command\+\_\+W}}
+\item 
+\mbox{\hyperlink{unionset_time__t}{set\+Time\+\_\+t}} \mbox{\hyperlink{usci_8c_a3c72ce4477e6d4e10a16e4081cecc581}{set\+Time\+\_\+W}}
+\item 
+\mbox{\hyperlink{unionmisc_state__t}{misc\+State\+\_\+t}} \mbox{\hyperlink{usci_8c_a458928f7e1ac230f4f6a6bb3e92edeb9}{misc\+State\+\_\+W}}
+\item 
+\mbox{\hyperlink{structpersistent_storage__t}{persistent\+Storage\+\_\+t}} \mbox{\hyperlink{usci_8c_a237430e1e3beb2c0dde4bd98c3f90a1a}{persistent\+Storage}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{usci_8c_acab225f3f77e6f83631f0dfa47037c84}\label{usci_8c_acab225f3f77e6f83631f0dfa47037c84}} 
+\index{usci.c@{usci.c}!ALT\_FUNC\_USART@{ALT\_FUNC\_USART}}
+\index{ALT\_FUNC\_USART@{ALT\_FUNC\_USART}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{ALT\_FUNC\_USART}{ALT\_FUNC\_USART}}
+{\footnotesize\ttfamily \#define A\+L\+T\+\_\+\+F\+U\+N\+C\+\_\+\+U\+S\+A\+RT~0x07}
+
+
+
+Definition at line 38 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_add7018db64fb17dd1e4664b4494be0ee}\label{usci_8c_add7018db64fb17dd1e4664b4494be0ee}} 
+\index{usci.c@{usci.c}!DLE@{DLE}}
+\index{DLE@{DLE}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{DLE}{DLE}}
+{\footnotesize\ttfamily \#define D\+LE~0x10}
+
+
+
+\#include $<$msp430x24x.\+h$>$ 
+
+\#include \char`\"{}io.\+h\char`\"{} include \char`\"{}comms.\+h\char`\"{} 
+
+Definition at line 34 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_af02558e983dd26832a852bf186ed6726}\label{usci_8c_af02558e983dd26832a852bf186ed6726}} 
+\index{usci.c@{usci.c}!ETX@{ETX}}
+\index{ETX@{ETX}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{ETX}{ETX}}
+{\footnotesize\ttfamily \#define E\+TX~0x03}
+
+
+
+Definition at line 35 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_a1dea76f6866412218c44b7340ec0d485}\label{usci_8c_a1dea76f6866412218c44b7340ec0d485}} 
+\index{usci.c@{usci.c}!FOOTER\_LENGTH@{FOOTER\_LENGTH}}
+\index{FOOTER\_LENGTH@{FOOTER\_LENGTH}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{FOOTER\_LENGTH}{FOOTER\_LENGTH}}
+{\footnotesize\ttfamily \#define F\+O\+O\+T\+E\+R\+\_\+\+L\+E\+N\+G\+TH~6}
+
+
+
+Definition at line 50 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_aacd744a917e61146ec8b7175b4761683}\label{usci_8c_aacd744a917e61146ec8b7175b4761683}} 
+\index{usci.c@{usci.c}!STX@{STX}}
+\index{STX@{STX}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{STX}{STX}}
+{\footnotesize\ttfamily \#define S\+TX~0x02}
+
+
+
+Definition at line 36 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_ad8638aa9458abc62257b2f30bc6a2fad}\label{usci_8c_ad8638aa9458abc62257b2f30bc6a2fad}} 
+\index{usci.c@{usci.c}!USART1\_BAUD@{USART1\_BAUD}}
+\index{USART1\_BAUD@{USART1\_BAUD}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{USART1\_BAUD}{USART1\_BAUD}}
+{\footnotesize\ttfamily \#define U\+S\+A\+R\+T1\+\_\+\+B\+A\+UD~1200}
+
+
+
+Definition at line 39 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_ac061ef024d23ef6e3bba1d1b1ade803e}\label{usci_8c_ac061ef024d23ef6e3bba1d1b1ade803e}} 
+\index{usci.c@{usci.c}!USART1\_FCLK@{USART1\_FCLK}}
+\index{USART1\_FCLK@{USART1\_FCLK}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{USART1\_FCLK}{USART1\_FCLK}}
+{\footnotesize\ttfamily \#define U\+S\+A\+R\+T1\+\_\+\+F\+C\+LK~72000000}
+
+
+
+Definition at line 40 of file usci.\+c.
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{usci_8c_ab0c49ffb42440e17326c048b0008efaf}\label{usci_8c_ab0c49ffb42440e17326c048b0008efaf}} 
+\index{usci.c@{usci.c}!uart\_State@{uart\_State}}
+\index{uart\_State@{uart\_State}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{uart\_State}{uart\_State}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{usci_8c_a5259f9d9e74e8c63d92061ee8d50eb1d}{uart\+\_\+\+State\+\_\+}} \mbox{\hyperlink{usci_8c_ab0c49ffb42440e17326c048b0008efaf}{uart\+\_\+\+State}}}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{usci_8c_a5259f9d9e74e8c63d92061ee8d50eb1d}\label{usci_8c_a5259f9d9e74e8c63d92061ee8d50eb1d}} 
+\index{usci.c@{usci.c}!uart\_State\_@{uart\_State\_}}
+\index{uart\_State\_@{uart\_State\_}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{uart\_State\_}{uart\_State\_}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{usci_8c_a5259f9d9e74e8c63d92061ee8d50eb1d}{uart\+\_\+\+State\+\_\+}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UART\_STATE\_IDLE@{UART\_STATE\_IDLE}!usci.c@{usci.c}}\index{usci.c@{usci.c}!UART\_STATE\_IDLE@{UART\_STATE\_IDLE}}}\mbox{\Hypertarget{usci_8c_a5259f9d9e74e8c63d92061ee8d50eb1daa9299dd39590fa03f9c40b54eeaca22b}\label{usci_8c_a5259f9d9e74e8c63d92061ee8d50eb1daa9299dd39590fa03f9c40b54eeaca22b}} 
+U\+A\+R\+T\+\_\+\+S\+T\+A\+T\+E\+\_\+\+I\+D\+LE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UART\_STATE\_RECEIVING\_PACKET@{UART\_STATE\_RECEIVING\_PACKET}!usci.c@{usci.c}}\index{usci.c@{usci.c}!UART\_STATE\_RECEIVING\_PACKET@{UART\_STATE\_RECEIVING\_PACKET}}}\mbox{\Hypertarget{usci_8c_a5259f9d9e74e8c63d92061ee8d50eb1daab0cd0e7ba7c8f76ed8f8e50694e577f}\label{usci_8c_a5259f9d9e74e8c63d92061ee8d50eb1daab0cd0e7ba7c8f76ed8f8e50694e577f}} 
+U\+A\+R\+T\+\_\+\+S\+T\+A\+T\+E\+\_\+\+R\+E\+C\+E\+I\+V\+I\+N\+G\+\_\+\+P\+A\+C\+K\+ET&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UART\_STATE\_RECEIVED\_PACKET@{UART\_STATE\_RECEIVED\_PACKET}!usci.c@{usci.c}}\index{usci.c@{usci.c}!UART\_STATE\_RECEIVED\_PACKET@{UART\_STATE\_RECEIVED\_PACKET}}}\mbox{\Hypertarget{usci_8c_a5259f9d9e74e8c63d92061ee8d50eb1da8428c19176ffaa1b0c971c4096651a46}\label{usci_8c_a5259f9d9e74e8c63d92061ee8d50eb1da8428c19176ffaa1b0c971c4096651a46}} 
+U\+A\+R\+T\+\_\+\+S\+T\+A\+T\+E\+\_\+\+R\+E\+C\+E\+I\+V\+E\+D\+\_\+\+P\+A\+C\+K\+ET&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UART\_STATE\_SENDING\_PACKET@{UART\_STATE\_SENDING\_PACKET}!usci.c@{usci.c}}\index{usci.c@{usci.c}!UART\_STATE\_SENDING\_PACKET@{UART\_STATE\_SENDING\_PACKET}}}\mbox{\Hypertarget{usci_8c_a5259f9d9e74e8c63d92061ee8d50eb1daedc27546c1dc767b44838d837ae4202d}\label{usci_8c_a5259f9d9e74e8c63d92061ee8d50eb1daedc27546c1dc767b44838d837ae4202d}} 
+U\+A\+R\+T\+\_\+\+S\+T\+A\+T\+E\+\_\+\+S\+E\+N\+D\+I\+N\+G\+\_\+\+P\+A\+C\+K\+ET&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 42 of file usci.\+c.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{usci_8c_ab252ee86fdf9965c2f53455c069f4976}\label{usci_8c_ab252ee86fdf9965c2f53455c069f4976}} 
+\index{usci.c@{usci.c}!loadPassword@{loadPassword}}
+\index{loadPassword@{loadPassword}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{loadPassword()}{loadPassword()}}
+{\footnotesize\ttfamily void load\+Password (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 177 of file usci.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{usci_8c_a0c0ca72359ddf28dcd15900dfba19343}\label{usci_8c_a0c0ca72359ddf28dcd15900dfba19343}} 
+\index{usci.c@{usci.c}!uart\_init@{uart\_init}}
+\index{uart\_init@{uart\_init}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{uart\_init()}{uart\_init()}}
+{\footnotesize\ttfamily void uart\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}
+
+
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}
+
+Definition at line 111 of file usci.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{usci_8c_a64bd3fadf45c225d0190b6718ef2573d}\label{usci_8c_a64bd3fadf45c225d0190b6718ef2573d}} 
+\index{usci.c@{usci.c}!uart\_receive@{uart\_receive}}
+\index{uart\_receive@{uart\_receive}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{uart\_receive()}{uart\_receive()}}
+{\footnotesize\ttfamily void uart\+\_\+receive (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+sent\+\_\+startup used only here
+
+R\+D\+Dtemp \mbox{\hyperlink{io_8h_add100bba23de7b0f74bd6450111f7054}{I\+O\+\_\+disable\+Pwm\+Ctrl()}}; remove old hardware W\+D\+T\+C\+TL = 0x00;
+
+Definition at line 193 of file usci.\+c.
+
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{usci_8c_adc2a1a197144cfbe10c0f585f1e8008c}\label{usci_8c_adc2a1a197144cfbe10c0f585f1e8008c}} 
+\index{usci.c@{usci.c}!uart\_send@{uart\_send}}
+\index{uart\_send@{uart\_send}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{uart\_send()}{uart\_send()}}
+{\footnotesize\ttfamily int uart\+\_\+send (\begin{DoxyParamCaption}\item[{int}]{type }\end{DoxyParamCaption})}
+
+
+
+Definition at line 370 of file usci.\+c.
+
+Here is the call graph for this function\+:
+% FIG 5
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{usci_8c_a26fb8b32000f508f76dccb9c9d77f3fd}\label{usci_8c_a26fb8b32000f508f76dccb9c9d77f3fd}} 
+\index{usci.c@{usci.c}!uart\_send\_error@{uart\_send\_error}}
+\index{uart\_send\_error@{uart\_send\_error}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{uart\_send\_error()}{uart\_send\_error()}}
+{\footnotesize\ttfamily void uart\+\_\+send\+\_\+error (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{protocol_8h_aab11937e713aa5444a463701a7277d89}{error\+\_\+\+Code}}}]{ec }\end{DoxyParamCaption})}
+
+
+
+Definition at line 172 of file usci.\+c.
+
+Here is the call graph for this function\+:
+% FIG 7
+Here is the caller graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{usci_8c_a27dbf879f0ac9f3a2a4c52b064823a8e}\label{usci_8c_a27dbf879f0ac9f3a2a4c52b064823a8e}} 
+\index{usci.c@{usci.c}!uart\_send\_response@{uart\_send\_response}}
+\index{uart\_send\_response@{uart\_send\_response}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{uart\_send\_response()}{uart\_send\_response()}}
+{\footnotesize\ttfamily void uart\+\_\+send\+\_\+response (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{protocol_8h_a1cb4921bc05522fdb3410e28e447aebf}{command\+\_\+\+Code}}}]{cc,  }\item[{\mbox{\hyperlink{inttype_8h_a1f1825b69244eb3ad2c7165ddc99c956}{uint16\+\_\+t}}}]{arg }\end{DoxyParamCaption})}
+
+
+
+Definition at line 157 of file usci.\+c.
+
+Here is the call graph for this function\+:
+% FIG 9
+Here is the caller graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{usci_8c_a370299e239f2550d395ad9ea897dcac5}\label{usci_8c_a370299e239f2550d395ad9ea897dcac5}} 
+\index{usci.c@{usci.c}!uart\_send\_startup@{uart\_send\_startup}}
+\index{uart\_send\_startup@{uart\_send\_startup}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{uart\_send\_startup()}{uart\_send\_startup()}}
+{\footnotesize\ttfamily void uart\+\_\+send\+\_\+startup (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 164 of file usci.\+c.
+
+Here is the call graph for this function\+:
+% FIG 11
+Here is the caller graph for this function\+:
+% FIG 12
+\mbox{\Hypertarget{usci_8c_a8165a8d6cc982155fdbb73cca5485206}\label{usci_8c_a8165a8d6cc982155fdbb73cca5485206}} 
+\index{usci.c@{usci.c}!uart\_tx@{uart\_tx}}
+\index{uart\_tx@{uart\_tx}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{uart\_tx()}{uart\_tx()}}
+{\footnotesize\ttfamily void uart\+\_\+tx (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+this must be plased to Hard\+Ware\+Level Group 
+
+remove old hardware I\+F\+G2 \&= $\sim$\+U\+C\+A0\+T\+X\+I\+FG;
+
+remove old hardware I\+E2 $\vert$= U\+C\+A0\+T\+X\+IE;
+
+remove old hardware U\+C\+A0\+T\+X\+B\+UF = tx\+\_\+buffer\mbox{[}tx\+\_\+count++\mbox{]};
+
+Definition at line 138 of file usci.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 13
+\mbox{\Hypertarget{usci_8c_a7139cd4baabbbcbab0c1fe6d7d4ae1cc}\label{usci_8c_a7139cd4baabbbcbab0c1fe6d7d4ae1cc}} 
+\index{usci.c@{usci.c}!USART1\_IRQHandler@{USART1\_IRQHandler}}
+\index{USART1\_IRQHandler@{USART1\_IRQHandler}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{USART1\_IRQHandler()}{USART1\_IRQHandler()}}
+{\footnotesize\ttfamily void U\+S\+A\+R\+T1\+\_\+\+I\+R\+Q\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+remove old hardware interrupt(\+U\+S\+C\+I\+A\+B0\+T\+X\+\_\+\+V\+E\+C\+T\+O\+R) 
+
+remove old hardware interrupt(\+U\+S\+C\+I\+A\+B0\+R\+X\+\_\+\+V\+E\+C\+T\+O\+R) remove old hardware I\+E2 \&= $\sim$(U\+C\+A0\+T\+X\+IE);
+
+remove old hardware eint();
+
+remove old hardware I\+E2 \&= $\sim$(U\+C\+A0\+T\+X\+IE);
+
+remove old hardware U\+C\+A0\+T\+X\+B\+UF = tx\+\_\+buffer\mbox{[}tx\+\_\+count++\mbox{]};
+
+remove old hardware I\+E2 $\vert$= U\+C\+A0\+T\+X\+IE;
+
+remove old hardware I\+E2 \&= $\sim$(U\+C\+A0\+T\+X\+IE); //\+Turn off transmit interrupt until next time we transmit
+
+remove old hardware I\+E2 \&= $\sim$(U\+C\+A0\+R\+X\+IE);
+
+remove old hardware eint(); remove old hardware rx = (unsigned char)(U\+C\+A0\+R\+X\+B\+UF);
+
+remove old hardware I\+E2 $\vert$= U\+C\+A0\+R\+X\+IE;
+
+Definition at line 533 of file usci.\+c.
+
+Here is the call graph for this function\+:
+% FIG 14
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{usci_8c_a4486beb2c2599e09e95075cd248015b4}\label{usci_8c_a4486beb2c2599e09e95075cd248015b4}} 
+\index{usci.c@{usci.c}!command\_R@{command\_R}}
+\index{command\_R@{command\_R}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{command\_R}{command\_R}}
+{\footnotesize\ttfamily \mbox{\hyperlink{unioncommand__t}{command\+\_\+t}} command\+\_\+R}
+
+
+
+Definition at line 69 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_ac533e9393da82020032f2805260d01d8}\label{usci_8c_ac533e9393da82020032f2805260d01d8}} 
+\index{usci.c@{usci.c}!command\_W@{command\_W}}
+\index{command\_W@{command\_W}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{command\_W}{command\_W}}
+{\footnotesize\ttfamily \mbox{\hyperlink{unioncommand__t}{command\+\_\+t}} command\+\_\+W}
+
+
+
+Definition at line 76 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_a37b5f1dcfa7d5fec121d0ba39dab872a}\label{usci_8c_a37b5f1dcfa7d5fec121d0ba39dab872a}} 
+\index{usci.c@{usci.c}!eventConfig\_R@{eventConfig\_R}}
+\index{eventConfig\_R@{eventConfig\_R}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{eventConfig\_R}{eventConfig\_R}}
+{\footnotesize\ttfamily \mbox{\hyperlink{unionevent_config__t}{event\+Config\+\_\+t}} event\+Config\+\_\+R}
+
+
+
+Definition at line 67 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_a613071d9d7fd412d77f9546f9b4120d5}\label{usci_8c_a613071d9d7fd412d77f9546f9b4120d5}} 
+\index{usci.c@{usci.c}!eventConfig\_W@{eventConfig\_W}}
+\index{eventConfig\_W@{eventConfig\_W}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{eventConfig\_W}{eventConfig\_W}}
+{\footnotesize\ttfamily \mbox{\hyperlink{unionevent_config__t}{event\+Config\+\_\+t}} event\+Config\+\_\+W}
+
+
+
+Definition at line 75 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_a9857c8912de5cf9d79221584f8b9f965}\label{usci_8c_a9857c8912de5cf9d79221584f8b9f965}} 
+\index{usci.c@{usci.c}!expected\_rx\_count@{expected\_rx\_count}}
+\index{expected\_rx\_count@{expected\_rx\_count}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{expected\_rx\_count}{expected\_rx\_count}}
+{\footnotesize\ttfamily unsigned char expected\+\_\+rx\+\_\+count = 0}
+
+
+
+Definition at line 57 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_a05274e7df3bf0274e0871b33e535561d}\label{usci_8c_a05274e7df3bf0274e0871b33e535561d}} 
+\index{usci.c@{usci.c}!factoryConfig\_R@{factoryConfig\_R}}
+\index{factoryConfig\_R@{factoryConfig\_R}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{factoryConfig\_R}{factoryConfig\_R}}
+{\footnotesize\ttfamily \mbox{\hyperlink{unionfactory_config__t}{factory\+Config\+\_\+t}} factory\+Config\+\_\+R}
+
+
+
+Definition at line 65 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_aa81777861ee144bfa001f2a7675fb67e}\label{usci_8c_aa81777861ee144bfa001f2a7675fb67e}} 
+\index{usci.c@{usci.c}!factoryConfig\_W@{factoryConfig\_W}}
+\index{factoryConfig\_W@{factoryConfig\_W}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{factoryConfig\_W}{factoryConfig\_W}}
+{\footnotesize\ttfamily \mbox{\hyperlink{unionfactory_config__t}{factory\+Config\+\_\+t}} factory\+Config\+\_\+W}
+
+
+
+Definition at line 73 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_a2516a27be3e229d4ebce75743b3e1708}\label{usci_8c_a2516a27be3e229d4ebce75743b3e1708}} 
+\index{usci.c@{usci.c}!miscState\_R@{miscState\_R}}
+\index{miscState\_R@{miscState\_R}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{miscState\_R}{miscState\_R}}
+{\footnotesize\ttfamily \mbox{\hyperlink{unionmisc_state__t}{misc\+State\+\_\+t}} misc\+State\+\_\+R}
+
+
+
+Definition at line 71 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_a458928f7e1ac230f4f6a6bb3e92edeb9}\label{usci_8c_a458928f7e1ac230f4f6a6bb3e92edeb9}} 
+\index{usci.c@{usci.c}!miscState\_W@{miscState\_W}}
+\index{miscState\_W@{miscState\_W}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{miscState\_W}{miscState\_W}}
+{\footnotesize\ttfamily \mbox{\hyperlink{unionmisc_state__t}{misc\+State\+\_\+t}} misc\+State\+\_\+W}
+
+
+
+Definition at line 78 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_a56a73ad7cbd77d209ebf7f6ad642fd23}\label{usci_8c_a56a73ad7cbd77d209ebf7f6ad642fd23}} 
+\index{usci.c@{usci.c}!password\_R@{password\_R}}
+\index{password\_R@{password\_R}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{password\_R}{password\_R}}
+{\footnotesize\ttfamily \mbox{\hyperlink{unionpassword__t}{password\+\_\+t}} password\+\_\+R}
+
+
+
+Definition at line 70 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_a237430e1e3beb2c0dde4bd98c3f90a1a}\label{usci_8c_a237430e1e3beb2c0dde4bd98c3f90a1a}} 
+\index{usci.c@{usci.c}!persistentStorage@{persistentStorage}}
+\index{persistentStorage@{persistentStorage}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{persistentStorage}{persistentStorage}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structpersistent_storage__t}{persistent\+Storage\+\_\+t}} persistent\+Storage}
+
+
+
+Definition at line 80 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_a8dbd1a821eef07c2677e228e316e9183}\label{usci_8c_a8dbd1a821eef07c2677e228e316e9183}} 
+\index{usci.c@{usci.c}!prev\_rx@{prev\_rx}}
+\index{prev\_rx@{prev\_rx}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{prev\_rx}{prev\_rx}}
+{\footnotesize\ttfamily unsigned char prev\+\_\+rx = 0x\+FF}
+
+
+
+Definition at line 58 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_a9fc11015142a0f77187da5e1f04442fc}\label{usci_8c_a9fc11015142a0f77187da5e1f04442fc}} 
+\index{usci.c@{usci.c}!prev\_time@{prev\_time}}
+\index{prev\_time@{prev\_time}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{prev\_time}{prev\_time}}
+{\footnotesize\ttfamily \mbox{\hyperlink{time_8h_acec39cfa27244239e16da42f602e2561}{Time}} prev\+\_\+time = 0}
+
+
+
+Definition at line 61 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_af5bab3a07192a31cd3301640e9c2fb94}\label{usci_8c_af5bab3a07192a31cd3301640e9c2fb94}} 
+\index{usci.c@{usci.c}!rx\_buffer@{rx\_buffer}}
+\index{rx\_buffer@{rx\_buffer}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{rx\_buffer}{rx\_buffer}}
+{\footnotesize\ttfamily unsigned char rx\+\_\+buffer\mbox{[}\mbox{\hyperlink{usci_8h_af09b64f369b27803e9b840ebde07a532}{P\+A\+C\+K\+E\+T\+\_\+\+L\+E\+N\+G\+TH}}\mbox{]}}
+
+
+
+Definition at line 54 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_a1001089df0efac2a840d60fee2103936}\label{usci_8c_a1001089df0efac2a840d60fee2103936}} 
+\index{usci.c@{usci.c}!rx\_count@{rx\_count}}
+\index{rx\_count@{rx\_count}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{rx\_count}{rx\_count}}
+{\footnotesize\ttfamily unsigned char rx\+\_\+count = 0}
+
+
+
+Definition at line 56 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_a25a4352570ed4d84f8c7de3a20d00c55}\label{usci_8c_a25a4352570ed4d84f8c7de3a20d00c55}} 
+\index{usci.c@{usci.c}!sent\_startup@{sent\_startup}}
+\index{sent\_startup@{sent\_startup}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{sent\_startup}{sent\_startup}}
+{\footnotesize\ttfamily int sent\+\_\+startup = 0}
+
+
+
+Definition at line 60 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_a3c72ce4477e6d4e10a16e4081cecc581}\label{usci_8c_a3c72ce4477e6d4e10a16e4081cecc581}} 
+\index{usci.c@{usci.c}!setTime\_W@{setTime\_W}}
+\index{setTime\_W@{setTime\_W}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{setTime\_W}{setTime\_W}}
+{\footnotesize\ttfamily \mbox{\hyperlink{unionset_time__t}{set\+Time\+\_\+t}} set\+Time\+\_\+W}
+
+
+
+Definition at line 77 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_adb710811d67ace9be48684affb20917a}\label{usci_8c_adb710811d67ace9be48684affb20917a}} 
+\index{usci.c@{usci.c}!sysInfo\_R@{sysInfo\_R}}
+\index{sysInfo\_R@{sysInfo\_R}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{sysInfo\_R}{sysInfo\_R}}
+{\footnotesize\ttfamily \mbox{\hyperlink{unionsys_info__t}{sys\+Info\+\_\+t}} sys\+Info\+\_\+R}
+
+
+
+Definition at line 68 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_aef74520283abdbfcb98606b3b263c510}\label{usci_8c_aef74520283abdbfcb98606b3b263c510}} 
+\index{usci.c@{usci.c}!telemetry\_R@{telemetry\_R}}
+\index{telemetry\_R@{telemetry\_R}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{telemetry\_R}{telemetry\_R}}
+{\footnotesize\ttfamily \mbox{\hyperlink{uniontelemetry__t}{telemetry\+\_\+t}} telemetry\+\_\+R}
+
+
+
+Definition at line 64 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_a335d4f398e67d5896e3ef1d16762fc0e}\label{usci_8c_a335d4f398e67d5896e3ef1d16762fc0e}} 
+\index{usci.c@{usci.c}!tx\_buf\_len@{tx\_buf\_len}}
+\index{tx\_buf\_len@{tx\_buf\_len}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{tx\_buf\_len}{tx\_buf\_len}}
+{\footnotesize\ttfamily unsigned int tx\+\_\+buf\+\_\+len = 0}
+
+
+
+Definition at line 62 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_acc6cf25ffc496483db52dde461252228}\label{usci_8c_acc6cf25ffc496483db52dde461252228}} 
+\index{usci.c@{usci.c}!tx\_buffer@{tx\_buffer}}
+\index{tx\_buffer@{tx\_buffer}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{tx\_buffer}{tx\_buffer}}
+{\footnotesize\ttfamily unsigned char tx\+\_\+buffer\mbox{[}\mbox{\hyperlink{usci_8h_af09b64f369b27803e9b840ebde07a532}{P\+A\+C\+K\+E\+T\+\_\+\+L\+E\+N\+G\+TH}}\mbox{]}}
+
+
+
+Definition at line 53 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_aac2b5dea7099061084fe4dc0b1deac38}\label{usci_8c_aac2b5dea7099061084fe4dc0b1deac38}} 
+\index{usci.c@{usci.c}!tx\_count@{tx\_count}}
+\index{tx\_count@{tx\_count}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{tx\_count}{tx\_count}}
+{\footnotesize\ttfamily unsigned char tx\+\_\+count = 0}
+
+
+
+Definition at line 55 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_af80c724dde66ceed3ec0a0320650a742}\label{usci_8c_af80c724dde66ceed3ec0a0320650a742}} 
+\index{usci.c@{usci.c}!uart\_state@{uart\_state}}
+\index{uart\_state@{uart\_state}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{uart\_state}{uart\_state}}
+{\footnotesize\ttfamily \mbox{\hyperlink{usci_8c_ab0c49ffb42440e17326c048b0008efaf}{uart\+\_\+\+State}} uart\+\_\+state = \mbox{\hyperlink{usci_8c_a5259f9d9e74e8c63d92061ee8d50eb1daa9299dd39590fa03f9c40b54eeaca22b}{U\+A\+R\+T\+\_\+\+S\+T\+A\+T\+E\+\_\+\+I\+D\+LE}}}
+
+
+
+Definition at line 59 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_a583b8ce9ecc0fe179fdaf931179bca99}\label{usci_8c_a583b8ce9ecc0fe179fdaf931179bca99}} 
+\index{usci.c@{usci.c}!userConfig\_R@{userConfig\_R}}
+\index{userConfig\_R@{userConfig\_R}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{userConfig\_R}{userConfig\_R}}
+{\footnotesize\ttfamily \mbox{\hyperlink{unionuser_config__t}{user\+Config\+\_\+t}} user\+Config\+\_\+R}
+
+
+
+Definition at line 66 of file usci.\+c.
+
+\mbox{\Hypertarget{usci_8c_a55d5f19e832528899b6567d9ecef2275}\label{usci_8c_a55d5f19e832528899b6567d9ecef2275}} 
+\index{usci.c@{usci.c}!userConfig\_W@{userConfig\_W}}
+\index{userConfig\_W@{userConfig\_W}!usci.c@{usci.c}}
+\doxysubsubsection{\texorpdfstring{userConfig\_W}{userConfig\_W}}
+{\footnotesize\ttfamily \mbox{\hyperlink{unionuser_config__t}{user\+Config\+\_\+t}} user\+Config\+\_\+W}
+
+
+
+Definition at line 74 of file usci.\+c.
+

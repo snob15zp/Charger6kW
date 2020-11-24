@@ -1,0 +1,219 @@
+\hypertarget{comms_8h}{}\doxysection{D\+:/user\+S\+S\+D/github/\+Charger6k\+W/\+M\+S\+P\+\_\+\+S\+T\+M\+\_\+9\+\_\+\+R\+D\+D\+\_\+plus\+M\+S\+P/\+M\+S\+P430/comms.h File Reference}
+\label{comms_8h}\index{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/comms.h@{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/comms.h}}
+{\ttfamily \#include \char`\"{}debug.\+h\char`\"{}}\newline
+Include dependency graph for comms.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{comms_8h_aa246dad57d74556f6d5385476f83e8ef}{C\+O\+M\+M\+S\+\_\+init}} ()
+\item 
+unsigned char \mbox{\hyperlink{comms_8h_a9fb233cb023229df11e2da58e6d199d2}{C\+O\+M\+M\+S\+\_\+get\+Status}} ()
+\item 
+void \mbox{\hyperlink{comms_8h_a4338eba8361cb339d40978c56331af8b}{C\+O\+M\+M\+S\+\_\+send\+Heartbeat}} ()
+\item 
+void \mbox{\hyperlink{comms_8h_a29bf112d7a2cea2f8887580992840ecb}{C\+O\+M\+M\+S\+\_\+send\+Status}} ()
+\item 
+void \mbox{\hyperlink{comms_8h_aff2325274e485c3bf5eb714ff9c99ff6}{C\+O\+M\+M\+S\+\_\+send\+Pv\+Meas}} ()
+\item 
+void \mbox{\hyperlink{comms_8h_af9084763a196bf3e23d50de9e6838140}{C\+O\+M\+M\+S\+\_\+send\+Out\+Meas}} ()
+\item 
+void \mbox{\hyperlink{comms_8h_a7da93757b596c82d84dd352bd06fe929}{C\+O\+M\+M\+S\+\_\+send\+Oc\+Q\+Meas}} ()
+\item 
+void \mbox{\hyperlink{comms_8h_af953d16d1d8578a86545a69e192e86e9}{C\+O\+M\+M\+S\+\_\+send\+Pow\+Tempr\+Meas}} ()
+\item 
+void \mbox{\hyperlink{comms_8h_a7d0d357566efe5fe410a6b7cc4b2eec1}{C\+O\+M\+M\+S\+\_\+send\+Time}} ()
+\item 
+void \mbox{\hyperlink{comms_8h_aa9ab002672fd9f60b79c4dba90128314}{C\+O\+M\+M\+S\+\_\+send\+Flag}} ()
+\item 
+void \mbox{\hyperlink{comms_8h_a8a79c98360addcb06de45713784ba040}{C\+O\+M\+M\+S\+\_\+send\+Out\+Volt\+Cmd}} ()
+\item 
+void \mbox{\hyperlink{comms_8h_a8e6604b958225317069baa073a4457a6}{C\+O\+M\+M\+S\+\_\+receive}} ()
+\item 
+void \mbox{\hyperlink{comms_8h_ae608251767f8874da555de658b13c8a5}{C\+O\+M\+M\+S\+\_\+send\+P2p\+Packet}} ()
+\item 
+void \mbox{\hyperlink{comms_8h_aa032b51f936c8734b65d6448a56dd24f}{C\+O\+M\+M\+S\+\_\+send\+Debug\+Packet}} (unsigned int val1, unsigned int val2, unsigned int val3, unsigned int val4)
+\item 
+void \mbox{\hyperlink{comms_8h_a57fde214547d6405a4048347920d92cd}{C\+O\+M\+M\+S\+\_\+send\+Debug\+Packet\+U64}} (unsigned long long val)
+\item 
+void \mbox{\hyperlink{comms_8h_a8db25890cf684eaaaaced158ba74cc65}{C\+O\+M\+M\+S\+\_\+send\+Debug\+Packet\+Float}} (float val1, float val2)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{comms_8h_a9fb233cb023229df11e2da58e6d199d2}\label{comms_8h_a9fb233cb023229df11e2da58e6d199d2}} 
+\index{comms.h@{comms.h}!COMMS\_getStatus@{COMMS\_getStatus}}
+\index{COMMS\_getStatus@{COMMS\_getStatus}!comms.h@{comms.h}}
+\doxysubsubsection{\texorpdfstring{COMMS\_getStatus()}{COMMS\_getStatus()}}
+{\footnotesize\ttfamily unsigned char C\+O\+M\+M\+S\+\_\+get\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 111 of file comms.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{comms_8h_aa246dad57d74556f6d5385476f83e8ef}\label{comms_8h_aa246dad57d74556f6d5385476f83e8ef}} 
+\index{comms.h@{comms.h}!COMMS\_init@{COMMS\_init}}
+\index{COMMS\_init@{COMMS\_init}!comms.h@{comms.h}}
+\doxysubsubsection{\texorpdfstring{COMMS\_init()}{COMMS\_init()}}
+{\footnotesize\ttfamily void C\+O\+M\+M\+S\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 106 of file comms.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{comms_8h_a8e6604b958225317069baa073a4457a6}\label{comms_8h_a8e6604b958225317069baa073a4457a6}} 
+\index{comms.h@{comms.h}!COMMS\_receive@{COMMS\_receive}}
+\index{COMMS\_receive@{COMMS\_receive}!comms.h@{comms.h}}
+\doxysubsubsection{\texorpdfstring{COMMS\_receive()}{COMMS\_receive()}}
+{\footnotesize\ttfamily void C\+O\+M\+M\+S\+\_\+receive (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 280 of file comms.\+c.
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{comms_8h_aa032b51f936c8734b65d6448a56dd24f}\label{comms_8h_aa032b51f936c8734b65d6448a56dd24f}} 
+\index{comms.h@{comms.h}!COMMS\_sendDebugPacket@{COMMS\_sendDebugPacket}}
+\index{COMMS\_sendDebugPacket@{COMMS\_sendDebugPacket}!comms.h@{comms.h}}
+\doxysubsubsection{\texorpdfstring{COMMS\_sendDebugPacket()}{COMMS\_sendDebugPacket()}}
+{\footnotesize\ttfamily void C\+O\+M\+M\+S\+\_\+send\+Debug\+Packet (\begin{DoxyParamCaption}\item[{unsigned int}]{val1,  }\item[{unsigned int}]{val2,  }\item[{unsigned int}]{val3,  }\item[{unsigned int}]{val4 }\end{DoxyParamCaption})}
+
+
+
+Definition at line 232 of file comms.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{comms_8h_a8db25890cf684eaaaaced158ba74cc65}\label{comms_8h_a8db25890cf684eaaaaced158ba74cc65}} 
+\index{comms.h@{comms.h}!COMMS\_sendDebugPacketFloat@{COMMS\_sendDebugPacketFloat}}
+\index{COMMS\_sendDebugPacketFloat@{COMMS\_sendDebugPacketFloat}!comms.h@{comms.h}}
+\doxysubsubsection{\texorpdfstring{COMMS\_sendDebugPacketFloat()}{COMMS\_sendDebugPacketFloat()}}
+{\footnotesize\ttfamily void C\+O\+M\+M\+S\+\_\+send\+Debug\+Packet\+Float (\begin{DoxyParamCaption}\item[{float}]{val1,  }\item[{float}]{val2 }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{comms_8h_a57fde214547d6405a4048347920d92cd}\label{comms_8h_a57fde214547d6405a4048347920d92cd}} 
+\index{comms.h@{comms.h}!COMMS\_sendDebugPacketU64@{COMMS\_sendDebugPacketU64}}
+\index{COMMS\_sendDebugPacketU64@{COMMS\_sendDebugPacketU64}!comms.h@{comms.h}}
+\doxysubsubsection{\texorpdfstring{COMMS\_sendDebugPacketU64()}{COMMS\_sendDebugPacketU64()}}
+{\footnotesize\ttfamily void C\+O\+M\+M\+S\+\_\+send\+Debug\+Packet\+U64 (\begin{DoxyParamCaption}\item[{unsigned long long}]{val }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{comms_8h_aa9ab002672fd9f60b79c4dba90128314}\label{comms_8h_aa9ab002672fd9f60b79c4dba90128314}} 
+\index{comms.h@{comms.h}!COMMS\_sendFlag@{COMMS\_sendFlag}}
+\index{COMMS\_sendFlag@{COMMS\_sendFlag}!comms.h@{comms.h}}
+\doxysubsubsection{\texorpdfstring{COMMS\_sendFlag()}{COMMS\_sendFlag()}}
+{\footnotesize\ttfamily void C\+O\+M\+M\+S\+\_\+send\+Flag (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 213 of file comms.\+c.
+
+Here is the call graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{comms_8h_a4338eba8361cb339d40978c56331af8b}\label{comms_8h_a4338eba8361cb339d40978c56331af8b}} 
+\index{comms.h@{comms.h}!COMMS\_sendHeartbeat@{COMMS\_sendHeartbeat}}
+\index{COMMS\_sendHeartbeat@{COMMS\_sendHeartbeat}!comms.h@{comms.h}}
+\doxysubsubsection{\texorpdfstring{COMMS\_sendHeartbeat()}{COMMS\_sendHeartbeat()}}
+{\footnotesize\ttfamily void C\+O\+M\+M\+S\+\_\+send\+Heartbeat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 116 of file comms.\+c.
+
+Here is the call graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{comms_8h_a7da93757b596c82d84dd352bd06fe929}\label{comms_8h_a7da93757b596c82d84dd352bd06fe929}} 
+\index{comms.h@{comms.h}!COMMS\_sendOcQMeas@{COMMS\_sendOcQMeas}}
+\index{COMMS\_sendOcQMeas@{COMMS\_sendOcQMeas}!comms.h@{comms.h}}
+\doxysubsubsection{\texorpdfstring{COMMS\_sendOcQMeas()}{COMMS\_sendOcQMeas()}}
+{\footnotesize\ttfamily void C\+O\+M\+M\+S\+\_\+send\+Oc\+Q\+Meas (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 182 of file comms.\+c.
+
+\mbox{\Hypertarget{comms_8h_af9084763a196bf3e23d50de9e6838140}\label{comms_8h_af9084763a196bf3e23d50de9e6838140}} 
+\index{comms.h@{comms.h}!COMMS\_sendOutMeas@{COMMS\_sendOutMeas}}
+\index{COMMS\_sendOutMeas@{COMMS\_sendOutMeas}!comms.h@{comms.h}}
+\doxysubsubsection{\texorpdfstring{COMMS\_sendOutMeas()}{COMMS\_sendOutMeas()}}
+{\footnotesize\ttfamily void C\+O\+M\+M\+S\+\_\+send\+Out\+Meas (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 170 of file comms.\+c.
+
+\mbox{\Hypertarget{comms_8h_a8a79c98360addcb06de45713784ba040}\label{comms_8h_a8a79c98360addcb06de45713784ba040}} 
+\index{comms.h@{comms.h}!COMMS\_sendOutVoltCmd@{COMMS\_sendOutVoltCmd}}
+\index{COMMS\_sendOutVoltCmd@{COMMS\_sendOutVoltCmd}!comms.h@{comms.h}}
+\doxysubsubsection{\texorpdfstring{COMMS\_sendOutVoltCmd()}{COMMS\_sendOutVoltCmd()}}
+{\footnotesize\ttfamily void C\+O\+M\+M\+S\+\_\+send\+Out\+Volt\+Cmd (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 222 of file comms.\+c.
+
+Here is the call graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{comms_8h_ae608251767f8874da555de658b13c8a5}\label{comms_8h_ae608251767f8874da555de658b13c8a5}} 
+\index{comms.h@{comms.h}!COMMS\_sendP2pPacket@{COMMS\_sendP2pPacket}}
+\index{COMMS\_sendP2pPacket@{COMMS\_sendP2pPacket}!comms.h@{comms.h}}
+\doxysubsubsection{\texorpdfstring{COMMS\_sendP2pPacket()}{COMMS\_sendP2pPacket()}}
+{\footnotesize\ttfamily void C\+O\+M\+M\+S\+\_\+send\+P2p\+Packet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 575 of file comms.\+c.
+
+Here is the call graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{comms_8h_af953d16d1d8578a86545a69e192e86e9}\label{comms_8h_af953d16d1d8578a86545a69e192e86e9}} 
+\index{comms.h@{comms.h}!COMMS\_sendPowTemprMeas@{COMMS\_sendPowTemprMeas}}
+\index{COMMS\_sendPowTemprMeas@{COMMS\_sendPowTemprMeas}!comms.h@{comms.h}}
+\doxysubsubsection{\texorpdfstring{COMMS\_sendPowTemprMeas()}{COMMS\_sendPowTemprMeas()}}
+{\footnotesize\ttfamily void C\+O\+M\+M\+S\+\_\+send\+Pow\+Tempr\+Meas (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 194 of file comms.\+c.
+
+\mbox{\Hypertarget{comms_8h_aff2325274e485c3bf5eb714ff9c99ff6}\label{comms_8h_aff2325274e485c3bf5eb714ff9c99ff6}} 
+\index{comms.h@{comms.h}!COMMS\_sendPvMeas@{COMMS\_sendPvMeas}}
+\index{COMMS\_sendPvMeas@{COMMS\_sendPvMeas}!comms.h@{comms.h}}
+\doxysubsubsection{\texorpdfstring{COMMS\_sendPvMeas()}{COMMS\_sendPvMeas()}}
+{\footnotesize\ttfamily void C\+O\+M\+M\+S\+\_\+send\+Pv\+Meas (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 158 of file comms.\+c.
+
+\mbox{\Hypertarget{comms_8h_a29bf112d7a2cea2f8887580992840ecb}\label{comms_8h_a29bf112d7a2cea2f8887580992840ecb}} 
+\index{comms.h@{comms.h}!COMMS\_sendStatus@{COMMS\_sendStatus}}
+\index{COMMS\_sendStatus@{COMMS\_sendStatus}!comms.h@{comms.h}}
+\doxysubsubsection{\texorpdfstring{COMMS\_sendStatus()}{COMMS\_sendStatus()}}
+{\footnotesize\ttfamily void C\+O\+M\+M\+S\+\_\+send\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 139 of file comms.\+c.
+
+Here is the call graph for this function\+:
+% FIG 11
+\mbox{\Hypertarget{comms_8h_a7d0d357566efe5fe410a6b7cc4b2eec1}\label{comms_8h_a7d0d357566efe5fe410a6b7cc4b2eec1}} 
+\index{comms.h@{comms.h}!COMMS\_sendTime@{COMMS\_sendTime}}
+\index{COMMS\_sendTime@{COMMS\_sendTime}!comms.h@{comms.h}}
+\doxysubsubsection{\texorpdfstring{COMMS\_sendTime()}{COMMS\_sendTime()}}
+{\footnotesize\ttfamily void C\+O\+M\+M\+S\+\_\+send\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 149 of file comms.\+c.
+
+Here is the call graph for this function\+:
+% FIG 12

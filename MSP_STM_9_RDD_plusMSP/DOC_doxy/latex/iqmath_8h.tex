@@ -1,0 +1,223 @@
+\hypertarget{iqmath_8h}{}\doxysection{D\+:/user\+S\+S\+D/github/\+Charger6k\+W/\+M\+S\+P\+\_\+\+S\+T\+M\+\_\+9\+\_\+\+R\+D\+D\+\_\+plus\+M\+S\+P/\+M\+S\+P430/iqmath.h File Reference}
+\label{iqmath_8h}\index{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/iqmath.h@{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/iqmath.h}}
+{\ttfamily \#include \char`\"{}debug.\+h\char`\"{}}\newline
+Include dependency graph for iqmath.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{iqmath_8h_abac9aec801d1a899956a2e67b75aca09}{I\+Q\+\_\+Q}}~12
+\item 
+\#define \mbox{\hyperlink{iqmath_8h_afb167ad16b733f13d720ca4e889c2ed1}{I\+Q\+\_\+K}}~(1 $<$$<$ (\mbox{\hyperlink{iqmath_8h_abac9aec801d1a899956a2e67b75aca09}{I\+Q\+\_\+Q}}-\/1))
+\item 
+\#define \mbox{\hyperlink{iqmath_8h_a90d3e679d27f35c8af48b5035dbcacc9}{I\+Q\+\_\+\+M\+IN}}~0x8000
+\item 
+\#define \mbox{\hyperlink{iqmath_8h_ac6d3c29c2ff1ef6f2e638a566a00cb0e}{I\+Q\+\_\+\+M\+AX}}~0x7\+F\+FF
+\item 
+\#define \mbox{\hyperlink{iqmath_8h_af9759b8b0d18bc1ef336969dba68a340}{I\+Q\+\_\+cnst}}(A)~( (\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}}) ((A) $\ast$ 4096.\+0) )
+\item 
+\#define \mbox{\hyperlink{iqmath_8h_a273697a09f3e93a68c7016a17ae22aef}{I\+Q\+\_\+abs}}(A)~( ((A)$<$0)?(-\/(A))\+:(A) )
+\item 
+\#define \mbox{\hyperlink{iqmath_8h_a27bab2c10c218a207b0e24fa856dab4f}{I\+Q\+\_\+sign}}(A)~( ((A)==0)?(0)\+:(((A)$<$0)?(-\/1)\+:(1)) )
+\item 
+\#define \mbox{\hyperlink{iqmath_8h_aab528db1d1240e94efbdcc18d2ae54ec}{I\+Q\+\_\+min}}(A,  B)~( ((A)$<$(B))?(A)\+:(B) )
+\item 
+\#define \mbox{\hyperlink{iqmath_8h_a3253aa401970ab92ef6601d87d651448}{I\+Q\+\_\+max}}(A,  B)~( ((A)$>$(B))?(A)\+:(B) )
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef int \mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}}
+\item 
+typedef long int \mbox{\hyperlink{iqmath_8h_af79bc963a4ce8eed63e791577ffc4d48}{Iq\+Long}}
+\item 
+typedef long int \mbox{\hyperlink{iqmath_8h_a307730f657ec078519a0ecc97eea7f6f}{Iq24\+Long}}
+\item 
+typedef long long int \mbox{\hyperlink{iqmath_8h_a2b5b2ffadb9a6e58adda16cb87989662}{Iq24\+Long\+Long}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} \mbox{\hyperlink{iqmath_8h_a3602eaafd15397aa969429a8f6a375fb}{I\+Q\+\_\+mpy}} (\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} a, \mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} b)
+\begin{DoxyCompactList}\small\item\em \#include $<$msp430x24x.\+h$>$ \end{DoxyCompactList}\item 
+\mbox{\hyperlink{iqmath_8h_a307730f657ec078519a0ecc97eea7f6f}{Iq24\+Long}} \mbox{\hyperlink{iqmath_8h_ab90171db377e0d78b8a8083fda803cff}{I\+Q\+\_\+mpy\+To24}} (\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} a, \mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} b)
+\item 
+\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} \mbox{\hyperlink{iqmath_8h_adb78190f952d6c31d65d7005aaf73033}{I\+Q\+\_\+div}} (\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} a, \mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} b)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{iqmath_8h_a273697a09f3e93a68c7016a17ae22aef}\label{iqmath_8h_a273697a09f3e93a68c7016a17ae22aef}} 
+\index{iqmath.h@{iqmath.h}!IQ\_abs@{IQ\_abs}}
+\index{IQ\_abs@{IQ\_abs}!iqmath.h@{iqmath.h}}
+\doxysubsubsection{\texorpdfstring{IQ\_abs}{IQ\_abs}}
+{\footnotesize\ttfamily \#define I\+Q\+\_\+abs(\begin{DoxyParamCaption}\item[{}]{A }\end{DoxyParamCaption})~( ((A)$<$0)?(-\/(A))\+:(A) )}
+
+
+
+Definition at line 30 of file iqmath.\+h.
+
+\mbox{\Hypertarget{iqmath_8h_af9759b8b0d18bc1ef336969dba68a340}\label{iqmath_8h_af9759b8b0d18bc1ef336969dba68a340}} 
+\index{iqmath.h@{iqmath.h}!IQ\_cnst@{IQ\_cnst}}
+\index{IQ\_cnst@{IQ\_cnst}!iqmath.h@{iqmath.h}}
+\doxysubsubsection{\texorpdfstring{IQ\_cnst}{IQ\_cnst}}
+{\footnotesize\ttfamily \#define I\+Q\+\_\+cnst(\begin{DoxyParamCaption}\item[{}]{A }\end{DoxyParamCaption})~( (\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}}) ((A) $\ast$ 4096.\+0) )}
+
+
+
+Definition at line 28 of file iqmath.\+h.
+
+\mbox{\Hypertarget{iqmath_8h_afb167ad16b733f13d720ca4e889c2ed1}\label{iqmath_8h_afb167ad16b733f13d720ca4e889c2ed1}} 
+\index{iqmath.h@{iqmath.h}!IQ\_K@{IQ\_K}}
+\index{IQ\_K@{IQ\_K}!iqmath.h@{iqmath.h}}
+\doxysubsubsection{\texorpdfstring{IQ\_K}{IQ\_K}}
+{\footnotesize\ttfamily \#define I\+Q\+\_\+K~(1 $<$$<$ (\mbox{\hyperlink{iqmath_8h_abac9aec801d1a899956a2e67b75aca09}{I\+Q\+\_\+Q}}-\/1))}
+
+
+
+Definition at line 18 of file iqmath.\+h.
+
+\mbox{\Hypertarget{iqmath_8h_ac6d3c29c2ff1ef6f2e638a566a00cb0e}\label{iqmath_8h_ac6d3c29c2ff1ef6f2e638a566a00cb0e}} 
+\index{iqmath.h@{iqmath.h}!IQ\_MAX@{IQ\_MAX}}
+\index{IQ\_MAX@{IQ\_MAX}!iqmath.h@{iqmath.h}}
+\doxysubsubsection{\texorpdfstring{IQ\_MAX}{IQ\_MAX}}
+{\footnotesize\ttfamily \#define I\+Q\+\_\+\+M\+AX~0x7\+F\+FF}
+
+
+
+Definition at line 26 of file iqmath.\+h.
+
+\mbox{\Hypertarget{iqmath_8h_a3253aa401970ab92ef6601d87d651448}\label{iqmath_8h_a3253aa401970ab92ef6601d87d651448}} 
+\index{iqmath.h@{iqmath.h}!IQ\_max@{IQ\_max}}
+\index{IQ\_max@{IQ\_max}!iqmath.h@{iqmath.h}}
+\doxysubsubsection{\texorpdfstring{IQ\_max}{IQ\_max}}
+{\footnotesize\ttfamily \#define I\+Q\+\_\+max(\begin{DoxyParamCaption}\item[{}]{A,  }\item[{}]{B }\end{DoxyParamCaption})~( ((A)$>$(B))?(A)\+:(B) )}
+
+
+
+Definition at line 33 of file iqmath.\+h.
+
+\mbox{\Hypertarget{iqmath_8h_a90d3e679d27f35c8af48b5035dbcacc9}\label{iqmath_8h_a90d3e679d27f35c8af48b5035dbcacc9}} 
+\index{iqmath.h@{iqmath.h}!IQ\_MIN@{IQ\_MIN}}
+\index{IQ\_MIN@{IQ\_MIN}!iqmath.h@{iqmath.h}}
+\doxysubsubsection{\texorpdfstring{IQ\_MIN}{IQ\_MIN}}
+{\footnotesize\ttfamily \#define I\+Q\+\_\+\+M\+IN~0x8000}
+
+
+
+Definition at line 25 of file iqmath.\+h.
+
+\mbox{\Hypertarget{iqmath_8h_aab528db1d1240e94efbdcc18d2ae54ec}\label{iqmath_8h_aab528db1d1240e94efbdcc18d2ae54ec}} 
+\index{iqmath.h@{iqmath.h}!IQ\_min@{IQ\_min}}
+\index{IQ\_min@{IQ\_min}!iqmath.h@{iqmath.h}}
+\doxysubsubsection{\texorpdfstring{IQ\_min}{IQ\_min}}
+{\footnotesize\ttfamily \#define I\+Q\+\_\+min(\begin{DoxyParamCaption}\item[{}]{A,  }\item[{}]{B }\end{DoxyParamCaption})~( ((A)$<$(B))?(A)\+:(B) )}
+
+
+
+Definition at line 32 of file iqmath.\+h.
+
+\mbox{\Hypertarget{iqmath_8h_abac9aec801d1a899956a2e67b75aca09}\label{iqmath_8h_abac9aec801d1a899956a2e67b75aca09}} 
+\index{iqmath.h@{iqmath.h}!IQ\_Q@{IQ\_Q}}
+\index{IQ\_Q@{IQ\_Q}!iqmath.h@{iqmath.h}}
+\doxysubsubsection{\texorpdfstring{IQ\_Q}{IQ\_Q}}
+{\footnotesize\ttfamily \#define I\+Q\+\_\+Q~12}
+
+
+
+Definition at line 17 of file iqmath.\+h.
+
+\mbox{\Hypertarget{iqmath_8h_a27bab2c10c218a207b0e24fa856dab4f}\label{iqmath_8h_a27bab2c10c218a207b0e24fa856dab4f}} 
+\index{iqmath.h@{iqmath.h}!IQ\_sign@{IQ\_sign}}
+\index{IQ\_sign@{IQ\_sign}!iqmath.h@{iqmath.h}}
+\doxysubsubsection{\texorpdfstring{IQ\_sign}{IQ\_sign}}
+{\footnotesize\ttfamily \#define I\+Q\+\_\+sign(\begin{DoxyParamCaption}\item[{}]{A }\end{DoxyParamCaption})~( ((A)==0)?(0)\+:(((A)$<$0)?(-\/1)\+:(1)) )}
+
+
+
+Definition at line 31 of file iqmath.\+h.
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{iqmath_8h_a590ba223075d3434749d8319848758d4}\label{iqmath_8h_a590ba223075d3434749d8319848758d4}} 
+\index{iqmath.h@{iqmath.h}!Iq@{Iq}}
+\index{Iq@{Iq}!iqmath.h@{iqmath.h}}
+\doxysubsubsection{\texorpdfstring{Iq}{Iq}}
+{\footnotesize\ttfamily typedef int \mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}}}
+
+
+
+Definition at line 20 of file iqmath.\+h.
+
+\mbox{\Hypertarget{iqmath_8h_a307730f657ec078519a0ecc97eea7f6f}\label{iqmath_8h_a307730f657ec078519a0ecc97eea7f6f}} 
+\index{iqmath.h@{iqmath.h}!Iq24Long@{Iq24Long}}
+\index{Iq24Long@{Iq24Long}!iqmath.h@{iqmath.h}}
+\doxysubsubsection{\texorpdfstring{Iq24Long}{Iq24Long}}
+{\footnotesize\ttfamily typedef long int \mbox{\hyperlink{iqmath_8h_a307730f657ec078519a0ecc97eea7f6f}{Iq24\+Long}}}
+
+
+
+Definition at line 22 of file iqmath.\+h.
+
+\mbox{\Hypertarget{iqmath_8h_a2b5b2ffadb9a6e58adda16cb87989662}\label{iqmath_8h_a2b5b2ffadb9a6e58adda16cb87989662}} 
+\index{iqmath.h@{iqmath.h}!Iq24LongLong@{Iq24LongLong}}
+\index{Iq24LongLong@{Iq24LongLong}!iqmath.h@{iqmath.h}}
+\doxysubsubsection{\texorpdfstring{Iq24LongLong}{Iq24LongLong}}
+{\footnotesize\ttfamily typedef long long int \mbox{\hyperlink{iqmath_8h_a2b5b2ffadb9a6e58adda16cb87989662}{Iq24\+Long\+Long}}}
+
+
+
+Definition at line 23 of file iqmath.\+h.
+
+\mbox{\Hypertarget{iqmath_8h_af79bc963a4ce8eed63e791577ffc4d48}\label{iqmath_8h_af79bc963a4ce8eed63e791577ffc4d48}} 
+\index{iqmath.h@{iqmath.h}!IqLong@{IqLong}}
+\index{IqLong@{IqLong}!iqmath.h@{iqmath.h}}
+\doxysubsubsection{\texorpdfstring{IqLong}{IqLong}}
+{\footnotesize\ttfamily typedef long int \mbox{\hyperlink{iqmath_8h_af79bc963a4ce8eed63e791577ffc4d48}{Iq\+Long}}}
+
+
+
+Definition at line 21 of file iqmath.\+h.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{iqmath_8h_adb78190f952d6c31d65d7005aaf73033}\label{iqmath_8h_adb78190f952d6c31d65d7005aaf73033}} 
+\index{iqmath.h@{iqmath.h}!IQ\_div@{IQ\_div}}
+\index{IQ\_div@{IQ\_div}!iqmath.h@{iqmath.h}}
+\doxysubsubsection{\texorpdfstring{IQ\_div()}{IQ\_div()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} I\+Q\+\_\+div (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}}}]{a,  }\item[{\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}}}]{b }\end{DoxyParamCaption})}
+
+
+
+Definition at line 65 of file iqmath.\+c.
+
+\mbox{\Hypertarget{iqmath_8h_a3602eaafd15397aa969429a8f6a375fb}\label{iqmath_8h_a3602eaafd15397aa969429a8f6a375fb}} 
+\index{iqmath.h@{iqmath.h}!IQ\_mpy@{IQ\_mpy}}
+\index{IQ\_mpy@{IQ\_mpy}!iqmath.h@{iqmath.h}}
+\doxysubsubsection{\texorpdfstring{IQ\_mpy()}{IQ\_mpy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} I\+Q\+\_\+mpy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}}}]{a,  }\item[{\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}}}]{b }\end{DoxyParamCaption})}
+
+
+
+\#include $<$msp430x24x.\+h$>$ 
+
+
+
+Definition at line 17 of file iqmath.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{iqmath_8h_ab90171db377e0d78b8a8083fda803cff}\label{iqmath_8h_ab90171db377e0d78b8a8083fda803cff}} 
+\index{iqmath.h@{iqmath.h}!IQ\_mpyTo24@{IQ\_mpyTo24}}
+\index{IQ\_mpyTo24@{IQ\_mpyTo24}!iqmath.h@{iqmath.h}}
+\doxysubsubsection{\texorpdfstring{IQ\_mpyTo24()}{IQ\_mpyTo24()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{iqmath_8h_a307730f657ec078519a0ecc97eea7f6f}{Iq24\+Long}} I\+Q\+\_\+mpy\+To24 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}}}]{a,  }\item[{\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}}}]{b }\end{DoxyParamCaption})}
+
+
+
+Definition at line 53 of file iqmath.\+c.
+

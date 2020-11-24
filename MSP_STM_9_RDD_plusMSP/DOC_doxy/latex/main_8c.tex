@@ -1,0 +1,165 @@
+\hypertarget{main_8c}{}\doxysection{D\+:/user\+S\+S\+D/github/\+Charger6k\+W/\+M\+S\+P\+\_\+\+S\+T\+M\+\_\+9\+\_\+\+R\+D\+D\+\_\+plus\+M\+S\+P/\+M\+S\+P430/main.c File Reference}
+\label{main_8c}\index{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/main.c@{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/main.c}}
+{\ttfamily \#include $<$msp430x24x.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}svs.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}can.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}usci.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sch.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}io.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}pwm.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}comms.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}adc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}meas.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}spi.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}flash.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cfg.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}telem.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}status.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ctrl.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stats.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}safety.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}lcd.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}temp.\+h\char`\"{}}\newline
+Include dependency graph for main.\+c\+:
+% FIG 0
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{unionmy__erasable__data__area}{my\+\_\+erasable\+\_\+data\+\_\+area}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{main_8c_ae77bc6dc0ad187353cfb7416730b6ff7}{\+\_\+\+\_\+special\+\_\+area\+\_\+\+\_\+}}~\+\_\+\+\_\+attribute\+\_\+\+\_\+((section(\char`\"{}.specialarea\char`\"{})))
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8c_a78ab77b57cf2e00089f0a3a22508524c}{clock\+\_\+init}} (void)
+\item 
+int \mbox{\hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
+\item 
+void \mbox{\hyperlink{main_8c_a2cab12f9c2d81101de81e7d5a48b68a3}{M\+A\+I\+N\+\_\+reset\+All\+And\+Start}} ()
+\item 
+void \mbox{\hyperlink{main_8c_a58921d4d8fb76bc3b22ae4ef0a9e0e03}{M\+A\+I\+N\+\_\+reset\+Remote\+Cfg}} ()
+\item 
+void \+\_\+\+\_\+inline\+\_\+\+\_\+ \mbox{\hyperlink{main_8c_ae3ef518fe01a72af8a5599029b6db1be}{brief\+\_\+pause}} (register unsigned int n)
+\begin{DoxyCompactList}\small\item\em void {\bfseries{inline}} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{main_m_s_p_8c_ae77bc6dc0ad187353cfb7416730b6ff7}{\+\_\+\+\_\+special\+\_\+area\+\_\+\+\_\+}} \mbox{\hyperlink{unionmy__erasable__data__area}{my\+\_\+erasable\+\_\+data\+\_\+area}} \mbox{\hyperlink{main_8c_adad4c1bbcae8319b7399ebb2d522f5fc}{my\+\_\+bsl\+\_\+info}} \mbox{[}$\,$\mbox{]} = \{0x0,0x0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,\textquotesingle{}H\textquotesingle{},\mbox{\hyperlink{variant_8h_a0fdf7bb20f01f0343addd481017e4a4a}{A\+E\+R\+\_\+\+P\+R\+O\+D\+U\+C\+T\+\_\+\+ID}},\mbox{\hyperlink{variant_8h_a803a7e3a8268d47c7d212c39958416a0}{V\+A\+R\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+N\+U\+M\+B\+ER}},0x00,0x00\}
+\item 
+volatile unsigned char \mbox{\hyperlink{main_8c_a95377e3ff8a0ceff6a3762005601838f}{send\+\_\+serial\+\_\+flag}} = \mbox{\hyperlink{util_8h_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{main_8c_ae77bc6dc0ad187353cfb7416730b6ff7}\label{main_8c_ae77bc6dc0ad187353cfb7416730b6ff7}} 
+\index{main.c@{main.c}!\_\_special\_area\_\_@{\_\_special\_area\_\_}}
+\index{\_\_special\_area\_\_@{\_\_special\_area\_\_}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{\_\_special\_area\_\_}{\_\_special\_area\_\_}}
+{\footnotesize\ttfamily \#define \+\_\+\+\_\+special\+\_\+area\+\_\+\+\_\+~\+\_\+\+\_\+attribute\+\_\+\+\_\+((section(\char`\"{}.specialarea\char`\"{})))}
+
+
+
+Definition at line 36 of file main.\+c.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8c_ae3ef518fe01a72af8a5599029b6db1be}\label{main_8c_ae3ef518fe01a72af8a5599029b6db1be}} 
+\index{main.c@{main.c}!brief\_pause@{brief\_pause}}
+\index{brief\_pause@{brief\_pause}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{brief\_pause()}{brief\_pause()}}
+{\footnotesize\ttfamily void \+\_\+\+\_\+inline\+\_\+\+\_\+ brief\+\_\+pause (\begin{DoxyParamCaption}\item[{register unsigned int}]{n }\end{DoxyParamCaption})}
+
+
+
+void {\bfseries{inline}} 
+
+
+
+Definition at line 183 of file main.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{main_8c_a78ab77b57cf2e00089f0a3a22508524c}\label{main_8c_a78ab77b57cf2e00089f0a3a22508524c}} 
+\index{main.c@{main.c}!clock\_init@{clock\_init}}
+\index{clock\_init@{clock\_init}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{clock\_init()}{clock\_init()}}
+{\footnotesize\ttfamily void clock\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+R\+DD O\+LD hardware if (C\+A\+L\+B\+C1\+\_\+16\+M\+HZ != 0x\+FF)
+
+R\+DD O\+LD hardware B\+C\+S\+C\+T\+L1 = C\+A\+L\+B\+C1\+\_\+16\+M\+HZ; R\+DD O\+LD hardware D\+C\+O\+C\+TL = C\+A\+L\+D\+C\+O\+\_\+16\+M\+HZ;
+
+R\+DD O\+LD hardware else
+
+R\+DD O\+LD hardware B\+C\+S\+C\+T\+L1 = 0x8F; R\+DD O\+LD hardware D\+C\+O\+C\+TL = 0x00;
+
+Definition at line 192 of file main.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{main_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{main_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 67 of file main.\+c.
+
+Here is the call graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{main_8c_a2cab12f9c2d81101de81e7d5a48b68a3}\label{main_8c_a2cab12f9c2d81101de81e7d5a48b68a3}} 
+\index{main.c@{main.c}!MAIN\_resetAllAndStart@{MAIN\_resetAllAndStart}}
+\index{MAIN\_resetAllAndStart@{MAIN\_resetAllAndStart}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{MAIN\_resetAllAndStart()}{MAIN\_resetAllAndStart()}}
+{\footnotesize\ttfamily void M\+A\+I\+N\+\_\+reset\+All\+And\+Start (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 101 of file main.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{main_8c_a58921d4d8fb76bc3b22ae4ef0a9e0e03}\label{main_8c_a58921d4d8fb76bc3b22ae4ef0a9e0e03}} 
+\index{main.c@{main.c}!MAIN\_resetRemoteCfg@{MAIN\_resetRemoteCfg}}
+\index{MAIN\_resetRemoteCfg@{MAIN\_resetRemoteCfg}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{MAIN\_resetRemoteCfg()}{MAIN\_resetRemoteCfg()}}
+{\footnotesize\ttfamily void M\+A\+I\+N\+\_\+reset\+Remote\+Cfg (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 169 of file main.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{main_8c_adad4c1bbcae8319b7399ebb2d522f5fc}\label{main_8c_adad4c1bbcae8319b7399ebb2d522f5fc}} 
+\index{main.c@{main.c}!my\_bsl\_info@{my\_bsl\_info}}
+\index{my\_bsl\_info@{my\_bsl\_info}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{my\_bsl\_info}{my\_bsl\_info}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{main_m_s_p_8c_ae77bc6dc0ad187353cfb7416730b6ff7}{\+\_\+\+\_\+special\+\_\+area\+\_\+\+\_\+}} \mbox{\hyperlink{unionmy__erasable__data__area}{my\+\_\+erasable\+\_\+data\+\_\+area}} my\+\_\+bsl\+\_\+info\mbox{[}$\,$\mbox{]} = \{0x0,0x0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,\textquotesingle{}H\textquotesingle{},\mbox{\hyperlink{variant_8h_a0fdf7bb20f01f0343addd481017e4a4a}{A\+E\+R\+\_\+\+P\+R\+O\+D\+U\+C\+T\+\_\+\+ID}},\mbox{\hyperlink{variant_8h_a803a7e3a8268d47c7d212c39958416a0}{V\+A\+R\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+N\+U\+M\+B\+ER}},0x00,0x00\}}
+
+
+
+Definition at line 53 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_a95377e3ff8a0ceff6a3762005601838f}\label{main_8c_a95377e3ff8a0ceff6a3762005601838f}} 
+\index{main.c@{main.c}!send\_serial\_flag@{send\_serial\_flag}}
+\index{send\_serial\_flag@{send\_serial\_flag}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{send\_serial\_flag}{send\_serial\_flag}}
+{\footnotesize\ttfamily volatile unsigned char send\+\_\+serial\+\_\+flag = \mbox{\hyperlink{util_8h_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}}}
+
+
+
+Definition at line 64 of file main.\+c.
+

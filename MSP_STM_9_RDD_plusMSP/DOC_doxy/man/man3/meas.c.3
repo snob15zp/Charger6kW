@@ -1,0 +1,271 @@
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/meas.c" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/meas.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'iqmath\&.h'\fP
+.br
+\fC#include 'meas\&.h'\fP
+.br
+\fC#include 'adc_msp\&.h'\fP
+.br
+\fC#include 'cfg\&.h'\fP
+.br
+\fC#include 'comms\&.h'\fP
+.br
+\fC#include 'io\&.h'\fP
+.br
+\fC#include 'safety\&.h'\fP
+.br
+\fC#include 'temp\&.h'\fP
+.br
+\fC#include 'limits\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBCORNERFREQ\fP   0\&.002"
+.br
+.ti -1c
+.RI "#define \fBCORNERFREQ_FAST\fP   0\&.2"
+.br
+.ti -1c
+.RI "#define \fBADC_READANDFILTER_STM\fP(cMeas,  doUpdate)"
+.br
+.ti -1c
+.RI "#define \fBBAT_TEMPR_RAW_MIN\fP   1795"
+.br
+.ti -1c
+.RI "#define \fBBAT_TEMPR_RAW_MAX\fP   3004"
+.br
+.ti -1c
+.RI "#define \fBBAT_TEMPR_RAW_FAULT\fP   3100"
+.br
+.ti -1c
+.RI "#define \fBBAT_TEMPR_RAW_STEP\fP   39"
+.br
+.ti -1c
+.RI "#define \fBBAT_TEMPR_TABLE_LEN\fP   32"
+.br
+.ti -1c
+.RI "#define \fBCASE_TEMPR_RAW_MIN\fP   85"
+.br
+.ti -1c
+.RI "#define \fBCASE_TEMPR_RAW_MAX\fP   2837"
+.br
+.ti -1c
+.RI "#define \fBCASE_TEMPR_RAW_FAULT\fP   3100"
+.br
+.ti -1c
+.RI "#define \fBCASE_TEMPR_RAW_STEP\fP   64"
+.br
+.ti -1c
+.RI "#define \fBCASE_TEMPR_TABLE_LEN\fP   44"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBMEAS_init\fP ()"
+.br
+.ti -1c
+.RI "void \fBMEAS_setDoUpdate\fP (int doUpd)"
+.br
+.ti -1c
+.RI "void \fBMEAS_update\fP ()"
+.br
+.ti -1c
+.RI "void \fBMEAS_updateCharge\fP ()"
+.br
+.ti -1c
+.RI "void \fBMEAS_resetCharge\fP ()"
+.br
+.ti -1c
+.RI "int \fBMEAS_isPvActive\fP ()"
+.br
+.ti -1c
+.RI "void \fBMEAS_updateTempr\fP ()"
+.br
+.ti -1c
+.RI "\fBIq\fP \fBMEAS_filter\fP (\fBIq\fP valNow, \fBIq\fP valIn)"
+.br
+.ti -1c
+.RI "\fBIq\fP \fBMEAS_filterFast\fP (\fBIq\fP valNow, \fBIq\fP valIn)"
+.br
+.ti -1c
+.RI "\fBIqLong\fP \fBMEAS_integrate\fP (\fBIqLong\fP valNow, \fBIq\fP valIn)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "volatile \fBMeas\fP \fBmeas\fP"
+.br
+.ti -1c
+.RI "int \fBmeasDoUpdate\fP"
+.br
+.ti -1c
+.RI "floatValue_t \fBcalculatedValue\fP"
+.br
+.ti -1c
+.RI "floatValue_t \fBaverageValue\fP"
+.br
+.ti -1c
+.RI "floatValue_t \fBmomentValue\fP"
+.br
+.ti -1c
+.RI "const \fBIq\fP \fBBAT_TEMPR_TABLE\fP []"
+.br
+.ti -1c
+.RI "const \fBIq\fP \fBCASE_TEMPR_TABLE\fP []"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define ADC_READANDFILTER_STM(cMeas, doUpdate)"
+\fBValue:\fP
+.PP
+.nf
+        cMeas\&.valPreFilter = cMeas\&.valReal / cMeas\&.base; \
+        if ( doUpdate ) cMeas\&.val = MEAS_filter( cMeas\&.val, cMeas\&.valPreFilter );
+.fi
+.PP
+Definition at line 111 of file meas\&.c\&.
+.SS "#define BAT_TEMPR_RAW_FAULT   3100"
+
+.PP
+Definition at line 196 of file meas\&.c\&.
+.SS "#define BAT_TEMPR_RAW_MAX   3004"
+
+.PP
+Definition at line 195 of file meas\&.c\&.
+.SS "#define BAT_TEMPR_RAW_MIN   1795"
+
+.PP
+Definition at line 194 of file meas\&.c\&.
+.SS "#define BAT_TEMPR_RAW_STEP   39"
+
+.PP
+Definition at line 197 of file meas\&.c\&.
+.SS "#define BAT_TEMPR_TABLE_LEN   32"
+
+.PP
+Definition at line 198 of file meas\&.c\&.
+.SS "#define CASE_TEMPR_RAW_FAULT   3100"
+
+.PP
+Definition at line 208 of file meas\&.c\&.
+.SS "#define CASE_TEMPR_RAW_MAX   2837"
+
+.PP
+Definition at line 207 of file meas\&.c\&.
+.SS "#define CASE_TEMPR_RAW_MIN   85"
+
+.PP
+Definition at line 206 of file meas\&.c\&.
+.SS "#define CASE_TEMPR_RAW_STEP   64"
+
+.PP
+Definition at line 209 of file meas\&.c\&.
+.SS "#define CASE_TEMPR_TABLE_LEN   44"
+
+.PP
+Definition at line 210 of file meas\&.c\&.
+.SS "#define CORNERFREQ   0\&.002"
+
+.PP
+Definition at line 23 of file meas\&.c\&.
+.SS "#define CORNERFREQ_FAST   0\&.2"
+
+.PP
+Definition at line 24 of file meas\&.c\&.
+.SH "Function Documentation"
+.PP 
+.SS "\fBIq\fP MEAS_filter (\fBIq\fP valNow, \fBIq\fP valIn)"
+
+.PP
+Definition at line 309 of file meas\&.c\&.
+.SS "\fBIq\fP MEAS_filterFast (\fBIq\fP valNow, \fBIq\fP valIn)"
+
+.PP
+Definition at line 322 of file meas\&.c\&.
+.SS "void MEAS_init ()"
+
+.PP
+Definition at line 36 of file meas\&.c\&.
+.SS "\fBIqLong\fP MEAS_integrate (\fBIqLong\fP valNow, \fBIq\fP valIn)"
+
+.PP
+Definition at line 335 of file meas\&.c\&.
+.SS "int MEAS_isPvActive ()"
+
+.PP
+Definition at line 188 of file meas\&.c\&.
+.SS "void MEAS_resetCharge ()"
+
+.PP
+Definition at line 183 of file meas\&.c\&.
+.SS "void MEAS_setDoUpdate (int doUpd)"
+
+.PP
+Definition at line 99 of file meas\&.c\&.
+.SS "void MEAS_update ()"
+
+.PP
+Definition at line 117 of file meas\&.c\&.
+.SS "void MEAS_updateCharge ()"
+
+.PP
+Definition at line 178 of file meas\&.c\&.
+.SS "void MEAS_updateTempr ()"
+
+.PP
+Definition at line 217 of file meas\&.c\&.
+.SH "Variable Documentation"
+.PP 
+.SS "floatValue_t averageValue\fC [extern]\fP"
+
+.SS "const \fBIq\fP BAT_TEMPR_TABLE[]"
+\fBInitial value:\fP
+.PP
+.nf
+= 
+{
+    1639, 1601, 1564, 1527, 1490, 1453, 1416, 1379, 1342, 1306, 1269, 1232, 1195, 1157, 1120, 1082, 1044, 1006, 967, 928, 888, 847, 806, 765, 722, 679, 635, 589, 543, 495, 445, 394, 
+}
+.fi
+.PP
+Definition at line 200 of file meas\&.c\&.
+.SS "floatValue_t calculatedValue\fC [extern]\fP"
+
+.SS "const \fBIq\fP CASE_TEMPR_TABLE[]"
+\fBInitial value:\fP
+.PP
+.nf
+= 
+{
+    3948,3380,3042,2802,2617,2465,2337,2226,2127,2038,1956,1882,1812,1747,1685,1626,1570,1517,1465,1415,1367,1319,1273,1228,1183,1139,1095,1052,1008,965,922,878,834,789,744,698,650,601,551,498,442,384,321,254,
+}
+.fi
+.PP
+Definition at line 212 of file meas\&.c\&.
+.SS "volatile \fBMeas\fP meas"
+
+.PP
+Definition at line 28 of file meas\&.c\&.
+.SS "int measDoUpdate"
+
+.PP
+Definition at line 30 of file meas\&.c\&.
+.SS "floatValue_t momentValue\fC [extern]\fP"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.

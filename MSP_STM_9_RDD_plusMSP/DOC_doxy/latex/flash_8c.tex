@@ -1,0 +1,513 @@
+\hypertarget{flash_8c}{}\doxysection{D\+:/user\+S\+S\+D/github/\+Charger6k\+W/\+M\+S\+P\+\_\+\+S\+T\+M\+\_\+9\+\_\+\+R\+D\+D\+\_\+plus\+M\+S\+P/\+M\+S\+P430/flash.c File Reference}
+\label{flash_8c}\index{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/flash.c@{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/flash.c}}
+{\ttfamily \#include \char`\"{}flash.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}spi.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}io.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}util.\+h\char`\"{}}\newline
+Include dependency graph for flash.\+c\+:
+% FIG 0
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_flash__}{Flash\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{flash_8c_aeda3e7220eddee8ebf1ee4d7b102e7bb}{C\+O\+N\+T\+\_\+\+R\+E\+A\+D\+\_\+25\+M\+HZ}}~0x03
+\begin{DoxyCompactList}\small\item\em \#include \char`\"{}comms.\+h\char`\"{} \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{flash_8c_aac3ac738e3214a5469477805a36843bd}{C\+O\+N\+T\+\_\+\+R\+E\+A\+D\+\_\+80\+M\+HZ}}~0x0B
+\item 
+\#define \mbox{\hyperlink{flash_8c_aa0c212c156f457bc78316f7748cf2e19}{S\+T\+A\+T\+U\+S\+\_\+\+R\+E\+G\+\_\+\+R\+E\+AD}}~0x05
+\item 
+\#define \mbox{\hyperlink{flash_8c_ac42158b200e61c894884c97a7b3383ad}{S\+E\+C\+T\+O\+R\+\_\+\+E\+R\+A\+SE}}~0x20
+\item 
+\#define \mbox{\hyperlink{flash_8c_a90548398d7a4511158962bff2b36e4c2}{B\+L\+O\+C\+K\+\_\+\+E\+R\+A\+S\+E\+\_\+32}}~0x52
+\item 
+\#define \mbox{\hyperlink{flash_8c_a54518f58ce08a4ee48478cf5d5ff24ae}{B\+L\+O\+C\+K\+\_\+\+E\+R\+A\+S\+E\+\_\+64}}~0x\+D8
+\item 
+\#define \mbox{\hyperlink{flash_8c_ab1062ff592e3bd36a74db73c18b4212c}{S\+I\+N\+G\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+P\+R\+O\+G\+R\+AM}}~0x02
+\item 
+\#define \mbox{\hyperlink{flash_8c_a075efc50e8da363301df117252599bd3}{S\+E\+Q\+\_\+\+B\+Y\+T\+E\+\_\+\+P\+R\+O\+G\+R\+AM}}~0x\+AD
+\item 
+\#define \mbox{\hyperlink{flash_8c_a0b732dd9c6d99fbd9631f30e5a6572d8}{W\+R\+I\+T\+E\+\_\+\+E\+N\+A\+B\+LE}}~0x06
+\item 
+\#define \mbox{\hyperlink{flash_8c_a0a4d3a87fae6e2ee384ce3cc0d2b32f7}{W\+R\+I\+T\+E\+\_\+\+D\+I\+S\+A\+B\+LE}}~0x04
+\item 
+\#define \mbox{\hyperlink{flash_8c_a7d680f543d392508e77057259c298a07}{E\+N\+A\+B\+L\+E\+\_\+\+S\+R\+E\+G\+\_\+\+W\+R\+I\+TE}}~0x50
+\item 
+\#define \mbox{\hyperlink{flash_8c_aa8e8a0b2565017d7a686b011072f829d}{S\+R\+E\+G\+\_\+\+W\+R\+I\+TE}}~0x01
+\item 
+\#define \mbox{\hyperlink{flash_8c_a9135fa0565930dac51a44dca30b2b847}{C\+S\+H\+I\+GH}}~\mbox{\hyperlink{debug_8h_a700f88377bf36711b711f69b06c52f5d}{N\+OP}};
+\item 
+\#define \mbox{\hyperlink{flash_8c_a1b2a4bb69e19080ea6ca72e7c1dc6192}{C\+S\+L\+OW}}~\mbox{\hyperlink{debug_8h_a700f88377bf36711b711f69b06c52f5d}{N\+OP}};
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct_flash__}{Flash\+\_\+}} \mbox{\hyperlink{flash_8c_a4f189306f2c9333eafaeebfd6ddad1de}{Flash}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{flash_8c_a9aee774852878741a0a0dfe32b3e7885}{F\+L\+A\+S\+H\+\_\+is\+Busy}} (void)
+\item 
+void \mbox{\hyperlink{flash_8c_a66ab61193d7e18468f038e4f4f06050c}{F\+L\+A\+S\+H\+\_\+init}} ()
+\item 
+unsigned char \mbox{\hyperlink{flash_8c_ab760ab74700432212e939d9540d57598}{F\+L\+A\+S\+H\+\_\+get\+Status}} ()
+\item 
+\mbox{\hyperlink{flash_8h_aa5570fc9331f08bf12ad24347ec01648}{Flash\+Mode}} \mbox{\hyperlink{flash_8c_ad315c17af53111cd749dcaa715f065e1}{F\+L\+A\+S\+H\+\_\+get\+Mode}} ()
+\item 
+int \mbox{\hyperlink{flash_8c_a600505051d0229fa1cc65c223bdb91ec}{F\+L\+A\+S\+H\+\_\+erase\+Block\+Busy}} (unsigned long block\+Addr)
+\item 
+int \mbox{\hyperlink{flash_8c_a9657e2b16302d4ecd9dad1f6ea267d68}{F\+L\+A\+S\+H\+\_\+write\+Byte\+Busy}} (unsigned long addr, unsigned char byte)
+\item 
+int \mbox{\hyperlink{flash_8c_af9cfc9e7bb2bac30c09b6cfdfd6546fa}{F\+L\+A\+S\+H\+\_\+erase}} (unsigned long dst\+Addr, unsigned long len, void($\ast$p\+Call)(int))
+\item 
+int \mbox{\hyperlink{flash_8c_ad22a0c7cf5ff4b7669394986fd889df7}{F\+L\+A\+S\+H\+\_\+start\+Write}} (unsigned long dst\+Addr, unsigned long len)
+\item 
+int \mbox{\hyperlink{flash_8c_a824adb1e4989c662e38cb5238726330e}{F\+L\+A\+S\+H\+\_\+write\+Str}} (unsigned char $\ast$p\+Src, unsigned long len)
+\item 
+void \mbox{\hyperlink{flash_8c_a0b3d79861b7d646ad91d6a082da372a9}{F\+L\+A\+S\+H\+\_\+end\+Write\+Data}} ()
+\item 
+void \mbox{\hyperlink{flash_8c_a14ab4b8332b24e2d9c24c92f2643ef9e}{F\+L\+A\+S\+H\+\_\+end\+Write}} ()
+\item 
+int \mbox{\hyperlink{flash_8c_aa3eaac921595e047fe32924ca57a8a68}{F\+L\+A\+S\+H\+\_\+get\+Free\+Buffer\+Space}} ()
+\item 
+void \mbox{\hyperlink{flash_8c_a1db39e30d4935167619945eaaadfbe6e}{F\+L\+A\+S\+H\+\_\+tick}} ()
+\item 
+int \mbox{\hyperlink{flash_8c_a0e297d230d5f834b4eea43dc1792e113}{F\+L\+A\+S\+H\+\_\+read\+Str}} (unsigned char $\ast$p\+Dst, unsigned long src\+Addr, unsigned long len, int leave\+In\+Read\+Mode)
+\item 
+unsigned char \mbox{\hyperlink{flash_8c_aa3b18ececd502ef5d9b3978de51c5e9d}{F\+L\+A\+S\+H\+\_\+read\+U08}} (unsigned long addr)
+\item 
+unsigned int \mbox{\hyperlink{flash_8c_aa0e000ec75e59cd7b70ea970c026b7b2}{F\+L\+A\+S\+H\+\_\+read\+U16}} (unsigned long addr)
+\item 
+int \mbox{\hyperlink{flash_8c_a6b6bf5fa38bdc2a61093f62b94272763}{F\+L\+A\+S\+H\+\_\+read\+S16}} (unsigned long addr)
+\item 
+unsigned long \mbox{\hyperlink{flash_8c_a2db323b045a915044be4c232123aea3d}{F\+L\+A\+S\+H\+\_\+read\+U32}} (unsigned long addr)
+\item 
+float \mbox{\hyperlink{flash_8c_a616065c2ca152f2e60bd71ad89852b5a}{F\+L\+A\+S\+H\+\_\+read\+F32}} (unsigned long addr)
+\item 
+unsigned long long \mbox{\hyperlink{flash_8c_aee03124ae2e7ee9cd60372805ad47eb4}{F\+L\+A\+S\+H\+\_\+read\+U64}} (unsigned long addr)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{flash_8c_a4f189306f2c9333eafaeebfd6ddad1de}{Flash}} \mbox{\hyperlink{flash_8c_a895097e644be74457d126eb089622c69}{flash}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{flash_8c_a90548398d7a4511158962bff2b36e4c2}\label{flash_8c_a90548398d7a4511158962bff2b36e4c2}} 
+\index{flash.c@{flash.c}!BLOCK\_ERASE\_32@{BLOCK\_ERASE\_32}}
+\index{BLOCK\_ERASE\_32@{BLOCK\_ERASE\_32}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{BLOCK\_ERASE\_32}{BLOCK\_ERASE\_32}}
+{\footnotesize\ttfamily \#define B\+L\+O\+C\+K\+\_\+\+E\+R\+A\+S\+E\+\_\+32~0x52}
+
+
+
+Definition at line 23 of file flash.\+c.
+
+\mbox{\Hypertarget{flash_8c_a54518f58ce08a4ee48478cf5d5ff24ae}\label{flash_8c_a54518f58ce08a4ee48478cf5d5ff24ae}} 
+\index{flash.c@{flash.c}!BLOCK\_ERASE\_64@{BLOCK\_ERASE\_64}}
+\index{BLOCK\_ERASE\_64@{BLOCK\_ERASE\_64}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{BLOCK\_ERASE\_64}{BLOCK\_ERASE\_64}}
+{\footnotesize\ttfamily \#define B\+L\+O\+C\+K\+\_\+\+E\+R\+A\+S\+E\+\_\+64~0x\+D8}
+
+
+
+Definition at line 24 of file flash.\+c.
+
+\mbox{\Hypertarget{flash_8c_aeda3e7220eddee8ebf1ee4d7b102e7bb}\label{flash_8c_aeda3e7220eddee8ebf1ee4d7b102e7bb}} 
+\index{flash.c@{flash.c}!CONT\_READ\_25MHZ@{CONT\_READ\_25MHZ}}
+\index{CONT\_READ\_25MHZ@{CONT\_READ\_25MHZ}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{CONT\_READ\_25MHZ}{CONT\_READ\_25MHZ}}
+{\footnotesize\ttfamily \#define C\+O\+N\+T\+\_\+\+R\+E\+A\+D\+\_\+25\+M\+HZ~0x03}
+
+
+
+\#include \char`\"{}comms.\+h\char`\"{} 
+
+
+
+Definition at line 19 of file flash.\+c.
+
+\mbox{\Hypertarget{flash_8c_aac3ac738e3214a5469477805a36843bd}\label{flash_8c_aac3ac738e3214a5469477805a36843bd}} 
+\index{flash.c@{flash.c}!CONT\_READ\_80MHZ@{CONT\_READ\_80MHZ}}
+\index{CONT\_READ\_80MHZ@{CONT\_READ\_80MHZ}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{CONT\_READ\_80MHZ}{CONT\_READ\_80MHZ}}
+{\footnotesize\ttfamily \#define C\+O\+N\+T\+\_\+\+R\+E\+A\+D\+\_\+80\+M\+HZ~0x0B}
+
+
+
+Definition at line 20 of file flash.\+c.
+
+\mbox{\Hypertarget{flash_8c_a9135fa0565930dac51a44dca30b2b847}\label{flash_8c_a9135fa0565930dac51a44dca30b2b847}} 
+\index{flash.c@{flash.c}!CSHIGH@{CSHIGH}}
+\index{CSHIGH@{CSHIGH}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{CSHIGH}{CSHIGH}}
+{\footnotesize\ttfamily \#define C\+S\+H\+I\+GH~\mbox{\hyperlink{debug_8h_a700f88377bf36711b711f69b06c52f5d}{N\+OP}};}
+
+
+
+Definition at line 32 of file flash.\+c.
+
+\mbox{\Hypertarget{flash_8c_a1b2a4bb69e19080ea6ca72e7c1dc6192}\label{flash_8c_a1b2a4bb69e19080ea6ca72e7c1dc6192}} 
+\index{flash.c@{flash.c}!CSLOW@{CSLOW}}
+\index{CSLOW@{CSLOW}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{CSLOW}{CSLOW}}
+{\footnotesize\ttfamily \#define C\+S\+L\+OW~\mbox{\hyperlink{debug_8h_a700f88377bf36711b711f69b06c52f5d}{N\+OP}};}
+
+
+
+Definition at line 33 of file flash.\+c.
+
+\mbox{\Hypertarget{flash_8c_a7d680f543d392508e77057259c298a07}\label{flash_8c_a7d680f543d392508e77057259c298a07}} 
+\index{flash.c@{flash.c}!ENABLE\_SREG\_WRITE@{ENABLE\_SREG\_WRITE}}
+\index{ENABLE\_SREG\_WRITE@{ENABLE\_SREG\_WRITE}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{ENABLE\_SREG\_WRITE}{ENABLE\_SREG\_WRITE}}
+{\footnotesize\ttfamily \#define E\+N\+A\+B\+L\+E\+\_\+\+S\+R\+E\+G\+\_\+\+W\+R\+I\+TE~0x50}
+
+
+
+Definition at line 29 of file flash.\+c.
+
+\mbox{\Hypertarget{flash_8c_ac42158b200e61c894884c97a7b3383ad}\label{flash_8c_ac42158b200e61c894884c97a7b3383ad}} 
+\index{flash.c@{flash.c}!SECTOR\_ERASE@{SECTOR\_ERASE}}
+\index{SECTOR\_ERASE@{SECTOR\_ERASE}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{SECTOR\_ERASE}{SECTOR\_ERASE}}
+{\footnotesize\ttfamily \#define S\+E\+C\+T\+O\+R\+\_\+\+E\+R\+A\+SE~0x20}
+
+
+
+Definition at line 22 of file flash.\+c.
+
+\mbox{\Hypertarget{flash_8c_a075efc50e8da363301df117252599bd3}\label{flash_8c_a075efc50e8da363301df117252599bd3}} 
+\index{flash.c@{flash.c}!SEQ\_BYTE\_PROGRAM@{SEQ\_BYTE\_PROGRAM}}
+\index{SEQ\_BYTE\_PROGRAM@{SEQ\_BYTE\_PROGRAM}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{SEQ\_BYTE\_PROGRAM}{SEQ\_BYTE\_PROGRAM}}
+{\footnotesize\ttfamily \#define S\+E\+Q\+\_\+\+B\+Y\+T\+E\+\_\+\+P\+R\+O\+G\+R\+AM~0x\+AD}
+
+
+
+Definition at line 26 of file flash.\+c.
+
+\mbox{\Hypertarget{flash_8c_ab1062ff592e3bd36a74db73c18b4212c}\label{flash_8c_ab1062ff592e3bd36a74db73c18b4212c}} 
+\index{flash.c@{flash.c}!SINGLE\_BYTE\_PROGRAM@{SINGLE\_BYTE\_PROGRAM}}
+\index{SINGLE\_BYTE\_PROGRAM@{SINGLE\_BYTE\_PROGRAM}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{SINGLE\_BYTE\_PROGRAM}{SINGLE\_BYTE\_PROGRAM}}
+{\footnotesize\ttfamily \#define S\+I\+N\+G\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+P\+R\+O\+G\+R\+AM~0x02}
+
+
+
+Definition at line 25 of file flash.\+c.
+
+\mbox{\Hypertarget{flash_8c_aa8e8a0b2565017d7a686b011072f829d}\label{flash_8c_aa8e8a0b2565017d7a686b011072f829d}} 
+\index{flash.c@{flash.c}!SREG\_WRITE@{SREG\_WRITE}}
+\index{SREG\_WRITE@{SREG\_WRITE}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{SREG\_WRITE}{SREG\_WRITE}}
+{\footnotesize\ttfamily \#define S\+R\+E\+G\+\_\+\+W\+R\+I\+TE~0x01}
+
+
+
+Definition at line 30 of file flash.\+c.
+
+\mbox{\Hypertarget{flash_8c_aa0c212c156f457bc78316f7748cf2e19}\label{flash_8c_aa0c212c156f457bc78316f7748cf2e19}} 
+\index{flash.c@{flash.c}!STATUS\_REG\_READ@{STATUS\_REG\_READ}}
+\index{STATUS\_REG\_READ@{STATUS\_REG\_READ}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{STATUS\_REG\_READ}{STATUS\_REG\_READ}}
+{\footnotesize\ttfamily \#define S\+T\+A\+T\+U\+S\+\_\+\+R\+E\+G\+\_\+\+R\+E\+AD~0x05}
+
+
+
+Definition at line 21 of file flash.\+c.
+
+\mbox{\Hypertarget{flash_8c_a0a4d3a87fae6e2ee384ce3cc0d2b32f7}\label{flash_8c_a0a4d3a87fae6e2ee384ce3cc0d2b32f7}} 
+\index{flash.c@{flash.c}!WRITE\_DISABLE@{WRITE\_DISABLE}}
+\index{WRITE\_DISABLE@{WRITE\_DISABLE}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{WRITE\_DISABLE}{WRITE\_DISABLE}}
+{\footnotesize\ttfamily \#define W\+R\+I\+T\+E\+\_\+\+D\+I\+S\+A\+B\+LE~0x04}
+
+
+
+Definition at line 28 of file flash.\+c.
+
+\mbox{\Hypertarget{flash_8c_a0b732dd9c6d99fbd9631f30e5a6572d8}\label{flash_8c_a0b732dd9c6d99fbd9631f30e5a6572d8}} 
+\index{flash.c@{flash.c}!WRITE\_ENABLE@{WRITE\_ENABLE}}
+\index{WRITE\_ENABLE@{WRITE\_ENABLE}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{WRITE\_ENABLE}{WRITE\_ENABLE}}
+{\footnotesize\ttfamily \#define W\+R\+I\+T\+E\+\_\+\+E\+N\+A\+B\+LE~0x06}
+
+
+
+Definition at line 27 of file flash.\+c.
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{flash_8c_a4f189306f2c9333eafaeebfd6ddad1de}\label{flash_8c_a4f189306f2c9333eafaeebfd6ddad1de}} 
+\index{flash.c@{flash.c}!Flash@{Flash}}
+\index{Flash@{Flash}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{Flash}{Flash}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_flash__}{Flash\+\_\+}} \mbox{\hyperlink{flash_8c_a4f189306f2c9333eafaeebfd6ddad1de}{Flash}}}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{flash_8c_a14ab4b8332b24e2d9c24c92f2643ef9e}\label{flash_8c_a14ab4b8332b24e2d9c24c92f2643ef9e}} 
+\index{flash.c@{flash.c}!FLASH\_endWrite@{FLASH\_endWrite}}
+\index{FLASH\_endWrite@{FLASH\_endWrite}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{FLASH\_endWrite()}{FLASH\_endWrite()}}
+{\footnotesize\ttfamily void F\+L\+A\+S\+H\+\_\+end\+Write (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 207 of file flash.\+c.
+
+\mbox{\Hypertarget{flash_8c_a0b3d79861b7d646ad91d6a082da372a9}\label{flash_8c_a0b3d79861b7d646ad91d6a082da372a9}} 
+\index{flash.c@{flash.c}!FLASH\_endWriteData@{FLASH\_endWriteData}}
+\index{FLASH\_endWriteData@{FLASH\_endWriteData}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{FLASH\_endWriteData()}{FLASH\_endWriteData()}}
+{\footnotesize\ttfamily void F\+L\+A\+S\+H\+\_\+end\+Write\+Data (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 199 of file flash.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{flash_8c_af9cfc9e7bb2bac30c09b6cfdfd6546fa}\label{flash_8c_af9cfc9e7bb2bac30c09b6cfdfd6546fa}} 
+\index{flash.c@{flash.c}!FLASH\_erase@{FLASH\_erase}}
+\index{FLASH\_erase@{FLASH\_erase}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{FLASH\_erase()}{FLASH\_erase()}}
+{\footnotesize\ttfamily int F\+L\+A\+S\+H\+\_\+erase (\begin{DoxyParamCaption}\item[{unsigned long}]{dst\+Addr,  }\item[{unsigned long}]{len,  }\item[{void($\ast$)(int)}]{p\+Call }\end{DoxyParamCaption})}
+
+
+
+Definition at line 141 of file flash.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{flash_8c_a600505051d0229fa1cc65c223bdb91ec}\label{flash_8c_a600505051d0229fa1cc65c223bdb91ec}} 
+\index{flash.c@{flash.c}!FLASH\_eraseBlockBusy@{FLASH\_eraseBlockBusy}}
+\index{FLASH\_eraseBlockBusy@{FLASH\_eraseBlockBusy}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{FLASH\_eraseBlockBusy()}{FLASH\_eraseBlockBusy()}}
+{\footnotesize\ttfamily int F\+L\+A\+S\+H\+\_\+erase\+Block\+Busy (\begin{DoxyParamCaption}\item[{unsigned long}]{block\+Addr }\end{DoxyParamCaption})}
+
+
+
+Definition at line 73 of file flash.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{flash_8c_aa3eaac921595e047fe32924ca57a8a68}\label{flash_8c_aa3eaac921595e047fe32924ca57a8a68}} 
+\index{flash.c@{flash.c}!FLASH\_getFreeBufferSpace@{FLASH\_getFreeBufferSpace}}
+\index{FLASH\_getFreeBufferSpace@{FLASH\_getFreeBufferSpace}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{FLASH\_getFreeBufferSpace()}{FLASH\_getFreeBufferSpace()}}
+{\footnotesize\ttfamily int F\+L\+A\+S\+H\+\_\+get\+Free\+Buffer\+Space (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 221 of file flash.\+c.
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{flash_8c_ad315c17af53111cd749dcaa715f065e1}\label{flash_8c_ad315c17af53111cd749dcaa715f065e1}} 
+\index{flash.c@{flash.c}!FLASH\_getMode@{FLASH\_getMode}}
+\index{FLASH\_getMode@{FLASH\_getMode}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{FLASH\_getMode()}{FLASH\_getMode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{flash_8h_aa5570fc9331f08bf12ad24347ec01648}{Flash\+Mode}} F\+L\+A\+S\+H\+\_\+get\+Mode (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 67 of file flash.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{flash_8c_ab760ab74700432212e939d9540d57598}\label{flash_8c_ab760ab74700432212e939d9540d57598}} 
+\index{flash.c@{flash.c}!FLASH\_getStatus@{FLASH\_getStatus}}
+\index{FLASH\_getStatus@{FLASH\_getStatus}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{FLASH\_getStatus()}{FLASH\_getStatus()}}
+{\footnotesize\ttfamily unsigned char F\+L\+A\+S\+H\+\_\+get\+Status (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 61 of file flash.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{flash_8c_a66ab61193d7e18468f038e4f4f06050c}\label{flash_8c_a66ab61193d7e18468f038e4f4f06050c}} 
+\index{flash.c@{flash.c}!FLASH\_init@{FLASH\_init}}
+\index{FLASH\_init@{FLASH\_init}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{FLASH\_init()}{FLASH\_init()}}
+{\footnotesize\ttfamily void F\+L\+A\+S\+H\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 50 of file flash.\+c.
+
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{flash_8c_a9aee774852878741a0a0dfe32b3e7885}\label{flash_8c_a9aee774852878741a0a0dfe32b3e7885}} 
+\index{flash.c@{flash.c}!FLASH\_isBusy@{FLASH\_isBusy}}
+\index{FLASH\_isBusy@{FLASH\_isBusy}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{FLASH\_isBusy()}{FLASH\_isBusy()}}
+{\footnotesize\ttfamily int F\+L\+A\+S\+H\+\_\+is\+Busy (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 331 of file flash.\+c.
+
+\mbox{\Hypertarget{flash_8c_a616065c2ca152f2e60bd71ad89852b5a}\label{flash_8c_a616065c2ca152f2e60bd71ad89852b5a}} 
+\index{flash.c@{flash.c}!FLASH\_readF32@{FLASH\_readF32}}
+\index{FLASH\_readF32@{FLASH\_readF32}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{FLASH\_readF32()}{FLASH\_readF32()}}
+{\footnotesize\ttfamily float F\+L\+A\+S\+H\+\_\+read\+F32 (\begin{DoxyParamCaption}\item[{unsigned long}]{addr }\end{DoxyParamCaption})}
+
+
+
+Definition at line 398 of file flash.\+c.
+
+Here is the call graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{flash_8c_a6b6bf5fa38bdc2a61093f62b94272763}\label{flash_8c_a6b6bf5fa38bdc2a61093f62b94272763}} 
+\index{flash.c@{flash.c}!FLASH\_readS16@{FLASH\_readS16}}
+\index{FLASH\_readS16@{FLASH\_readS16}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{FLASH\_readS16()}{FLASH\_readS16()}}
+{\footnotesize\ttfamily int F\+L\+A\+S\+H\+\_\+read\+S16 (\begin{DoxyParamCaption}\item[{unsigned long}]{addr }\end{DoxyParamCaption})}
+
+
+
+Definition at line 384 of file flash.\+c.
+
+Here is the call graph for this function\+:
+% FIG 11
+\mbox{\Hypertarget{flash_8c_a0e297d230d5f834b4eea43dc1792e113}\label{flash_8c_a0e297d230d5f834b4eea43dc1792e113}} 
+\index{flash.c@{flash.c}!FLASH\_readStr@{FLASH\_readStr}}
+\index{FLASH\_readStr@{FLASH\_readStr}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{FLASH\_readStr()}{FLASH\_readStr()}}
+{\footnotesize\ttfamily int F\+L\+A\+S\+H\+\_\+read\+Str (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{p\+Dst,  }\item[{unsigned long}]{src\+Addr,  }\item[{unsigned long}]{len,  }\item[{int}]{leave\+In\+Read\+Mode }\end{DoxyParamCaption})}
+
+
+
+Definition at line 342 of file flash.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 12
+\mbox{\Hypertarget{flash_8c_aa3b18ececd502ef5d9b3978de51c5e9d}\label{flash_8c_aa3b18ececd502ef5d9b3978de51c5e9d}} 
+\index{flash.c@{flash.c}!FLASH\_readU08@{FLASH\_readU08}}
+\index{FLASH\_readU08@{FLASH\_readU08}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{FLASH\_readU08()}{FLASH\_readU08()}}
+{\footnotesize\ttfamily unsigned char F\+L\+A\+S\+H\+\_\+read\+U08 (\begin{DoxyParamCaption}\item[{unsigned long}]{addr }\end{DoxyParamCaption})}
+
+
+
+Definition at line 370 of file flash.\+c.
+
+Here is the call graph for this function\+:
+% FIG 13
+Here is the caller graph for this function\+:
+% FIG 14
+\mbox{\Hypertarget{flash_8c_aa0e000ec75e59cd7b70ea970c026b7b2}\label{flash_8c_aa0e000ec75e59cd7b70ea970c026b7b2}} 
+\index{flash.c@{flash.c}!FLASH\_readU16@{FLASH\_readU16}}
+\index{FLASH\_readU16@{FLASH\_readU16}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{FLASH\_readU16()}{FLASH\_readU16()}}
+{\footnotesize\ttfamily unsigned int F\+L\+A\+S\+H\+\_\+read\+U16 (\begin{DoxyParamCaption}\item[{unsigned long}]{addr }\end{DoxyParamCaption})}
+
+
+
+Definition at line 377 of file flash.\+c.
+
+Here is the call graph for this function\+:
+% FIG 15
+Here is the caller graph for this function\+:
+% FIG 16
+\mbox{\Hypertarget{flash_8c_a2db323b045a915044be4c232123aea3d}\label{flash_8c_a2db323b045a915044be4c232123aea3d}} 
+\index{flash.c@{flash.c}!FLASH\_readU32@{FLASH\_readU32}}
+\index{FLASH\_readU32@{FLASH\_readU32}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{FLASH\_readU32()}{FLASH\_readU32()}}
+{\footnotesize\ttfamily unsigned long F\+L\+A\+S\+H\+\_\+read\+U32 (\begin{DoxyParamCaption}\item[{unsigned long}]{addr }\end{DoxyParamCaption})}
+
+
+
+Definition at line 391 of file flash.\+c.
+
+Here is the call graph for this function\+:
+% FIG 17
+\mbox{\Hypertarget{flash_8c_aee03124ae2e7ee9cd60372805ad47eb4}\label{flash_8c_aee03124ae2e7ee9cd60372805ad47eb4}} 
+\index{flash.c@{flash.c}!FLASH\_readU64@{FLASH\_readU64}}
+\index{FLASH\_readU64@{FLASH\_readU64}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{FLASH\_readU64()}{FLASH\_readU64()}}
+{\footnotesize\ttfamily unsigned long long F\+L\+A\+S\+H\+\_\+read\+U64 (\begin{DoxyParamCaption}\item[{unsigned long}]{addr }\end{DoxyParamCaption})}
+
+
+
+Definition at line 405 of file flash.\+c.
+
+Here is the call graph for this function\+:
+% FIG 18
+Here is the caller graph for this function\+:
+% FIG 19
+\mbox{\Hypertarget{flash_8c_ad22a0c7cf5ff4b7669394986fd889df7}\label{flash_8c_ad22a0c7cf5ff4b7669394986fd889df7}} 
+\index{flash.c@{flash.c}!FLASH\_startWrite@{FLASH\_startWrite}}
+\index{FLASH\_startWrite@{FLASH\_startWrite}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{FLASH\_startWrite()}{FLASH\_startWrite()}}
+{\footnotesize\ttfamily int F\+L\+A\+S\+H\+\_\+start\+Write (\begin{DoxyParamCaption}\item[{unsigned long}]{dst\+Addr,  }\item[{unsigned long}]{len }\end{DoxyParamCaption})}
+
+
+
+Definition at line 158 of file flash.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 20
+\mbox{\Hypertarget{flash_8c_a1db39e30d4935167619945eaaadfbe6e}\label{flash_8c_a1db39e30d4935167619945eaaadfbe6e}} 
+\index{flash.c@{flash.c}!FLASH\_tick@{FLASH\_tick}}
+\index{FLASH\_tick@{FLASH\_tick}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{FLASH\_tick()}{FLASH\_tick()}}
+{\footnotesize\ttfamily void F\+L\+A\+S\+H\+\_\+tick (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 228 of file flash.\+c.
+
+\mbox{\Hypertarget{flash_8c_a9657e2b16302d4ecd9dad1f6ea267d68}\label{flash_8c_a9657e2b16302d4ecd9dad1f6ea267d68}} 
+\index{flash.c@{flash.c}!FLASH\_writeByteBusy@{FLASH\_writeByteBusy}}
+\index{FLASH\_writeByteBusy@{FLASH\_writeByteBusy}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{FLASH\_writeByteBusy()}{FLASH\_writeByteBusy()}}
+{\footnotesize\ttfamily int F\+L\+A\+S\+H\+\_\+write\+Byte\+Busy (\begin{DoxyParamCaption}\item[{unsigned long}]{addr,  }\item[{unsigned char}]{byte }\end{DoxyParamCaption})}
+
+
+
+Definition at line 106 of file flash.\+c.
+
+\mbox{\Hypertarget{flash_8c_a824adb1e4989c662e38cb5238726330e}\label{flash_8c_a824adb1e4989c662e38cb5238726330e}} 
+\index{flash.c@{flash.c}!FLASH\_writeStr@{FLASH\_writeStr}}
+\index{FLASH\_writeStr@{FLASH\_writeStr}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{FLASH\_writeStr()}{FLASH\_writeStr()}}
+{\footnotesize\ttfamily int F\+L\+A\+S\+H\+\_\+write\+Str (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{p\+Src,  }\item[{unsigned long}]{len }\end{DoxyParamCaption})}
+
+
+
+Definition at line 174 of file flash.\+c.
+
+Here is the call graph for this function\+:
+% FIG 21
+Here is the caller graph for this function\+:
+% FIG 22
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{flash_8c_a895097e644be74457d126eb089622c69}\label{flash_8c_a895097e644be74457d126eb089622c69}} 
+\index{flash.c@{flash.c}!flash@{flash}}
+\index{flash@{flash}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{flash}{flash}}
+{\footnotesize\ttfamily \mbox{\hyperlink{flash_8c_a4f189306f2c9333eafaeebfd6ddad1de}{Flash}} flash}
+
+
+
+Definition at line 46 of file flash.\+c.
+

@@ -1,0 +1,412 @@
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/usci.c" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/usci.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'Stm32f3xx\&.h'\fP
+.br
+\fC#include 'usci\&.h'\fP
+.br
+\fC#include <signal\&.h>\fP
+.br
+\fC#include 'lcd\&.h'\fP
+.br
+\fC#include 'time\&.h'\fP
+.br
+\fC#include 'crc16\&.h'\fP
+.br
+\fC#include 'ctrl\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBDLE\fP   0x10"
+.br
+.RI "#include <msp430x24x\&.h> "
+.ti -1c
+.RI "#define \fBETX\fP   0x03"
+.br
+.ti -1c
+.RI "#define \fBSTX\fP   0x02"
+.br
+.ti -1c
+.RI "#define \fBALT_FUNC_USART\fP   0x07"
+.br
+.ti -1c
+.RI "#define \fBUSART1_BAUD\fP   1200"
+.br
+.ti -1c
+.RI "#define \fBUSART1_FCLK\fP   72000000"
+.br
+.ti -1c
+.RI "#define \fBFOOTER_LENGTH\fP   6"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef enum \fBuart_State_\fP \fBuart_State\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBuart_State_\fP { \fBUART_STATE_IDLE\fP = 0, \fBUART_STATE_RECEIVING_PACKET\fP, \fBUART_STATE_RECEIVED_PACKET\fP, \fBUART_STATE_SENDING_PACKET\fP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBuart_init\fP (void)"
+.br
+.RI "
+.IP "\(bu" 2
+
+.PP
+"
+.ti -1c
+.RI "void \fBuart_tx\fP (void)"
+.br
+.RI "this must be plased to HardWareLevel Group "
+.ti -1c
+.RI "void \fBuart_send_response\fP (\fBcommand_Code\fP cc, \fBuint16_t\fP arg)"
+.br
+.ti -1c
+.RI "void \fBuart_send_startup\fP (void)"
+.br
+.ti -1c
+.RI "void \fBuart_send_error\fP (\fBerror_Code\fP ec)"
+.br
+.ti -1c
+.RI "void \fBloadPassword\fP ()"
+.br
+.ti -1c
+.RI "void \fBuart_receive\fP (void)"
+.br
+.ti -1c
+.RI "int \fBuart_send\fP (int type)"
+.br
+.ti -1c
+.RI "void \fBUSART1_IRQHandler\fP (void)"
+.br
+.RI "remove old hardware interrupt(USCIAB0TX_VECTOR) "
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "unsigned char \fBtx_buffer\fP [\fBPACKET_LENGTH\fP]"
+.br
+.ti -1c
+.RI "unsigned char \fBrx_buffer\fP [\fBPACKET_LENGTH\fP]"
+.br
+.ti -1c
+.RI "unsigned char \fBtx_count\fP = 0"
+.br
+.ti -1c
+.RI "unsigned char \fBrx_count\fP = 0"
+.br
+.ti -1c
+.RI "unsigned char \fBexpected_rx_count\fP = 0"
+.br
+.ti -1c
+.RI "unsigned char \fBprev_rx\fP = 0xFF"
+.br
+.ti -1c
+.RI "\fBuart_State\fP \fBuart_state\fP = \fBUART_STATE_IDLE\fP"
+.br
+.ti -1c
+.RI "int \fBsent_startup\fP = 0"
+.br
+.ti -1c
+.RI "\fBTime\fP \fBprev_time\fP = 0"
+.br
+.ti -1c
+.RI "unsigned int \fBtx_buf_len\fP = 0"
+.br
+.ti -1c
+.RI "\fBtelemetry_t\fP \fBtelemetry_R\fP"
+.br
+.ti -1c
+.RI "\fBfactoryConfig_t\fP \fBfactoryConfig_R\fP"
+.br
+.ti -1c
+.RI "\fBuserConfig_t\fP \fBuserConfig_R\fP"
+.br
+.ti -1c
+.RI "\fBeventConfig_t\fP \fBeventConfig_R\fP"
+.br
+.ti -1c
+.RI "\fBsysInfo_t\fP \fBsysInfo_R\fP"
+.br
+.ti -1c
+.RI "\fBcommand_t\fP \fBcommand_R\fP"
+.br
+.ti -1c
+.RI "\fBpassword_t\fP \fBpassword_R\fP"
+.br
+.ti -1c
+.RI "\fBmiscState_t\fP \fBmiscState_R\fP"
+.br
+.ti -1c
+.RI "\fBfactoryConfig_t\fP \fBfactoryConfig_W\fP"
+.br
+.ti -1c
+.RI "\fBuserConfig_t\fP \fBuserConfig_W\fP"
+.br
+.ti -1c
+.RI "\fBeventConfig_t\fP \fBeventConfig_W\fP"
+.br
+.ti -1c
+.RI "\fBcommand_t\fP \fBcommand_W\fP"
+.br
+.ti -1c
+.RI "\fBsetTime_t\fP \fBsetTime_W\fP"
+.br
+.ti -1c
+.RI "\fBmiscState_t\fP \fBmiscState_W\fP"
+.br
+.ti -1c
+.RI "\fBpersistentStorage_t\fP \fBpersistentStorage\fP"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define ALT_FUNC_USART   0x07"
+
+.PP
+Definition at line 38 of file usci\&.c\&.
+.SS "#define DLE   0x10"
+
+.PP
+#include <msp430x24x\&.h> #include 'io\&.h' include 'comms\&.h' 
+.PP
+Definition at line 34 of file usci\&.c\&.
+.SS "#define ETX   0x03"
+
+.PP
+Definition at line 35 of file usci\&.c\&.
+.SS "#define FOOTER_LENGTH   6"
+
+.PP
+Definition at line 50 of file usci\&.c\&.
+.SS "#define STX   0x02"
+
+.PP
+Definition at line 36 of file usci\&.c\&.
+.SS "#define USART1_BAUD   1200"
+
+.PP
+Definition at line 39 of file usci\&.c\&.
+.SS "#define USART1_FCLK   72000000"
+
+.PP
+Definition at line 40 of file usci\&.c\&.
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef enum \fBuart_State_\fP \fBuart_State\fP"
+
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBuart_State_\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIUART_STATE_IDLE \fP\fP
+.TP
+\fB\fIUART_STATE_RECEIVING_PACKET \fP\fP
+.TP
+\fB\fIUART_STATE_RECEIVED_PACKET \fP\fP
+.TP
+\fB\fIUART_STATE_SENDING_PACKET \fP\fP
+.PP
+Definition at line 42 of file usci\&.c\&.
+.SH "Function Documentation"
+.PP 
+.SS "void loadPassword ()"
+
+.PP
+Definition at line 177 of file usci\&.c\&.
+.SS "void uart_init (void)"
+
+.PP
+
+.IP "\(bu" 2
+
+.PP
+
+.IP "\(bu" 2
+
+.PP
+
+.PP
+Definition at line 111 of file usci\&.c\&.
+.SS "void uart_receive (void)"
+sent_startup used only here
+.PP
+RDDtemp \fBIO_disablePwmCtrl()\fP; remove old hardware WDTCTL = 0x00;
+.PP
+Definition at line 193 of file usci\&.c\&.
+.SS "int uart_send (int type)"
+
+.PP
+Definition at line 370 of file usci\&.c\&.
+.SS "void uart_send_error (\fBerror_Code\fP ec)"
+
+.PP
+Definition at line 172 of file usci\&.c\&.
+.SS "void uart_send_response (\fBcommand_Code\fP cc, \fBuint16_t\fP arg)"
+
+.PP
+Definition at line 157 of file usci\&.c\&.
+.SS "void uart_send_startup (void)"
+
+.PP
+Definition at line 164 of file usci\&.c\&.
+.SS "void uart_tx (void)"
+
+.PP
+this must be plased to HardWareLevel Group remove old hardware IFG2 &= ~UCA0TXIFG;
+.PP
+remove old hardware IE2 |= UCA0TXIE;
+.PP
+remove old hardware UCA0TXBUF = tx_buffer[tx_count++];
+.PP
+Definition at line 138 of file usci\&.c\&.
+.SS "void USART1_IRQHandler (void)"
+
+.PP
+remove old hardware interrupt(USCIAB0TX_VECTOR) remove old hardware interrupt(USCIAB0RX_VECTOR) remove old hardware IE2 &= ~(UCA0TXIE);
+.PP
+remove old hardware eint();
+.PP
+remove old hardware IE2 &= ~(UCA0TXIE);
+.PP
+remove old hardware UCA0TXBUF = tx_buffer[tx_count++];
+.PP
+remove old hardware IE2 |= UCA0TXIE;
+.PP
+remove old hardware IE2 &= ~(UCA0TXIE); //Turn off transmit interrupt until next time we transmit
+.PP
+remove old hardware IE2 &= ~(UCA0RXIE);
+.PP
+remove old hardware eint(); remove old hardware rx = (unsigned char)(UCA0RXBUF);
+.PP
+remove old hardware IE2 |= UCA0RXIE;
+.PP
+Definition at line 533 of file usci\&.c\&.
+.SH "Variable Documentation"
+.PP 
+.SS "\fBcommand_t\fP command_R"
+
+.PP
+Definition at line 69 of file usci\&.c\&.
+.SS "\fBcommand_t\fP command_W"
+
+.PP
+Definition at line 76 of file usci\&.c\&.
+.SS "\fBeventConfig_t\fP eventConfig_R"
+
+.PP
+Definition at line 67 of file usci\&.c\&.
+.SS "\fBeventConfig_t\fP eventConfig_W"
+
+.PP
+Definition at line 75 of file usci\&.c\&.
+.SS "unsigned char expected_rx_count = 0"
+
+.PP
+Definition at line 57 of file usci\&.c\&.
+.SS "\fBfactoryConfig_t\fP factoryConfig_R"
+
+.PP
+Definition at line 65 of file usci\&.c\&.
+.SS "\fBfactoryConfig_t\fP factoryConfig_W"
+
+.PP
+Definition at line 73 of file usci\&.c\&.
+.SS "\fBmiscState_t\fP miscState_R"
+
+.PP
+Definition at line 71 of file usci\&.c\&.
+.SS "\fBmiscState_t\fP miscState_W"
+
+.PP
+Definition at line 78 of file usci\&.c\&.
+.SS "\fBpassword_t\fP password_R"
+
+.PP
+Definition at line 70 of file usci\&.c\&.
+.SS "\fBpersistentStorage_t\fP persistentStorage"
+
+.PP
+Definition at line 80 of file usci\&.c\&.
+.SS "unsigned char prev_rx = 0xFF"
+
+.PP
+Definition at line 58 of file usci\&.c\&.
+.SS "\fBTime\fP prev_time = 0"
+
+.PP
+Definition at line 61 of file usci\&.c\&.
+.SS "unsigned char rx_buffer[\fBPACKET_LENGTH\fP]"
+
+.PP
+Definition at line 54 of file usci\&.c\&.
+.SS "unsigned char rx_count = 0"
+
+.PP
+Definition at line 56 of file usci\&.c\&.
+.SS "int sent_startup = 0"
+
+.PP
+Definition at line 60 of file usci\&.c\&.
+.SS "\fBsetTime_t\fP setTime_W"
+
+.PP
+Definition at line 77 of file usci\&.c\&.
+.SS "\fBsysInfo_t\fP sysInfo_R"
+
+.PP
+Definition at line 68 of file usci\&.c\&.
+.SS "\fBtelemetry_t\fP telemetry_R"
+
+.PP
+Definition at line 64 of file usci\&.c\&.
+.SS "unsigned int tx_buf_len = 0"
+
+.PP
+Definition at line 62 of file usci\&.c\&.
+.SS "unsigned char tx_buffer[\fBPACKET_LENGTH\fP]"
+
+.PP
+Definition at line 53 of file usci\&.c\&.
+.SS "unsigned char tx_count = 0"
+
+.PP
+Definition at line 55 of file usci\&.c\&.
+.SS "\fBuart_State\fP uart_state = \fBUART_STATE_IDLE\fP"
+
+.PP
+Definition at line 59 of file usci\&.c\&.
+.SS "\fBuserConfig_t\fP userConfig_R"
+
+.PP
+Definition at line 66 of file usci\&.c\&.
+.SS "\fBuserConfig_t\fP userConfig_W"
+
+.PP
+Definition at line 74 of file usci\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.

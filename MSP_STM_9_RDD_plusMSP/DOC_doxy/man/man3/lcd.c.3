@@ -1,0 +1,381 @@
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/lcd.c" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/lcd.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <signal\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include 'variant\&.h'\fP
+.br
+\fC#include 'lcd\&.h'\fP
+.br
+\fC#include 'meas\&.h'\fP
+.br
+\fC#include 'usci\&.h'\fP
+.br
+\fC#include 'cfg\&.h'\fP
+.br
+\fC#include 'flag\&.h'\fP
+.br
+\fC#include 'flash\&.h'\fP
+.br
+\fC#include 'util\&.h'\fP
+.br
+\fC#include 'comms\&.h'\fP
+.br
+\fC#include 'protocol\&.h'\fP
+.br
+\fC#include 'crc16\&.h'\fP
+.br
+\fC#include 'status\&.h'\fP
+.br
+\fC#include 'can\&.h'\fP
+.br
+\fC#include 'stats\&.h'\fP
+.br
+\fC#include 'ctrl\&.h'\fP
+.br
+\fC#include 'adc\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBSEGMENT_A_ADDRESS\fP   0x10C0"
+.br
+.ti -1c
+.RI "#define \fBSEGMENT_A_LENGTH\fP   64"
+.br
+.ti -1c
+.RI "#define \fBFLASH_TYPE_PERSISTENT\fP   0x7FFE"
+.br
+.ti -1c
+.RI "#define \fBFLASH_TYPE_CALIB\fP   0x7FFF"
+.br
+.ti -1c
+.RI "#define \fBLCD_FLASH_READ_ATTEMPTS\fP   2"
+.br
+.ti -1c
+.RI "#define \fBLCD_FLASH_WRITE_ATTEMPTS\fP   2"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBlcd_update_local_config\fP (void)"
+.br
+.ti -1c
+.RI "void \fBlcd_update_remote_config\fP (void)"
+.br
+.ti -1c
+.RI "void \fBlcd_copyProductInfo\fP (void)"
+.br
+.ti -1c
+.RI "void \fBlcd_loadTelemetry\fP (void)"
+.br
+.ti -1c
+.RI "void \fBlcd_loadSysInfo\fP (void)"
+.br
+.ti -1c
+.RI "void \fBlcd_loadUserDefaults\fP (void)"
+.br
+.ti -1c
+.RI "void \fBlcd_loadFactoryDefaults\fP (void)"
+.br
+.ti -1c
+.RI "void \fBlcd_loadEventsDefaults\fP (void)"
+.br
+.ti -1c
+.RI "void \fBlcd_loadMiscStateDefaults\fP (void)"
+.br
+.ti -1c
+.RI "void \fBlcd_loadPersistentDefaults\fP (void)"
+.br
+.ti -1c
+.RI "int \fBlcd_check_calibration\fP (unsigned char *calib)"
+.br
+.ti -1c
+.RI "int \fBlcd_calibrationChanged\fP (unsigned char *calib, unsigned char *calibBackup)"
+.br
+.ti -1c
+.RI "void \fBlcd_restoreCalibration\fP (unsigned char *calib)"
+.br
+.ti -1c
+.RI "void \fBlcd_startWriteCalibrationBackup\fP (void)"
+.br
+.ti -1c
+.RI "int \fBlcd_read_flash\fP (unsigned long addr, unsigned long len, unsigned char *\fBbuffer\fP, int attempts)"
+.br
+.ti -1c
+.RI "void \fBlcd_init\fP (void)"
+.br
+.ti -1c
+.RI "void \fBlcd_update\fP (void)"
+.br
+.ti -1c
+.RI "void \fBlcd_startWritePacket\fP (int writeType, unsigned long addr, unsigned long len, unsigned char *\fBbuffer\fP, int attempts)"
+.br
+.ti -1c
+.RI "void \fBlcd_startWriteFactory\fP (void)"
+.br
+.ti -1c
+.RI "void \fBlcd_startWriteUser\fP (void)"
+.br
+.ti -1c
+.RI "void \fBlcd_startWriteEvents\fP (void)"
+.br
+.ti -1c
+.RI "void \fBlcd_startWriteMiscState\fP (void)"
+.br
+.ti -1c
+.RI "void \fBlcd_startWritePersistent\fP (void)"
+.br
+.ti -1c
+.RI "void \fBlcd_checkPersistentUpdate\fP (void)"
+.br
+.ti -1c
+.RI "int \fBlcd_startWrite\fP ()"
+.br
+.ti -1c
+.RI "int \fBlcd_queueWrite\fP (int type)"
+.br
+.ti -1c
+.RI "void \fBlcd_canRecved\fP (void)"
+.br
+.ti -1c
+.RI "void \fBlcd_eraseDoneCallback\fP (int retval)"
+.br
+.ti -1c
+.RI "void \fBlcd_runCfgStateMachine\fP ()"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "int \fBlcd_writeNext\fP = \-1"
+.br
+.ti -1c
+.RI "int \fBlcd_writeRemainingAttempts\fP = 0"
+.br
+.ti -1c
+.RI "\fBlcd_CfgState\fP \fBlcd_cfgState\fP = \fBLCDCFG_STATE_CFG_IDLE\fP"
+.br
+.ti -1c
+.RI "int \fBlcd_writeType\fP = \fBTYPE_TELEMETRY\fP"
+.br
+.ti -1c
+.RI "unsigned char \fBlcd_writeBuffer\fP [\fBFLASH_BUFFER_SIZE\fP]"
+.br
+.ti -1c
+.RI "unsigned long \fBlcd_writeAddress\fP"
+.br
+.ti -1c
+.RI "unsigned long \fBlcd_writeLen\fP"
+.br
+.ti -1c
+.RI "int \fBupdate_persistent\fP = 0"
+.br
+.ti -1c
+.RI "floatValue_t \fBcalculatedValue\fP"
+.br
+.ti -1c
+.RI "int \fBtime\fP = 0"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define FLASH_TYPE_CALIB   0x7FFF"
+
+.PP
+Definition at line 35 of file lcd\&.c\&.
+.SS "#define FLASH_TYPE_PERSISTENT   0x7FFE"
+
+.PP
+Definition at line 34 of file lcd\&.c\&.
+.SS "#define LCD_FLASH_READ_ATTEMPTS   2"
+
+.PP
+Definition at line 36 of file lcd\&.c\&.
+.SS "#define LCD_FLASH_WRITE_ATTEMPTS   2"
+
+.PP
+Definition at line 37 of file lcd\&.c\&.
+.SS "#define SEGMENT_A_ADDRESS   0x10C0"
+
+.PP
+Definition at line 32 of file lcd\&.c\&.
+.SS "#define SEGMENT_A_LENGTH   64"
+
+.PP
+Definition at line 33 of file lcd\&.c\&.
+.SH "Function Documentation"
+.PP 
+.SS "int lcd_calibrationChanged (unsigned char * calib, unsigned char * calibBackup)"
+
+.PP
+Definition at line 199 of file lcd\&.c\&.
+.SS "void lcd_canRecved (void)"
+
+.PP
+Definition at line 731 of file lcd\&.c\&.
+.SS "int lcd_check_calibration (unsigned char * calib)"
+
+.PP
+Definition at line 172 of file lcd\&.c\&.
+.SS "void lcd_checkPersistentUpdate (void)"
+
+.PP
+Definition at line 668 of file lcd\&.c\&.
+.SS "void lcd_copyProductInfo (void)"
+
+.PP
+Definition at line 379 of file lcd\&.c\&.
+.SS "void lcd_eraseDoneCallback (int retval)"
+
+.PP
+Definition at line 736 of file lcd\&.c\&.
+.SS "void lcd_init (void)"
+
+.PP
+Definition at line 91 of file lcd\&.c\&.
+.SS "void lcd_loadEventsDefaults (void)"
+
+.PP
+Definition at line 551 of file lcd\&.c\&.
+.SS "void lcd_loadFactoryDefaults (void)"
+
+.PP
+Definition at line 492 of file lcd\&.c\&.
+.SS "void lcd_loadMiscStateDefaults (void)"
+
+.PP
+Definition at line 601 of file lcd\&.c\&.
+.SS "void lcd_loadPersistentDefaults (void)"
+
+.PP
+Definition at line 614 of file lcd\&.c\&.
+.SS "void lcd_loadSysInfo (void)"
+
+.PP
+Definition at line 390 of file lcd\&.c\&.
+.SS "void lcd_loadTelemetry (void)"
+
+.PP
+Definition at line 416 of file lcd\&.c\&.
+.SS "void lcd_loadUserDefaults (void)"
+
+.PP
+Definition at line 530 of file lcd\&.c\&.
+.SS "int lcd_queueWrite (int type)"
+
+.PP
+Definition at line 714 of file lcd\&.c\&.
+.SS "int lcd_read_flash (unsigned long addr, unsigned long len, unsigned char * buffer, int attempts)"
+
+.PP
+Definition at line 67 of file lcd\&.c\&.
+.SS "void lcd_restoreCalibration (unsigned char * calib)"
+
+.PP
+Definition at line 212 of file lcd\&.c\&.
+.SS "void lcd_runCfgStateMachine (void)"
+
+.PP
+Definition at line 741 of file lcd\&.c\&.
+.SS "int lcd_startWrite (void)"
+
+.PP
+Definition at line 677 of file lcd\&.c\&.
+.SS "void lcd_startWriteCalibrationBackup (void)"
+
+.PP
+Definition at line 654 of file lcd\&.c\&.
+.SS "void lcd_startWriteEvents (void)"
+
+.PP
+Definition at line 643 of file lcd\&.c\&.
+.SS "void lcd_startWriteFactory (void)"
+
+.PP
+Definition at line 631 of file lcd\&.c\&.
+.SS "void lcd_startWriteMiscState (void)"
+
+.PP
+Definition at line 649 of file lcd\&.c\&.
+.SS "void lcd_startWritePacket (int writeType, unsigned long addr, unsigned long len, unsigned char * buffer, int attempts)"
+
+.PP
+Definition at line 619 of file lcd\&.c\&.
+.SS "void lcd_startWritePersistent (void)"
+
+.PP
+Definition at line 663 of file lcd\&.c\&.
+.SS "void lcd_startWriteUser (void)"
+
+.PP
+Definition at line 637 of file lcd\&.c\&.
+.SS "void lcd_update (void)"
+
+.PP
+Definition at line 368 of file lcd\&.c\&.
+.SS "void lcd_update_local_config (void)"
+
+.PP
+Definition at line 244 of file lcd\&.c\&.
+.SS "void lcd_update_remote_config (void)"
+
+.PP
+Definition at line 296 of file lcd\&.c\&.
+.SH "Variable Documentation"
+.PP 
+.SS "floatValue_t calculatedValue\fC [extern]\fP"
+
+.SS "\fBlcd_CfgState\fP lcd_cfgState = \fBLCDCFG_STATE_CFG_IDLE\fP"
+
+.PP
+Definition at line 41 of file lcd\&.c\&.
+.SS "unsigned long lcd_writeAddress"
+
+.PP
+Definition at line 44 of file lcd\&.c\&.
+.SS "unsigned char lcd_writeBuffer[\fBFLASH_BUFFER_SIZE\fP]"
+
+.PP
+Definition at line 43 of file lcd\&.c\&.
+.SS "unsigned long lcd_writeLen"
+
+.PP
+Definition at line 45 of file lcd\&.c\&.
+.SS "int lcd_writeNext = \-1"
+
+.PP
+Definition at line 39 of file lcd\&.c\&.
+.SS "int lcd_writeRemainingAttempts = 0"
+
+.PP
+Definition at line 40 of file lcd\&.c\&.
+.SS "int lcd_writeType = \fBTYPE_TELEMETRY\fP"
+
+.PP
+Definition at line 42 of file lcd\&.c\&.
+.SS "int time = 0"
+
+.PP
+Definition at line 415 of file lcd\&.c\&.
+.SS "int update_persistent = 0"
+
+.PP
+Definition at line 46 of file lcd\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.

@@ -1,0 +1,49 @@
+\hypertarget{spi_8h}{}\doxysection{D\+:/user\+S\+S\+D/github/\+Charger6k\+W/\+M\+S\+P\+\_\+\+S\+T\+M\+\_\+9\+\_\+\+R\+D\+D\+\_\+plus\+M\+S\+P/\+M\+S\+P430/spi.h File Reference}
+\label{spi_8h}\index{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/spi.h@{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/spi.h}}
+{\ttfamily \#include \char`\"{}debug.\+h\char`\"{}}\newline
+Include dependency graph for spi.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{spi_8h_afd9b09f58917f0e2d14c61b956eba214}{S\+P\+I\+\_\+init}} (void)
+\begin{DoxyCompactList}\small\item\em \#include $<$msp430x24x.\+h$>$ \end{DoxyCompactList}\item 
+unsigned char \mbox{\hyperlink{spi_8h_ab2ced082837f5b2e10920fab90d3e025}{S\+P\+I\+\_\+write\+Read}} (unsigned char byte)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{spi_8h_afd9b09f58917f0e2d14c61b956eba214}\label{spi_8h_afd9b09f58917f0e2d14c61b956eba214}} 
+\index{spi.h@{spi.h}!SPI\_init@{SPI\_init}}
+\index{SPI\_init@{SPI\_init}!spi.h@{spi.h}}
+\doxysubsubsection{\texorpdfstring{SPI\_init()}{SPI\_init()}}
+{\footnotesize\ttfamily void S\+P\+I\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+\#include $<$msp430x24x.\+h$>$ 
+
+R\+DD O\+LD hardware U\+C\+B1\+C\+T\+L1 $\vert$= U\+C\+S\+W\+R\+ST; // Set U\+C\+S\+W\+R\+ST
+
+R\+DD O\+LD hardware U\+C\+B1\+C\+T\+L0 = U\+C\+C\+K\+PH $\vert$ U\+C\+M\+SB $\vert$ U\+C\+M\+ST; R\+DD O\+LD hardware U\+C\+B1\+C\+T\+L1 $\vert$= U\+C\+S\+S\+E\+L\+\_\+2; R\+DD O\+LD hardware U\+C\+B1\+B\+R0 = 16; // 16 Mhz / 16 = 1 M\+Hz? Doesn\textquotesingle{}t seem to work at faster speeds??
+
+R\+DD O\+LD hardware U\+C\+B1\+C\+T\+L1 \&= $\sim$( U\+C\+S\+W\+R\+ST ); // Clear U\+C\+S\+W\+R\+ST to enable S\+PI operation
+
+Definition at line 15 of file spi.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{spi_8h_ab2ced082837f5b2e10920fab90d3e025}\label{spi_8h_ab2ced082837f5b2e10920fab90d3e025}} 
+\index{spi.h@{spi.h}!SPI\_writeRead@{SPI\_writeRead}}
+\index{SPI\_writeRead@{SPI\_writeRead}!spi.h@{spi.h}}
+\doxysubsubsection{\texorpdfstring{SPI\_writeRead()}{SPI\_writeRead()}}
+{\footnotesize\ttfamily unsigned char S\+P\+I\+\_\+write\+Read (\begin{DoxyParamCaption}\item[{unsigned char}]{byte }\end{DoxyParamCaption})}
+
+R\+DD O\+LD hardware U\+C\+B1\+T\+X\+B\+UF = byte; // write the byte to be sent into the T\+X\+B\+UF R\+DD O\+LD hardware while ( ( U\+C1\+I\+FG \& U\+C\+B1\+T\+X\+I\+FG ) == 0 ); // wait for the byte to be written out R\+DD O\+LD hardware while ( ( U\+C1\+I\+FG \& U\+C\+B1\+R\+X\+I\+FG ) == 0 ); // wait for a byte to be read in R\+DD O\+LD hardware return ( U\+C\+B1\+R\+X\+B\+UF ); // return the recieved byte
+
+Definition at line 26 of file spi.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 3

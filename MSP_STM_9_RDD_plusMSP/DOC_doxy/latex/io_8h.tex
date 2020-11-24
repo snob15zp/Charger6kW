@@ -1,0 +1,725 @@
+\hypertarget{io_8h}{}\doxysection{D\+:/user\+S\+S\+D/github/\+Charger6k\+W/\+M\+S\+P\+\_\+\+S\+T\+M\+\_\+9\+\_\+\+R\+D\+D\+\_\+plus\+M\+S\+P/\+M\+S\+P430/io.h File Reference}
+\label{io_8h}\index{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/io.h@{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/io.h}}
+{\ttfamily \#include \char`\"{}main\+M\+S\+P.\+h\char`\"{}}\newline
+Include dependency graph for io.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{io_8h_adfe13f09b9403f493982547eb3f52cbc}{T\+W\+O\+\_\+\+F\+AN}}
+\item 
+\#define \mbox{\hyperlink{io_8h_a91dd0599fdfd4b7eb828c82440c2a260}{F\+A\+N\+\_\+\+D\+RV}}~0x01
+\item 
+\#define \mbox{\hyperlink{io_8h_addf5ec070e9499d36b7f2009ce736076}{U\+N\+U\+S\+ED}}~0x02
+\item 
+\#define \mbox{\hyperlink{io_8h_a2a5188d083695f458b330a370e8c975e}{F\+A\+N\+\_\+\+FB}}~0x04
+\item 
+\#define \mbox{\hyperlink{io_8h_a56f2c8a2a51d0dc8c8bf440a7f4398a7}{T\+M\+P\+C\+M\+P\+\_\+\+D\+I\+G\+I\+T\+AL}}~0x08
+\item 
+\#define \mbox{\hyperlink{io_8h_a0750977f2c3bab81a19a45ee71b6b0e1}{F\+L\+S\+E\+T10}}~0x10
+\item 
+\#define \mbox{\hyperlink{io_8h_aa6970322f4566ca74103404b5d224217}{F\+L\+S\+E\+T20}}~0x20
+\item 
+\#define \mbox{\hyperlink{io_8h_ac20897a26fa84f7b69699398a8eac297}{F\+L\+S\+E\+T40}}~0x40
+\item 
+\#define \mbox{\hyperlink{io_8h_a141384734df1724a8b65a479f843969e}{F\+L\+S\+E\+T80}}~0x80
+\item 
+\#define \mbox{\hyperlink{io_8h_a514ad415fb6125ba296793df7d1a468a}{E\+N\+A\+B\+LE}}~0x01
+\item 
+\#define \mbox{\hyperlink{io_8h_a815430a9e1b2e38adc09bb875d972d90}{C\+A\+N\+\_\+n\+I\+NT}}~0x02
+\item 
+\#define \mbox{\hyperlink{io_8h_a3a4d1d78f571666faac5c36208c3dc46}{C\+A\+\_\+\+O\+UT}}~0x04
+\item 
+\#define \mbox{\hyperlink{io_8h_a3dfd49da2f956c034626cadcaf6aee1b}{F\+L\+T\+R\+I\+M\+\_\+\+P\+WM}}~0x08
+\item 
+\#define \mbox{\hyperlink{io_8h_a992329c4b01a10ae9a86e8a214f64cde}{S\+A\+M\+P\+L\+E\+\_\+\+P\+WM}}~0x10
+\item 
+\#define \mbox{\hyperlink{io_8h_a75c41b08eeab8adb42d821c41ff88f88}{I\+O\+U\+T\+S\+P\+\_\+\+CA}}~0x20
+\item 
+\#define \mbox{\hyperlink{io_8h_abd29c63ba6e2261d6b3775cddc0e6fbc}{O\+N\+O\+FF}}~0x40
+\item 
+\#define \mbox{\hyperlink{io_8h_afdf3310d0c413db35ca18b835e304142}{V\+I\+N\+L\+I\+M\+\_\+\+P\+WM}}~0x80
+\item 
+\#define \mbox{\hyperlink{io_8h_a54c2d62610e8e93b3a5b02cab5fc7ecc}{C\+A\+N\+\_\+n\+CS}}~0x01
+\item 
+\#define \mbox{\hyperlink{io_8h_a64b689e6e3eda66d0c22372602e6015d}{C\+A\+N\+\_\+\+M\+O\+SI}}~0x02
+\item 
+\#define \mbox{\hyperlink{io_8h_ae53ff22934797a0db6525c05662dc0c8}{C\+A\+N\+\_\+\+M\+I\+SO}}~0x04
+\item 
+\#define \mbox{\hyperlink{io_8h_afb797b6239af44164fe6de1f80b3e384}{C\+A\+N\+\_\+\+S\+C\+LK}}~0x08
+\item 
+\#define \mbox{\hyperlink{io_8h_a88c3ac590021f00286f92f4a3c650c72}{L\+C\+D\+\_\+\+TX}}~0x10
+\item 
+\#define \mbox{\hyperlink{io_8h_ac5c788674392949a33f828680cc4c482}{L\+C\+D\+\_\+\+RX}}~0x20
+\item 
+\#define \mbox{\hyperlink{io_8h_a7ebb5de5f8e81a0c69161a8fdeb924de}{n\+H\+I\+S\+I\+D\+E\+\_\+\+EN}}~0x40
+\item 
+\#define \mbox{\hyperlink{io_8h_a54a4c7f76f3b4b1e70bd8862ccf27bcd}{R\+E\+L\+AY}}~0x80
+\item 
+\#define \mbox{\hyperlink{io_8h_afb95311c4fc7039fa1a06462a71ffa6c}{D\+C\+O\+N\+T\+R\+OL}}~0x01
+\item 
+\#define \mbox{\hyperlink{io_8h_a219a2537bc98c9c571c8ba6b9abe33e9}{F\+L\+S\+E\+T1}}~0x04
+\item 
+\#define \mbox{\hyperlink{io_8h_a9ecbba865622b0770ea82f838d638223}{F\+L\+S\+E\+T2}}~0x08
+\item 
+\#define \mbox{\hyperlink{io_8h_a52babfd74f08e5410b745991ecdee9e6}{F\+L\+S\+E\+T4}}~0x10
+\item 
+\#define \mbox{\hyperlink{io_8h_a3c1d8b80a24b0092bbbd1504e5af094b}{F\+L\+S\+E\+T8}}~0x20
+\item 
+\#define \mbox{\hyperlink{io_8h_ac30f3e5d9f3ce9cfe1f547a9bfe177d8}{F\+L\+S\+E\+T100}}~0x40
+\item 
+\#define \mbox{\hyperlink{io_8h_a86e3b8d943eeb6f639c682b0d9941e23}{F\+L\+S\+E\+T200}}~0x80
+\item 
+\#define \mbox{\hyperlink{io_8h_ad938ab9d6904f80109aea0efd0ae3bd1}{P4\+\_\+\+U\+N\+U\+S\+ED}}~0x02
+\item 
+\#define \mbox{\hyperlink{io_8h_a6cdfbfeca574ca8669eec42e8eabd459}{F\+L\+A\+S\+H\+\_\+n\+CS}}~0x01
+\item 
+\#define \mbox{\hyperlink{io_8h_a235b8122312f96db584d50b64605f119}{F\+L\+A\+S\+H\+\_\+\+S\+I\+MO}}~0x02
+\item 
+\#define \mbox{\hyperlink{io_8h_a37b9aaa2414aea66cb29e5bb3dd81fb2}{F\+L\+A\+S\+H\+\_\+\+S\+O\+MI}}~0x04
+\item 
+\#define \mbox{\hyperlink{io_8h_a24c04d104ec0feda08025ba62bc79d59}{F\+L\+A\+S\+H\+\_\+\+S\+C\+LK}}~0x08
+\item 
+\#define \mbox{\hyperlink{io_8h_afb3350685dd0eaef85eb32b24f5a7481}{F\+A\+N\+\_\+\+F\+B2}}~0x10
+\item 
+\#define \mbox{\hyperlink{io_8h_a4ff451edcfdd3b139f5fb31c0f649283}{F\+L\+A\+S\+H\+\_\+\+H\+O\+LD}}~0x20
+\item 
+\#define \mbox{\hyperlink{io_8h_af939c2f6f3b99a32b7ea135d2c6a09b8}{P5\+\_\+\+U\+N\+U\+S\+ED}}~0x40
+\item 
+\#define \mbox{\hyperlink{io_8h_a0ac49f555993216e8f227fd96d19a919}{G\+F\+\_\+\+O\+N\+O\+FF}}~0x80
+\item 
+\#define \mbox{\hyperlink{io_8h_a673916e59dd54a540b6bd7a3de5a8f24}{P6\+\_\+\+U\+N\+U\+S\+ED}}~0x00
+\item 
+\#define \mbox{\hyperlink{io_8h_a767218971fe7fe6f1da525a5ff100743}{I\+O\+\_\+\+I\+N\+B\+R\+E\+A\+K\+E\+R\+\_\+\+O\+P\+EN}}~(0)
+\item 
+\#define \mbox{\hyperlink{io_8h_ac8195188d2653a31fdbee4a0da93ac37}{I\+O\+\_\+\+O\+U\+T\+B\+R\+E\+A\+K\+E\+R\+\_\+\+O\+P\+EN}}~(0)
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{io_8h_a8122064b26eb564e1f005d71f9ed4123}{I\+O\+\_\+set\+Fan\+Duty\+Cycle}} (unsigned int fan\+Duty)
+\item 
+void \mbox{\hyperlink{io_8h_a2a7f010e2149a591731de12c866901af}{I\+O\+\_\+fan\+Sense\+Speed}} (void)
+\item 
+void \mbox{\hyperlink{io_8h_a29a2808d1a73b58a4cfdbc9853b8fe20}{I\+O\+\_\+fan\+Set\+Speed}} (void)
+\item 
+void \mbox{\hyperlink{io_8h_a604d27cdb3324e133cd572ce26dd579c}{I\+O\+\_\+fan\+Drv\+P\+WM}} (void)
+\item 
+int \mbox{\hyperlink{io_8h_a0976dd4faeee95827cb133e20f3c72bd}{I\+O\+\_\+get\+On\+Off}} (void)
+\item 
+int \mbox{\hyperlink{io_8h_a931fc9842f61b8edece408fda0200049}{I\+O\+\_\+get\+Ground\+Fault}} (void)
+\item 
+int \mbox{\hyperlink{io_8h_aa63f8ebf2789ad7d3ed40a0c5d8a799b}{I\+O\+\_\+get\+Digital\+Temp}} (void)
+\item 
+int \mbox{\hyperlink{io_8h_ab0f8e13eeba6fe6891367e1632366a6c}{I\+O\+\_\+get\+Is\+Slave}} (void)
+\item 
+void \mbox{\hyperlink{io_8h_ac1e824237e4a013ed7d7d5f499292eba}{I\+O\+\_\+init}} (void)
+\item 
+void \mbox{\hyperlink{io_8h_a772113c6d38522f0c29c7eef1641ba23}{I\+O\+\_\+set\+Relay}} (unsigned long long bitfield)
+\item 
+void \mbox{\hyperlink{io_8h_a5dfa7a7bbf6365794c9bc400f0f3f3a7}{I\+O\+\_\+enable\+Pwm\+Ctrl}} (void)
+\item 
+void \mbox{\hyperlink{io_8h_add100bba23de7b0f74bd6450111f7054}{I\+O\+\_\+disable\+Pwm\+Ctrl}} (void)
+\item 
+void \mbox{\hyperlink{io_8h_a793ddd20dd5db15291b5a07c3f2d2088}{I\+O\+\_\+control\+Sync\+Rect}} (void)
+\item 
+void \mbox{\hyperlink{io_8h_a3abd9b2121148ab2135eaca9dd2906ac}{I\+O\+\_\+flset}} (unsigned int fls)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{io_8h_a3a4d1d78f571666faac5c36208c3dc46}\label{io_8h_a3a4d1d78f571666faac5c36208c3dc46}} 
+\index{io.h@{io.h}!CA\_OUT@{CA\_OUT}}
+\index{CA\_OUT@{CA\_OUT}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{CA\_OUT}{CA\_OUT}}
+{\footnotesize\ttfamily \#define C\+A\+\_\+\+O\+UT~0x04}
+
+
+
+Definition at line 37 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_ae53ff22934797a0db6525c05662dc0c8}\label{io_8h_ae53ff22934797a0db6525c05662dc0c8}} 
+\index{io.h@{io.h}!CAN\_MISO@{CAN\_MISO}}
+\index{CAN\_MISO@{CAN\_MISO}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{CAN\_MISO}{CAN\_MISO}}
+{\footnotesize\ttfamily \#define C\+A\+N\+\_\+\+M\+I\+SO~0x04}
+
+
+
+Definition at line 47 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a64b689e6e3eda66d0c22372602e6015d}\label{io_8h_a64b689e6e3eda66d0c22372602e6015d}} 
+\index{io.h@{io.h}!CAN\_MOSI@{CAN\_MOSI}}
+\index{CAN\_MOSI@{CAN\_MOSI}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{CAN\_MOSI}{CAN\_MOSI}}
+{\footnotesize\ttfamily \#define C\+A\+N\+\_\+\+M\+O\+SI~0x02}
+
+
+
+Definition at line 46 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a54c2d62610e8e93b3a5b02cab5fc7ecc}\label{io_8h_a54c2d62610e8e93b3a5b02cab5fc7ecc}} 
+\index{io.h@{io.h}!CAN\_nCS@{CAN\_nCS}}
+\index{CAN\_nCS@{CAN\_nCS}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{CAN\_nCS}{CAN\_nCS}}
+{\footnotesize\ttfamily \#define C\+A\+N\+\_\+n\+CS~0x01}
+
+
+
+Definition at line 45 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a815430a9e1b2e38adc09bb875d972d90}\label{io_8h_a815430a9e1b2e38adc09bb875d972d90}} 
+\index{io.h@{io.h}!CAN\_nINT@{CAN\_nINT}}
+\index{CAN\_nINT@{CAN\_nINT}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{CAN\_nINT}{CAN\_nINT}}
+{\footnotesize\ttfamily \#define C\+A\+N\+\_\+n\+I\+NT~0x02}
+
+
+
+Definition at line 36 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_afb797b6239af44164fe6de1f80b3e384}\label{io_8h_afb797b6239af44164fe6de1f80b3e384}} 
+\index{io.h@{io.h}!CAN\_SCLK@{CAN\_SCLK}}
+\index{CAN\_SCLK@{CAN\_SCLK}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{CAN\_SCLK}{CAN\_SCLK}}
+{\footnotesize\ttfamily \#define C\+A\+N\+\_\+\+S\+C\+LK~0x08}
+
+
+
+Definition at line 48 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_afb95311c4fc7039fa1a06462a71ffa6c}\label{io_8h_afb95311c4fc7039fa1a06462a71ffa6c}} 
+\index{io.h@{io.h}!DCONTROL@{DCONTROL}}
+\index{DCONTROL@{DCONTROL}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{DCONTROL}{DCONTROL}}
+{\footnotesize\ttfamily \#define D\+C\+O\+N\+T\+R\+OL~0x01}
+
+
+
+Definition at line 55 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a514ad415fb6125ba296793df7d1a468a}\label{io_8h_a514ad415fb6125ba296793df7d1a468a}} 
+\index{io.h@{io.h}!ENABLE@{ENABLE}}
+\index{ENABLE@{ENABLE}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{ENABLE}{ENABLE}}
+{\footnotesize\ttfamily \#define E\+N\+A\+B\+LE~0x01}
+
+
+
+Definition at line 35 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a91dd0599fdfd4b7eb828c82440c2a260}\label{io_8h_a91dd0599fdfd4b7eb828c82440c2a260}} 
+\index{io.h@{io.h}!FAN\_DRV@{FAN\_DRV}}
+\index{FAN\_DRV@{FAN\_DRV}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{FAN\_DRV}{FAN\_DRV}}
+{\footnotesize\ttfamily \#define F\+A\+N\+\_\+\+D\+RV~0x01}
+
+
+
+Definition at line 25 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a2a5188d083695f458b330a370e8c975e}\label{io_8h_a2a5188d083695f458b330a370e8c975e}} 
+\index{io.h@{io.h}!FAN\_FB@{FAN\_FB}}
+\index{FAN\_FB@{FAN\_FB}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{FAN\_FB}{FAN\_FB}}
+{\footnotesize\ttfamily \#define F\+A\+N\+\_\+\+FB~0x04}
+
+
+
+Definition at line 27 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_afb3350685dd0eaef85eb32b24f5a7481}\label{io_8h_afb3350685dd0eaef85eb32b24f5a7481}} 
+\index{io.h@{io.h}!FAN\_FB2@{FAN\_FB2}}
+\index{FAN\_FB2@{FAN\_FB2}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{FAN\_FB2}{FAN\_FB2}}
+{\footnotesize\ttfamily \#define F\+A\+N\+\_\+\+F\+B2~0x10}
+
+
+
+Definition at line 69 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a4ff451edcfdd3b139f5fb31c0f649283}\label{io_8h_a4ff451edcfdd3b139f5fb31c0f649283}} 
+\index{io.h@{io.h}!FLASH\_HOLD@{FLASH\_HOLD}}
+\index{FLASH\_HOLD@{FLASH\_HOLD}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{FLASH\_HOLD}{FLASH\_HOLD}}
+{\footnotesize\ttfamily \#define F\+L\+A\+S\+H\+\_\+\+H\+O\+LD~0x20}
+
+
+
+Definition at line 70 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a6cdfbfeca574ca8669eec42e8eabd459}\label{io_8h_a6cdfbfeca574ca8669eec42e8eabd459}} 
+\index{io.h@{io.h}!FLASH\_nCS@{FLASH\_nCS}}
+\index{FLASH\_nCS@{FLASH\_nCS}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{FLASH\_nCS}{FLASH\_nCS}}
+{\footnotesize\ttfamily \#define F\+L\+A\+S\+H\+\_\+n\+CS~0x01}
+
+
+
+Definition at line 65 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a24c04d104ec0feda08025ba62bc79d59}\label{io_8h_a24c04d104ec0feda08025ba62bc79d59}} 
+\index{io.h@{io.h}!FLASH\_SCLK@{FLASH\_SCLK}}
+\index{FLASH\_SCLK@{FLASH\_SCLK}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{FLASH\_SCLK}{FLASH\_SCLK}}
+{\footnotesize\ttfamily \#define F\+L\+A\+S\+H\+\_\+\+S\+C\+LK~0x08}
+
+
+
+Definition at line 68 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a235b8122312f96db584d50b64605f119}\label{io_8h_a235b8122312f96db584d50b64605f119}} 
+\index{io.h@{io.h}!FLASH\_SIMO@{FLASH\_SIMO}}
+\index{FLASH\_SIMO@{FLASH\_SIMO}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{FLASH\_SIMO}{FLASH\_SIMO}}
+{\footnotesize\ttfamily \#define F\+L\+A\+S\+H\+\_\+\+S\+I\+MO~0x02}
+
+
+
+Definition at line 66 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a37b9aaa2414aea66cb29e5bb3dd81fb2}\label{io_8h_a37b9aaa2414aea66cb29e5bb3dd81fb2}} 
+\index{io.h@{io.h}!FLASH\_SOMI@{FLASH\_SOMI}}
+\index{FLASH\_SOMI@{FLASH\_SOMI}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{FLASH\_SOMI}{FLASH\_SOMI}}
+{\footnotesize\ttfamily \#define F\+L\+A\+S\+H\+\_\+\+S\+O\+MI~0x04}
+
+
+
+Definition at line 67 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a219a2537bc98c9c571c8ba6b9abe33e9}\label{io_8h_a219a2537bc98c9c571c8ba6b9abe33e9}} 
+\index{io.h@{io.h}!FLSET1@{FLSET1}}
+\index{FLSET1@{FLSET1}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{FLSET1}{FLSET1}}
+{\footnotesize\ttfamily \#define F\+L\+S\+E\+T1~0x04}
+
+
+
+Definition at line 56 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a0750977f2c3bab81a19a45ee71b6b0e1}\label{io_8h_a0750977f2c3bab81a19a45ee71b6b0e1}} 
+\index{io.h@{io.h}!FLSET10@{FLSET10}}
+\index{FLSET10@{FLSET10}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{FLSET10}{FLSET10}}
+{\footnotesize\ttfamily \#define F\+L\+S\+E\+T10~0x10}
+
+
+
+Definition at line 29 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_ac30f3e5d9f3ce9cfe1f547a9bfe177d8}\label{io_8h_ac30f3e5d9f3ce9cfe1f547a9bfe177d8}} 
+\index{io.h@{io.h}!FLSET100@{FLSET100}}
+\index{FLSET100@{FLSET100}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{FLSET100}{FLSET100}}
+{\footnotesize\ttfamily \#define F\+L\+S\+E\+T100~0x40}
+
+
+
+Definition at line 60 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a9ecbba865622b0770ea82f838d638223}\label{io_8h_a9ecbba865622b0770ea82f838d638223}} 
+\index{io.h@{io.h}!FLSET2@{FLSET2}}
+\index{FLSET2@{FLSET2}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{FLSET2}{FLSET2}}
+{\footnotesize\ttfamily \#define F\+L\+S\+E\+T2~0x08}
+
+
+
+Definition at line 57 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_aa6970322f4566ca74103404b5d224217}\label{io_8h_aa6970322f4566ca74103404b5d224217}} 
+\index{io.h@{io.h}!FLSET20@{FLSET20}}
+\index{FLSET20@{FLSET20}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{FLSET20}{FLSET20}}
+{\footnotesize\ttfamily \#define F\+L\+S\+E\+T20~0x20}
+
+
+
+Definition at line 30 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a86e3b8d943eeb6f639c682b0d9941e23}\label{io_8h_a86e3b8d943eeb6f639c682b0d9941e23}} 
+\index{io.h@{io.h}!FLSET200@{FLSET200}}
+\index{FLSET200@{FLSET200}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{FLSET200}{FLSET200}}
+{\footnotesize\ttfamily \#define F\+L\+S\+E\+T200~0x80}
+
+
+
+Definition at line 61 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a52babfd74f08e5410b745991ecdee9e6}\label{io_8h_a52babfd74f08e5410b745991ecdee9e6}} 
+\index{io.h@{io.h}!FLSET4@{FLSET4}}
+\index{FLSET4@{FLSET4}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{FLSET4}{FLSET4}}
+{\footnotesize\ttfamily \#define F\+L\+S\+E\+T4~0x10}
+
+
+
+Definition at line 58 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_ac20897a26fa84f7b69699398a8eac297}\label{io_8h_ac20897a26fa84f7b69699398a8eac297}} 
+\index{io.h@{io.h}!FLSET40@{FLSET40}}
+\index{FLSET40@{FLSET40}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{FLSET40}{FLSET40}}
+{\footnotesize\ttfamily \#define F\+L\+S\+E\+T40~0x40}
+
+
+
+Definition at line 31 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a3c1d8b80a24b0092bbbd1504e5af094b}\label{io_8h_a3c1d8b80a24b0092bbbd1504e5af094b}} 
+\index{io.h@{io.h}!FLSET8@{FLSET8}}
+\index{FLSET8@{FLSET8}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{FLSET8}{FLSET8}}
+{\footnotesize\ttfamily \#define F\+L\+S\+E\+T8~0x20}
+
+
+
+Definition at line 59 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a141384734df1724a8b65a479f843969e}\label{io_8h_a141384734df1724a8b65a479f843969e}} 
+\index{io.h@{io.h}!FLSET80@{FLSET80}}
+\index{FLSET80@{FLSET80}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{FLSET80}{FLSET80}}
+{\footnotesize\ttfamily \#define F\+L\+S\+E\+T80~0x80}
+
+
+
+Definition at line 32 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a3dfd49da2f956c034626cadcaf6aee1b}\label{io_8h_a3dfd49da2f956c034626cadcaf6aee1b}} 
+\index{io.h@{io.h}!FLTRIM\_PWM@{FLTRIM\_PWM}}
+\index{FLTRIM\_PWM@{FLTRIM\_PWM}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{FLTRIM\_PWM}{FLTRIM\_PWM}}
+{\footnotesize\ttfamily \#define F\+L\+T\+R\+I\+M\+\_\+\+P\+WM~0x08}
+
+
+
+Definition at line 38 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a0ac49f555993216e8f227fd96d19a919}\label{io_8h_a0ac49f555993216e8f227fd96d19a919}} 
+\index{io.h@{io.h}!GF\_ONOFF@{GF\_ONOFF}}
+\index{GF\_ONOFF@{GF\_ONOFF}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{GF\_ONOFF}{GF\_ONOFF}}
+{\footnotesize\ttfamily \#define G\+F\+\_\+\+O\+N\+O\+FF~0x80}
+
+
+
+Definition at line 72 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a767218971fe7fe6f1da525a5ff100743}\label{io_8h_a767218971fe7fe6f1da525a5ff100743}} 
+\index{io.h@{io.h}!IO\_INBREAKER\_OPEN@{IO\_INBREAKER\_OPEN}}
+\index{IO\_INBREAKER\_OPEN@{IO\_INBREAKER\_OPEN}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{IO\_INBREAKER\_OPEN}{IO\_INBREAKER\_OPEN}}
+{\footnotesize\ttfamily \#define I\+O\+\_\+\+I\+N\+B\+R\+E\+A\+K\+E\+R\+\_\+\+O\+P\+EN~(0)}
+
+
+
+Definition at line 102 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_ac8195188d2653a31fdbee4a0da93ac37}\label{io_8h_ac8195188d2653a31fdbee4a0da93ac37}} 
+\index{io.h@{io.h}!IO\_OUTBREAKER\_OPEN@{IO\_OUTBREAKER\_OPEN}}
+\index{IO\_OUTBREAKER\_OPEN@{IO\_OUTBREAKER\_OPEN}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{IO\_OUTBREAKER\_OPEN}{IO\_OUTBREAKER\_OPEN}}
+{\footnotesize\ttfamily \#define I\+O\+\_\+\+O\+U\+T\+B\+R\+E\+A\+K\+E\+R\+\_\+\+O\+P\+EN~(0)}
+
+
+
+Definition at line 103 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a75c41b08eeab8adb42d821c41ff88f88}\label{io_8h_a75c41b08eeab8adb42d821c41ff88f88}} 
+\index{io.h@{io.h}!IOUTSP\_CA@{IOUTSP\_CA}}
+\index{IOUTSP\_CA@{IOUTSP\_CA}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{IOUTSP\_CA}{IOUTSP\_CA}}
+{\footnotesize\ttfamily \#define I\+O\+U\+T\+S\+P\+\_\+\+CA~0x20}
+
+
+
+Definition at line 40 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_ac5c788674392949a33f828680cc4c482}\label{io_8h_ac5c788674392949a33f828680cc4c482}} 
+\index{io.h@{io.h}!LCD\_RX@{LCD\_RX}}
+\index{LCD\_RX@{LCD\_RX}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_RX}{LCD\_RX}}
+{\footnotesize\ttfamily \#define L\+C\+D\+\_\+\+RX~0x20}
+
+
+
+Definition at line 50 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a88c3ac590021f00286f92f4a3c650c72}\label{io_8h_a88c3ac590021f00286f92f4a3c650c72}} 
+\index{io.h@{io.h}!LCD\_TX@{LCD\_TX}}
+\index{LCD\_TX@{LCD\_TX}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_TX}{LCD\_TX}}
+{\footnotesize\ttfamily \#define L\+C\+D\+\_\+\+TX~0x10}
+
+
+
+Definition at line 49 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a7ebb5de5f8e81a0c69161a8fdeb924de}\label{io_8h_a7ebb5de5f8e81a0c69161a8fdeb924de}} 
+\index{io.h@{io.h}!nHISIDE\_EN@{nHISIDE\_EN}}
+\index{nHISIDE\_EN@{nHISIDE\_EN}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{nHISIDE\_EN}{nHISIDE\_EN}}
+{\footnotesize\ttfamily \#define n\+H\+I\+S\+I\+D\+E\+\_\+\+EN~0x40}
+
+
+
+Definition at line 51 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_abd29c63ba6e2261d6b3775cddc0e6fbc}\label{io_8h_abd29c63ba6e2261d6b3775cddc0e6fbc}} 
+\index{io.h@{io.h}!ONOFF@{ONOFF}}
+\index{ONOFF@{ONOFF}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{ONOFF}{ONOFF}}
+{\footnotesize\ttfamily \#define O\+N\+O\+FF~0x40}
+
+
+
+Definition at line 41 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_ad938ab9d6904f80109aea0efd0ae3bd1}\label{io_8h_ad938ab9d6904f80109aea0efd0ae3bd1}} 
+\index{io.h@{io.h}!P4\_UNUSED@{P4\_UNUSED}}
+\index{P4\_UNUSED@{P4\_UNUSED}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{P4\_UNUSED}{P4\_UNUSED}}
+{\footnotesize\ttfamily \#define P4\+\_\+\+U\+N\+U\+S\+ED~0x02}
+
+
+
+Definition at line 62 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_af939c2f6f3b99a32b7ea135d2c6a09b8}\label{io_8h_af939c2f6f3b99a32b7ea135d2c6a09b8}} 
+\index{io.h@{io.h}!P5\_UNUSED@{P5\_UNUSED}}
+\index{P5\_UNUSED@{P5\_UNUSED}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{P5\_UNUSED}{P5\_UNUSED}}
+{\footnotesize\ttfamily \#define P5\+\_\+\+U\+N\+U\+S\+ED~0x40}
+
+
+
+Definition at line 71 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a673916e59dd54a540b6bd7a3de5a8f24}\label{io_8h_a673916e59dd54a540b6bd7a3de5a8f24}} 
+\index{io.h@{io.h}!P6\_UNUSED@{P6\_UNUSED}}
+\index{P6\_UNUSED@{P6\_UNUSED}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{P6\_UNUSED}{P6\_UNUSED}}
+{\footnotesize\ttfamily \#define P6\+\_\+\+U\+N\+U\+S\+ED~0x00}
+
+
+
+Definition at line 84 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a54a4c7f76f3b4b1e70bd8862ccf27bcd}\label{io_8h_a54a4c7f76f3b4b1e70bd8862ccf27bcd}} 
+\index{io.h@{io.h}!RELAY@{RELAY}}
+\index{RELAY@{RELAY}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{RELAY}{RELAY}}
+{\footnotesize\ttfamily \#define R\+E\+L\+AY~0x80}
+
+
+
+Definition at line 52 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a992329c4b01a10ae9a86e8a214f64cde}\label{io_8h_a992329c4b01a10ae9a86e8a214f64cde}} 
+\index{io.h@{io.h}!SAMPLE\_PWM@{SAMPLE\_PWM}}
+\index{SAMPLE\_PWM@{SAMPLE\_PWM}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{SAMPLE\_PWM}{SAMPLE\_PWM}}
+{\footnotesize\ttfamily \#define S\+A\+M\+P\+L\+E\+\_\+\+P\+WM~0x10}
+
+
+
+Definition at line 39 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_a56f2c8a2a51d0dc8c8bf440a7f4398a7}\label{io_8h_a56f2c8a2a51d0dc8c8bf440a7f4398a7}} 
+\index{io.h@{io.h}!TMPCMP\_DIGITAL@{TMPCMP\_DIGITAL}}
+\index{TMPCMP\_DIGITAL@{TMPCMP\_DIGITAL}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{TMPCMP\_DIGITAL}{TMPCMP\_DIGITAL}}
+{\footnotesize\ttfamily \#define T\+M\+P\+C\+M\+P\+\_\+\+D\+I\+G\+I\+T\+AL~0x08}
+
+
+
+Definition at line 28 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_adfe13f09b9403f493982547eb3f52cbc}\label{io_8h_adfe13f09b9403f493982547eb3f52cbc}} 
+\index{io.h@{io.h}!TWO\_FAN@{TWO\_FAN}}
+\index{TWO\_FAN@{TWO\_FAN}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{TWO\_FAN}{TWO\_FAN}}
+{\footnotesize\ttfamily \#define T\+W\+O\+\_\+\+F\+AN}
+
+
+
+Definition at line 18 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_addf5ec070e9499d36b7f2009ce736076}\label{io_8h_addf5ec070e9499d36b7f2009ce736076}} 
+\index{io.h@{io.h}!UNUSED@{UNUSED}}
+\index{UNUSED@{UNUSED}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{UNUSED}{UNUSED}}
+{\footnotesize\ttfamily \#define U\+N\+U\+S\+ED~0x02}
+
+
+
+Definition at line 26 of file io.\+h.
+
+\mbox{\Hypertarget{io_8h_afdf3310d0c413db35ca18b835e304142}\label{io_8h_afdf3310d0c413db35ca18b835e304142}} 
+\index{io.h@{io.h}!VINLIM\_PWM@{VINLIM\_PWM}}
+\index{VINLIM\_PWM@{VINLIM\_PWM}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{VINLIM\_PWM}{VINLIM\_PWM}}
+{\footnotesize\ttfamily \#define V\+I\+N\+L\+I\+M\+\_\+\+P\+WM~0x80}
+
+
+
+Definition at line 42 of file io.\+h.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{io_8h_a793ddd20dd5db15291b5a07c3f2d2088}\label{io_8h_a793ddd20dd5db15291b5a07c3f2d2088}} 
+\index{io.h@{io.h}!IO\_controlSyncRect@{IO\_controlSyncRect}}
+\index{IO\_controlSyncRect@{IO\_controlSyncRect}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{IO\_controlSyncRect()}{IO\_controlSyncRect()}}
+{\footnotesize\ttfamily void I\+O\+\_\+control\+Sync\+Rect (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{io_8h_add100bba23de7b0f74bd6450111f7054}\label{io_8h_add100bba23de7b0f74bd6450111f7054}} 
+\index{io.h@{io.h}!IO\_disablePwmCtrl@{IO\_disablePwmCtrl}}
+\index{IO\_disablePwmCtrl@{IO\_disablePwmCtrl}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{IO\_disablePwmCtrl()}{IO\_disablePwmCtrl()}}
+{\footnotesize\ttfamily void I\+O\+\_\+disable\+Pwm\+Ctrl (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+R\+DD status\+Flags.\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+T\+OP=1;
+
+Definition at line 107 of file pwm.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{io_8h_a5dfa7a7bbf6365794c9bc400f0f3f3a7}\label{io_8h_a5dfa7a7bbf6365794c9bc400f0f3f3a7}} 
+\index{io.h@{io.h}!IO\_enablePwmCtrl@{IO\_enablePwmCtrl}}
+\index{IO\_enablePwmCtrl@{IO\_enablePwmCtrl}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{IO\_enablePwmCtrl()}{IO\_enablePwmCtrl()}}
+{\footnotesize\ttfamily void I\+O\+\_\+enable\+Pwm\+Ctrl (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+R\+DD status\+Flags.\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+T\+A\+RT=1;
+
+Definition at line 97 of file pwm.\+c.
+
+\mbox{\Hypertarget{io_8h_a604d27cdb3324e133cd572ce26dd579c}\label{io_8h_a604d27cdb3324e133cd572ce26dd579c}} 
+\index{io.h@{io.h}!IO\_fanDrvPWM@{IO\_fanDrvPWM}}
+\index{IO\_fanDrvPWM@{IO\_fanDrvPWM}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{IO\_fanDrvPWM()}{IO\_fanDrvPWM()}}
+{\footnotesize\ttfamily void I\+O\+\_\+fan\+Drv\+P\+WM (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 273 of file io.\+c.
+
+\mbox{\Hypertarget{io_8h_a2a7f010e2149a591731de12c866901af}\label{io_8h_a2a7f010e2149a591731de12c866901af}} 
+\index{io.h@{io.h}!IO\_fanSenseSpeed@{IO\_fanSenseSpeed}}
+\index{IO\_fanSenseSpeed@{IO\_fanSenseSpeed}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{IO\_fanSenseSpeed()}{IO\_fanSenseSpeed()}}
+{\footnotesize\ttfamily void I\+O\+\_\+fan\+Sense\+Speed (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 298 of file io.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{io_8h_a29a2808d1a73b58a4cfdbc9853b8fe20}\label{io_8h_a29a2808d1a73b58a4cfdbc9853b8fe20}} 
+\index{io.h@{io.h}!IO\_fanSetSpeed@{IO\_fanSetSpeed}}
+\index{IO\_fanSetSpeed@{IO\_fanSetSpeed}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{IO\_fanSetSpeed()}{IO\_fanSetSpeed()}}
+{\footnotesize\ttfamily void I\+O\+\_\+fan\+Set\+Speed (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 329 of file io.\+c.
+
+Here is the call graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{io_8h_a3abd9b2121148ab2135eaca9dd2906ac}\label{io_8h_a3abd9b2121148ab2135eaca9dd2906ac}} 
+\index{io.h@{io.h}!IO\_flset@{IO\_flset}}
+\index{IO\_flset@{IO\_flset}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{IO\_flset()}{IO\_flset()}}
+{\footnotesize\ttfamily void I\+O\+\_\+flset (\begin{DoxyParamCaption}\item[{unsigned int}]{fls }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{io_8h_aa63f8ebf2789ad7d3ed40a0c5d8a799b}\label{io_8h_aa63f8ebf2789ad7d3ed40a0c5d8a799b}} 
+\index{io.h@{io.h}!IO\_getDigitalTemp@{IO\_getDigitalTemp}}
+\index{IO\_getDigitalTemp@{IO\_getDigitalTemp}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{IO\_getDigitalTemp()}{IO\_getDigitalTemp()}}
+{\footnotesize\ttfamily int I\+O\+\_\+get\+Digital\+Temp (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 168 of file io.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{io_8h_a931fc9842f61b8edece408fda0200049}\label{io_8h_a931fc9842f61b8edece408fda0200049}} 
+\index{io.h@{io.h}!IO\_getGroundFault@{IO\_getGroundFault}}
+\index{IO\_getGroundFault@{IO\_getGroundFault}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{IO\_getGroundFault()}{IO\_getGroundFault()}}
+{\footnotesize\ttfamily int I\+O\+\_\+get\+Ground\+Fault (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 162 of file io.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{io_8h_ab0f8e13eeba6fe6891367e1632366a6c}\label{io_8h_ab0f8e13eeba6fe6891367e1632366a6c}} 
+\index{io.h@{io.h}!IO\_getIsSlave@{IO\_getIsSlave}}
+\index{IO\_getIsSlave@{IO\_getIsSlave}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{IO\_getIsSlave()}{IO\_getIsSlave()}}
+{\footnotesize\ttfamily int I\+O\+\_\+get\+Is\+Slave (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 234 of file io.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{io_8h_a0976dd4faeee95827cb133e20f3c72bd}\label{io_8h_a0976dd4faeee95827cb133e20f3c72bd}} 
+\index{io.h@{io.h}!IO\_getOnOff@{IO\_getOnOff}}
+\index{IO\_getOnOff@{IO\_getOnOff}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{IO\_getOnOff()}{IO\_getOnOff()}}
+{\footnotesize\ttfamily int I\+O\+\_\+get\+On\+Off (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 156 of file io.\+c.
+
+\mbox{\Hypertarget{io_8h_ac1e824237e4a013ed7d7d5f499292eba}\label{io_8h_ac1e824237e4a013ed7d7d5f499292eba}} 
+\index{io.h@{io.h}!IO\_init@{IO\_init}}
+\index{IO\_init@{IO\_init}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{IO\_init()}{IO\_init()}}
+{\footnotesize\ttfamily void I\+O\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 99 of file io.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{io_8h_a8122064b26eb564e1f005d71f9ed4123}\label{io_8h_a8122064b26eb564e1f005d71f9ed4123}} 
+\index{io.h@{io.h}!IO\_setFanDutyCycle@{IO\_setFanDutyCycle}}
+\index{IO\_setFanDutyCycle@{IO\_setFanDutyCycle}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{IO\_setFanDutyCycle()}{IO\_setFanDutyCycle()}}
+{\footnotesize\ttfamily void I\+O\+\_\+set\+Fan\+Duty\+Cycle (\begin{DoxyParamCaption}\item[{unsigned int}]{fan\+Duty }\end{DoxyParamCaption})}
+
+
+
+Definition at line 146 of file io.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{io_8h_a772113c6d38522f0c29c7eef1641ba23}\label{io_8h_a772113c6d38522f0c29c7eef1641ba23}} 
+\index{io.h@{io.h}!IO\_setRelay@{IO\_setRelay}}
+\index{IO\_setRelay@{IO\_setRelay}!io.h@{io.h}}
+\doxysubsubsection{\texorpdfstring{IO\_setRelay()}{IO\_setRelay()}}
+{\footnotesize\ttfamily void I\+O\+\_\+set\+Relay (\begin{DoxyParamCaption}\item[{unsigned long long}]{bitfield }\end{DoxyParamCaption})}
+
+
+
+Definition at line 244 of file io.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 10

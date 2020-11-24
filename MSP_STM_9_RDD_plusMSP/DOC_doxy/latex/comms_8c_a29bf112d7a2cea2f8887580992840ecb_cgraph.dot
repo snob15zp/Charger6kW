@@ -1,0 +1,12 @@
+digraph "COMMS_sendStatus"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="COMMS_sendStatus",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="STATUS_getStatus",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$status_8c.html#a448290203e1714602e0d039e2c01077d",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="STATUS_update",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$status_8c.html#a2a7b5f12bade4cddef86448ce9d513bf",tooltip=" "];
+}

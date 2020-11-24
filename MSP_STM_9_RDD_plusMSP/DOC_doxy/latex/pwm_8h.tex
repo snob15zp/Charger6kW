@@ -1,0 +1,170 @@
+\hypertarget{pwm_8h}{}\doxysection{D\+:/user\+S\+S\+D/github/\+Charger6k\+W/\+M\+S\+P\+\_\+\+S\+T\+M\+\_\+9\+\_\+\+R\+D\+D\+\_\+plus\+M\+S\+P/\+M\+S\+P430/pwm.h File Reference}
+\label{pwm_8h}\index{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/pwm.h@{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/pwm.h}}
+{\ttfamily \#include \char`\"{}debug.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}iqmath.\+h\char`\"{}}\newline
+Include dependency graph for pwm.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{pwm_8h_a3618ac44085984a3cbb613e798fdf50e}{C\+L\+O\+C\+K\+\_\+\+R\+A\+T\+E\+\_\+\+HZ}}~16000000
+\item 
+\#define \mbox{\hyperlink{pwm_8h_af1c503c50e6eb1b5e6cfbc63f2abb747}{P\+W\+M\+\_\+\+B\+I\+TS}}~13
+\item 
+\#define \mbox{\hyperlink{pwm_8h_af70d63868b503908cccd99aeb60634b7}{P\+W\+M\+\_\+\+R\+A\+T\+E\+\_\+\+HZ}}~( (float)\mbox{\hyperlink{pwm_8h_a3618ac44085984a3cbb613e798fdf50e}{C\+L\+O\+C\+K\+\_\+\+R\+A\+T\+E\+\_\+\+HZ}} / ( 1 $<$$<$ \mbox{\hyperlink{pwm_8h_af1c503c50e6eb1b5e6cfbc63f2abb747}{P\+W\+M\+\_\+\+B\+I\+TS}} ) )
+\item 
+\#define \mbox{\hyperlink{pwm_8h_a1df990f1a1fc97b95e8d53f719968026}{M\+A\+X\+\_\+\+P\+WM}}~( 1 $<$$<$ \mbox{\hyperlink{pwm_8h_af1c503c50e6eb1b5e6cfbc63f2abb747}{P\+W\+M\+\_\+\+B\+I\+TS}} )
+\item 
+\#define \mbox{\hyperlink{pwm_8h_a9eab62582ed1f922e9da46272d96944f}{P\+W\+M\+\_\+\+P\+E\+R\+I\+O\+D\+\_\+\+US}}~( 1000000ull $\ast$ \mbox{\hyperlink{pwm_8h_a1df990f1a1fc97b95e8d53f719968026}{M\+A\+X\+\_\+\+P\+WM}} / \mbox{\hyperlink{pwm_8h_a3618ac44085984a3cbb613e798fdf50e}{C\+L\+O\+C\+K\+\_\+\+R\+A\+T\+E\+\_\+\+HZ}} )
+\item 
+\#define \mbox{\hyperlink{pwm_8h_a1c34eccf5e893b22661b1266688c2cd3}{C\+O\+N\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+L\+O\+A\+D\+\_\+\+V\+AL}}~( 0x\+F\+F\+FF -\/ \mbox{\hyperlink{pwm_8h_a1df990f1a1fc97b95e8d53f719968026}{M\+A\+X\+\_\+\+P\+WM}} )
+\item 
+\#define \mbox{\hyperlink{pwm_8h_a320185cd7e6bf74fbc3d52b7ff4a83d2}{M\+I\+N\+\_\+\+D\+U\+T\+Y\+\_\+\+C\+Y\+C\+LE}}~( 0.\+01 )
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{pwm_8h_aadae3fe77e36cbf9643a22eeb99fb01e}{P\+W\+M\+\_\+init}} (void)
+\item 
+void \mbox{\hyperlink{pwm_8h_a6abc946e40a86c52f2c86095e783c5c1}{P\+W\+M\+\_\+isr}} (void)
+\item 
+void \mbox{\hyperlink{pwm_8h_a8e7d8b2a837d2225cabeb7c8d90c962a}{P\+W\+M\+\_\+set\+Mppt\+Sample\+Pt}} (\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} val)
+\item 
+void \mbox{\hyperlink{pwm_8h_a1db4c50716bb5866682447af8b6333fc}{P\+W\+M\+\_\+set\+Vin\+Lim}} (\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} val)
+\item 
+void \mbox{\hyperlink{pwm_8h_aa385b7b6c433b3fcef2917df62e2546d}{P\+W\+M\+\_\+set\+Fl\+Trim}} (\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}} val)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{pwm_8h_a3618ac44085984a3cbb613e798fdf50e}\label{pwm_8h_a3618ac44085984a3cbb613e798fdf50e}} 
+\index{pwm.h@{pwm.h}!CLOCK\_RATE\_HZ@{CLOCK\_RATE\_HZ}}
+\index{CLOCK\_RATE\_HZ@{CLOCK\_RATE\_HZ}!pwm.h@{pwm.h}}
+\doxysubsubsection{\texorpdfstring{CLOCK\_RATE\_HZ}{CLOCK\_RATE\_HZ}}
+{\footnotesize\ttfamily \#define C\+L\+O\+C\+K\+\_\+\+R\+A\+T\+E\+\_\+\+HZ~16000000}
+
+
+
+Definition at line 19 of file pwm.\+h.
+
+\mbox{\Hypertarget{pwm_8h_a1c34eccf5e893b22661b1266688c2cd3}\label{pwm_8h_a1c34eccf5e893b22661b1266688c2cd3}} 
+\index{pwm.h@{pwm.h}!CONT\_TIMER\_LOAD\_VAL@{CONT\_TIMER\_LOAD\_VAL}}
+\index{CONT\_TIMER\_LOAD\_VAL@{CONT\_TIMER\_LOAD\_VAL}!pwm.h@{pwm.h}}
+\doxysubsubsection{\texorpdfstring{CONT\_TIMER\_LOAD\_VAL}{CONT\_TIMER\_LOAD\_VAL}}
+{\footnotesize\ttfamily \#define C\+O\+N\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+L\+O\+A\+D\+\_\+\+V\+AL~( 0x\+F\+F\+FF -\/ \mbox{\hyperlink{pwm_8h_a1df990f1a1fc97b95e8d53f719968026}{M\+A\+X\+\_\+\+P\+WM}} )}
+
+
+
+Definition at line 24 of file pwm.\+h.
+
+\mbox{\Hypertarget{pwm_8h_a1df990f1a1fc97b95e8d53f719968026}\label{pwm_8h_a1df990f1a1fc97b95e8d53f719968026}} 
+\index{pwm.h@{pwm.h}!MAX\_PWM@{MAX\_PWM}}
+\index{MAX\_PWM@{MAX\_PWM}!pwm.h@{pwm.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_PWM}{MAX\_PWM}}
+{\footnotesize\ttfamily \#define M\+A\+X\+\_\+\+P\+WM~( 1 $<$$<$ \mbox{\hyperlink{pwm_8h_af1c503c50e6eb1b5e6cfbc63f2abb747}{P\+W\+M\+\_\+\+B\+I\+TS}} )}
+
+
+
+Definition at line 22 of file pwm.\+h.
+
+\mbox{\Hypertarget{pwm_8h_a320185cd7e6bf74fbc3d52b7ff4a83d2}\label{pwm_8h_a320185cd7e6bf74fbc3d52b7ff4a83d2}} 
+\index{pwm.h@{pwm.h}!MIN\_DUTY\_CYCLE@{MIN\_DUTY\_CYCLE}}
+\index{MIN\_DUTY\_CYCLE@{MIN\_DUTY\_CYCLE}!pwm.h@{pwm.h}}
+\doxysubsubsection{\texorpdfstring{MIN\_DUTY\_CYCLE}{MIN\_DUTY\_CYCLE}}
+{\footnotesize\ttfamily \#define M\+I\+N\+\_\+\+D\+U\+T\+Y\+\_\+\+C\+Y\+C\+LE~( 0.\+01 )}
+
+
+
+Definition at line 26 of file pwm.\+h.
+
+\mbox{\Hypertarget{pwm_8h_af1c503c50e6eb1b5e6cfbc63f2abb747}\label{pwm_8h_af1c503c50e6eb1b5e6cfbc63f2abb747}} 
+\index{pwm.h@{pwm.h}!PWM\_BITS@{PWM\_BITS}}
+\index{PWM\_BITS@{PWM\_BITS}!pwm.h@{pwm.h}}
+\doxysubsubsection{\texorpdfstring{PWM\_BITS}{PWM\_BITS}}
+{\footnotesize\ttfamily \#define P\+W\+M\+\_\+\+B\+I\+TS~13}
+
+
+
+Definition at line 20 of file pwm.\+h.
+
+\mbox{\Hypertarget{pwm_8h_a9eab62582ed1f922e9da46272d96944f}\label{pwm_8h_a9eab62582ed1f922e9da46272d96944f}} 
+\index{pwm.h@{pwm.h}!PWM\_PERIOD\_US@{PWM\_PERIOD\_US}}
+\index{PWM\_PERIOD\_US@{PWM\_PERIOD\_US}!pwm.h@{pwm.h}}
+\doxysubsubsection{\texorpdfstring{PWM\_PERIOD\_US}{PWM\_PERIOD\_US}}
+{\footnotesize\ttfamily \#define P\+W\+M\+\_\+\+P\+E\+R\+I\+O\+D\+\_\+\+US~( 1000000ull $\ast$ \mbox{\hyperlink{pwm_8h_a1df990f1a1fc97b95e8d53f719968026}{M\+A\+X\+\_\+\+P\+WM}} / \mbox{\hyperlink{pwm_8h_a3618ac44085984a3cbb613e798fdf50e}{C\+L\+O\+C\+K\+\_\+\+R\+A\+T\+E\+\_\+\+HZ}} )}
+
+
+
+Definition at line 23 of file pwm.\+h.
+
+\mbox{\Hypertarget{pwm_8h_af70d63868b503908cccd99aeb60634b7}\label{pwm_8h_af70d63868b503908cccd99aeb60634b7}} 
+\index{pwm.h@{pwm.h}!PWM\_RATE\_HZ@{PWM\_RATE\_HZ}}
+\index{PWM\_RATE\_HZ@{PWM\_RATE\_HZ}!pwm.h@{pwm.h}}
+\doxysubsubsection{\texorpdfstring{PWM\_RATE\_HZ}{PWM\_RATE\_HZ}}
+{\footnotesize\ttfamily \#define P\+W\+M\+\_\+\+R\+A\+T\+E\+\_\+\+HZ~( (float)\mbox{\hyperlink{pwm_8h_a3618ac44085984a3cbb613e798fdf50e}{C\+L\+O\+C\+K\+\_\+\+R\+A\+T\+E\+\_\+\+HZ}} / ( 1 $<$$<$ \mbox{\hyperlink{pwm_8h_af1c503c50e6eb1b5e6cfbc63f2abb747}{P\+W\+M\+\_\+\+B\+I\+TS}} ) )}
+
+
+
+Definition at line 21 of file pwm.\+h.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{pwm_8h_aadae3fe77e36cbf9643a22eeb99fb01e}\label{pwm_8h_aadae3fe77e36cbf9643a22eeb99fb01e}} 
+\index{pwm.h@{pwm.h}!PWM\_init@{PWM\_init}}
+\index{PWM\_init@{PWM\_init}!pwm.h@{pwm.h}}
+\doxysubsubsection{\texorpdfstring{PWM\_init()}{PWM\_init()}}
+{\footnotesize\ttfamily void P\+W\+M\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 63 of file pwm.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{pwm_8h_a6abc946e40a86c52f2c86095e783c5c1}\label{pwm_8h_a6abc946e40a86c52f2c86095e783c5c1}} 
+\index{pwm.h@{pwm.h}!PWM\_isr@{PWM\_isr}}
+\index{PWM\_isr@{PWM\_isr}!pwm.h@{pwm.h}}
+\doxysubsubsection{\texorpdfstring{PWM\_isr()}{PWM\_isr()}}
+{\footnotesize\ttfamily void P\+W\+M\+\_\+isr (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Regulator(mppt\+Sample\+Pt\+Shadow); //\+R\+DD
+
+Definition at line 134 of file pwm.\+c.
+
+Here is the call graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{pwm_8h_aa385b7b6c433b3fcef2917df62e2546d}\label{pwm_8h_aa385b7b6c433b3fcef2917df62e2546d}} 
+\index{pwm.h@{pwm.h}!PWM\_setFlTrim@{PWM\_setFlTrim}}
+\index{PWM\_setFlTrim@{PWM\_setFlTrim}!pwm.h@{pwm.h}}
+\doxysubsubsection{\texorpdfstring{PWM\_setFlTrim()}{PWM\_setFlTrim()}}
+{\footnotesize\ttfamily void P\+W\+M\+\_\+set\+Fl\+Trim (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}}}]{val }\end{DoxyParamCaption})}
+
+
+
+Definition at line 124 of file pwm.\+c.
+
+\mbox{\Hypertarget{pwm_8h_a8e7d8b2a837d2225cabeb7c8d90c962a}\label{pwm_8h_a8e7d8b2a837d2225cabeb7c8d90c962a}} 
+\index{pwm.h@{pwm.h}!PWM\_setMpptSamplePt@{PWM\_setMpptSamplePt}}
+\index{PWM\_setMpptSamplePt@{PWM\_setMpptSamplePt}!pwm.h@{pwm.h}}
+\doxysubsubsection{\texorpdfstring{PWM\_setMpptSamplePt()}{PWM\_setMpptSamplePt()}}
+{\footnotesize\ttfamily void P\+W\+M\+\_\+set\+Mppt\+Sample\+Pt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}}}]{val }\end{DoxyParamCaption})}
+
+
+
+Definition at line 89 of file pwm.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{pwm_8h_a1db4c50716bb5866682447af8b6333fc}\label{pwm_8h_a1db4c50716bb5866682447af8b6333fc}} 
+\index{pwm.h@{pwm.h}!PWM\_setVinLim@{PWM\_setVinLim}}
+\index{PWM\_setVinLim@{PWM\_setVinLim}!pwm.h@{pwm.h}}
+\doxysubsubsection{\texorpdfstring{PWM\_setVinLim()}{PWM\_setVinLim()}}
+{\footnotesize\ttfamily void P\+W\+M\+\_\+set\+Vin\+Lim (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{iqmath_8h_a590ba223075d3434749d8319848758d4}{Iq}}}]{val }\end{DoxyParamCaption})}
+
+
+
+Definition at line 116 of file pwm.\+c.
+

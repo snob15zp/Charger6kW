@@ -1,0 +1,254 @@
+\hypertarget{telem_8c}{}\doxysection{D\+:/user\+S\+S\+D/github/\+Charger6k\+W/\+M\+S\+P\+\_\+\+S\+T\+M\+\_\+9\+\_\+\+R\+D\+D\+\_\+plus\+M\+S\+P/\+M\+S\+P430/telem.c File Reference}
+\label{telem_8c}\index{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/telem.c@{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/telem.c}}
+{\ttfamily \#include \char`\"{}telem.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cfg.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}flash.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}util.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}meas.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}iqmath.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}comms.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}flag.\+h\char`\"{}}\newline
+Include dependency graph for telem.\+c\+:
+% FIG 0
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_telem_header__}{Telem\+Header\+\_\+}}
+\item 
+struct \mbox{\hyperlink{struct_telem__}{Telem\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{telem_8c_aa1b1c4b69906d210bfa04653f502ff0a}{T\+E\+L\+E\+M\+\_\+\+V\+A\+L\+I\+D\+\_\+\+S\+E\+C\+T\+O\+R\+\_\+\+M\+A\+R\+K\+ER}}~0x5\+A5A
+\item 
+\#define \mbox{\hyperlink{telem_8c_a6689ccfb646b1c8c0b6e2572475eeba6}{T\+E\+L\+E\+M\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+O\+F\+F\+S\+ET}}~2
+\item 
+\#define \mbox{\hyperlink{telem_8c_a50a00c580393c8ce9451bc447070d779}{T\+E\+L\+E\+M\+\_\+\+B\+L\+O\+C\+K\+N\+U\+M\+\_\+\+O\+F\+F\+S\+ET}}~\mbox{\hyperlink{telem_8c_a6689ccfb646b1c8c0b6e2572475eeba6}{T\+E\+L\+E\+M\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+O\+F\+F\+S\+ET}}
+\item 
+\#define \mbox{\hyperlink{telem_8c_a83dd5a6977a9f466a95bff2e4e150d3c}{T\+E\+L\+E\+M\+\_\+\+T\+I\+M\+E\+S\+T\+A\+M\+P\+\_\+\+O\+F\+F\+S\+ET}}~( \mbox{\hyperlink{telem_8c_a50a00c580393c8ce9451bc447070d779}{T\+E\+L\+E\+M\+\_\+\+B\+L\+O\+C\+K\+N\+U\+M\+\_\+\+O\+F\+F\+S\+ET}} + sizeof(unsigned int) )
+\item 
+\#define \mbox{\hyperlink{telem_8c_a405c9a7e8651cf815311ac5d7017c75e}{T\+E\+L\+E\+M\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+P\+E\+R\+I\+O\+D\+\_\+\+O\+F\+F\+S\+ET}}~( \mbox{\hyperlink{telem_8c_a83dd5a6977a9f466a95bff2e4e150d3c}{T\+E\+L\+E\+M\+\_\+\+T\+I\+M\+E\+S\+T\+A\+M\+P\+\_\+\+O\+F\+F\+S\+ET}} + sizeof(\mbox{\hyperlink{time_8h_acec39cfa27244239e16da42f602e2561}{Time}}) )
+\item 
+\#define \mbox{\hyperlink{telem_8c_a6457da75923f8c3da4cfd66c386c78d7}{T\+E\+L\+E\+M\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+B\+I\+T\+F\+I\+E\+L\+D\+\_\+\+O\+F\+F\+S\+ET}}~( \mbox{\hyperlink{telem_8c_a405c9a7e8651cf815311ac5d7017c75e}{T\+E\+L\+E\+M\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+P\+E\+R\+I\+O\+D\+\_\+\+O\+F\+F\+S\+ET}} + sizeof(\mbox{\hyperlink{telem_8h_a62d1369f951fac68a52ab9e679da3425}{T\+E\+L\+E\+M\+\_\+\+Sample\+Period}}) )
+\item 
+\#define \mbox{\hyperlink{telem_8c_aecd6a343831497e2e4f64e5969ccb24a}{T\+E\+L\+E\+M\+\_\+\+D\+A\+T\+A\+\_\+\+O\+F\+F\+S\+ET}}~( \mbox{\hyperlink{telem_8c_a6457da75923f8c3da4cfd66c386c78d7}{T\+E\+L\+E\+M\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+B\+I\+T\+F\+I\+E\+L\+D\+\_\+\+O\+F\+F\+S\+ET}} + sizeof(unsigned int) )
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct_telem_header__}{Telem\+Header\+\_\+}} \mbox{\hyperlink{telem_8c_ae1cc38158b7ecb18dc53a23ea8adb2d4}{Telem\+Header}}
+\item 
+typedef struct \mbox{\hyperlink{struct_telem__}{Telem\+\_\+}} \mbox{\hyperlink{telem_8c_afa0880dba2952aa7b13b48d1088827ff}{Telem}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{telem_8c_a9e8d8f21cd3d18b019ca4f80df69c445}{T\+E\+L\+E\+M\+\_\+find\+Current\+Sector}} ()
+\item 
+int \mbox{\hyperlink{telem_8c_aa0456be2674ea879444b1b68af7d4ed0}{T\+E\+L\+E\+M\+\_\+prepare\+Sector}} ()
+\item 
+void \mbox{\hyperlink{telem_8c_a765a0ddb13c4303947dea758a7da1d83}{T\+E\+L\+E\+M\+\_\+init}} ()
+\item 
+unsigned char \mbox{\hyperlink{telem_8c_afcecad1e90b89078978c36a101eb339f}{T\+E\+L\+E\+M\+\_\+get\+Status}} ()
+\item 
+int \mbox{\hyperlink{telem_8c_af109ff33f76498aa7ee0f5ab813ff486}{T\+E\+L\+E\+M\+\_\+is\+Full}} ()
+\item 
+void \mbox{\hyperlink{telem_8c_aac9422754b1b23e1d3a02e19d67e6c27}{T\+E\+L\+E\+M\+\_\+log\+If\+Period\+Elapsed}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const unsigned int \mbox{\hyperlink{telem_8c_aab27e41a9c78908127d9f5ff02b2fc4a}{T\+E\+L\+E\+M\+\_\+\+P\+E\+R\+I\+O\+D\+\_\+\+M\+U\+L\+T\+I\+P\+L\+I\+E\+RS}} \mbox{[}\mbox{\hyperlink{telem_8h_a9b9c1a043f4119d2a9251d9053a333b7}{T\+E\+L\+E\+M\+\_\+\+P\+E\+R\+I\+O\+D\+\_\+\+N\+UM}}\mbox{]}
+\item 
+\mbox{\hyperlink{telem_8c_afa0880dba2952aa7b13b48d1088827ff}{Telem}} \mbox{\hyperlink{telem_8c_a6fd299a2b5ffd5eed19a5e6e68607ec5}{telem}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{telem_8c_a50a00c580393c8ce9451bc447070d779}\label{telem_8c_a50a00c580393c8ce9451bc447070d779}} 
+\index{telem.c@{telem.c}!TELEM\_BLOCKNUM\_OFFSET@{TELEM\_BLOCKNUM\_OFFSET}}
+\index{TELEM\_BLOCKNUM\_OFFSET@{TELEM\_BLOCKNUM\_OFFSET}!telem.c@{telem.c}}
+\doxysubsubsection{\texorpdfstring{TELEM\_BLOCKNUM\_OFFSET}{TELEM\_BLOCKNUM\_OFFSET}}
+{\footnotesize\ttfamily \#define T\+E\+L\+E\+M\+\_\+\+B\+L\+O\+C\+K\+N\+U\+M\+\_\+\+O\+F\+F\+S\+ET~\mbox{\hyperlink{telem_8c_a6689ccfb646b1c8c0b6e2572475eeba6}{T\+E\+L\+E\+M\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+O\+F\+F\+S\+ET}}}
+
+
+
+Definition at line 43 of file telem.\+c.
+
+\mbox{\Hypertarget{telem_8c_aecd6a343831497e2e4f64e5969ccb24a}\label{telem_8c_aecd6a343831497e2e4f64e5969ccb24a}} 
+\index{telem.c@{telem.c}!TELEM\_DATA\_OFFSET@{TELEM\_DATA\_OFFSET}}
+\index{TELEM\_DATA\_OFFSET@{TELEM\_DATA\_OFFSET}!telem.c@{telem.c}}
+\doxysubsubsection{\texorpdfstring{TELEM\_DATA\_OFFSET}{TELEM\_DATA\_OFFSET}}
+{\footnotesize\ttfamily \#define T\+E\+L\+E\+M\+\_\+\+D\+A\+T\+A\+\_\+\+O\+F\+F\+S\+ET~( \mbox{\hyperlink{telem_8c_a6457da75923f8c3da4cfd66c386c78d7}{T\+E\+L\+E\+M\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+B\+I\+T\+F\+I\+E\+L\+D\+\_\+\+O\+F\+F\+S\+ET}} + sizeof(unsigned int) )}
+
+
+
+Definition at line 47 of file telem.\+c.
+
+\mbox{\Hypertarget{telem_8c_a6457da75923f8c3da4cfd66c386c78d7}\label{telem_8c_a6457da75923f8c3da4cfd66c386c78d7}} 
+\index{telem.c@{telem.c}!TELEM\_ENABLE\_BITFIELD\_OFFSET@{TELEM\_ENABLE\_BITFIELD\_OFFSET}}
+\index{TELEM\_ENABLE\_BITFIELD\_OFFSET@{TELEM\_ENABLE\_BITFIELD\_OFFSET}!telem.c@{telem.c}}
+\doxysubsubsection{\texorpdfstring{TELEM\_ENABLE\_BITFIELD\_OFFSET}{TELEM\_ENABLE\_BITFIELD\_OFFSET}}
+{\footnotesize\ttfamily \#define T\+E\+L\+E\+M\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+B\+I\+T\+F\+I\+E\+L\+D\+\_\+\+O\+F\+F\+S\+ET~( \mbox{\hyperlink{telem_8c_a405c9a7e8651cf815311ac5d7017c75e}{T\+E\+L\+E\+M\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+P\+E\+R\+I\+O\+D\+\_\+\+O\+F\+F\+S\+ET}} + sizeof(\mbox{\hyperlink{telem_8h_a62d1369f951fac68a52ab9e679da3425}{T\+E\+L\+E\+M\+\_\+\+Sample\+Period}}) )}
+
+
+
+Definition at line 46 of file telem.\+c.
+
+\mbox{\Hypertarget{telem_8c_a6689ccfb646b1c8c0b6e2572475eeba6}\label{telem_8c_a6689ccfb646b1c8c0b6e2572475eeba6}} 
+\index{telem.c@{telem.c}!TELEM\_HEADER\_OFFSET@{TELEM\_HEADER\_OFFSET}}
+\index{TELEM\_HEADER\_OFFSET@{TELEM\_HEADER\_OFFSET}!telem.c@{telem.c}}
+\doxysubsubsection{\texorpdfstring{TELEM\_HEADER\_OFFSET}{TELEM\_HEADER\_OFFSET}}
+{\footnotesize\ttfamily \#define T\+E\+L\+E\+M\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+O\+F\+F\+S\+ET~2}
+
+
+
+Definition at line 42 of file telem.\+c.
+
+\mbox{\Hypertarget{telem_8c_a405c9a7e8651cf815311ac5d7017c75e}\label{telem_8c_a405c9a7e8651cf815311ac5d7017c75e}} 
+\index{telem.c@{telem.c}!TELEM\_SAMPLE\_PERIOD\_OFFSET@{TELEM\_SAMPLE\_PERIOD\_OFFSET}}
+\index{TELEM\_SAMPLE\_PERIOD\_OFFSET@{TELEM\_SAMPLE\_PERIOD\_OFFSET}!telem.c@{telem.c}}
+\doxysubsubsection{\texorpdfstring{TELEM\_SAMPLE\_PERIOD\_OFFSET}{TELEM\_SAMPLE\_PERIOD\_OFFSET}}
+{\footnotesize\ttfamily \#define T\+E\+L\+E\+M\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+P\+E\+R\+I\+O\+D\+\_\+\+O\+F\+F\+S\+ET~( \mbox{\hyperlink{telem_8c_a83dd5a6977a9f466a95bff2e4e150d3c}{T\+E\+L\+E\+M\+\_\+\+T\+I\+M\+E\+S\+T\+A\+M\+P\+\_\+\+O\+F\+F\+S\+ET}} + sizeof(\mbox{\hyperlink{time_8h_acec39cfa27244239e16da42f602e2561}{Time}}) )}
+
+
+
+Definition at line 45 of file telem.\+c.
+
+\mbox{\Hypertarget{telem_8c_a83dd5a6977a9f466a95bff2e4e150d3c}\label{telem_8c_a83dd5a6977a9f466a95bff2e4e150d3c}} 
+\index{telem.c@{telem.c}!TELEM\_TIMESTAMP\_OFFSET@{TELEM\_TIMESTAMP\_OFFSET}}
+\index{TELEM\_TIMESTAMP\_OFFSET@{TELEM\_TIMESTAMP\_OFFSET}!telem.c@{telem.c}}
+\doxysubsubsection{\texorpdfstring{TELEM\_TIMESTAMP\_OFFSET}{TELEM\_TIMESTAMP\_OFFSET}}
+{\footnotesize\ttfamily \#define T\+E\+L\+E\+M\+\_\+\+T\+I\+M\+E\+S\+T\+A\+M\+P\+\_\+\+O\+F\+F\+S\+ET~( \mbox{\hyperlink{telem_8c_a50a00c580393c8ce9451bc447070d779}{T\+E\+L\+E\+M\+\_\+\+B\+L\+O\+C\+K\+N\+U\+M\+\_\+\+O\+F\+F\+S\+ET}} + sizeof(unsigned int) )}
+
+
+
+Definition at line 44 of file telem.\+c.
+
+\mbox{\Hypertarget{telem_8c_aa1b1c4b69906d210bfa04653f502ff0a}\label{telem_8c_aa1b1c4b69906d210bfa04653f502ff0a}} 
+\index{telem.c@{telem.c}!TELEM\_VALID\_SECTOR\_MARKER@{TELEM\_VALID\_SECTOR\_MARKER}}
+\index{TELEM\_VALID\_SECTOR\_MARKER@{TELEM\_VALID\_SECTOR\_MARKER}!telem.c@{telem.c}}
+\doxysubsubsection{\texorpdfstring{TELEM\_VALID\_SECTOR\_MARKER}{TELEM\_VALID\_SECTOR\_MARKER}}
+{\footnotesize\ttfamily \#define T\+E\+L\+E\+M\+\_\+\+V\+A\+L\+I\+D\+\_\+\+S\+E\+C\+T\+O\+R\+\_\+\+M\+A\+R\+K\+ER~0x5\+A5A}
+
+
+
+Definition at line 40 of file telem.\+c.
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{telem_8c_afa0880dba2952aa7b13b48d1088827ff}\label{telem_8c_afa0880dba2952aa7b13b48d1088827ff}} 
+\index{telem.c@{telem.c}!Telem@{Telem}}
+\index{Telem@{Telem}!telem.c@{telem.c}}
+\doxysubsubsection{\texorpdfstring{Telem}{Telem}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_telem__}{Telem\+\_\+}} \mbox{\hyperlink{telem_8c_afa0880dba2952aa7b13b48d1088827ff}{Telem}}}
+
+\mbox{\Hypertarget{telem_8c_ae1cc38158b7ecb18dc53a23ea8adb2d4}\label{telem_8c_ae1cc38158b7ecb18dc53a23ea8adb2d4}} 
+\index{telem.c@{telem.c}!TelemHeader@{TelemHeader}}
+\index{TelemHeader@{TelemHeader}!telem.c@{telem.c}}
+\doxysubsubsection{\texorpdfstring{TelemHeader}{TelemHeader}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_telem_header__}{Telem\+Header\+\_\+}} \mbox{\hyperlink{telem_8c_ae1cc38158b7ecb18dc53a23ea8adb2d4}{Telem\+Header}}}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{telem_8c_a9e8d8f21cd3d18b019ca4f80df69c445}\label{telem_8c_a9e8d8f21cd3d18b019ca4f80df69c445}} 
+\index{telem.c@{telem.c}!TELEM\_findCurrentSector@{TELEM\_findCurrentSector}}
+\index{TELEM\_findCurrentSector@{TELEM\_findCurrentSector}!telem.c@{telem.c}}
+\doxysubsubsection{\texorpdfstring{TELEM\_findCurrentSector()}{TELEM\_findCurrentSector()}}
+{\footnotesize\ttfamily void T\+E\+L\+E\+M\+\_\+find\+Current\+Sector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{telem_8c_afcecad1e90b89078978c36a101eb339f}\label{telem_8c_afcecad1e90b89078978c36a101eb339f}} 
+\index{telem.c@{telem.c}!TELEM\_getStatus@{TELEM\_getStatus}}
+\index{TELEM\_getStatus@{TELEM\_getStatus}!telem.c@{telem.c}}
+\doxysubsubsection{\texorpdfstring{TELEM\_getStatus()}{TELEM\_getStatus()}}
+{\footnotesize\ttfamily unsigned char T\+E\+L\+E\+M\+\_\+get\+Status (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 175 of file telem.\+c.
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{telem_8c_a765a0ddb13c4303947dea758a7da1d83}\label{telem_8c_a765a0ddb13c4303947dea758a7da1d83}} 
+\index{telem.c@{telem.c}!TELEM\_init@{TELEM\_init}}
+\index{TELEM\_init@{TELEM\_init}!telem.c@{telem.c}}
+\doxysubsubsection{\texorpdfstring{TELEM\_init()}{TELEM\_init()}}
+{\footnotesize\ttfamily void T\+E\+L\+E\+M\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 88 of file telem.\+c.
+
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{telem_8c_af109ff33f76498aa7ee0f5ab813ff486}\label{telem_8c_af109ff33f76498aa7ee0f5ab813ff486}} 
+\index{telem.c@{telem.c}!TELEM\_isFull@{TELEM\_isFull}}
+\index{TELEM\_isFull@{TELEM\_isFull}!telem.c@{telem.c}}
+\doxysubsubsection{\texorpdfstring{TELEM\_isFull()}{TELEM\_isFull()}}
+{\footnotesize\ttfamily int T\+E\+L\+E\+M\+\_\+is\+Full (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 180 of file telem.\+c.
+
+\mbox{\Hypertarget{telem_8c_aac9422754b1b23e1d3a02e19d67e6c27}\label{telem_8c_aac9422754b1b23e1d3a02e19d67e6c27}} 
+\index{telem.c@{telem.c}!TELEM\_logIfPeriodElapsed@{TELEM\_logIfPeriodElapsed}}
+\index{TELEM\_logIfPeriodElapsed@{TELEM\_logIfPeriodElapsed}!telem.c@{telem.c}}
+\doxysubsubsection{\texorpdfstring{TELEM\_logIfPeriodElapsed()}{TELEM\_logIfPeriodElapsed()}}
+{\footnotesize\ttfamily void T\+E\+L\+E\+M\+\_\+log\+If\+Period\+Elapsed (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 414 of file telem.\+c.
+
+Here is the call graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{telem_8c_aa0456be2674ea879444b1b68af7d4ed0}\label{telem_8c_aa0456be2674ea879444b1b68af7d4ed0}} 
+\index{telem.c@{telem.c}!TELEM\_prepareSector@{TELEM\_prepareSector}}
+\index{TELEM\_prepareSector@{TELEM\_prepareSector}!telem.c@{telem.c}}
+\doxysubsubsection{\texorpdfstring{TELEM\_prepareSector()}{TELEM\_prepareSector()}}
+{\footnotesize\ttfamily int T\+E\+L\+E\+M\+\_\+prepare\+Sector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{telem_8c_a6fd299a2b5ffd5eed19a5e6e68607ec5}\label{telem_8c_a6fd299a2b5ffd5eed19a5e6e68607ec5}} 
+\index{telem.c@{telem.c}!telem@{telem}}
+\index{telem@{telem}!telem.c@{telem.c}}
+\doxysubsubsection{\texorpdfstring{telem}{telem}}
+{\footnotesize\ttfamily \mbox{\hyperlink{telem_8c_afa0880dba2952aa7b13b48d1088827ff}{Telem}} telem}
+
+
+
+Definition at line 83 of file telem.\+c.
+
+\mbox{\Hypertarget{telem_8c_aab27e41a9c78908127d9f5ff02b2fc4a}\label{telem_8c_aab27e41a9c78908127d9f5ff02b2fc4a}} 
+\index{telem.c@{telem.c}!TELEM\_PERIOD\_MULTIPLIERS@{TELEM\_PERIOD\_MULTIPLIERS}}
+\index{TELEM\_PERIOD\_MULTIPLIERS@{TELEM\_PERIOD\_MULTIPLIERS}!telem.c@{telem.c}}
+\doxysubsubsection{\texorpdfstring{TELEM\_PERIOD\_MULTIPLIERS}{TELEM\_PERIOD\_MULTIPLIERS}}
+{\footnotesize\ttfamily const unsigned int T\+E\+L\+E\+M\+\_\+\+P\+E\+R\+I\+O\+D\+\_\+\+M\+U\+L\+T\+I\+P\+L\+I\+E\+RS\mbox{[}\mbox{\hyperlink{telem_8h_a9b9c1a043f4119d2a9251d9053a333b7}{T\+E\+L\+E\+M\+\_\+\+P\+E\+R\+I\+O\+D\+\_\+\+N\+UM}}\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= }
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    200 / \mbox{\hyperlink{telem_8h_ad177bed3c93b2d3bb888d703b65e385e}{TELEM\_BASE\_PERIOD\_MS}},}
+\DoxyCodeLine{    ( 1000 / \mbox{\hyperlink{telem_8h_ad177bed3c93b2d3bb888d703b65e385e}{TELEM\_BASE\_PERIOD\_MS}}),}
+\DoxyCodeLine{    10 * ( 1000 / \mbox{\hyperlink{telem_8h_ad177bed3c93b2d3bb888d703b65e385e}{TELEM\_BASE\_PERIOD\_MS}}),}
+\DoxyCodeLine{    60 * ( 1000 / \mbox{\hyperlink{telem_8h_ad177bed3c93b2d3bb888d703b65e385e}{TELEM\_BASE\_PERIOD\_MS}}),}
+\DoxyCodeLine{    10 * 60 * ( 1000 / \mbox{\hyperlink{telem_8h_ad177bed3c93b2d3bb888d703b65e385e}{TELEM\_BASE\_PERIOD\_MS}}),}
+\DoxyCodeLine{    60 * 60 * ( 1000 / \mbox{\hyperlink{telem_8h_ad177bed3c93b2d3bb888d703b65e385e}{TELEM\_BASE\_PERIOD\_MS}}) }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line 49 of file telem.\+c.
+

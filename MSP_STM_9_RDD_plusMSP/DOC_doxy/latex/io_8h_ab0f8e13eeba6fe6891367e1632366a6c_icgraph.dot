@@ -1,0 +1,39 @@
+digraph "IO_getIsSlave"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="IO_getIsSlave",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="CTRL_calcOutVoltSetpoints",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ctrl_8h.html#a179e6efb5839fd58f47e482d08b4dd36",tooltip=" "];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="CTRL_init",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ctrl_8h.html#a4a0290966c5015c292041efb98500d0c",tooltip=" "];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="MAIN_resetAllAndStart",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_m_s_p_8h.html#a942f7a7cb88a9446f3b8486747e3e092",tooltip=" "];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="main",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe",tooltip=" "];
+  Node4 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="mainMSPinit",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_m_s_p_8h.html#a45dbb8bcf720b1d542eca135e07f96f8",tooltip=" "];
+  Node3 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="MAIN_resetRemoteCfg",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_m_s_p_8h.html#ae8bc7ddee5bfed380fef21b8f7baa4e7",tooltip=" "];
+  Node7 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="COMMS_receive",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$comms_8h.html#a8e6604b958225317069baa073a4457a6",tooltip=" "];
+  Node8 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node8 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="mainMSPloop",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_m_s_p_8h.html#a6f9ad05474f475b7d9f0827da5484fd0",tooltip=" "];
+  Node2 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="CTRL_checkBulkFloat",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ctrl_8h.html#a61c3c1d3b657a30771dda4744901728a",tooltip=" "];
+  Node1 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node11 [label="CTRL_getStatus",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ctrl_8h.html#aba9e453bd910ac5c262baa6206a23849",tooltip=" "];
+  Node11 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node12 [label="lcd_loadTelemetry",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$lcd_8h.html#a533b144b3ac324ba05a546f78e62548e",tooltip=" "];
+  Node12 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node13 [label="uart_receive",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$usci_8h.html#a64bd3fadf45c225d0190b6718ef2573d",tooltip=" "];
+  Node13 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node13 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node14 [label="CTRL_setOutVoltCmd",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ctrl_8h.html#a57614fc72bc43ea04d77e9a0cd1d8194",tooltip=" "];
+  Node14 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+}

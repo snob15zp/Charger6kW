@@ -1,0 +1,12 @@
+digraph "CTRL_calcOutVoltSetpoints"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="CTRL_calcOutVoltSetpoints",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="IO_getIsSlave",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$io_8c.html#ad44f90f9147018b5caeeef6f99866118",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="UTIL_decimalToBcd",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$util_8c.html#ae8814b00b784005b7b466157d9ded603",tooltip=" "];
+}

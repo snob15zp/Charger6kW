@@ -1,0 +1,68 @@
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/adc_msp.h" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/adc_msp.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'debug\&.h'\fP
+.br
+\fC#include 'meas\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBADC_READANDFILTER\fP(cMeas,  cAdcValue,  doUpdate)"
+.br
+.ti -1c
+.RI "#define \fBADC_READANDFILTER_BIDIR\fP(cMeas,  cAdcValue,  doUpdate)"
+.br
+.ti -1c
+.RI "#define \fBADC_STARTIFDONE\fP   if ( !( ADC12CTL1 & ADC12BUSY ) ) ADC12CTL0 |= ADC12SC"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBADC_init\fP ()"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define ADC_READANDFILTER(cMeas, cAdcValue, doUpdate)"
+\fBValue:\fP
+.PP
+.nf
+ cMeas\&.valPreFilter = IQ_mpy( cAdcValue + cMeas\&.offset, cMeas\&.scale ); \
+    if ( doUpdate ) cMeas\&.val = MEAS_filter( cMeas\&.val, cMeas\&.valPreFilter );
+.fi
+.PP
+Definition at line 30 of file adc_msp\&.h\&.
+.SS "#define ADC_READANDFILTER_BIDIR(cMeas, cAdcValue, doUpdate)"
+\fBValue:\fP
+.PP
+.nf
+   { \
+        if(cAdcValue == momentValue\&.iInSensor)   \
+            cMeas\&.valPreFilter = IQ_mpy( (1<<11) - cAdcValue + cMeas\&.offset, cMeas\&.scale ); \
+        else cMeas\&.valPreFilter = IQ_mpy( cAdcValue - (1<<11) + cMeas\&.offset, cMeas\&.scale ); \
+        if ( doUpdate ) cMeas\&.val = MEAS_filter( cMeas\&.val, cMeas\&.valPreFilter ); \
+    }
+.fi
+.PP
+Definition at line 61 of file adc_msp\&.h\&.
+.SS "#define ADC_STARTIFDONE   if ( !( ADC12CTL1 & ADC12BUSY ) ) ADC12CTL0 |= ADC12SC"
+
+.PP
+Definition at line 72 of file adc_msp\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "void ADC_init ()"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.

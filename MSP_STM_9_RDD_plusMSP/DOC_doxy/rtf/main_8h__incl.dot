@@ -1,0 +1,11 @@
+digraph "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/main.h"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="D:/userSSD/github/Charger6k\lW/MSP_STM_9_RDD_plusMSP\l/MSP430/main.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="debug.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$debug_8h.html",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="variant.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$variant_8h.html",tooltip=" "];
+}

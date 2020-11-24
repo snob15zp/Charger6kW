@@ -1,0 +1,234 @@
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/protocol.h" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/protocol.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <inttypes\&.h>\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "union \fBeventFlags_t\fP"
+.br
+.ti -1c
+.RI "union \fBstatus_t\fP"
+.br
+.ti -1c
+.RI "union \fBtelemetry_t\fP"
+.br
+.ti -1c
+.RI "struct \fBcalibration_t\fP"
+.br
+.ti -1c
+.RI "union \fBfactoryConfig_t\fP"
+.br
+.ti -1c
+.RI "struct \fBeventParams_t\fP"
+.br
+.ti -1c
+.RI "struct \fBeventParams_enable_t\fP"
+.br
+.ti -1c
+.RI "struct \fBeventParams_genset_t\fP"
+.br
+.ti -1c
+.RI "struct \fBeventParams_missing_t\fP"
+.br
+.ti -1c
+.RI "struct \fBcommsConfig_t\fP"
+.br
+.ti -1c
+.RI "struct \fBsetPointsConfig_t\fP"
+.br
+.ti -1c
+.RI "union \fBuserConfig_t\fP"
+.br
+.ti -1c
+.RI "union \fBeventConfig_t\fP"
+.br
+.ti -1c
+.RI "union \fBsysInfo_t\fP"
+.br
+.ti -1c
+.RI "union \fBcommand_t\fP"
+.br
+.ti -1c
+.RI "union \fBpassword_t\fP"
+.br
+.ti -1c
+.RI "union \fBsetTime_t\fP"
+.br
+.ti -1c
+.RI "union \fBmiscState_t\fP"
+.br
+.ti -1c
+.RI "union \fBpacketIdentifier_t\fP"
+.br
+.ti -1c
+.RI "struct \fBpersistentStorage_t\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBVERSION_TELEMETRY\fP   1"
+.br
+.ti -1c
+.RI "#define \fBVERSION_FACTORY\fP   1"
+.br
+.ti -1c
+.RI "#define \fBVERSION_USER\fP   1"
+.br
+.ti -1c
+.RI "#define \fBVERSION_EVENTS\fP   1"
+.br
+.ti -1c
+.RI "#define \fBVERSION_SYS_INFO\fP   1"
+.br
+.ti -1c
+.RI "#define \fBVERSION_COMMAND\fP   1"
+.br
+.ti -1c
+.RI "#define \fBVERSION_PASSWORD\fP   1"
+.br
+.ti -1c
+.RI "#define \fBVERSION_SET_TIME\fP   1"
+.br
+.ti -1c
+.RI "#define \fBVERSION_MISC_STATE\fP   1"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef enum \fBpacket_Type_\fP \fBpacket_Type\fP"
+.br
+.ti -1c
+.RI "typedef enum \fBcommand_Code_\fP \fBcommand_Code\fP"
+.br
+.ti -1c
+.RI "typedef enum \fBerror_Code_\fP \fBerror_Code\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBpacket_Type_\fP { \fBTYPE_TELEMETRY\fP = 0x00, \fBTYPE_FACTORY\fP = 0x01, \fBTYPE_USER\fP = 0x02, \fBTYPE_EVENTS\fP = 0x03, \fBTYPE_SYS_INFO\fP = 0x04, \fBTYPE_COMMAND\fP = 0x05, \fBTYPE_PASSWORD\fP = 0x06, \fBTYPE_SET_TIME\fP = 0x07, \fBTYPE_MISC_STATE\fP = 0x08 }"
+.br
+.ti -1c
+.RI "enum \fBcommand_Code_\fP { \fBCOMMAND_RESET\fP = 0x0000, \fBCOMMAND_ENABLE_OUTPUT\fP = 0x0001, \fBRESPONSE_STARTUP\fP = 0xFF00, \fBRESPONSE_ERROR\fP = 0xFF01 }"
+.br
+.ti -1c
+.RI "enum \fBerror_Code_\fP { \fBERROR_PACKET_TYPE\fP = 0x00, \fBERROR_VERSION\fP = 0x01 }"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define VERSION_COMMAND   1"
+
+.PP
+Definition at line 246 of file protocol\&.h\&.
+.SS "#define VERSION_EVENTS   1"
+
+.PP
+Definition at line 244 of file protocol\&.h\&.
+.SS "#define VERSION_FACTORY   1"
+
+.PP
+Definition at line 242 of file protocol\&.h\&.
+.SS "#define VERSION_MISC_STATE   1"
+
+.PP
+Definition at line 249 of file protocol\&.h\&.
+.SS "#define VERSION_PASSWORD   1"
+
+.PP
+Definition at line 247 of file protocol\&.h\&.
+.SS "#define VERSION_SET_TIME   1"
+
+.PP
+Definition at line 248 of file protocol\&.h\&.
+.SS "#define VERSION_SYS_INFO   1"
+
+.PP
+Definition at line 245 of file protocol\&.h\&.
+.SS "#define VERSION_TELEMETRY   1"
+
+.PP
+Definition at line 241 of file protocol\&.h\&.
+.SS "#define VERSION_USER   1"
+
+.PP
+Definition at line 243 of file protocol\&.h\&.
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef enum \fBcommand_Code_\fP \fBcommand_Code\fP"
+
+.SS "typedef enum \fBerror_Code_\fP \fBerror_Code\fP"
+
+.SS "typedef enum \fBpacket_Type_\fP \fBpacket_Type\fP"
+
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBcommand_Code_\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICOMMAND_RESET \fP\fP
+.TP
+\fB\fICOMMAND_ENABLE_OUTPUT \fP\fP
+.TP
+\fB\fIRESPONSE_STARTUP \fP\fP
+.TP
+\fB\fIRESPONSE_ERROR \fP\fP
+.PP
+Definition at line 264 of file protocol\&.h\&.
+.SS "enum \fBerror_Code_\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIERROR_PACKET_TYPE \fP\fP
+.TP
+\fB\fIERROR_VERSION \fP\fP
+.PP
+Definition at line 276 of file protocol\&.h\&.
+.SS "enum \fBpacket_Type_\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fITYPE_TELEMETRY \fP\fP
+.TP
+\fB\fITYPE_FACTORY \fP\fP
+.TP
+\fB\fITYPE_USER \fP\fP
+.TP
+\fB\fITYPE_EVENTS \fP\fP
+.TP
+\fB\fITYPE_SYS_INFO \fP\fP
+.TP
+\fB\fITYPE_COMMAND \fP\fP
+.TP
+\fB\fITYPE_PASSWORD \fP\fP
+.TP
+\fB\fITYPE_SET_TIME \fP\fP
+.TP
+\fB\fITYPE_MISC_STATE \fP\fP
+.PP
+Definition at line 251 of file protocol\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.

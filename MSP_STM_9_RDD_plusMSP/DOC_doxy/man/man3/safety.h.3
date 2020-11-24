@@ -1,0 +1,166 @@
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/safety.h" 3 "Wed Nov 25 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/safety.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'flag\&.h'\fP
+.br
+\fC#include 'meas\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBSAFETY_SD_BIT_PVCURR_NEG\fP   ( \fBFLAG_CODE_PVCURR_NEG_SD\fP	\- \fBFLAG_CODE_FIRST_SD\fP )"
+.br
+.ti -1c
+.RI "#define \fBSAFETY_SD_BIT_PVCURR_POS\fP   ( \fBFLAG_CODE_PVCURR_POS_SD\fP	\- \fBFLAG_CODE_FIRST_SD\fP )"
+.br
+.ti -1c
+.RI "#define \fBSAFETY_SD_BIT_PVVOLT\fP   ( \fBFLAG_CODE_PVVOLT_SD\fP		\- \fBFLAG_CODE_FIRST_SD\fP )"
+.br
+.ti -1c
+.RI "#define \fBSAFETY_SD_BIT_OUTCURR_POS\fP   ( \fBFLAG_CODE_OUTCURR_POS_SD\fP	\- \fBFLAG_CODE_FIRST_SD\fP )"
+.br
+.ti -1c
+.RI "#define \fBSAFETY_SD_BIT_OUTVOLT\fP   ( \fBFLAG_CODE_OUTVOLT_SD\fP		\- \fBFLAG_CODE_FIRST_SD\fP )"
+.br
+.ti -1c
+.RI "#define \fBSAFETY_SD_BIT_CASETMP\fP   ( \fBFLAG_CODE_CASETMP_SD\fP		\- \fBFLAG_CODE_FIRST_SD\fP )"
+.br
+.ti -1c
+.RI "#define \fBSAFETY_SD_BIT_FAN\fP   ( \fBFLAG_CODE_FAN_SD\fP			\- \fBFLAG_CODE_FIRST_SD\fP )"
+.br
+.ti -1c
+.RI "#define \fBSAFETY_SD_BIT_PANEL_MISSING\fP   ( \fBFLAG_CODE_PANEL_MISSING\fP   \- \fBFLAG_CODE_FIRST_SD\fP )"
+.br
+.ti -1c
+.RI "#define \fBSAFETY_NUM_SD_REASONS\fP   (\fBSAFETY_SD_BIT_FAN\fP + 1)"
+.br
+.ti -1c
+.RI "#define \fBSAFETY_CASETMP_LIMIT\fP   (120\&.0 / \fBMEAS_CASETEMPR_BASE\fP)"
+.br
+.ti -1c
+.RI "#define \fBSAFETY_CASETMP_RESET\fP   (80\&.0 / \fBMEAS_CASETEMPR_BASE\fP)"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBSAFETY_init\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSAFETY_setLimitsMV\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSAFETY_setLimitsHV\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSAFETY_tick\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSAFETY_monitor\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSAFETY_fanShutdown\fP (void)"
+.br
+.ti -1c
+.RI "unsigned char \fBSAFETY_getStatus\fP (void)"
+.br
+.ti -1c
+.RI "int \fBSAFETY_isShutdown\fP (int reason)"
+.br
+.ti -1c
+.RI "void \fBSAFETY_toggleRedLed\fP (void)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define SAFETY_CASETMP_LIMIT   (120\&.0 / \fBMEAS_CASETEMPR_BASE\fP)"
+
+.PP
+Definition at line 34 of file safety\&.h\&.
+.SS "#define SAFETY_CASETMP_RESET   (80\&.0 / \fBMEAS_CASETEMPR_BASE\fP)"
+
+.PP
+Definition at line 35 of file safety\&.h\&.
+.SS "#define SAFETY_NUM_SD_REASONS   (\fBSAFETY_SD_BIT_FAN\fP + 1)"
+
+.PP
+Definition at line 28 of file safety\&.h\&.
+.SS "#define SAFETY_SD_BIT_CASETMP   ( \fBFLAG_CODE_CASETMP_SD\fP		\- \fBFLAG_CODE_FIRST_SD\fP )"
+
+.PP
+Definition at line 24 of file safety\&.h\&.
+.SS "#define SAFETY_SD_BIT_FAN   ( \fBFLAG_CODE_FAN_SD\fP			\- \fBFLAG_CODE_FIRST_SD\fP )"
+
+.PP
+Definition at line 25 of file safety\&.h\&.
+.SS "#define SAFETY_SD_BIT_OUTCURR_POS   ( \fBFLAG_CODE_OUTCURR_POS_SD\fP	\- \fBFLAG_CODE_FIRST_SD\fP )"
+
+.PP
+Definition at line 22 of file safety\&.h\&.
+.SS "#define SAFETY_SD_BIT_OUTVOLT   ( \fBFLAG_CODE_OUTVOLT_SD\fP		\- \fBFLAG_CODE_FIRST_SD\fP )"
+
+.PP
+Definition at line 23 of file safety\&.h\&.
+.SS "#define SAFETY_SD_BIT_PANEL_MISSING   ( \fBFLAG_CODE_PANEL_MISSING\fP   \- \fBFLAG_CODE_FIRST_SD\fP )"
+
+.PP
+Definition at line 26 of file safety\&.h\&.
+.SS "#define SAFETY_SD_BIT_PVCURR_NEG   ( \fBFLAG_CODE_PVCURR_NEG_SD\fP	\- \fBFLAG_CODE_FIRST_SD\fP )"
+
+.PP
+Definition at line 19 of file safety\&.h\&.
+.SS "#define SAFETY_SD_BIT_PVCURR_POS   ( \fBFLAG_CODE_PVCURR_POS_SD\fP	\- \fBFLAG_CODE_FIRST_SD\fP )"
+
+.PP
+Definition at line 20 of file safety\&.h\&.
+.SS "#define SAFETY_SD_BIT_PVVOLT   ( \fBFLAG_CODE_PVVOLT_SD\fP		\- \fBFLAG_CODE_FIRST_SD\fP )"
+
+.PP
+Definition at line 21 of file safety\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "void SAFETY_fanShutdown (void)"
+
+.PP
+Definition at line 285 of file safety\&.c\&.
+.SS "unsigned char SAFETY_getStatus (void)"
+
+.PP
+Definition at line 290 of file safety\&.c\&.
+.SS "void SAFETY_init (void)"
+
+.PP
+Definition at line 71 of file safety\&.c\&.
+.SS "int SAFETY_isShutdown (int reason)"
+
+.PP
+Definition at line 302 of file safety\&.c\&.
+.SS "void SAFETY_monitor (void)"
+
+.PP
+Definition at line 195 of file safety\&.c\&.
+.SS "void SAFETY_setLimitsHV (void)"
+
+.PP
+Definition at line 95 of file safety\&.c\&.
+.SS "void SAFETY_setLimitsMV (void)"
+
+.PP
+Definition at line 84 of file safety\&.c\&.
+.SS "void SAFETY_tick (void)"
+RDDtemp \fBIO_disablePwmCtrl()\fP;
+.PP
+Definition at line 106 of file safety\&.c\&.
+.SS "void SAFETY_toggleRedLed (void)"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.
