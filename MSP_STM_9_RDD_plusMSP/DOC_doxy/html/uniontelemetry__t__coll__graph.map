@@ -1,0 +1,5 @@
+<map id="telemetry_t" name="telemetry_t">
+<area shape="rect" id="node1" title=" " alt="" coords="50,95,137,121"/>
+<area shape="rect" id="node2" href="$unionstatus__t.html" title=" " alt="" coords="5,5,75,32"/>
+<area shape="rect" id="node3" href="$unionevent_flags__t.html" title=" " alt="" coords="99,5,194,32"/>
+</map>

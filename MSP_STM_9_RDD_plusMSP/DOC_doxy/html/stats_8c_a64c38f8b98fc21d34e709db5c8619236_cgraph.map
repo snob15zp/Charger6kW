@@ -1,0 +1,13 @@
+<map id="STATS_updateAll" name="STATS_updateAll">
+<area shape="rect" id="node1" title=" " alt="" coords="5,208,129,235"/>
+<area shape="rect" id="node2" href="$flash_8c.html#af9cfc9e7bb2bac30c09b6cfdfd6546fa" title=" " alt="" coords="217,5,320,32"/>
+<area shape="rect" id="node3" href="$meas_8c.html#a4eddadca6822d26b55b25a6887b8d511" title=" " alt="" coords="205,56,332,83"/>
+<area shape="rect" id="node5" href="$stats_8h.html#a3d786b32bc8a10bebde95c765cd5ef7f" title=" " alt="" coords="177,107,360,133"/>
+<area shape="rect" id="node6" href="$stats_8h.html#a5b58edce7e9e44e20539ae1f32938088" title=" " alt="" coords="197,157,341,184"/>
+<area shape="rect" id="node7" href="$stats_8c.html#a5010c6fd4793e2b469cade2608651f84" title=" " alt="" coords="196,208,341,235"/>
+<area shape="rect" id="node8" href="$stats_8c.html#a08a4ea6c05e927743f857607b8f503a3" title=" " alt="" coords="197,259,340,285"/>
+<area shape="rect" id="node9" href="$stats_8h.html#a2a89f89c9d006a05ba79ddc1577dbdda" title=" " alt="" coords="193,309,344,336"/>
+<area shape="rect" id="node10" href="$stats_8h.html#a545b55887096577a8c8829eeaf74bb65" title=" " alt="" coords="202,360,335,387"/>
+<area shape="rect" id="node11" href="$time_8c.html#a1ca2585daaf0d210adde4129c7454bee" title=" " alt="" coords="230,411,307,437"/>
+<area shape="rect" id="node4" href="$iqmath_8c.html#a3602eaafd15397aa969429a8f6a375fb" title="#include &lt;msp430x24x.h&gt;" alt="" coords="408,56,475,83"/>
+</map>

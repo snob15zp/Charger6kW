@@ -1,0 +1,7 @@
+<map id="COMMS_startFlashRec" name="COMMS_startFlashRec">
+<area shape="rect" id="node1" title=" " alt="" coords="5,56,165,83"/>
+<area shape="rect" id="node2" href="$comms_8c.html#aa032b51f936c8734b65d6448a56dd24f" title=" " alt="" coords="213,5,399,32"/>
+<area shape="rect" id="node3" href="$flash_8c.html#af9cfc9e7bb2bac30c09b6cfdfd6546fa" title=" " alt="" coords="255,56,357,83"/>
+<area shape="rect" id="node4" href="$flash_8c.html#a66ab61193d7e18468f038e4f4f06050c" title=" " alt="" coords="262,107,350,133"/>
+<area shape="rect" id="node5" href="$spi_8c.html#ab2ced082837f5b2e10920fab90d3e025" title=" " alt="" coords="447,107,553,133"/>
+</map>

@@ -1,0 +1,20 @@
+<map id="lcd_init" name="lcd_init">
+<area shape="rect" id="node1" title=" " alt="" coords="5,355,68,382"/>
+<area shape="rect" id="node2" href="$flash_8c.html#a0e297d230d5f834b4eea43dc1792e113" title=" " alt="" coords="342,228,455,255"/>
+<area shape="rect" id="node3" href="$lcd_8c.html#a80e17ac2bfba654abd5afa1399568d65" title=" " alt="" coords="126,51,282,78"/>
+<area shape="rect" id="node4" href="$lcd_8c.html#a191deb390d669499157204c558d04ce7" title=" " alt="" coords="131,102,277,128"/>
+<area shape="rect" id="node5" href="$lcd_8c.html#a86059f000b3412dfc6261ada2b1e06ab" title=" " alt="" coords="135,152,273,179"/>
+<area shape="rect" id="node6" href="$lcd_8c.html#a2a6f77d8ae56841d26d03350661fad89" title=" " alt="" coords="126,203,282,230"/>
+<area shape="rect" id="node7" href="$lcd_8c.html#a4e7740a619bd34dfd5821838c6dd4614" title=" " alt="" coords="123,254,285,280"/>
+<area shape="rect" id="node8" href="$lcd_8c.html#a7d87bacdec3fe9cfd496ade79c856d5e" title=" " alt="" coords="116,304,292,331"/>
+<area shape="rect" id="node9" href="$lcd_8c.html#aed9e3f7992882b9538f3390a82ee7376" title=" " alt="" coords="116,355,292,382"/>
+<area shape="rect" id="node10" href="$lcd_8c.html#a62c5ebd8284b07ad2557902a32fbfe37" title=" " alt="" coords="147,406,261,432"/>
+<area shape="rect" id="node11" href="$lcd_8c.html#aad05c1a0d08f3cd19f747c3cb525e390" title=" " alt="" coords="132,456,276,483"/>
+<area shape="rect" id="node12" href="$lcd_8c.html#a236f1fa7f21fdb5389dcc384faea2114" title=" " alt="" coords="151,507,257,534"/>
+<area shape="rect" id="node15" href="$lcd_8c.html#aea1ffc5bf4fc5a9436477382056bd9fc" title=" " alt="" coords="131,558,277,584"/>
+<area shape="rect" id="node16" href="$lcd_8c.html#ac8a4dfbf9c9f3138367cc1ffbf92e2f8" title=" " alt="" coords="122,609,286,650"/>
+<area shape="rect" id="node17" href="$lcd_8c.html#a73d5456aec2d1dd495da5dbca87f7aad" title=" " alt="" coords="124,675,284,702"/>
+<area shape="rect" id="node18" href="$lcd_8c.html#a4debff6792eff95c5ca13a58ba94807c" title=" " alt="" coords="117,726,291,752"/>
+<area shape="rect" id="node13" href="$crc16_8c.html#a2783e18fd5b314e656d988aed16c1116" title=" " alt="" coords="340,507,457,534"/>
+<area shape="rect" id="node14" href="$crc16_8c.html#aa3f82d8f012e4928bc40a18a6e66e161" title=" " alt="" coords="505,507,647,534"/>
+</map>
