@@ -1,8 +1,9 @@
-.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/io.h" 3 "Thu Nov 26 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/io.h" 3 "Fri Nov 27 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/io.h
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/io.h \- Discrete I / O control\&.  
+
 .SH SYNOPSIS
 .br
 .PP
@@ -151,15 +152,19 @@ D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/io.h
 .ti -1c
 .RI "void \fBIO_setFanDutyCycle\fP (unsigned int fanDuty)"
 .br
+.RI "Limits fanDuty\&. "
 .ti -1c
 .RI "void \fBIO_fanSenseSpeed\fP (void)"
 .br
+.RI "program counter of edges "
 .ti -1c
 .RI "void \fBIO_fanSetSpeed\fP (void)"
 .br
+.RI "High level logic for FAN\&. "
 .ti -1c
 .RI "void \fBIO_fanDrvPWM\fP (void)"
 .br
+.RI "Program PWM for FAN\&. "
 .ti -1c
 .RI "int \fBIO_getOnOff\fP (void)"
 .br
@@ -191,184 +196,203 @@ D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/io.h
 .RI "void \fBIO_flset\fP (unsigned int fls)"
 .br
 .in -1c
+.SH "Detailed Description"
+.PP 
+Discrete I / O control\&. 
+
+Schematic Digital Input Output CASETMP thermistor, no in this file
+.PP
+ON_OFF_GFD \fBio\&.c\fP:\fBIO_getGroundFault()\fP \fBctrl\&.c\fP:\fBCTRL_tick()\fP->\fBio\&.c\fP:\fBIO_getGroundFault()\fP RDD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! set with delay disablePWM according to GroundFault: J10 on PWRboard RELAY_1_EN RELAY_2_EN \fBio\&.c\fP: IO_setRelay TMPCMP or Digital? Digital: \fBio\&.c\fP: int \fBIO_getDigitalTemp()\fP \fBtemp\&.c\fP:\fBTEMP_init()\fP->\fBio\&.c\fP: int \fBIO_getDigitalTemp()\fP \fBpwm\&.c\fP:\fBPWM_isr()\fP->\fBtemp\&.c\fP:\fBTEMP_tick()\fP->\fBio\&.c\fP: int \fBIO_getDigitalTemp()\fP ONOFF/SLAVE# \fBio\&.c\fP: epsent?
+.PP
+In \fBio\&.c\fP: IO_getIsSlave 
+.PP
+.nf
+    FAN                                                     high level logic       limit fanDuty
+    mainMSP.c:mainMSPloop()->sch.c:SCH_runActiveTasks()->io.c:IO_fanSetSpeed->io.c:IO_setFanDutyCycle( unsigned int fanDuty);
+
+.fi
+.PP
+ \fBmainMSP\&.c\fP:TIM3_IRQHandler(void)->PWM\&.c:\fBPWM_isr(void)\fP->\fBio\&.c\fP:\fBIO_fanSenseSpeed(void)\fP; \fBmainMSP\&.c\fP:\fBmainMSPloop()\fP->\fBsch\&.c\fP:\fBSCH_runActiveTasks()\fP->\fBio\&.c\fP:\fBIO_fanDrvPWM(void)\fP; 
+.PP
+Definition in file \fBio\&.h\fP\&.
 .SH "Macro Definition Documentation"
 .PP 
 .SS "#define CA_OUT   0x04"
 
 .PP
-Definition at line 37 of file io\&.h\&.
+Definition at line 69 of file io\&.h\&.
 .SS "#define CAN_MISO   0x04"
 
 .PP
-Definition at line 47 of file io\&.h\&.
+Definition at line 79 of file io\&.h\&.
 .SS "#define CAN_MOSI   0x02"
 
 .PP
-Definition at line 46 of file io\&.h\&.
+Definition at line 78 of file io\&.h\&.
 .SS "#define CAN_nCS   0x01"
 
 .PP
-Definition at line 45 of file io\&.h\&.
+Definition at line 77 of file io\&.h\&.
 .SS "#define CAN_nINT   0x02"
 
 .PP
-Definition at line 36 of file io\&.h\&.
+Definition at line 68 of file io\&.h\&.
 .SS "#define CAN_SCLK   0x08"
 
 .PP
-Definition at line 48 of file io\&.h\&.
+Definition at line 80 of file io\&.h\&.
 .SS "#define DCONTROL   0x01"
 
 .PP
-Definition at line 55 of file io\&.h\&.
+Definition at line 87 of file io\&.h\&.
 .SS "#define ENABLE   0x01"
 
 .PP
-Definition at line 35 of file io\&.h\&.
+Definition at line 67 of file io\&.h\&.
 .SS "#define FAN_DRV   0x01"
 
 .PP
-Definition at line 25 of file io\&.h\&.
+Definition at line 57 of file io\&.h\&.
 .SS "#define FAN_FB   0x04"
 
 .PP
-Definition at line 27 of file io\&.h\&.
+Definition at line 59 of file io\&.h\&.
 .SS "#define FAN_FB2   0x10"
 
 .PP
-Definition at line 69 of file io\&.h\&.
+Definition at line 101 of file io\&.h\&.
 .SS "#define FLASH_HOLD   0x20"
 
 .PP
-Definition at line 70 of file io\&.h\&.
+Definition at line 102 of file io\&.h\&.
 .SS "#define FLASH_nCS   0x01"
 
 .PP
-Definition at line 65 of file io\&.h\&.
+Definition at line 97 of file io\&.h\&.
 .SS "#define FLASH_SCLK   0x08"
 
 .PP
-Definition at line 68 of file io\&.h\&.
+Definition at line 100 of file io\&.h\&.
 .SS "#define FLASH_SIMO   0x02"
 
 .PP
-Definition at line 66 of file io\&.h\&.
+Definition at line 98 of file io\&.h\&.
 .SS "#define FLASH_SOMI   0x04"
 
 .PP
-Definition at line 67 of file io\&.h\&.
+Definition at line 99 of file io\&.h\&.
 .SS "#define FLSET1   0x04"
 
 .PP
-Definition at line 56 of file io\&.h\&.
+Definition at line 88 of file io\&.h\&.
 .SS "#define FLSET10   0x10"
 
 .PP
-Definition at line 29 of file io\&.h\&.
+Definition at line 61 of file io\&.h\&.
 .SS "#define FLSET100   0x40"
 
 .PP
-Definition at line 60 of file io\&.h\&.
+Definition at line 92 of file io\&.h\&.
 .SS "#define FLSET2   0x08"
 
 .PP
-Definition at line 57 of file io\&.h\&.
+Definition at line 89 of file io\&.h\&.
 .SS "#define FLSET20   0x20"
 
 .PP
-Definition at line 30 of file io\&.h\&.
+Definition at line 62 of file io\&.h\&.
 .SS "#define FLSET200   0x80"
 
 .PP
-Definition at line 61 of file io\&.h\&.
+Definition at line 93 of file io\&.h\&.
 .SS "#define FLSET4   0x10"
 
 .PP
-Definition at line 58 of file io\&.h\&.
+Definition at line 90 of file io\&.h\&.
 .SS "#define FLSET40   0x40"
 
 .PP
-Definition at line 31 of file io\&.h\&.
+Definition at line 63 of file io\&.h\&.
 .SS "#define FLSET8   0x20"
 
 .PP
-Definition at line 59 of file io\&.h\&.
+Definition at line 91 of file io\&.h\&.
 .SS "#define FLSET80   0x80"
 
 .PP
-Definition at line 32 of file io\&.h\&.
+Definition at line 64 of file io\&.h\&.
 .SS "#define FLTRIM_PWM   0x08"
 
 .PP
-Definition at line 38 of file io\&.h\&.
+Definition at line 70 of file io\&.h\&.
 .SS "#define GF_ONOFF   0x80"
 
 .PP
-Definition at line 72 of file io\&.h\&.
+Definition at line 104 of file io\&.h\&.
 .SS "#define IO_INBREAKER_OPEN   (0)"
 
 .PP
-Definition at line 102 of file io\&.h\&.
+Definition at line 134 of file io\&.h\&.
 .SS "#define IO_OUTBREAKER_OPEN   (0)"
 
 .PP
-Definition at line 103 of file io\&.h\&.
+Definition at line 135 of file io\&.h\&.
 .SS "#define IOUTSP_CA   0x20"
 
 .PP
-Definition at line 40 of file io\&.h\&.
+Definition at line 72 of file io\&.h\&.
 .SS "#define LCD_RX   0x20"
 
 .PP
-Definition at line 50 of file io\&.h\&.
+Definition at line 82 of file io\&.h\&.
 .SS "#define LCD_TX   0x10"
 
 .PP
-Definition at line 49 of file io\&.h\&.
+Definition at line 81 of file io\&.h\&.
 .SS "#define nHISIDE_EN   0x40"
 
 .PP
-Definition at line 51 of file io\&.h\&.
+Definition at line 83 of file io\&.h\&.
 .SS "#define ONOFF   0x40"
 
 .PP
-Definition at line 41 of file io\&.h\&.
+Definition at line 73 of file io\&.h\&.
 .SS "#define P4_UNUSED   0x02"
 
 .PP
-Definition at line 62 of file io\&.h\&.
+Definition at line 94 of file io\&.h\&.
 .SS "#define P5_UNUSED   0x40"
 
 .PP
-Definition at line 71 of file io\&.h\&.
+Definition at line 103 of file io\&.h\&.
 .SS "#define P6_UNUSED   0x00"
 
 .PP
-Definition at line 84 of file io\&.h\&.
+Definition at line 116 of file io\&.h\&.
 .SS "#define RELAY   0x80"
 
 .PP
-Definition at line 52 of file io\&.h\&.
+Definition at line 84 of file io\&.h\&.
 .SS "#define SAMPLE_PWM   0x10"
 
 .PP
-Definition at line 39 of file io\&.h\&.
+Definition at line 71 of file io\&.h\&.
 .SS "#define TMPCMP_DIGITAL   0x08"
 
 .PP
-Definition at line 28 of file io\&.h\&.
+Definition at line 60 of file io\&.h\&.
 .SS "#define TWO_FAN"
 
 .PP
-Definition at line 18 of file io\&.h\&.
+Definition at line 50 of file io\&.h\&.
 .SS "#define UNUSED   0x02"
 
 .PP
-Definition at line 26 of file io\&.h\&.
+Definition at line 58 of file io\&.h\&.
 .SS "#define VINLIM_PWM   0x80"
 
 .PP
-Definition at line 42 of file io\&.h\&.
+Definition at line 74 of file io\&.h\&.
 .SH "Function Documentation"
 .PP 
 .SS "void IO_controlSyncRect (void)"
@@ -381,48 +405,32 @@ Definition at line 107 of file pwm\&.c\&.
 RDD statusFlags\&.CONTROL_START=1;
 .PP
 Definition at line 97 of file pwm\&.c\&.
-.SS "void IO_fanDrvPWM (void)"
-
-.PP
-Definition at line 273 of file io\&.c\&.
-.SS "void IO_fanSenseSpeed (void)"
-
-.PP
-Definition at line 298 of file io\&.c\&.
-.SS "void IO_fanSetSpeed (void)"
-
-.PP
-Definition at line 329 of file io\&.c\&.
 .SS "void IO_flset (unsigned int fls)"
 
 .SS "int IO_getDigitalTemp (void)"
 
 .PP
-Definition at line 168 of file io\&.c\&.
+Definition at line 216 of file io\&.c\&.
 .SS "int IO_getGroundFault (void)"
 
 .PP
-Definition at line 162 of file io\&.c\&.
+Definition at line 210 of file io\&.c\&.
 .SS "int IO_getIsSlave (void)"
 
 .PP
-Definition at line 234 of file io\&.c\&.
+Definition at line 282 of file io\&.c\&.
 .SS "int IO_getOnOff (void)"
 
 .PP
-Definition at line 156 of file io\&.c\&.
+Definition at line 204 of file io\&.c\&.
 .SS "void IO_init (void)"
 
 .PP
-Definition at line 99 of file io\&.c\&.
-.SS "void IO_setFanDutyCycle (unsigned int fanDuty)"
-
-.PP
-Definition at line 146 of file io\&.c\&.
+Definition at line 128 of file io\&.c\&.
 .SS "void IO_setRelay (unsigned long long bitfield)"
 
 .PP
-Definition at line 244 of file io\&.c\&.
+Definition at line 292 of file io\&.c\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Charger6kW from the source code\&.

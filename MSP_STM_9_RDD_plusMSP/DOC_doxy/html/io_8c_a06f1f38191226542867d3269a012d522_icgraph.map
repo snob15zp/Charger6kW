@@ -1,4 +1,4 @@
 <map id="IO_fanSenseSpeed" name="IO_fanSenseSpeed">
-<area shape="rect" id="node1" title=" " alt="" coords="129,5,263,32"/>
+<area shape="rect" id="node1" title="mainMSP.c:TIM3_IRQHandler(void)&#45;&gt;PWM.c:PWM_isr(void)&#45;&gt;io.c:IO_fanSenseSpeed(void);" alt="" coords="129,5,263,32"/>
 <area shape="rect" id="node2" href="$pwm_8h.html#a6abc946e40a86c52f2c86095e783c5c1" title=" " alt="" coords="5,5,81,32"/>
 </map>
