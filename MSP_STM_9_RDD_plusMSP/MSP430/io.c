@@ -29,6 +29,15 @@ Schematic Digital Input Output
 				
 In io.c:
         IO_getIsSlave
+				
+				
+				FAN:
+				mainMSP:mainMSPloop()->sch.c:SCH_runActiveTasks()->void IO_fanDrvPWM()//program PWM
+				mainMSP:mainMSPloop()->sch.c:SCH_runActiveTasks()->IO_fanSetSpeed()//High level Logic
+				IO_fanSenseSpeed();
+				IO_setFanDutyCycle();
+				
+				
 **********************************************************************/
 //#include <msp430x24x.h>
 #include "Stm32f3xx.h"
