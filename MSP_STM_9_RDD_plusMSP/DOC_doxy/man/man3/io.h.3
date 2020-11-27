@@ -174,6 +174,7 @@ D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/io.h \- Discrete I / O
 .ti -1c
 .RI "int \fBIO_getDigitalTemp\fP (void)"
 .br
+.RI "Just returns the state of the input\&. "
 .ti -1c
 .RI "int \fBIO_getIsSlave\fP (void)"
 .br
@@ -407,10 +408,6 @@ RDD statusFlags\&.CONTROL_START=1;
 Definition at line 97 of file pwm\&.c\&.
 .SS "void IO_flset (unsigned int fls)"
 
-.SS "int IO_getDigitalTemp (void)"
-
-.PP
-Definition at line 216 of file io\&.c\&.
 .SS "int IO_getGroundFault (void)"
 
 .PP
@@ -418,7 +415,7 @@ Definition at line 210 of file io\&.c\&.
 .SS "int IO_getIsSlave (void)"
 
 .PP
-Definition at line 282 of file io\&.c\&.
+Definition at line 290 of file io\&.c\&.
 .SS "int IO_getOnOff (void)"
 
 .PP
@@ -430,7 +427,7 @@ Definition at line 128 of file io\&.c\&.
 .SS "void IO_setRelay (unsigned long long bitfield)"
 
 .PP
-Definition at line 292 of file io\&.c\&.
+Definition at line 300 of file io\&.c\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Charger6kW from the source code\&.

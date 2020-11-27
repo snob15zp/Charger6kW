@@ -126,8 +126,8 @@ int \mbox{\hyperlink{io_8h_a0976dd4faeee95827cb133e20f3c72bd}{I\+O\+\_\+get\+On\
 \item 
 int \mbox{\hyperlink{io_8h_a931fc9842f61b8edece408fda0200049}{I\+O\+\_\+get\+Ground\+Fault}} (void)
 \item 
-int \mbox{\hyperlink{io_8h_aa63f8ebf2789ad7d3ed40a0c5d8a799b}{I\+O\+\_\+get\+Digital\+Temp}} (void)
-\item 
+int \mbox{\hyperlink{group__group_digital_temp_gadb4d298519fbee074c2f8bdff6726044}{I\+O\+\_\+get\+Digital\+Temp}} (void)
+\begin{DoxyCompactList}\small\item\em Just returns the state of the input. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{io_8h_ab0f8e13eeba6fe6891367e1632366a6c}{I\+O\+\_\+get\+Is\+Slave}} (void)
 \item 
 void \mbox{\hyperlink{io_8h_ac1e824237e4a013ed7d7d5f499292eba}{I\+O\+\_\+init}} (void)
@@ -149,7 +149,7 @@ Discrete I / O control.
 
 Schematic Digital Input Output C\+A\+S\+E\+T\+MP thermistor, no in this file
 
-O\+N\+\_\+\+O\+F\+F\+\_\+\+G\+FD \mbox{\hyperlink{io_8c}{io.\+c}}\+:\mbox{\hyperlink{io_8h_a931fc9842f61b8edece408fda0200049}{I\+O\+\_\+get\+Ground\+Fault()}} \mbox{\hyperlink{ctrl_8c}{ctrl.\+c}}\+:\mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a0b295af2ff0548129f198da3b642a10d}{C\+T\+R\+L\+\_\+tick()}}-\/$>$\mbox{\hyperlink{io_8c}{io.\+c}}\+:\mbox{\hyperlink{io_8h_a931fc9842f61b8edece408fda0200049}{I\+O\+\_\+get\+Ground\+Fault()}} R\+DD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! set with delay disable\+P\+WM according to Ground\+Fault\+: J10 on P\+W\+Rboard R\+E\+L\+A\+Y\+\_\+1\+\_\+\+EN R\+E\+L\+A\+Y\+\_\+2\+\_\+\+EN \mbox{\hyperlink{io_8c}{io.\+c}}\+: I\+O\+\_\+set\+Relay T\+M\+P\+C\+MP or Digital? Digital\+: \mbox{\hyperlink{io_8c}{io.\+c}}\+: int \mbox{\hyperlink{io_8h_aa63f8ebf2789ad7d3ed40a0c5d8a799b}{I\+O\+\_\+get\+Digital\+Temp()}} \mbox{\hyperlink{temp_8c}{temp.\+c}}\+:\mbox{\hyperlink{temp_8c_a487c8fafb2baca8ce4d8b944d2b6b631}{T\+E\+M\+P\+\_\+init()}}-\/$>$\mbox{\hyperlink{io_8c}{io.\+c}}\+: int \mbox{\hyperlink{io_8h_aa63f8ebf2789ad7d3ed40a0c5d8a799b}{I\+O\+\_\+get\+Digital\+Temp()}} \mbox{\hyperlink{pwm_8c}{pwm.\+c}}\+:\mbox{\hyperlink{pwm_8c_a6abc946e40a86c52f2c86095e783c5c1}{P\+W\+M\+\_\+isr()}}-\/$>$\mbox{\hyperlink{temp_8c}{temp.\+c}}\+:\mbox{\hyperlink{temp_8c_a658f475d23bec65c525f7b89ca362852}{T\+E\+M\+P\+\_\+tick()}}-\/$>$\mbox{\hyperlink{io_8c}{io.\+c}}\+: int \mbox{\hyperlink{io_8h_aa63f8ebf2789ad7d3ed40a0c5d8a799b}{I\+O\+\_\+get\+Digital\+Temp()}} O\+N\+O\+F\+F/\+S\+L\+A\+VE\# \mbox{\hyperlink{io_8c}{io.\+c}}\+: epsent?
+O\+N\+\_\+\+O\+F\+F\+\_\+\+G\+FD \mbox{\hyperlink{io_8c}{io.\+c}}\+:\mbox{\hyperlink{io_8h_a931fc9842f61b8edece408fda0200049}{I\+O\+\_\+get\+Ground\+Fault()}} \mbox{\hyperlink{ctrl_8c}{ctrl.\+c}}\+:\mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a0b295af2ff0548129f198da3b642a10d}{C\+T\+R\+L\+\_\+tick()}}-\/$>$\mbox{\hyperlink{io_8c}{io.\+c}}\+:\mbox{\hyperlink{io_8h_a931fc9842f61b8edece408fda0200049}{I\+O\+\_\+get\+Ground\+Fault()}} R\+DD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! set with delay disable\+P\+WM according to Ground\+Fault\+: J10 on P\+W\+Rboard R\+E\+L\+A\+Y\+\_\+1\+\_\+\+EN R\+E\+L\+A\+Y\+\_\+2\+\_\+\+EN \mbox{\hyperlink{io_8c}{io.\+c}}\+: I\+O\+\_\+set\+Relay T\+M\+P\+C\+MP or Digital? Digital\+: \mbox{\hyperlink{io_8c}{io.\+c}}\+: int \mbox{\hyperlink{group__group_digital_temp_gadb4d298519fbee074c2f8bdff6726044}{I\+O\+\_\+get\+Digital\+Temp()}} \mbox{\hyperlink{temp_8c}{temp.\+c}}\+:\mbox{\hyperlink{group__group_digital_temp_ga487c8fafb2baca8ce4d8b944d2b6b631}{T\+E\+M\+P\+\_\+init()}}-\/$>$\mbox{\hyperlink{io_8c}{io.\+c}}\+: int \mbox{\hyperlink{group__group_digital_temp_gadb4d298519fbee074c2f8bdff6726044}{I\+O\+\_\+get\+Digital\+Temp()}} \mbox{\hyperlink{pwm_8c}{pwm.\+c}}\+:\mbox{\hyperlink{pwm_8c_a6abc946e40a86c52f2c86095e783c5c1}{P\+W\+M\+\_\+isr()}}-\/$>$\mbox{\hyperlink{temp_8c}{temp.\+c}}\+:\mbox{\hyperlink{group__group_digital_temp_ga658f475d23bec65c525f7b89ca362852}{T\+E\+M\+P\+\_\+tick()}}-\/$>$\mbox{\hyperlink{io_8c}{io.\+c}}\+: int \mbox{\hyperlink{group__group_digital_temp_gadb4d298519fbee074c2f8bdff6726044}{I\+O\+\_\+get\+Digital\+Temp()}} O\+N\+O\+F\+F/\+S\+L\+A\+VE\# \mbox{\hyperlink{io_8c}{io.\+c}}\+: epsent?
 
 In \mbox{\hyperlink{io_8c}{io.\+c}}\+: I\+O\+\_\+get\+Is\+Slave \begin{DoxyVerb}    FAN                                                     high level logic       limit fanDuty
     mainMSP.c:mainMSPloop()->sch.c:SCH_runActiveTasks()->io.c:IO_fanSetSpeed->io.c:IO_setFanDutyCycle( unsigned int fanDuty);
@@ -639,23 +639,6 @@ Definition at line 97 of file pwm.\+c.
 \doxysubsubsection{\texorpdfstring{IO\_flset()}{IO\_flset()}}
 {\footnotesize\ttfamily void I\+O\+\_\+flset (\begin{DoxyParamCaption}\item[{unsigned int}]{fls }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{io_8h_aa63f8ebf2789ad7d3ed40a0c5d8a799b}\label{io_8h_aa63f8ebf2789ad7d3ed40a0c5d8a799b}} 
-\index{io.h@{io.h}!IO\_getDigitalTemp@{IO\_getDigitalTemp}}
-\index{IO\_getDigitalTemp@{IO\_getDigitalTemp}!io.h@{io.h}}
-\doxysubsubsection{\texorpdfstring{IO\_getDigitalTemp()}{IO\_getDigitalTemp()}}
-{\footnotesize\ttfamily int I\+O\+\_\+get\+Digital\+Temp (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
-
-
-
-Definition at line 216 of file io.\+c.
-
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{io_8h_aa63f8ebf2789ad7d3ed40a0c5d8a799b_icgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{io_8h_a931fc9842f61b8edece408fda0200049}\label{io_8h_a931fc9842f61b8edece408fda0200049}} 
 \index{io.h@{io.h}!IO\_getGroundFault@{IO\_getGroundFault}}
 \index{IO\_getGroundFault@{IO\_getGroundFault}!io.h@{io.h}}
@@ -681,7 +664,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 
-Definition at line 282 of file io.\+c.
+Definition at line 290 of file io.\+c.
 
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -725,7 +708,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 
-Definition at line 292 of file io.\+c.
+Definition at line 300 of file io.\+c.
 
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]

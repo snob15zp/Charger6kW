@@ -222,8 +222,9 @@ Functions</h2></td></tr>
 <tr class="separator:a0976dd4faeee95827cb133e20f3c72bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a931fc9842f61b8edece408fda0200049"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="io_8h.html#a931fc9842f61b8edece408fda0200049">IO_getGroundFault</a> (void)</td></tr>
 <tr class="separator:a931fc9842f61b8edece408fda0200049"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa63f8ebf2789ad7d3ed40a0c5d8a799b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="io_8h.html#aa63f8ebf2789ad7d3ed40a0c5d8a799b">IO_getDigitalTemp</a> (void)</td></tr>
-<tr class="separator:aa63f8ebf2789ad7d3ed40a0c5d8a799b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadb4d298519fbee074c2f8bdff6726044"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group_digital_temp.html#gadb4d298519fbee074c2f8bdff6726044">IO_getDigitalTemp</a> (void)</td></tr>
+<tr class="memdesc:gadb4d298519fbee074c2f8bdff6726044"><td class="mdescLeft">&#160;</td><td class="mdescRight">Just returns the state of the input.  <a href="group__group_digital_temp.html#gadb4d298519fbee074c2f8bdff6726044">More...</a><br /></td></tr>
+<tr class="separator:gadb4d298519fbee074c2f8bdff6726044"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0f8e13eeba6fe6891367e1632366a6c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="io_8h.html#ab0f8e13eeba6fe6891367e1632366a6c">IO_getIsSlave</a> (void)</td></tr>
 <tr class="separator:ab0f8e13eeba6fe6891367e1632366a6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1e824237e4a013ed7d7d5f499292eba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="io_8h.html#ac1e824237e4a013ed7d7d5f499292eba">IO_init</a> (void)</td></tr>
@@ -242,7 +243,7 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Discrete I / O control. </p>
 <p>Schematic Digital Input Output CASETMP thermistor, no in this file</p>
-<p>ON_OFF_GFD <a class="el" href="io_8c.html" title="Discrete I / O control.">io.c</a>:<a class="el" href="io_8h.html#a931fc9842f61b8edece408fda0200049">IO_getGroundFault()</a> <a class="el" href="ctrl_8c.html">ctrl.c</a>:<a class="el" href="ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac.html#a0b295af2ff0548129f198da3b642a10d">CTRL_tick()</a>-&gt;<a class="el" href="io_8c.html" title="Discrete I / O control.">io.c</a>:<a class="el" href="io_8h.html#a931fc9842f61b8edece408fda0200049">IO_getGroundFault()</a> RDD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! set with delay disablePWM according to GroundFault: J10 on PWRboard RELAY_1_EN RELAY_2_EN <a class="el" href="io_8c.html" title="Discrete I / O control.">io.c</a>: IO_setRelay TMPCMP or Digital? Digital: <a class="el" href="io_8c.html" title="Discrete I / O control.">io.c</a>: int <a class="el" href="io_8h.html#aa63f8ebf2789ad7d3ed40a0c5d8a799b">IO_getDigitalTemp()</a> <a class="el" href="temp_8c.html">temp.c</a>:<a class="el" href="temp_8c.html#a487c8fafb2baca8ce4d8b944d2b6b631">TEMP_init()</a>-&gt;<a class="el" href="io_8c.html" title="Discrete I / O control.">io.c</a>: int <a class="el" href="io_8h.html#aa63f8ebf2789ad7d3ed40a0c5d8a799b">IO_getDigitalTemp()</a> <a class="el" href="pwm_8c.html">pwm.c</a>:<a class="el" href="pwm_8c.html#a6abc946e40a86c52f2c86095e783c5c1">PWM_isr()</a>-&gt;<a class="el" href="temp_8c.html">temp.c</a>:<a class="el" href="temp_8c.html#a658f475d23bec65c525f7b89ca362852">TEMP_tick()</a>-&gt;<a class="el" href="io_8c.html" title="Discrete I / O control.">io.c</a>: int <a class="el" href="io_8h.html#aa63f8ebf2789ad7d3ed40a0c5d8a799b">IO_getDigitalTemp()</a> ONOFF/SLAVE# <a class="el" href="io_8c.html" title="Discrete I / O control.">io.c</a>: epsent?</p>
+<p>ON_OFF_GFD <a class="el" href="io_8c.html" title="Discrete I / O control.">io.c</a>:<a class="el" href="io_8h.html#a931fc9842f61b8edece408fda0200049">IO_getGroundFault()</a> <a class="el" href="ctrl_8c.html">ctrl.c</a>:<a class="el" href="ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac.html#a0b295af2ff0548129f198da3b642a10d">CTRL_tick()</a>-&gt;<a class="el" href="io_8c.html" title="Discrete I / O control.">io.c</a>:<a class="el" href="io_8h.html#a931fc9842f61b8edece408fda0200049">IO_getGroundFault()</a> RDD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! set with delay disablePWM according to GroundFault: J10 on PWRboard RELAY_1_EN RELAY_2_EN <a class="el" href="io_8c.html" title="Discrete I / O control.">io.c</a>: IO_setRelay TMPCMP or Digital? Digital: <a class="el" href="io_8c.html" title="Discrete I / O control.">io.c</a>: int <a class="el" href="group__group_digital_temp.html#gadb4d298519fbee074c2f8bdff6726044" title="Just returns the state of the input.">IO_getDigitalTemp()</a> <a class="el" href="temp_8c.html">temp.c</a>:<a class="el" href="group__group_digital_temp.html#ga487c8fafb2baca8ce4d8b944d2b6b631" title="temperature = (273.15f + 25) * 64;">TEMP_init()</a>-&gt;<a class="el" href="io_8c.html" title="Discrete I / O control.">io.c</a>: int <a class="el" href="group__group_digital_temp.html#gadb4d298519fbee074c2f8bdff6726044" title="Just returns the state of the input.">IO_getDigitalTemp()</a> <a class="el" href="pwm_8c.html">pwm.c</a>:<a class="el" href="pwm_8c.html#a6abc946e40a86c52f2c86095e783c5c1">PWM_isr()</a>-&gt;<a class="el" href="temp_8c.html">temp.c</a>:<a class="el" href="group__group_digital_temp.html#ga658f475d23bec65c525f7b89ca362852" title="Just returns the state of the input.">TEMP_tick()</a>-&gt;<a class="el" href="io_8c.html" title="Discrete I / O control.">io.c</a>: int <a class="el" href="group__group_digital_temp.html#gadb4d298519fbee074c2f8bdff6726044" title="Just returns the state of the input.">IO_getDigitalTemp()</a> ONOFF/SLAVE# <a class="el" href="io_8c.html" title="Discrete I / O control.">io.c</a>: epsent?</p>
 <p>In <a class="el" href="io_8c.html" title="Discrete I / O control.">io.c</a>: IO_getIsSlave </p><pre class="fragment">    FAN                                                     high level logic       limit fanDuty
     mainMSP.c:mainMSPloop()-&gt;sch.c:SCH_runActiveTasks()-&gt;io.c:IO_fanSetSpeed-&gt;io.c:IO_setFanDutyCycle( unsigned int fanDuty);
 </pre><p> <a class="el" href="main_m_s_p_8c.html">mainMSP.c</a>:TIM3_IRQHandler(void)-&gt;PWM.c:<a class="el" href="pwm_8h.html#a6abc946e40a86c52f2c86095e783c5c1">PWM_isr(void)</a>-&gt;<a class="el" href="io_8c.html" title="Discrete I / O control.">io.c</a>:<a class="el" href="group__group_f_a_n.html#ga06f1f38191226542867d3269a012d522" title="program counter of edges">IO_fanSenseSpeed(void)</a>; <a class="el" href="main_m_s_p_8c.html">mainMSP.c</a>:<a class="el" href="main_m_s_p_8c.html#a6f9ad05474f475b7d9f0827da5484fd0">mainMSPloop()</a>-&gt;<a class="el" href="sch_8c.html">sch.c</a>:<a class="el" href="sch_8c.html#abc14896932bcba2a5d80c216fc2b97e4">SCH_runActiveTasks()</a>-&gt;<a class="el" href="io_8c.html" title="Discrete I / O control.">io.c</a>:<a class="el" href="group__group_f_a_n.html#gafe3992ff4de6ea1f4b8df6881647e622" title="Program PWM for FAN.">IO_fanDrvPWM(void)</a>; </p>
@@ -1043,36 +1044,6 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="aa63f8ebf2789ad7d3ed40a0c5d8a799b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa63f8ebf2789ad7d3ed40a0c5d8a799b">&#9670;&nbsp;</a></span>IO_getDigitalTemp()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int IO_getDigitalTemp </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="io_8c_source.html#l00216">216</a> of file <a class="el" href="io_8c_source.html">io.c</a>.</p>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="io_8h_aa63f8ebf2789ad7d3ed40a0c5d8a799b_icgraph.png" border="0" usemap="#aio_8h_aa63f8ebf2789ad7d3ed40a0c5d8a799b_icgraph" alt=""/></div>
-<map name="io_8h_aa63f8ebf2789ad7d3ed40a0c5d8a799b_icgraph" id="io_8h_aa63f8ebf2789ad7d3ed40a0c5d8a799b_icgraph">
-<area shape="rect" title=" " alt="" coords="264,5,392,32"/>
-<area shape="rect" href="temp_8h.html#a136f0b8a05f4faa1955562a9862791b6" title=" " alt="" coords="129,5,216,32"/>
-<area shape="rect" href="pwm_8h.html#a6abc946e40a86c52f2c86095e783c5c1" title=" " alt="" coords="5,5,81,32"/>
-</map>
-</div>
-
-</div>
-</div>
 <a id="a931fc9842f61b8edece408fda0200049"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a931fc9842f61b8edece408fda0200049">&#9670;&nbsp;</a></span>IO_getGroundFault()</h2>
 
@@ -1119,7 +1090,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="io_8c_source.html#l00282">282</a> of file <a class="el" href="io_8c_source.html">io.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="io_8c_source.html#l00290">290</a> of file <a class="el" href="io_8c_source.html">io.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1211,7 +1182,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="io_8c_source.html#l00292">292</a> of file <a class="el" href="io_8c_source.html">io.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="io_8c_source.html#l00300">300</a> of file <a class="el" href="io_8c_source.html">io.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">

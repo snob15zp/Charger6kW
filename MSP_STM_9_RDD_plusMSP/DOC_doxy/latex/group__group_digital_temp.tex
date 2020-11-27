@@ -1,0 +1,115 @@
+\hypertarget{group__group_digital_temp}{}\doxysection{Digital\+Temp M\+A\+X6577}
+\label{group__group_digital_temp}\index{DigitalTemp MAX6577@{DigitalTemp MAX6577}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{group__group_digital_temp_gadb4d298519fbee074c2f8bdff6726044}{I\+O\+\_\+get\+Digital\+Temp}} ()
+\begin{DoxyCompactList}\small\item\em Just returns the state of the input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__group_digital_temp_ga487c8fafb2baca8ce4d8b944d2b6b631}{T\+E\+M\+P\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em temperature = (273.\+15f + 25) $\ast$ 64; \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__group_digital_temp_ga658f475d23bec65c525f7b89ca362852}{T\+E\+M\+P\+\_\+tick}} ()
+\begin{DoxyCompactList}\small\item\em Just returns the state of the input. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{group__group_digital_temp_ga4d2e044b02a8abfa5af7c25477dec7e6}{T\+E\+M\+P\+\_\+get\+Value}} ()
+\begin{DoxyCompactList}\small\item\em Just returns the state of the temperature in Kelvin $\ast$ 64. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__group_digital_temp_gadb4d298519fbee074c2f8bdff6726044}\label{group__group_digital_temp_gadb4d298519fbee074c2f8bdff6726044}} 
+\index{DigitalTemp MAX6577@{DigitalTemp MAX6577}!IO\_getDigitalTemp@{IO\_getDigitalTemp}}
+\index{IO\_getDigitalTemp@{IO\_getDigitalTemp}!DigitalTemp MAX6577@{DigitalTemp MAX6577}}
+\doxysubsubsection{\texorpdfstring{IO\_getDigitalTemp()}{IO\_getDigitalTemp()}}
+{\footnotesize\ttfamily int I\+O\+\_\+get\+Digital\+Temp (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Just returns the state of the input. 
+
+
+
+Definition at line 224 of file io.\+c.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__group_digital_temp_gadb4d298519fbee074c2f8bdff6726044_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__group_digital_temp_ga4d2e044b02a8abfa5af7c25477dec7e6}\label{group__group_digital_temp_ga4d2e044b02a8abfa5af7c25477dec7e6}} 
+\index{DigitalTemp MAX6577@{DigitalTemp MAX6577}!TEMP\_getValue@{TEMP\_getValue}}
+\index{TEMP\_getValue@{TEMP\_getValue}!DigitalTemp MAX6577@{DigitalTemp MAX6577}}
+\doxysubsubsection{\texorpdfstring{TEMP\_getValue()}{TEMP\_getValue()}}
+{\footnotesize\ttfamily unsigned int T\+E\+M\+P\+\_\+get\+Value (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Just returns the state of the temperature in Kelvin $\ast$ 64. 
+
+
+
+Definition at line 86 of file temp.\+c.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=310pt]{group__group_digital_temp_ga4d2e044b02a8abfa5af7c25477dec7e6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__group_digital_temp_ga487c8fafb2baca8ce4d8b944d2b6b631}\label{group__group_digital_temp_ga487c8fafb2baca8ce4d8b944d2b6b631}} 
+\index{DigitalTemp MAX6577@{DigitalTemp MAX6577}!TEMP\_init@{TEMP\_init}}
+\index{TEMP\_init@{TEMP\_init}!DigitalTemp MAX6577@{DigitalTemp MAX6577}}
+\doxysubsubsection{\texorpdfstring{TEMP\_init()}{TEMP\_init()}}
+{\footnotesize\ttfamily void T\+E\+M\+P\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+temperature = (273.\+15f + 25) $\ast$ 64; 
+
+
+
+Definition at line 27 of file temp.\+c.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__group_digital_temp_ga487c8fafb2baca8ce4d8b944d2b6b631_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__group_digital_temp_ga658f475d23bec65c525f7b89ca362852}\label{group__group_digital_temp_ga658f475d23bec65c525f7b89ca362852}} 
+\index{DigitalTemp MAX6577@{DigitalTemp MAX6577}!TEMP\_tick@{TEMP\_tick}}
+\index{TEMP\_tick@{TEMP\_tick}!DigitalTemp MAX6577@{DigitalTemp MAX6577}}
+\doxysubsubsection{\texorpdfstring{TEMP\_tick()}{TEMP\_tick()}}
+{\footnotesize\ttfamily void T\+E\+M\+P\+\_\+tick (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Just returns the state of the input. 
+
+Count the number of pulses in about a second and measure the time Then temperature in kelvin is pulses/time Get temperature in Kelvin $\ast$ 64 
+
+Definition at line 47 of file temp.\+c.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=277pt]{group__group_digital_temp_ga658f475d23bec65c525f7b89ca362852_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{group__group_digital_temp_ga658f475d23bec65c525f7b89ca362852_icgraph}
+\end{center}
+\end{figure}

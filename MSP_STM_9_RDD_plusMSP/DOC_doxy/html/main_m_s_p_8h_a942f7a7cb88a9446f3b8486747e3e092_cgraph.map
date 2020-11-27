@@ -19,7 +19,7 @@
 <area shape="rect" id="node42" href="$stats_8c.html#a70f8101df6100edd6f0d5b3b9ab9a3cc" title=" " alt="" coords="235,1212,322,1239"/>
 <area shape="rect" id="node45" href="$status_8c.html#a5fe5f8c0d86135c5355440f1250185cb" title=" " alt="" coords="231,1161,327,1188"/>
 <area shape="rect" id="node46" href="$telem_8c.html#a765a0ddb13c4303947dea758a7da1d83" title=" " alt="" coords="234,959,323,985"/>
-<area shape="rect" id="node47" href="$temp_8c.html#a487c8fafb2baca8ce4d8b944d2b6b631" title=" " alt="" coords="237,1263,320,1289"/>
+<area shape="rect" id="node47" href="$group__group_digital_temp.html#ga487c8fafb2baca8ce4d8b944d2b6b631" title="temperature = (273.15f + 25) * 64;" alt="" coords="237,1263,320,1289"/>
 <area shape="rect" id="node48" href="$time_8c.html#ac4b4fac5a1f7b28dfa224bcf70b86b50" title=" " alt="" coords="241,1313,317,1340"/>
 <area shape="rect" id="node49" href="$usci_8c.html#a0c0ca72359ddf28dcd15900dfba19343" title=" " alt="" coords="245,1364,313,1391"/>
 <area shape="rect" id="node50" href="$variant_8c.html#a2594a04488c75e2351260be1194c4c45" title=" " alt="" coords="209,1415,348,1441"/>

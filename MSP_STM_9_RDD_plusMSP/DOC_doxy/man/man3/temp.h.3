@@ -12,27 +12,16 @@ D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/temp.h
 .ti -1c
 .RI "void \fBTEMP_init\fP (void)"
 .br
+.RI "temperature = (273\&.15f + 25) * 64; "
 .ti -1c
 .RI "void \fBTEMP_tick\fP (void)"
 .br
+.RI "Just returns the state of the input\&. "
 .ti -1c
 .RI "unsigned int \fBTEMP_getValue\fP (void)"
 .br
+.RI "Just returns the state of the temperature in Kelvin * 64\&. "
 .in -1c
-.SH "Function Documentation"
-.PP 
-.SS "unsigned int TEMP_getValue (void)"
-
-.PP
-Definition at line 75 of file temp\&.c\&.
-.SS "void TEMP_init (void)"
-
-.PP
-Definition at line 23 of file temp\&.c\&.
-.SS "void TEMP_tick (void)"
-
-.PP
-Definition at line 37 of file temp\&.c\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Charger6kW from the source code\&.

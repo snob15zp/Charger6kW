@@ -212,7 +212,15 @@ void IO_setFanDutyCycle(unsigned int fanDuty)
 //		return ((P5IN & GF_ONOFF) == 0);
 		return ((GPIOC->IDR & GPIO_IDR_0)==0); //ToDo fix
 	}
-
+	
+/**	
+@defgroup groupDigitalTemp DigitalTemp MAX6577
+*/	
+	
+/**
+ *  @ingroup groupDigitalTemp
+ *  @brief Just returns the state of the input
+ */
 	int IO_getDigitalTemp()
 	{
 //		return ((P1IN & TMPCMP_DIGITAL) != 0);

@@ -1,0 +1,60 @@
+.TH "groupDigitalTemp" 3 "Fri Nov 27 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+groupDigitalTemp \- DigitalTemp MAX6577
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBIO_getDigitalTemp\fP ()"
+.br
+.RI "Just returns the state of the input\&. "
+.ti -1c
+.RI "void \fBTEMP_init\fP ()"
+.br
+.RI "temperature = (273\&.15f + 25) * 64; "
+.ti -1c
+.RI "void \fBTEMP_tick\fP ()"
+.br
+.RI "Just returns the state of the input\&. "
+.ti -1c
+.RI "unsigned int \fBTEMP_getValue\fP ()"
+.br
+.RI "Just returns the state of the temperature in Kelvin * 64\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SH "Function Documentation"
+.PP 
+.SS "int IO_getDigitalTemp (void)"
+
+.PP
+Just returns the state of the input\&. 
+.PP
+Definition at line 224 of file io\&.c\&.
+.SS "unsigned int TEMP_getValue (void)"
+
+.PP
+Just returns the state of the temperature in Kelvin * 64\&. 
+.PP
+Definition at line 86 of file temp\&.c\&.
+.SS "void TEMP_init (void)"
+
+.PP
+temperature = (273\&.15f + 25) * 64; 
+.PP
+Definition at line 27 of file temp\&.c\&.
+.SS "void TEMP_tick (void)"
+
+.PP
+Just returns the state of the input\&. Count the number of pulses in about a second and measure the time Then temperature in kelvin is pulses/time Get temperature in Kelvin * 64 
+.PP
+Definition at line 47 of file temp\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Charger6kW from the source code\&.
