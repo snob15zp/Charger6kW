@@ -1,10 +1,25 @@
 \hypertarget{io_8h}{}\doxysection{D\+:/user\+S\+S\+D/github/\+Charger6k\+W/\+M\+S\+P\+\_\+\+S\+T\+M\+\_\+9\+\_\+\+R\+D\+D\+\_\+plus\+M\+S\+P/\+M\+S\+P430/io.h File Reference}
 \label{io_8h}\index{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/io.h@{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/io.h}}
+
+
+Discrete I / O control.  
+
+
 {\ttfamily \#include \char`\"{}main\+M\+S\+P.\+h\char`\"{}}\newline
-Include dependency graph for io.\+h\+:
-% FIG 0
-This graph shows which files directly or indirectly include this file\+:
-% FIG 1
+Include dependency graph for io.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{io_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{io_8h__dep__incl}
+\end{center}
+\end{figure}
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -99,14 +114,14 @@ This graph shows which files directly or indirectly include this file\+:
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{io_8h_a8122064b26eb564e1f005d71f9ed4123}{I\+O\+\_\+set\+Fan\+Duty\+Cycle}} (unsigned int fan\+Duty)
-\item 
-void \mbox{\hyperlink{io_8h_a2a7f010e2149a591731de12c866901af}{I\+O\+\_\+fan\+Sense\+Speed}} (void)
-\item 
-void \mbox{\hyperlink{io_8h_a29a2808d1a73b58a4cfdbc9853b8fe20}{I\+O\+\_\+fan\+Set\+Speed}} (void)
-\item 
-void \mbox{\hyperlink{io_8h_a604d27cdb3324e133cd572ce26dd579c}{I\+O\+\_\+fan\+Drv\+P\+WM}} (void)
-\item 
+void \mbox{\hyperlink{group__group_f_a_n_ga8122064b26eb564e1f005d71f9ed4123}{I\+O\+\_\+set\+Fan\+Duty\+Cycle}} (unsigned int fan\+Duty)
+\begin{DoxyCompactList}\small\item\em Limits fan\+Duty. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__group_f_a_n_ga06f1f38191226542867d3269a012d522}{I\+O\+\_\+fan\+Sense\+Speed}} (void)
+\begin{DoxyCompactList}\small\item\em program counter of edges \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__group_f_a_n_ga5de2a1f6e57f18a921ea9d55831bb4db}{I\+O\+\_\+fan\+Set\+Speed}} (void)
+\begin{DoxyCompactList}\small\item\em High level logic for F\+AN. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__group_f_a_n_gafe3992ff4de6ea1f4b8df6881647e622}{I\+O\+\_\+fan\+Drv\+P\+WM}} (void)
+\begin{DoxyCompactList}\small\item\em Program P\+WM for F\+AN. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{io_8h_a0976dd4faeee95827cb133e20f3c72bd}{I\+O\+\_\+get\+On\+Off}} (void)
 \item 
 int \mbox{\hyperlink{io_8h_a931fc9842f61b8edece408fda0200049}{I\+O\+\_\+get\+Ground\+Fault}} (void)
@@ -129,6 +144,18 @@ void \mbox{\hyperlink{io_8h_a3abd9b2121148ab2135eaca9dd2906ac}{I\+O\+\_\+flset}}
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Discrete I / O control. 
+
+Schematic Digital Input Output C\+A\+S\+E\+T\+MP thermistor, no in this file
+
+O\+N\+\_\+\+O\+F\+F\+\_\+\+G\+FD \mbox{\hyperlink{io_8c}{io.\+c}}\+:\mbox{\hyperlink{io_8h_a931fc9842f61b8edece408fda0200049}{I\+O\+\_\+get\+Ground\+Fault()}} \mbox{\hyperlink{ctrl_8c}{ctrl.\+c}}\+:\mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a0b295af2ff0548129f198da3b642a10d}{C\+T\+R\+L\+\_\+tick()}}-\/$>$\mbox{\hyperlink{io_8c}{io.\+c}}\+:\mbox{\hyperlink{io_8h_a931fc9842f61b8edece408fda0200049}{I\+O\+\_\+get\+Ground\+Fault()}} R\+DD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! set with delay disable\+P\+WM according to Ground\+Fault\+: J10 on P\+W\+Rboard R\+E\+L\+A\+Y\+\_\+1\+\_\+\+EN R\+E\+L\+A\+Y\+\_\+2\+\_\+\+EN \mbox{\hyperlink{io_8c}{io.\+c}}\+: I\+O\+\_\+set\+Relay T\+M\+P\+C\+MP or Digital? Digital\+: \mbox{\hyperlink{io_8c}{io.\+c}}\+: int \mbox{\hyperlink{io_8h_aa63f8ebf2789ad7d3ed40a0c5d8a799b}{I\+O\+\_\+get\+Digital\+Temp()}} \mbox{\hyperlink{temp_8c}{temp.\+c}}\+:\mbox{\hyperlink{temp_8c_a487c8fafb2baca8ce4d8b944d2b6b631}{T\+E\+M\+P\+\_\+init()}}-\/$>$\mbox{\hyperlink{io_8c}{io.\+c}}\+: int \mbox{\hyperlink{io_8h_aa63f8ebf2789ad7d3ed40a0c5d8a799b}{I\+O\+\_\+get\+Digital\+Temp()}} \mbox{\hyperlink{pwm_8c}{pwm.\+c}}\+:\mbox{\hyperlink{pwm_8c_a6abc946e40a86c52f2c86095e783c5c1}{P\+W\+M\+\_\+isr()}}-\/$>$\mbox{\hyperlink{temp_8c}{temp.\+c}}\+:\mbox{\hyperlink{temp_8c_a658f475d23bec65c525f7b89ca362852}{T\+E\+M\+P\+\_\+tick()}}-\/$>$\mbox{\hyperlink{io_8c}{io.\+c}}\+: int \mbox{\hyperlink{io_8h_aa63f8ebf2789ad7d3ed40a0c5d8a799b}{I\+O\+\_\+get\+Digital\+Temp()}} O\+N\+O\+F\+F/\+S\+L\+A\+VE\# \mbox{\hyperlink{io_8c}{io.\+c}}\+: epsent?
+
+In \mbox{\hyperlink{io_8c}{io.\+c}}\+: I\+O\+\_\+get\+Is\+Slave \begin{DoxyVerb}    FAN                                                     high level logic       limit fanDuty
+    mainMSP.c:mainMSPloop()->sch.c:SCH_runActiveTasks()->io.c:IO_fanSetSpeed->io.c:IO_setFanDutyCycle( unsigned int fanDuty);
+\end{DoxyVerb}
+ \mbox{\hyperlink{main_m_s_p_8c}{main\+M\+S\+P.\+c}}\+:T\+I\+M3\+\_\+\+I\+R\+Q\+Handler(void)-\/$>$P\+W\+M.\+c\+:\mbox{\hyperlink{pwm_8h_a6abc946e40a86c52f2c86095e783c5c1}{P\+W\+M\+\_\+isr(void)}}-\/$>$\mbox{\hyperlink{io_8c}{io.\+c}}\+:\mbox{\hyperlink{group__group_f_a_n_ga06f1f38191226542867d3269a012d522}{I\+O\+\_\+fan\+Sense\+Speed(void)}}; \mbox{\hyperlink{main_m_s_p_8c}{main\+M\+S\+P.\+c}}\+:\mbox{\hyperlink{main_m_s_p_8c_a6f9ad05474f475b7d9f0827da5484fd0}{main\+M\+S\+Ploop()}}-\/$>$\mbox{\hyperlink{sch_8c}{sch.\+c}}\+:\mbox{\hyperlink{sch_8c_abc14896932bcba2a5d80c216fc2b97e4}{S\+C\+H\+\_\+run\+Active\+Tasks()}}-\/$>$\mbox{\hyperlink{io_8c}{io.\+c}}\+:\mbox{\hyperlink{group__group_f_a_n_gafe3992ff4de6ea1f4b8df6881647e622}{I\+O\+\_\+fan\+Drv\+P\+W\+M(void)}}; 
+
 \doxysubsection{Macro Definition Documentation}
 \mbox{\Hypertarget{io_8h_a3a4d1d78f571666faac5c36208c3dc46}\label{io_8h_a3a4d1d78f571666faac5c36208c3dc46}} 
 \index{io.h@{io.h}!CA\_OUT@{CA\_OUT}}
@@ -138,7 +165,7 @@ void \mbox{\hyperlink{io_8h_a3abd9b2121148ab2135eaca9dd2906ac}{I\+O\+\_\+flset}}
 
 
 
-Definition at line 37 of file io.\+h.
+Definition at line 69 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_ae53ff22934797a0db6525c05662dc0c8}\label{io_8h_ae53ff22934797a0db6525c05662dc0c8}} 
 \index{io.h@{io.h}!CAN\_MISO@{CAN\_MISO}}
@@ -148,7 +175,7 @@ Definition at line 37 of file io.\+h.
 
 
 
-Definition at line 47 of file io.\+h.
+Definition at line 79 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a64b689e6e3eda66d0c22372602e6015d}\label{io_8h_a64b689e6e3eda66d0c22372602e6015d}} 
 \index{io.h@{io.h}!CAN\_MOSI@{CAN\_MOSI}}
@@ -158,7 +185,7 @@ Definition at line 47 of file io.\+h.
 
 
 
-Definition at line 46 of file io.\+h.
+Definition at line 78 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a54c2d62610e8e93b3a5b02cab5fc7ecc}\label{io_8h_a54c2d62610e8e93b3a5b02cab5fc7ecc}} 
 \index{io.h@{io.h}!CAN\_nCS@{CAN\_nCS}}
@@ -168,7 +195,7 @@ Definition at line 46 of file io.\+h.
 
 
 
-Definition at line 45 of file io.\+h.
+Definition at line 77 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a815430a9e1b2e38adc09bb875d972d90}\label{io_8h_a815430a9e1b2e38adc09bb875d972d90}} 
 \index{io.h@{io.h}!CAN\_nINT@{CAN\_nINT}}
@@ -178,7 +205,7 @@ Definition at line 45 of file io.\+h.
 
 
 
-Definition at line 36 of file io.\+h.
+Definition at line 68 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_afb797b6239af44164fe6de1f80b3e384}\label{io_8h_afb797b6239af44164fe6de1f80b3e384}} 
 \index{io.h@{io.h}!CAN\_SCLK@{CAN\_SCLK}}
@@ -188,7 +215,7 @@ Definition at line 36 of file io.\+h.
 
 
 
-Definition at line 48 of file io.\+h.
+Definition at line 80 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_afb95311c4fc7039fa1a06462a71ffa6c}\label{io_8h_afb95311c4fc7039fa1a06462a71ffa6c}} 
 \index{io.h@{io.h}!DCONTROL@{DCONTROL}}
@@ -198,7 +225,7 @@ Definition at line 48 of file io.\+h.
 
 
 
-Definition at line 55 of file io.\+h.
+Definition at line 87 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a514ad415fb6125ba296793df7d1a468a}\label{io_8h_a514ad415fb6125ba296793df7d1a468a}} 
 \index{io.h@{io.h}!ENABLE@{ENABLE}}
@@ -208,7 +235,7 @@ Definition at line 55 of file io.\+h.
 
 
 
-Definition at line 35 of file io.\+h.
+Definition at line 67 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a91dd0599fdfd4b7eb828c82440c2a260}\label{io_8h_a91dd0599fdfd4b7eb828c82440c2a260}} 
 \index{io.h@{io.h}!FAN\_DRV@{FAN\_DRV}}
@@ -218,7 +245,7 @@ Definition at line 35 of file io.\+h.
 
 
 
-Definition at line 25 of file io.\+h.
+Definition at line 57 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a2a5188d083695f458b330a370e8c975e}\label{io_8h_a2a5188d083695f458b330a370e8c975e}} 
 \index{io.h@{io.h}!FAN\_FB@{FAN\_FB}}
@@ -228,7 +255,7 @@ Definition at line 25 of file io.\+h.
 
 
 
-Definition at line 27 of file io.\+h.
+Definition at line 59 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_afb3350685dd0eaef85eb32b24f5a7481}\label{io_8h_afb3350685dd0eaef85eb32b24f5a7481}} 
 \index{io.h@{io.h}!FAN\_FB2@{FAN\_FB2}}
@@ -238,7 +265,7 @@ Definition at line 27 of file io.\+h.
 
 
 
-Definition at line 69 of file io.\+h.
+Definition at line 101 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a4ff451edcfdd3b139f5fb31c0f649283}\label{io_8h_a4ff451edcfdd3b139f5fb31c0f649283}} 
 \index{io.h@{io.h}!FLASH\_HOLD@{FLASH\_HOLD}}
@@ -248,7 +275,7 @@ Definition at line 69 of file io.\+h.
 
 
 
-Definition at line 70 of file io.\+h.
+Definition at line 102 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a6cdfbfeca574ca8669eec42e8eabd459}\label{io_8h_a6cdfbfeca574ca8669eec42e8eabd459}} 
 \index{io.h@{io.h}!FLASH\_nCS@{FLASH\_nCS}}
@@ -258,7 +285,7 @@ Definition at line 70 of file io.\+h.
 
 
 
-Definition at line 65 of file io.\+h.
+Definition at line 97 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a24c04d104ec0feda08025ba62bc79d59}\label{io_8h_a24c04d104ec0feda08025ba62bc79d59}} 
 \index{io.h@{io.h}!FLASH\_SCLK@{FLASH\_SCLK}}
@@ -268,7 +295,7 @@ Definition at line 65 of file io.\+h.
 
 
 
-Definition at line 68 of file io.\+h.
+Definition at line 100 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a235b8122312f96db584d50b64605f119}\label{io_8h_a235b8122312f96db584d50b64605f119}} 
 \index{io.h@{io.h}!FLASH\_SIMO@{FLASH\_SIMO}}
@@ -278,7 +305,7 @@ Definition at line 68 of file io.\+h.
 
 
 
-Definition at line 66 of file io.\+h.
+Definition at line 98 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a37b9aaa2414aea66cb29e5bb3dd81fb2}\label{io_8h_a37b9aaa2414aea66cb29e5bb3dd81fb2}} 
 \index{io.h@{io.h}!FLASH\_SOMI@{FLASH\_SOMI}}
@@ -288,7 +315,7 @@ Definition at line 66 of file io.\+h.
 
 
 
-Definition at line 67 of file io.\+h.
+Definition at line 99 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a219a2537bc98c9c571c8ba6b9abe33e9}\label{io_8h_a219a2537bc98c9c571c8ba6b9abe33e9}} 
 \index{io.h@{io.h}!FLSET1@{FLSET1}}
@@ -298,7 +325,7 @@ Definition at line 67 of file io.\+h.
 
 
 
-Definition at line 56 of file io.\+h.
+Definition at line 88 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a0750977f2c3bab81a19a45ee71b6b0e1}\label{io_8h_a0750977f2c3bab81a19a45ee71b6b0e1}} 
 \index{io.h@{io.h}!FLSET10@{FLSET10}}
@@ -308,7 +335,7 @@ Definition at line 56 of file io.\+h.
 
 
 
-Definition at line 29 of file io.\+h.
+Definition at line 61 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_ac30f3e5d9f3ce9cfe1f547a9bfe177d8}\label{io_8h_ac30f3e5d9f3ce9cfe1f547a9bfe177d8}} 
 \index{io.h@{io.h}!FLSET100@{FLSET100}}
@@ -318,7 +345,7 @@ Definition at line 29 of file io.\+h.
 
 
 
-Definition at line 60 of file io.\+h.
+Definition at line 92 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a9ecbba865622b0770ea82f838d638223}\label{io_8h_a9ecbba865622b0770ea82f838d638223}} 
 \index{io.h@{io.h}!FLSET2@{FLSET2}}
@@ -328,7 +355,7 @@ Definition at line 60 of file io.\+h.
 
 
 
-Definition at line 57 of file io.\+h.
+Definition at line 89 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_aa6970322f4566ca74103404b5d224217}\label{io_8h_aa6970322f4566ca74103404b5d224217}} 
 \index{io.h@{io.h}!FLSET20@{FLSET20}}
@@ -338,7 +365,7 @@ Definition at line 57 of file io.\+h.
 
 
 
-Definition at line 30 of file io.\+h.
+Definition at line 62 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a86e3b8d943eeb6f639c682b0d9941e23}\label{io_8h_a86e3b8d943eeb6f639c682b0d9941e23}} 
 \index{io.h@{io.h}!FLSET200@{FLSET200}}
@@ -348,7 +375,7 @@ Definition at line 30 of file io.\+h.
 
 
 
-Definition at line 61 of file io.\+h.
+Definition at line 93 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a52babfd74f08e5410b745991ecdee9e6}\label{io_8h_a52babfd74f08e5410b745991ecdee9e6}} 
 \index{io.h@{io.h}!FLSET4@{FLSET4}}
@@ -358,7 +385,7 @@ Definition at line 61 of file io.\+h.
 
 
 
-Definition at line 58 of file io.\+h.
+Definition at line 90 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_ac20897a26fa84f7b69699398a8eac297}\label{io_8h_ac20897a26fa84f7b69699398a8eac297}} 
 \index{io.h@{io.h}!FLSET40@{FLSET40}}
@@ -368,7 +395,7 @@ Definition at line 58 of file io.\+h.
 
 
 
-Definition at line 31 of file io.\+h.
+Definition at line 63 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a3c1d8b80a24b0092bbbd1504e5af094b}\label{io_8h_a3c1d8b80a24b0092bbbd1504e5af094b}} 
 \index{io.h@{io.h}!FLSET8@{FLSET8}}
@@ -378,7 +405,7 @@ Definition at line 31 of file io.\+h.
 
 
 
-Definition at line 59 of file io.\+h.
+Definition at line 91 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a141384734df1724a8b65a479f843969e}\label{io_8h_a141384734df1724a8b65a479f843969e}} 
 \index{io.h@{io.h}!FLSET80@{FLSET80}}
@@ -388,7 +415,7 @@ Definition at line 59 of file io.\+h.
 
 
 
-Definition at line 32 of file io.\+h.
+Definition at line 64 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a3dfd49da2f956c034626cadcaf6aee1b}\label{io_8h_a3dfd49da2f956c034626cadcaf6aee1b}} 
 \index{io.h@{io.h}!FLTRIM\_PWM@{FLTRIM\_PWM}}
@@ -398,7 +425,7 @@ Definition at line 32 of file io.\+h.
 
 
 
-Definition at line 38 of file io.\+h.
+Definition at line 70 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a0ac49f555993216e8f227fd96d19a919}\label{io_8h_a0ac49f555993216e8f227fd96d19a919}} 
 \index{io.h@{io.h}!GF\_ONOFF@{GF\_ONOFF}}
@@ -408,7 +435,7 @@ Definition at line 38 of file io.\+h.
 
 
 
-Definition at line 72 of file io.\+h.
+Definition at line 104 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a767218971fe7fe6f1da525a5ff100743}\label{io_8h_a767218971fe7fe6f1da525a5ff100743}} 
 \index{io.h@{io.h}!IO\_INBREAKER\_OPEN@{IO\_INBREAKER\_OPEN}}
@@ -418,7 +445,7 @@ Definition at line 72 of file io.\+h.
 
 
 
-Definition at line 102 of file io.\+h.
+Definition at line 134 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_ac8195188d2653a31fdbee4a0da93ac37}\label{io_8h_ac8195188d2653a31fdbee4a0da93ac37}} 
 \index{io.h@{io.h}!IO\_OUTBREAKER\_OPEN@{IO\_OUTBREAKER\_OPEN}}
@@ -428,7 +455,7 @@ Definition at line 102 of file io.\+h.
 
 
 
-Definition at line 103 of file io.\+h.
+Definition at line 135 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a75c41b08eeab8adb42d821c41ff88f88}\label{io_8h_a75c41b08eeab8adb42d821c41ff88f88}} 
 \index{io.h@{io.h}!IOUTSP\_CA@{IOUTSP\_CA}}
@@ -438,7 +465,7 @@ Definition at line 103 of file io.\+h.
 
 
 
-Definition at line 40 of file io.\+h.
+Definition at line 72 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_ac5c788674392949a33f828680cc4c482}\label{io_8h_ac5c788674392949a33f828680cc4c482}} 
 \index{io.h@{io.h}!LCD\_RX@{LCD\_RX}}
@@ -448,7 +475,7 @@ Definition at line 40 of file io.\+h.
 
 
 
-Definition at line 50 of file io.\+h.
+Definition at line 82 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a88c3ac590021f00286f92f4a3c650c72}\label{io_8h_a88c3ac590021f00286f92f4a3c650c72}} 
 \index{io.h@{io.h}!LCD\_TX@{LCD\_TX}}
@@ -458,7 +485,7 @@ Definition at line 50 of file io.\+h.
 
 
 
-Definition at line 49 of file io.\+h.
+Definition at line 81 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a7ebb5de5f8e81a0c69161a8fdeb924de}\label{io_8h_a7ebb5de5f8e81a0c69161a8fdeb924de}} 
 \index{io.h@{io.h}!nHISIDE\_EN@{nHISIDE\_EN}}
@@ -468,7 +495,7 @@ Definition at line 49 of file io.\+h.
 
 
 
-Definition at line 51 of file io.\+h.
+Definition at line 83 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_abd29c63ba6e2261d6b3775cddc0e6fbc}\label{io_8h_abd29c63ba6e2261d6b3775cddc0e6fbc}} 
 \index{io.h@{io.h}!ONOFF@{ONOFF}}
@@ -478,7 +505,7 @@ Definition at line 51 of file io.\+h.
 
 
 
-Definition at line 41 of file io.\+h.
+Definition at line 73 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_ad938ab9d6904f80109aea0efd0ae3bd1}\label{io_8h_ad938ab9d6904f80109aea0efd0ae3bd1}} 
 \index{io.h@{io.h}!P4\_UNUSED@{P4\_UNUSED}}
@@ -488,7 +515,7 @@ Definition at line 41 of file io.\+h.
 
 
 
-Definition at line 62 of file io.\+h.
+Definition at line 94 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_af939c2f6f3b99a32b7ea135d2c6a09b8}\label{io_8h_af939c2f6f3b99a32b7ea135d2c6a09b8}} 
 \index{io.h@{io.h}!P5\_UNUSED@{P5\_UNUSED}}
@@ -498,7 +525,7 @@ Definition at line 62 of file io.\+h.
 
 
 
-Definition at line 71 of file io.\+h.
+Definition at line 103 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a673916e59dd54a540b6bd7a3de5a8f24}\label{io_8h_a673916e59dd54a540b6bd7a3de5a8f24}} 
 \index{io.h@{io.h}!P6\_UNUSED@{P6\_UNUSED}}
@@ -508,7 +535,7 @@ Definition at line 71 of file io.\+h.
 
 
 
-Definition at line 84 of file io.\+h.
+Definition at line 116 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a54a4c7f76f3b4b1e70bd8862ccf27bcd}\label{io_8h_a54a4c7f76f3b4b1e70bd8862ccf27bcd}} 
 \index{io.h@{io.h}!RELAY@{RELAY}}
@@ -518,7 +545,7 @@ Definition at line 84 of file io.\+h.
 
 
 
-Definition at line 52 of file io.\+h.
+Definition at line 84 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a992329c4b01a10ae9a86e8a214f64cde}\label{io_8h_a992329c4b01a10ae9a86e8a214f64cde}} 
 \index{io.h@{io.h}!SAMPLE\_PWM@{SAMPLE\_PWM}}
@@ -528,7 +555,7 @@ Definition at line 52 of file io.\+h.
 
 
 
-Definition at line 39 of file io.\+h.
+Definition at line 71 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_a56f2c8a2a51d0dc8c8bf440a7f4398a7}\label{io_8h_a56f2c8a2a51d0dc8c8bf440a7f4398a7}} 
 \index{io.h@{io.h}!TMPCMP\_DIGITAL@{TMPCMP\_DIGITAL}}
@@ -538,7 +565,7 @@ Definition at line 39 of file io.\+h.
 
 
 
-Definition at line 28 of file io.\+h.
+Definition at line 60 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_adfe13f09b9403f493982547eb3f52cbc}\label{io_8h_adfe13f09b9403f493982547eb3f52cbc}} 
 \index{io.h@{io.h}!TWO\_FAN@{TWO\_FAN}}
@@ -548,7 +575,7 @@ Definition at line 28 of file io.\+h.
 
 
 
-Definition at line 18 of file io.\+h.
+Definition at line 50 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_addf5ec070e9499d36b7f2009ce736076}\label{io_8h_addf5ec070e9499d36b7f2009ce736076}} 
 \index{io.h@{io.h}!UNUSED@{UNUSED}}
@@ -558,7 +585,7 @@ Definition at line 18 of file io.\+h.
 
 
 
-Definition at line 26 of file io.\+h.
+Definition at line 58 of file io.\+h.
 
 \mbox{\Hypertarget{io_8h_afdf3310d0c413db35ca18b835e304142}\label{io_8h_afdf3310d0c413db35ca18b835e304142}} 
 \index{io.h@{io.h}!VINLIM\_PWM@{VINLIM\_PWM}}
@@ -568,7 +595,7 @@ Definition at line 26 of file io.\+h.
 
 
 
-Definition at line 42 of file io.\+h.
+Definition at line 74 of file io.\+h.
 
 
 
@@ -589,8 +616,13 @@ R\+DD status\+Flags.\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+T\+OP=1;
 
 Definition at line 107 of file pwm.\+c.
 
-Here is the caller graph for this function\+:
-% FIG 2
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{io_8h_add100bba23de7b0f74bd6450111f7054_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{io_8h_a5dfa7a7bbf6365794c9bc400f0f3f3a7}\label{io_8h_a5dfa7a7bbf6365794c9bc400f0f3f3a7}} 
 \index{io.h@{io.h}!IO\_enablePwmCtrl@{IO\_enablePwmCtrl}}
 \index{IO\_enablePwmCtrl@{IO\_enablePwmCtrl}!io.h@{io.h}}
@@ -601,40 +633,6 @@ R\+DD status\+Flags.\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+T\+A\+RT=1;
 
 Definition at line 97 of file pwm.\+c.
 
-\mbox{\Hypertarget{io_8h_a604d27cdb3324e133cd572ce26dd579c}\label{io_8h_a604d27cdb3324e133cd572ce26dd579c}} 
-\index{io.h@{io.h}!IO\_fanDrvPWM@{IO\_fanDrvPWM}}
-\index{IO\_fanDrvPWM@{IO\_fanDrvPWM}!io.h@{io.h}}
-\doxysubsubsection{\texorpdfstring{IO\_fanDrvPWM()}{IO\_fanDrvPWM()}}
-{\footnotesize\ttfamily void I\+O\+\_\+fan\+Drv\+P\+WM (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
-
-
-
-Definition at line 273 of file io.\+c.
-
-\mbox{\Hypertarget{io_8h_a2a7f010e2149a591731de12c866901af}\label{io_8h_a2a7f010e2149a591731de12c866901af}} 
-\index{io.h@{io.h}!IO\_fanSenseSpeed@{IO\_fanSenseSpeed}}
-\index{IO\_fanSenseSpeed@{IO\_fanSenseSpeed}!io.h@{io.h}}
-\doxysubsubsection{\texorpdfstring{IO\_fanSenseSpeed()}{IO\_fanSenseSpeed()}}
-{\footnotesize\ttfamily void I\+O\+\_\+fan\+Sense\+Speed (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
-
-
-
-Definition at line 298 of file io.\+c.
-
-Here is the caller graph for this function\+:
-% FIG 3
-\mbox{\Hypertarget{io_8h_a29a2808d1a73b58a4cfdbc9853b8fe20}\label{io_8h_a29a2808d1a73b58a4cfdbc9853b8fe20}} 
-\index{io.h@{io.h}!IO\_fanSetSpeed@{IO\_fanSetSpeed}}
-\index{IO\_fanSetSpeed@{IO\_fanSetSpeed}!io.h@{io.h}}
-\doxysubsubsection{\texorpdfstring{IO\_fanSetSpeed()}{IO\_fanSetSpeed()}}
-{\footnotesize\ttfamily void I\+O\+\_\+fan\+Set\+Speed (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
-
-
-
-Definition at line 329 of file io.\+c.
-
-Here is the call graph for this function\+:
-% FIG 4
 \mbox{\Hypertarget{io_8h_a3abd9b2121148ab2135eaca9dd2906ac}\label{io_8h_a3abd9b2121148ab2135eaca9dd2906ac}} 
 \index{io.h@{io.h}!IO\_flset@{IO\_flset}}
 \index{IO\_flset@{IO\_flset}!io.h@{io.h}}
@@ -649,10 +647,15 @@ Here is the call graph for this function\+:
 
 
 
-Definition at line 168 of file io.\+c.
+Definition at line 216 of file io.\+c.
 
-Here is the caller graph for this function\+:
-% FIG 5
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{io_8h_aa63f8ebf2789ad7d3ed40a0c5d8a799b_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{io_8h_a931fc9842f61b8edece408fda0200049}\label{io_8h_a931fc9842f61b8edece408fda0200049}} 
 \index{io.h@{io.h}!IO\_getGroundFault@{IO\_getGroundFault}}
 \index{IO\_getGroundFault@{IO\_getGroundFault}!io.h@{io.h}}
@@ -661,10 +664,15 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line 162 of file io.\+c.
+Definition at line 210 of file io.\+c.
 
-Here is the caller graph for this function\+:
-% FIG 6
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{io_8h_a931fc9842f61b8edece408fda0200049_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{io_8h_ab0f8e13eeba6fe6891367e1632366a6c}\label{io_8h_ab0f8e13eeba6fe6891367e1632366a6c}} 
 \index{io.h@{io.h}!IO\_getIsSlave@{IO\_getIsSlave}}
 \index{IO\_getIsSlave@{IO\_getIsSlave}!io.h@{io.h}}
@@ -673,10 +681,15 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line 234 of file io.\+c.
+Definition at line 282 of file io.\+c.
 
-Here is the caller graph for this function\+:
-% FIG 7
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{io_8h_ab0f8e13eeba6fe6891367e1632366a6c_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{io_8h_a0976dd4faeee95827cb133e20f3c72bd}\label{io_8h_a0976dd4faeee95827cb133e20f3c72bd}} 
 \index{io.h@{io.h}!IO\_getOnOff@{IO\_getOnOff}}
 \index{IO\_getOnOff@{IO\_getOnOff}!io.h@{io.h}}
@@ -685,7 +698,7 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line 156 of file io.\+c.
+Definition at line 204 of file io.\+c.
 
 \mbox{\Hypertarget{io_8h_ac1e824237e4a013ed7d7d5f499292eba}\label{io_8h_ac1e824237e4a013ed7d7d5f499292eba}} 
 \index{io.h@{io.h}!IO\_init@{IO\_init}}
@@ -695,22 +708,15 @@ Definition at line 156 of file io.\+c.
 
 
 
-Definition at line 99 of file io.\+c.
+Definition at line 128 of file io.\+c.
 
-Here is the caller graph for this function\+:
-% FIG 8
-\mbox{\Hypertarget{io_8h_a8122064b26eb564e1f005d71f9ed4123}\label{io_8h_a8122064b26eb564e1f005d71f9ed4123}} 
-\index{io.h@{io.h}!IO\_setFanDutyCycle@{IO\_setFanDutyCycle}}
-\index{IO\_setFanDutyCycle@{IO\_setFanDutyCycle}!io.h@{io.h}}
-\doxysubsubsection{\texorpdfstring{IO\_setFanDutyCycle()}{IO\_setFanDutyCycle()}}
-{\footnotesize\ttfamily void I\+O\+\_\+set\+Fan\+Duty\+Cycle (\begin{DoxyParamCaption}\item[{unsigned int}]{fan\+Duty }\end{DoxyParamCaption})}
-
-
-
-Definition at line 146 of file io.\+c.
-
-Here is the caller graph for this function\+:
-% FIG 9
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{io_8h_ac1e824237e4a013ed7d7d5f499292eba_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{io_8h_a772113c6d38522f0c29c7eef1641ba23}\label{io_8h_a772113c6d38522f0c29c7eef1641ba23}} 
 \index{io.h@{io.h}!IO\_setRelay@{IO\_setRelay}}
 \index{IO\_setRelay@{IO\_setRelay}!io.h@{io.h}}
@@ -719,7 +725,12 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line 244 of file io.\+c.
+Definition at line 292 of file io.\+c.
 
-Here is the caller graph for this function\+:
-% FIG 10
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{io_8h_a772113c6d38522f0c29c7eef1641ba23_icgraph}
+\end{center}
+\end{figure}

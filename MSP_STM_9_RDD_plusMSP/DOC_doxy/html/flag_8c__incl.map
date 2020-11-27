@@ -7,7 +7,7 @@
 <area shape="rect" id="node8" href="$cfg_8h.html" title=" " alt="" coords="173,109,224,136"/>
 <area shape="rect" id="node10" href="$safety_8h.html" title=" " alt="" coords="318,184,386,211"/>
 <area shape="rect" id="node11" href="$meas_8h.html" title=" " alt="" coords="353,259,418,285"/>
-<area shape="rect" id="node14" href="$io_8h.html" title=" " alt="" coords="473,109,516,136"/>
+<area shape="rect" id="node14" href="$io_8h.html" title="Discrete I / O control." alt="" coords="473,109,516,136"/>
 <area shape="rect" id="node3" href="$debug_8h.html" title=" " alt="" coords="265,408,333,435"/>
 <area shape="rect" id="node4" href="$iqmath_8h.html" title=" " alt="" coords="189,333,261,360"/>
 <area shape="rect" id="node9" href="$telem_8h.html" title=" " alt="" coords="69,259,134,285"/>

@@ -1,0 +1,4 @@
+<map id="IO_setFanDutyCycle" name="IO_setFanDutyCycle">
+<area shape="rect" id="node1" title="Limits fanDuty." alt="" coords="169,5,312,32"/>
+<area shape="rect" id="node2" href="$group__group_f_a_n.html#ga5de2a1f6e57f18a921ea9d55831bb4db" title="High level logic for FAN." alt="" coords="5,5,121,32"/>
+</map>

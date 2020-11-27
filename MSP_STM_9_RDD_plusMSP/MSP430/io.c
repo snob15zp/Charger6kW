@@ -1,3 +1,6 @@
+/*!
+\file
+\brief Discrete I / O control
 
 //-------------------------------------------------------------------
 // File: io.c
@@ -8,37 +11,54 @@
 // History:
 //   2010-07-07: original
 //-------------------------------------------------------------------
-/********************************************************************
+
 Schematic Digital Input Output
-*CASETMP thermistor
+
+*CASETMP thermistor, no in this file
 
 *ON_OFF_GFD
+
            io.c:IO_getGroundFault()
+					 
 					 ctrl.c:CTRL_tick()->io.c:IO_getGroundFault()
+					 
 					 RDD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! set with delay disablePWM according to  GroundFault: J10 on PWRboard
+					 
 *RELAY_1_EN
+
 *RELAY_2_EN
+
            io.c: IO_setRelay
-*TMPCMP used Analog or Digital?
+					 
+*TMPCMP or Digital?
+
         Digital:
+				
         io.c: int IO_getDigitalTemp()
+				
         temp.c:TEMP_init()->io.c: int IO_getDigitalTemp()
+				
 				pwm.c:PWM_isr()->temp.c:TEMP_tick()->io.c: int IO_getDigitalTemp()
+				
 *ONOFF/SLAVE#
+
         io.c:  epsent? 
 				
 In io.c:
+
         IO_getIsSlave
 				
+				FAN                                                     high level logic       limit fanDuty
 				
-				FAN:
-				mainMSP:mainMSPloop()->sch.c:SCH_runActiveTasks()->void IO_fanDrvPWM()//program PWM
-				mainMSP:mainMSPloop()->sch.c:SCH_runActiveTasks()->IO_fanSetSpeed()//High level Logic
-				IO_fanSenseSpeed();
-				IO_setFanDutyCycle();
+				mainMSP.c:mainMSPloop()->sch.c:SCH_runActiveTasks()->io.c:IO_fanSetSpeed->io.c:IO_setFanDutyCycle( unsigned int fanDuty);
 				
+        mainMSP.c:TIM3_IRQHandler(void)->PWM.c:PWM_isr(void)->io.c:IO_fanSenseSpeed(void);
 				
-**********************************************************************/
+	      mainMSP.c:mainMSPloop()->sch.c:SCH_runActiveTasks()->io.c:IO_fanDrvPWM(void);
+
+
+*/
+
 //#include <msp430x24x.h>
 #include "Stm32f3xx.h"
 #include "variant.h"
@@ -151,7 +171,26 @@ In io.c:
 		prevFan2State = 1;
 	}
 
-	//Functions that are only used for WALL
+
+/**
+ *  @defgroup groupFAN FAN
+	
+					FAN                                                     high level logic       limit fanDuty
+				
+				mainMSP.c:mainMSPloop()->sch.c:SCH_runActiveTasks()->io.c:IO_fanSetSpeed->io.c:IO_setFanDutyCycle( unsigned int fanDuty);
+				
+        mainMSP.c:TIM3_IRQHandler(void)->PWM.c:PWM_isr(void)->io.c:IO_fanSenseSpeed(void);
+				
+	      mainMSP.c:mainMSPloop()->sch.c:SCH_runActiveTasks()->io.c:IO_fanDrvPWM(void);
+
+	
+ */	
+	
+	
+/**
+ *  @ingroup groupFAN
+ *  @brief Limits fanDuty
+ */
 void IO_setFanDutyCycle(unsigned int fanDuty)
 	{	
 		if(fanDuty <= IO_FAN_PWM_PERIOD)
@@ -278,7 +317,10 @@ void IO_setRelay( unsigned long long bitfield )
 //	IO_pwmEnabled = 0;
 //}
 
-
+/**
+ *  @ingroup groupFAN
+ *  @brief Program PWM for FAN
+ */
 void IO_fanDrvPWM()
 {
 	if(fanPWMCounter >= (IO_FAN_PWM_PERIOD - 1))
@@ -300,10 +342,22 @@ void IO_fanDrvPWM()
 	}
 }
 
-//This is called at the PWM frequency which is about every 512us as of revision 133.
-//Rated fan speed is 4300RPM which is about 6.5 ms between falling edges, or 13ms for a full rotation of the fan.
-//This corresponds to fanFBPeriod of about 0x0C
-//The safety cutoff for fanFBPeriod is set to FAN_PERIOD_MAXIMUM = 0x14
+
+/*!  @brief program counter of edges
+ 
+     @ingroup groupFAN
+
+     \todo make fanFBCount1 like fanFBCount2
+
+FAN speed: curFanFBCount1,  curFanFBCount2
+
+Speed analized in IO_fanSetSpeed()
+
+This is called at the PWM frequency which is about every 512us as of revision 133.
+Rated fan speed is 4300RPM which is about 6.5 ms between falling edges, or 13ms for a full rotation of the fan.
+This corresponds to fanFBPeriod of about 0x0C
+The safety cutoff for fanFBPeriod is set to FAN_PERIOD_MAXIMUM = 0x14
+*/
 void IO_fanSenseSpeed()
 {
 //	if (P1IFG & FAN_FB)
@@ -334,7 +388,12 @@ void IO_fanSenseSpeed()
 #endif
 }
 
+/**
+   @ingroup groupFAN
+   @brief High level logic for FAN
+
 //Run by scheduler every 2 seconds
+ */
 void IO_fanSetSpeed()
 {
 	int curFanFBCount1 = fanFBCount1;
