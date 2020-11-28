@@ -17,5 +17,6 @@ var searchData=
   ['device_5fid_387',['device_id',['../structhware__info__.html#aa5375b75f3cc5cb3e53cf142c7e9b9cc',1,'hware_info_::device_id()'],['../variant_8h.html#a0b85963cace75e76ae726bcffb04eb70',1,'DEVICE_ID():&#160;variant.h']]],
   ['digital_5ftemp_388',['DIGITAL_TEMP',['../variant_8h.html#a6952636c4089797130341ae26f481141',1,'variant.h']]],
   ['dle_389',['DLE',['../usci_8c.html#add7018db64fb17dd1e4664b4494be0ee',1,'usci.c']]],
-  ['dsp28_5fdata_5ftypes_390',['DSP28_DATA_TYPES',['../lcd_8h.html#aa838400bfd3d24abdec9cc535d05f3e5',1,'lcd.h']]]
+  ['dsp28_5fdata_5ftypes_390',['DSP28_DATA_TYPES',['../lcd_8h.html#aa838400bfd3d24abdec9cc535d05f3e5',1,'lcd.h']]],
+  ['digitaltemp_20max6577_391',['DigitalTemp MAX6577',['../group__group_digital_temp.html',1,'']]]
 ];

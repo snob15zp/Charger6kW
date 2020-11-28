@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fan_2962',['FAN',['../group__group_f_a_n.html',1,'']]]
+  ['digitaltemp_20max6577_2963',['DigitalTemp MAX6577',['../group__group_digital_temp.html',1,'']]]
 ];
