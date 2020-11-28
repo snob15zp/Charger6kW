@@ -1,4 +1,4 @@
-.TH "groupDigitalTemp" 3 "Fri Nov 27 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.TH "groupDigitalTemp" 3 "Sat Nov 28 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -36,25 +36,36 @@ groupDigitalTemp \- DigitalTemp MAX6577
 .PP
 Just returns the state of the input\&. 
 .PP
-Definition at line 224 of file io\&.c\&.
+Definition at line 231 of file io\&.c\&.
 .SS "unsigned int TEMP_getValue (void)"
 
 .PP
 Just returns the state of the temperature in Kelvin * 64\&. 
 .PP
-Definition at line 86 of file temp\&.c\&.
+Definition at line 94 of file temp\&.c\&.
 .SS "void TEMP_init (void)"
 
 .PP
-temperature = (273\&.15f + 25) * 64; 
+temperature = (273\&.15f + 25) * 64; TMPCMP Digital input 
 .PP
-Definition at line 27 of file temp\&.c\&.
+.nf
+  io.c: int IO_getDigitalTemp()
+
+  temp.c:TEMP_init()->io.c: int IO_getDigitalTemp()
+
+        pwm.c:PWM_isr()->temp.c:TEMP_tick()->io.c: int IO_getDigitalTemp()
+
+.fi
+.PP
+ 
+.PP
+Definition at line 35 of file temp\&.c\&.
 .SS "void TEMP_tick (void)"
 
 .PP
 Just returns the state of the input\&. Count the number of pulses in about a second and measure the time Then temperature in kelvin is pulses/time Get temperature in Kelvin * 64 
 .PP
-Definition at line 47 of file temp\&.c\&.
+Definition at line 55 of file temp\&.c\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Charger6kW from the source code\&.

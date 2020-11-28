@@ -29,10 +29,9 @@ Just returns the state of the input.
 
 
 
-Definition at line 224 of file io.\+c.
+Definition at line 231 of file io.\+c.
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -51,10 +50,9 @@ Just returns the state of the temperature in Kelvin $\ast$ 64.
 
 
 
-Definition at line 86 of file temp.\+c.
+Definition at line 94 of file temp.\+c.
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -71,12 +69,17 @@ Here is the caller graph for this function\+:
 
 temperature = (273.\+15f + 25) $\ast$ 64; 
 
+T\+M\+P\+C\+MP Digital input \begin{DoxyVerb}  io.c: int IO_getDigitalTemp()
 
+  temp.c:TEMP_init()->io.c: int IO_getDigitalTemp()
 
-Definition at line 27 of file temp.\+c.
+        pwm.c:PWM_isr()->temp.c:TEMP_tick()->io.c: int IO_getDigitalTemp()
+\end{DoxyVerb}
+ 
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Definition at line 35 of file temp.\+c.
+
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -95,18 +98,16 @@ Just returns the state of the input.
 
 Count the number of pulses in about a second and measure the time Then temperature in kelvin is pulses/time Get temperature in Kelvin $\ast$ 64 
 
-Definition at line 47 of file temp.\+c.
+Definition at line 55 of file temp.\+c.
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=277pt]{group__group_digital_temp_ga658f475d23bec65c525f7b89ca362852_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

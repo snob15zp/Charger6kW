@@ -1,5 +1,5 @@
 <map id="CTRL_tick" name="CTRL_tick">
 <area shape="rect" id="node1" title=" " alt="" coords="5,31,88,57"/>
-<area shape="rect" id="node2" href="$io_8c.html#a093da490b1804bdd58ab67e44a89ebf0" title=" " alt="" coords="139,5,269,32"/>
+<area shape="rect" id="node2" href="$io_8c.html#a093da490b1804bdd58ab67e44a89ebf0" title="Just returns the state of the input." alt="" coords="139,5,269,32"/>
 <area shape="rect" id="node3" href="$safety_8c.html#a9f6653cd124129e53aec322ebdf6251e" title=" " alt="" coords="136,56,272,83"/>
 </map>

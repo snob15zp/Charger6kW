@@ -1,8 +1,8 @@
-.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/io.h" 3 "Fri Nov 27 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.TH "D:/user/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/io.h" 3 "Sat Nov 28 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/io.h \- Discrete I / O control\&.  
+D:/user/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/io.h \- Discrete I / O control\&.  
 
 .SH SYNOPSIS
 .br
@@ -168,9 +168,11 @@ D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/io.h \- Discrete I / O
 .ti -1c
 .RI "int \fBIO_getOnOff\fP (void)"
 .br
+.RI "Just returns the state of the input\&. "
 .ti -1c
 .RI "int \fBIO_getGroundFault\fP (void)"
 .br
+.RI "Just returns the state of the input\&. "
 .ti -1c
 .RI "int \fBIO_getDigitalTemp\fP (void)"
 .br
@@ -178,6 +180,7 @@ D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/io.h \- Discrete I / O
 .ti -1c
 .RI "int \fBIO_getIsSlave\fP (void)"
 .br
+.RI "not real input, return( (int)( CFG_localCfg\&.isSlave ) ); "
 .ti -1c
 .RI "void \fBIO_init\fP (void)"
 .br
@@ -411,23 +414,29 @@ Definition at line 97 of file pwm\&.c\&.
 .SS "int IO_getGroundFault (void)"
 
 .PP
-Definition at line 210 of file io\&.c\&.
+Just returns the state of the input\&. set with delay disablePWM according to GroundFault: J10 on PWRboard 
+.PP
+Definition at line 217 of file io\&.c\&.
 .SS "int IO_getIsSlave (void)"
 
 .PP
-Definition at line 290 of file io\&.c\&.
+not real input, return( (int)( CFG_localCfg\&.isSlave ) ); 
+.PP
+Definition at line 299 of file io\&.c\&.
 .SS "int IO_getOnOff (void)"
 
 .PP
-Definition at line 204 of file io\&.c\&.
+Just returns the state of the input\&. \fBpwm\&.c\fP:PWM_isr->cntrl\&.c:\fBCTRL_tick()\fP->\fBio\&.c\fP:int \fBIO_getOnOff()\fP 
+.PP
+Definition at line 206 of file io\&.c\&.
 .SS "void IO_init (void)"
 
 .PP
-Definition at line 128 of file io\&.c\&.
+Definition at line 126 of file io\&.c\&.
 .SS "void IO_setRelay (unsigned long long bitfield)"
 
 .PP
-Definition at line 300 of file io\&.c\&.
+Definition at line 309 of file io\&.c\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Charger6kW from the source code\&.

@@ -1,5 +1,5 @@
 <map id="IO_getIsSlave" name="IO_getIsSlave">
-<area shape="rect" id="node1" title=" " alt="" coords="957,132,1059,159"/>
+<area shape="rect" id="node1" title="not real input, return( (int)( CFG_localCfg.isSlave ) );" alt="" coords="957,132,1059,159"/>
 <area shape="rect" id="node2" href="$ctrl_8h.html#a179e6efb5839fd58f47e482d08b4dd36" title=" " alt="" coords="725,56,909,83"/>
 <area shape="rect" id="node10" href="$ctrl_8h.html#a61c3c1d3b657a30771dda4744901728a" title=" " alt="" coords="742,208,893,235"/>
 <area shape="rect" id="node11" href="$ctrl_8h.html#aba9e453bd910ac5c262baa6206a23849" title=" " alt="" coords="759,157,876,184"/>

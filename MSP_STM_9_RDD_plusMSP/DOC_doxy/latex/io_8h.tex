@@ -1,5 +1,5 @@
-\hypertarget{io_8h}{}\doxysection{D\+:/user\+S\+S\+D/github/\+Charger6k\+W/\+M\+S\+P\+\_\+\+S\+T\+M\+\_\+9\+\_\+\+R\+D\+D\+\_\+plus\+M\+S\+P/\+M\+S\+P430/io.h File Reference}
-\label{io_8h}\index{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/io.h@{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/io.h}}
+\hypertarget{io_8h}{}\doxysection{D\+:/user/github/\+Charger6k\+W/\+M\+S\+P\+\_\+\+S\+T\+M\+\_\+9\+\_\+\+R\+D\+D\+\_\+plus\+M\+S\+P/\+M\+S\+P430/io.h File Reference}
+\label{io_8h}\index{D:/user/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/io.h@{D:/user/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/io.h}}
 
 
 Discrete I / O control.  
@@ -123,13 +123,13 @@ void \mbox{\hyperlink{group__group_f_a_n_ga5de2a1f6e57f18a921ea9d55831bb4db}{I\+
 void \mbox{\hyperlink{group__group_f_a_n_gafe3992ff4de6ea1f4b8df6881647e622}{I\+O\+\_\+fan\+Drv\+P\+WM}} (void)
 \begin{DoxyCompactList}\small\item\em Program P\+WM for F\+AN. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{io_8h_a0976dd4faeee95827cb133e20f3c72bd}{I\+O\+\_\+get\+On\+Off}} (void)
-\item 
+\begin{DoxyCompactList}\small\item\em Just returns the state of the input. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{io_8h_a931fc9842f61b8edece408fda0200049}{I\+O\+\_\+get\+Ground\+Fault}} (void)
-\item 
+\begin{DoxyCompactList}\small\item\em Just returns the state of the input. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{group__group_digital_temp_gadb4d298519fbee074c2f8bdff6726044}{I\+O\+\_\+get\+Digital\+Temp}} (void)
 \begin{DoxyCompactList}\small\item\em Just returns the state of the input. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{io_8h_ab0f8e13eeba6fe6891367e1632366a6c}{I\+O\+\_\+get\+Is\+Slave}} (void)
-\item 
+\begin{DoxyCompactList}\small\item\em not real input, return( (int)( C\+F\+G\+\_\+local\+Cfg.\+is\+Slave ) ); \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{io_8h_ac1e824237e4a013ed7d7d5f499292eba}{I\+O\+\_\+init}} (void)
 \item 
 void \mbox{\hyperlink{io_8h_a772113c6d38522f0c29c7eef1641ba23}{I\+O\+\_\+set\+Relay}} (unsigned long long bitfield)
@@ -647,7 +647,11 @@ Definition at line 97 of file pwm.\+c.
 
 
 
-Definition at line 210 of file io.\+c.
+Just returns the state of the input. 
+
+set with delay disable\+P\+WM according to Ground\+Fault\+: J10 on P\+W\+Rboard 
+
+Definition at line 217 of file io.\+c.
 
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -664,7 +668,11 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 
-Definition at line 290 of file io.\+c.
+not real input, return( (int)( C\+F\+G\+\_\+local\+Cfg.\+is\+Slave ) ); 
+
+
+
+Definition at line 299 of file io.\+c.
 
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -681,7 +689,11 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 
-Definition at line 204 of file io.\+c.
+Just returns the state of the input. 
+
+\mbox{\hyperlink{pwm_8c}{pwm.\+c}}\+:P\+W\+M\+\_\+isr-\/$>$cntrl.\+c\+:\mbox{\hyperlink{ctrl_01_07_xD0_x9A_xD0_xBE_xD0_xBD_xD1_x84_xD0_xBB_xD0_xB8_xD0_xBA_xD1_x82_xD1_x83_xD1_x8E_xD1_x289479354af9cbc005bd3481d783ccac_a0b295af2ff0548129f198da3b642a10d}{C\+T\+R\+L\+\_\+tick()}}-\/$>$\mbox{\hyperlink{io_8c}{io.\+c}}\+:int \mbox{\hyperlink{io_8c_a82e66395f7330f1a86eee95fd49fc0d4}{I\+O\+\_\+get\+On\+Off()}} 
+
+Definition at line 206 of file io.\+c.
 
 \mbox{\Hypertarget{io_8h_ac1e824237e4a013ed7d7d5f499292eba}\label{io_8h_ac1e824237e4a013ed7d7d5f499292eba}} 
 \index{io.h@{io.h}!IO\_init@{IO\_init}}
@@ -691,7 +703,7 @@ Definition at line 204 of file io.\+c.
 
 
 
-Definition at line 128 of file io.\+c.
+Definition at line 126 of file io.\+c.
 
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -708,7 +720,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 
-Definition at line 300 of file io.\+c.
+Definition at line 309 of file io.\+c.
 
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]

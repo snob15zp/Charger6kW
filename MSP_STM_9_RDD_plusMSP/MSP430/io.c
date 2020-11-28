@@ -30,9 +30,7 @@ Schematic Digital Input Output
 
            io.c: IO_setRelay
 					 
-*TMPCMP or Digital?
-
-        Digital:
+*TMPCMP Digital
 				
         io.c: int IO_getDigitalTemp()
 				
@@ -42,7 +40,7 @@ Schematic Digital Input Output
 				
 *ONOFF/SLAVE#
 
-        io.c:  epsent? 
+         pwm.c:PWM_isr->cntrl.c:CTRL_tick()->io.c:int IO_getOnOff() 
 				
 In io.c:
 
@@ -200,13 +198,22 @@ void IO_setFanDutyCycle(unsigned int fanDuty)
 			fanDutyCompare = IO_FAN_PWM_PERIOD;
 		}
 	}
-
+/**
+ *  @brief Just returns the state of the input 
+	
+	pwm.c:PWM_isr->cntrl.c:CTRL_tick()->io.c:int IO_getOnOff()
+ */
 	int IO_getOnOff()
 	{
 //		return ( ( P2IN & ONOFF ) == 0 );
 		return ((GPIOB->IDR & GPIO_IDR_0)==0);
 	}
-
+	
+/**
+  *  @brief Just returns the state of the input
+	
+	    set with delay disablePWM according to  GroundFault: J10 on PWRboard
+ */
 	int IO_getGroundFault()
 	{
 //		return ((P5IN & GF_ONOFF) == 0);
@@ -285,7 +292,9 @@ void IO_setFanDutyCycle(unsigned int fanDuty)
 	
 
 #endif
-
+/**
+ *  @brief not real input, return( (int)( CFG_localCfg.isSlave ) );
+ */
 //get from backplane for RACK, needs to get from config in WALL
 int IO_getIsSlave()
 {

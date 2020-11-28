@@ -23,6 +23,14 @@ static unsigned int temperature;		// Temp in kelvin * 64
 /**
  *  @ingroup groupDigitalTemp
  *  @brief temperature = (273.15f + 25) * 64;
+ 
+ *TMPCMP Digital input
+				
+        io.c: int IO_getDigitalTemp()
+				
+        temp.c:TEMP_init()->io.c: int IO_getDigitalTemp()
+				
+				pwm.c:PWM_isr()->temp.c:TEMP_tick()->io.c: int IO_getDigitalTemp()
 */
 void TEMP_init()
 {

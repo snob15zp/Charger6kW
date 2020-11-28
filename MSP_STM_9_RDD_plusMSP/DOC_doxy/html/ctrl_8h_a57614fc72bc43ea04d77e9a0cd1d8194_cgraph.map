@@ -1,4 +1,4 @@
 <map id="CTRL_setOutVoltCmd" name="CTRL_setOutVoltCmd">
 <area shape="rect" id="node1" title=" " alt="" coords="5,5,156,32"/>
-<area shape="rect" id="node2" href="$io_8c.html#ad44f90f9147018b5caeeef6f99866118" title=" " alt="" coords="204,5,305,32"/>
+<area shape="rect" id="node2" href="$io_8c.html#ad44f90f9147018b5caeeef6f99866118" title="not real input, return( (int)( CFG_localCfg.isSlave ) );" alt="" coords="204,5,305,32"/>
 </map>
