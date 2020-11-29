@@ -23,7 +23,7 @@ var searchData=
   ['block_5fsize_53',['BLOCK_SIZE',['../flash_8h.html#ad51ded0bbd705f02f73fc60c0b721ced',1,'flash.h']]],
   ['blocknum_54',['blockNum',['../struct_telem_header__.html#a79e472d37254b77f0a32c70a22cb4877',1,'TelemHeader_']]],
   ['bootloader_5fversion_55',['bootloader_version',['../structhware__info__.html#a63463b4fd20cb49d00d0e954a7fa8b3a',1,'hware_info_']]],
-  ['brief_5fpause_56',['brief_pause',['../main_8c.html#ae3ef518fe01a72af8a5599029b6db1be',1,'brief_pause(register unsigned int n):&#160;main.c'],['../main_m_s_p_8c.html#a8bb63f57093e7a7c31b780f3e95ec0ac',1,'brief_pause(register unsigned int n):&#160;mainMSP.c'],['../main_m_s_p_8h.html#a8bb63f57093e7a7c31b780f3e95ec0ac',1,'brief_pause(register unsigned int n):&#160;main.c']]],
+  ['brief_5fpause_56',['brief_pause',['../main_m_s_p_8c.html#a8bb63f57093e7a7c31b780f3e95ec0ac',1,'brief_pause(register unsigned int n):&#160;mainMSP.c'],['../main_m_s_p_8h.html#a8bb63f57093e7a7c31b780f3e95ec0ac',1,'brief_pause(register unsigned int n):&#160;mainMSP.c']]],
   ['buffer_57',['buffer',['../struct_flag__.html#a4b2c4b147d76204f660bfb91b455d277',1,'Flag_::buffer()'],['../struct_flash__.html#a7192fe24868941b6e949700e3b10f1ee',1,'Flash_::buffer()'],['../can_8c.html#a2aa039eae5ea240f3cf5fd1a85f10efd',1,'buffer():&#160;can.c']]],
   ['bufferstore_58',['bufferStore',['../struct_flash__.html#a29a4998ed520872eb34ec81ffcc661f8',1,'Flash_']]],
   ['build_5fnumber_59',['BUILD_NUMBER',['../buildnum_8h.html#ae7f90861d8c4d5b1cbdcf71d325feea2',1,'buildnum.h']]],

@@ -1,4 +1,4 @@
-.TH "D:/user/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/io.h" 3 "Sat Nov 28 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.TH "D:/user/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/io.h" 3 "Sun Nov 29 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -187,6 +187,7 @@ D:/user/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/io.h \- Discrete I / O co
 .ti -1c
 .RI "void \fBIO_setRelay\fP (unsigned long long bitfield)"
 .br
+.RI "just on/off relay "
 .ti -1c
 .RI "void \fBIO_enablePwmCtrl\fP (void)"
 .br
@@ -416,27 +417,36 @@ Definition at line 97 of file pwm\&.c\&.
 .PP
 Just returns the state of the input\&. set with delay disablePWM according to GroundFault: J10 on PWRboard 
 .PP
-Definition at line 217 of file io\&.c\&.
+Definition at line 219 of file io\&.c\&.
 .SS "int IO_getIsSlave (void)"
 
 .PP
 not real input, return( (int)( CFG_localCfg\&.isSlave ) ); 
 .PP
-Definition at line 299 of file io\&.c\&.
+Definition at line 301 of file io\&.c\&.
 .SS "int IO_getOnOff (void)"
 
 .PP
 Just returns the state of the input\&. \fBpwm\&.c\fP:PWM_isr->cntrl\&.c:\fBCTRL_tick()\fP->\fBio\&.c\fP:int \fBIO_getOnOff()\fP 
 .PP
-Definition at line 206 of file io\&.c\&.
+Definition at line 208 of file io\&.c\&.
 .SS "void IO_init (void)"
 
 .PP
-Definition at line 126 of file io\&.c\&.
+Definition at line 128 of file io\&.c\&.
 .SS "void IO_setRelay (unsigned long long bitfield)"
 
 .PP
-Definition at line 309 of file io\&.c\&.
+just on/off relay \fBmainMSP\&.c\fP:\fBmainMSPloop()\fP->\fBsch\&.c\fP:\fBSCH_runActiveTasks()\fP-> \fBFLAG_checkAndWrite()\fP->FLAG_checkAllFlags->\fBio\&.c\fP:IO_setRelay
+.PP
+\fBTodo\fP
+.RS 4
+2 relay
+.RE
+.PP
+
+.PP
+Definition at line 320 of file io\&.c\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Charger6kW from the source code\&.

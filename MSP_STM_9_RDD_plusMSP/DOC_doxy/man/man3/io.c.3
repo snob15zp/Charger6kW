@@ -1,4 +1,4 @@
-.TH "D:/user/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/io.c" 3 "Sat Nov 28 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.TH "D:/user/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/io.c" 3 "Sun Nov 29 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -87,6 +87,7 @@ D:/user/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/io.c \- Discrete I / O co
 .ti -1c
 .RI "void \fBIO_setRelay\fP (unsigned long long bitfield)"
 .br
+.RI "just on/off relay "
 .ti -1c
 .RI "void \fBIO_fanDrvPWM\fP ()"
 .br
@@ -175,7 +176,8 @@ RELAY_1_EN
 RELAY_2_EN 
 .PP
 .nf
-      io.c: IO_setRelay
+      mainMSP.c:mainMSPloop()->sch.c:SCH_runActiveTasks()->
+                FLAG_checkAndWrite()->FLAG_checkAllFlags->io.c:IO_setRelay
 
 .fi
 .PP
@@ -223,35 +225,35 @@ Definition in file \fBio\&.c\fP\&.
 .SS "#define IO_FAN_COUNT_TIMEOUT   100"
 
 .PP
-Definition at line 98 of file io\&.c\&.
+Definition at line 100 of file io\&.c\&.
 .SS "#define IO_FAN_MINIMUM_CURRENT   0\&.0"
 
 .PP
-Definition at line 93 of file io\&.c\&.
+Definition at line 95 of file io\&.c\&.
 .SS "#define IO_FAN_PWM_PERIOD   10"
 
 .PP
-Definition at line 82 of file io\&.c\&.
+Definition at line 84 of file io\&.c\&.
 .SS "#define IO_HEATSINK_TEMP_FAN_RESET   10\&.0"
 
 .PP
-Definition at line 88 of file io\&.c\&.
+Definition at line 90 of file io\&.c\&.
 .SS "#define IO_HEATSINK_TEMP_FAN_THRESHOLD   31\&.0"
 
 .PP
-Definition at line 87 of file io\&.c\&.
+Definition at line 89 of file io\&.c\&.
 .SS "#define IO_SYNCRECT_LOWER_THRESHOLD   (4\&.0 / \fBMEAS_OUTCURR_BASE\fP)"
 
 .PP
-Definition at line 101 of file io\&.c\&.
+Definition at line 103 of file io\&.c\&.
 .SS "#define IO_SYNCRECT_TIME_HYST_TICKS   (unsigned long)( 1\&.0 * 1000000\&.0 / (float)\fBPWM_PERIOD_US\fP )"
 
 .PP
-Definition at line 103 of file io\&.c\&.
+Definition at line 105 of file io\&.c\&.
 .SS "#define IO_SYNCRECT_UPPER_THRESHOLD   (10\&.0 / \fBMEAS_OUTCURR_BASE\fP)"
 
 .PP
-Definition at line 100 of file io\&.c\&.
+Definition at line 102 of file io\&.c\&.
 .SH "Function Documentation"
 .PP 
 .SS "int IO_getGroundFault (void)"
@@ -259,27 +261,36 @@ Definition at line 100 of file io\&.c\&.
 .PP
 Just returns the state of the input\&. set with delay disablePWM according to GroundFault: J10 on PWRboard 
 .PP
-Definition at line 217 of file io\&.c\&.
+Definition at line 219 of file io\&.c\&.
 .SS "int IO_getIsSlave (void)"
 
 .PP
 not real input, return( (int)( CFG_localCfg\&.isSlave ) ); 
 .PP
-Definition at line 299 of file io\&.c\&.
+Definition at line 301 of file io\&.c\&.
 .SS "int IO_getOnOff (void)"
 
 .PP
 Just returns the state of the input\&. \fBpwm\&.c\fP:PWM_isr->cntrl\&.c:\fBCTRL_tick()\fP->\fBio\&.c\fP:int \fBIO_getOnOff()\fP 
 .PP
-Definition at line 206 of file io\&.c\&.
+Definition at line 208 of file io\&.c\&.
 .SS "void IO_init (void)"
 
 .PP
-Definition at line 126 of file io\&.c\&.
+Definition at line 128 of file io\&.c\&.
 .SS "void IO_setRelay (unsigned long long bitfield)"
 
 .PP
-Definition at line 309 of file io\&.c\&.
+just on/off relay \fBmainMSP\&.c\fP:\fBmainMSPloop()\fP->\fBsch\&.c\fP:\fBSCH_runActiveTasks()\fP-> \fBFLAG_checkAndWrite()\fP->FLAG_checkAllFlags->\fBio\&.c\fP:IO_setRelay
+.PP
+\fBTodo\fP
+.RS 4
+2 relay
+.RE
+.PP
+
+.PP
+Definition at line 320 of file io\&.c\&.
 .SH "Variable Documentation"
 .PP 
 .SS "floatValue_t calculatedValue\fC [extern]\fP"
@@ -287,55 +298,55 @@ Definition at line 309 of file io\&.c\&.
 .SS "unsigned int fanDriven"
 
 .PP
-Definition at line 122 of file io\&.c\&.
+Definition at line 124 of file io\&.c\&.
 .SS "unsigned int fanDutyCompare"
 
 .PP
-Definition at line 107 of file io\&.c\&.
+Definition at line 109 of file io\&.c\&.
 .SS "int fanFBCount1"
 
 .PP
-Definition at line 115 of file io\&.c\&.
+Definition at line 117 of file io\&.c\&.
 .SS "int fanFBCount2"
 
 .PP
-Definition at line 117 of file io\&.c\&.
+Definition at line 119 of file io\&.c\&.
 .SS "int fanFBTransition1"
 
 .PP
-Definition at line 120 of file io\&.c\&.
+Definition at line 122 of file io\&.c\&.
 .SS "int fanFBTransition2"
 
 .PP
-Definition at line 121 of file io\&.c\&.
+Definition at line 123 of file io\&.c\&.
 .SS "unsigned int fanPWMCounter =0"
 
 .PP
-Definition at line 106 of file io\&.c\&.
+Definition at line 108 of file io\&.c\&.
 .SS "unsigned int fanRestartTimer"
 
 .PP
-Definition at line 124 of file io\&.c\&.
+Definition at line 126 of file io\&.c\&.
 .SS "unsigned int fanShutdown"
 
 .PP
-Definition at line 123 of file io\&.c\&.
+Definition at line 125 of file io\&.c\&.
 .SS "float heatsinkTempFanHysThresh = \fBIO_HEATSINK_TEMP_FAN_THRESHOLD\fP"
 
 .PP
-Definition at line 113 of file io\&.c\&.
+Definition at line 115 of file io\&.c\&.
 .SS "unsigned int IO_pwmEnabled"
 
 .PP
-Definition at line 111 of file io\&.c\&.
+Definition at line 113 of file io\&.c\&.
 .SS "int prevFan2State"
 
 .PP
-Definition at line 118 of file io\&.c\&.
+Definition at line 120 of file io\&.c\&.
 .SS "long TicksUntilHiSideAllowed"
 
 .PP
-Definition at line 112 of file io\&.c\&.
+Definition at line 114 of file io\&.c\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Charger6kW from the source code\&.

@@ -1,4 +1,4 @@
-.TH "groupFAN" 3 "Sat Nov 28 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.TH "groupFAN" 3 "Sun Nov 29 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -49,7 +49,7 @@ mainMSP.c:TIM3_IRQHandler(void)->PWM.c:PWM_isr(void)->io.c:IO_fanSenseSpeed(void
 .PP
 Program PWM for FAN\&. 
 .PP
-Definition at line 341 of file io\&.c\&.
+Definition at line 352 of file io\&.c\&.
 .SS "void IO_fanSenseSpeed (void)"
 
 .PP
@@ -67,19 +67,19 @@ Speed analized in \fBIO_fanSetSpeed()\fP
 .PP
 This is called at the PWM frequency which is about every 512us as of revision 133\&. Rated fan speed is 4300RPM which is about 6\&.5 ms between falling edges, or 13ms for a full rotation of the fan\&. This corresponds to fanFBPeriod of about 0x0C The safety cutoff for fanFBPeriod is set to FAN_PERIOD_MAXIMUM = 0x14 
 .PP
-Definition at line 378 of file io\&.c\&.
+Definition at line 389 of file io\&.c\&.
 .SS "void IO_fanSetSpeed (void)"
 
 .PP
 High level logic for FAN\&. Run by scheduler every 2 seconds 
 .PP
-Definition at line 414 of file io\&.c\&.
+Definition at line 425 of file io\&.c\&.
 .SS "void IO_setFanDutyCycle (unsigned int fanDuty)"
 
 .PP
 Limits fanDuty\&. 
 .PP
-Definition at line 192 of file io\&.c\&.
+Definition at line 194 of file io\&.c\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Charger6kW from the source code\&.

@@ -1,7 +1,6 @@
 <map id="D:/user/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/spi.h" name="D:/user/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/spi.h">
-<area shape="rect" id="node1" title=" " alt="" coords="357,5,568,61"/>
+<area shape="rect" id="node1" title=" " alt="" coords="240,5,451,61"/>
 <area shape="rect" id="node2" href="$flash_8c.html" title=" " alt="" coords="5,109,216,165"/>
-<area shape="rect" id="node3" href="$main_8c.html" title=" " alt="" coords="240,109,451,165"/>
-<area shape="rect" id="node4" href="$main_m_s_p_8c.html" title=" " alt="" coords="475,109,685,165"/>
-<area shape="rect" id="node5" href="$spi_8c.html" title=" " alt="" coords="709,109,920,165"/>
+<area shape="rect" id="node3" href="$main_m_s_p_8c.html" title=" " alt="" coords="240,109,451,165"/>
+<area shape="rect" id="node4" href="$spi_8c.html" title=" " alt="" coords="475,109,685,165"/>
 </map>

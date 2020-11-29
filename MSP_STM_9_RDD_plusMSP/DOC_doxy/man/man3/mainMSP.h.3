@@ -1,4 +1,4 @@
-.TH "D:/user/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/mainMSP.h" 3 "Sat Nov 28 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.TH "D:/user/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/mainMSP.h" 3 "Sun Nov 29 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -38,17 +38,17 @@ D:/user/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/mainMSP.h
 .PP
 void \fBinline\fP \fBasm\fP \fBvolatile\fP ( '1: \\n' ' dec  %[n] \\n' ' jne  1b \\n' : [n] '+r'(n));
 .PP
-Definition at line 183 of file main\&.c\&.
+Definition at line 225 of file mainMSP\&.c\&.
 .SS "void MAIN_resetAllAndStart (void)"
 dint(); //RDD comment Disable interrupts ?
 .PP
 eint();
 .PP
-Definition at line 101 of file main\&.c\&.
+Definition at line 141 of file mainMSP\&.c\&.
 .SS "void MAIN_resetRemoteCfg (void)"
 
 .PP
-Definition at line 169 of file main\&.c\&.
+Definition at line 210 of file mainMSP\&.c\&.
 .SS "int mainMSPinit (void)"
 WDTCTL = WDTPW + WDTHOLD;
 .PP

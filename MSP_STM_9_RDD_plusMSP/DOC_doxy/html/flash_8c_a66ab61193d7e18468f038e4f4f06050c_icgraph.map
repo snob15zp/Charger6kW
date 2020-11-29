@@ -1,9 +1,6 @@
 <map id="FLASH_init" name="FLASH_init">
-<area shape="rect" id="node1" title=" " alt="" coords="531,31,619,57"/>
+<area shape="rect" id="node1" title=" " alt="" coords="531,5,619,32"/>
 <area shape="rect" id="node2" href="$comms_8c.html#a6e01955d6d0501839da17dcf0690a55a" title=" " alt="" coords="323,5,483,32"/>
-<area shape="rect" id="node6" href="$main_m_s_p_8h.html#a942f7a7cb88a9446f3b8486747e3e092" title=" " alt="" coords="325,56,481,83"/>
 <area shape="rect" id="node3" href="$comms_8h.html#a8e6604b958225317069baa073a4457a6" title=" " alt="" coords="156,5,275,32"/>
-<area shape="rect" id="node4" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="31,56,82,83"/>
-<area shape="rect" id="node5" href="$main_m_s_p_8h.html#a6f9ad05474f475b7d9f0827da5484fd0" title=" " alt="" coords="5,5,108,32"/>
-<area shape="rect" id="node7" href="$main_m_s_p_8h.html#a45dbb8bcf720b1d542eca135e07f96f8" title=" " alt="" coords="167,107,263,133"/>
+<area shape="rect" id="node4" href="$main_m_s_p_8h.html#a6f9ad05474f475b7d9f0827da5484fd0" title=" " alt="" coords="5,5,108,32"/>
 </map>

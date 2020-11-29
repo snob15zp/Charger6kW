@@ -28,7 +28,9 @@ Schematic Digital Input Output
 
 *RELAY_2_EN
 
-           io.c: IO_setRelay
+           mainMSP.c:mainMSPloop()->sch.c:SCH_runActiveTasks()->
+					 FLAG_checkAndWrite()->FLAG_checkAllFlags->io.c:IO_setRelay
+
 					 
 *TMPCMP Digital
 				
@@ -305,6 +307,15 @@ int IO_getIsSlave()
 #endif
 	//return 1;
 }
+
+/**
+   @brief just on/off relay
+
+mainMSP.c:mainMSPloop()->sch.c:SCH_runActiveTasks()->
+					 FLAG_checkAndWrite()->FLAG_checkAllFlags->io.c:IO_setRelay
+
+\todo 2 relay
+ */
 
 void IO_setRelay( unsigned long long bitfield )
 {

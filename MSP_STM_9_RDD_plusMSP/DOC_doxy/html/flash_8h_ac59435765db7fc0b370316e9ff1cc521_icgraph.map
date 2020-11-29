@@ -1,10 +1,9 @@
 <map id="FLASH_endWriteData" name="FLASH_endWriteData">
-<area shape="rect" id="node1" title=" " alt="" coords="549,81,700,108"/>
-<area shape="rect" id="node2" href="$comms_8c.html#a58a164f14c292d9d42ed9cc806b13dbd" title=" " alt="" coords="335,31,489,57"/>
-<area shape="rect" id="node6" href="$lcd_8h.html#a2b2e8fa3174ac937df7348c83cfc53b8" title=" " alt="" coords="331,81,493,108"/>
-<area shape="rect" id="node8" href="$telem_8h.html#a9f550e8c8aa1e16bc76a88dc19962633" title=" " alt="" coords="323,132,501,159"/>
-<area shape="rect" id="node3" href="$comms_8h.html#a8e6604b958225317069baa073a4457a6" title=" " alt="" coords="156,31,275,57"/>
-<area shape="rect" id="node4" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="31,5,82,32"/>
-<area shape="rect" id="node5" href="$main_m_s_p_8h.html#a6f9ad05474f475b7d9f0827da5484fd0" title=" " alt="" coords="5,56,108,83"/>
-<area shape="rect" id="node7" href="$lcd_8h.html#adf0a5938f7bf89fe5cec5d7275a73d1e" title=" " alt="" coords="173,81,258,108"/>
+<area shape="rect" id="node1" title=" " alt="" coords="549,56,700,83"/>
+<area shape="rect" id="node2" href="$comms_8c.html#a58a164f14c292d9d42ed9cc806b13dbd" title=" " alt="" coords="335,5,489,32"/>
+<area shape="rect" id="node5" href="$lcd_8h.html#a2b2e8fa3174ac937df7348c83cfc53b8" title=" " alt="" coords="331,56,493,83"/>
+<area shape="rect" id="node7" href="$telem_8h.html#a9f550e8c8aa1e16bc76a88dc19962633" title=" " alt="" coords="323,107,501,133"/>
+<area shape="rect" id="node3" href="$comms_8h.html#a8e6604b958225317069baa073a4457a6" title=" " alt="" coords="156,5,275,32"/>
+<area shape="rect" id="node4" href="$main_m_s_p_8h.html#a6f9ad05474f475b7d9f0827da5484fd0" title=" " alt="" coords="5,5,108,32"/>
+<area shape="rect" id="node6" href="$lcd_8h.html#adf0a5938f7bf89fe5cec5d7275a73d1e" title=" " alt="" coords="173,56,258,83"/>
 </map>

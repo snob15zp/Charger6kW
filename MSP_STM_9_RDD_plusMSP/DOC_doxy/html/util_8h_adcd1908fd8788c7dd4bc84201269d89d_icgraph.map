@@ -1,11 +1,10 @@
 <map id="UTIL_putToCircBuffer" name="UTIL_putToCircBuffer">
-<area shape="rect" id="node1" title=" " alt="" coords="545,107,688,133"/>
-<area shape="rect" id="node2" href="$flash_8h.html#a824adb1e4989c662e38cb5238726330e" title=" " alt="" coords="383,107,497,133"/>
-<area shape="rect" id="node3" href="$comms_8h.html#a8e6604b958225317069baa073a4457a6" title=" " alt="" coords="186,31,305,57"/>
-<area shape="rect" id="node6" href="$flag_8h.html#ab3ff960238742c47ed6d322b0a18b8f2" title=" " alt="" coords="169,81,321,108"/>
-<area shape="rect" id="node7" href="$lcd_8h.html#a2b2e8fa3174ac937df7348c83cfc53b8" title=" " alt="" coords="164,132,327,159"/>
-<area shape="rect" id="node9" href="$telem_8h.html#a9f550e8c8aa1e16bc76a88dc19962633" title=" " alt="" coords="156,183,335,209"/>
-<area shape="rect" id="node4" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="31,5,82,32"/>
-<area shape="rect" id="node5" href="$main_m_s_p_8h.html#a6f9ad05474f475b7d9f0827da5484fd0" title=" " alt="" coords="5,56,108,83"/>
-<area shape="rect" id="node8" href="$lcd_8h.html#adf0a5938f7bf89fe5cec5d7275a73d1e" title=" " alt="" coords="14,132,99,159"/>
+<area shape="rect" id="node1" title=" " alt="" coords="545,81,688,108"/>
+<area shape="rect" id="node2" href="$flash_8h.html#a824adb1e4989c662e38cb5238726330e" title=" " alt="" coords="383,81,497,108"/>
+<area shape="rect" id="node3" href="$comms_8h.html#a8e6604b958225317069baa073a4457a6" title=" " alt="" coords="186,5,305,32"/>
+<area shape="rect" id="node5" href="$flag_8h.html#ab3ff960238742c47ed6d322b0a18b8f2" title=" " alt="" coords="169,56,321,83"/>
+<area shape="rect" id="node6" href="$lcd_8h.html#a2b2e8fa3174ac937df7348c83cfc53b8" title=" " alt="" coords="164,107,327,133"/>
+<area shape="rect" id="node8" href="$telem_8h.html#a9f550e8c8aa1e16bc76a88dc19962633" title=" " alt="" coords="156,157,335,184"/>
+<area shape="rect" id="node4" href="$main_m_s_p_8h.html#a6f9ad05474f475b7d9f0827da5484fd0" title=" " alt="" coords="5,5,108,32"/>
+<area shape="rect" id="node7" href="$lcd_8h.html#adf0a5938f7bf89fe5cec5d7275a73d1e" title=" " alt="" coords="14,107,99,133"/>
 </map>
