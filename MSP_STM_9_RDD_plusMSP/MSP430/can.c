@@ -1,4 +1,6 @@
-
+/*!
+\file CAN
+\brief CAN
 
 /*
  * Tritium MCP2515 CAN Interface
@@ -27,6 +29,10 @@
  
  
  */
+
+
+
+
 
 // Include files
 //#include <msp430x24x.h>

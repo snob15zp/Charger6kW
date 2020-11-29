@@ -1,10 +1,7 @@
 <map id="lcd_read_flash" name="lcd_read_flash">
-<area shape="rect" id="node1" title=" " alt="" coords="637,56,743,83"/>
-<area shape="rect" id="node2" href="$lcd_8h.html#a6842775ba83d166f02b8fef8bb63b1e6" title=" " alt="" coords="527,56,589,83"/>
-<area shape="rect" id="node3" href="$main_m_s_p_8h.html#a942f7a7cb88a9446f3b8486747e3e092" title=" " alt="" coords="323,31,479,57"/>
-<area shape="rect" id="node6" href="$main_m_s_p_8h.html#ae8bc7ddee5bfed380fef21b8f7baa4e7" title=" " alt="" coords="323,81,478,108"/>
-<area shape="rect" id="node4" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="31,5,82,32"/>
-<area shape="rect" id="node5" href="$main_m_s_p_8h.html#a45dbb8bcf720b1d542eca135e07f96f8" title=" " alt="" coords="167,31,263,57"/>
-<area shape="rect" id="node7" href="$comms_8h.html#a8e6604b958225317069baa073a4457a6" title=" " alt="" coords="156,81,275,108"/>
-<area shape="rect" id="node8" href="$main_m_s_p_8h.html#a6f9ad05474f475b7d9f0827da5484fd0" title=" " alt="" coords="5,81,108,108"/>
+<area shape="rect" id="node1" title=" " alt="" coords="464,31,569,57"/>
+<area shape="rect" id="node2" href="$lcd_8h.html#a6842775ba83d166f02b8fef8bb63b1e6" title=" " alt="" coords="353,31,416,57"/>
+<area shape="rect" id="node3" href="$main_m_s_p_8h.html#a942f7a7cb88a9446f3b8486747e3e092" title=" " alt="" coords="149,5,305,32"/>
+<area shape="rect" id="node5" href="$main_m_s_p_8h.html#ae8bc7ddee5bfed380fef21b8f7baa4e7" title=" " alt="" coords="150,56,305,83"/>
+<area shape="rect" id="node4" href="$main_m_s_p_8h.html#a45dbb8bcf720b1d542eca135e07f96f8" title=" " alt="" coords="5,5,101,32"/>
 </map>
