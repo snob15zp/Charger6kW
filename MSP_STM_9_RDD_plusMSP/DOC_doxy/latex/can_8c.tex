@@ -1,5 +1,10 @@
 \hypertarget{can_8c}{}\doxysection{D\+:/user\+S\+S\+D/github/\+Charger6k\+W/\+M\+S\+P\+\_\+\+S\+T\+M\+\_\+9\+\_\+\+R\+D\+D\+\_\+plus\+M\+S\+P/\+M\+S\+P430/can.c File Reference}
 \label{can_8c}\index{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/can.c@{D:/userSSD/github/Charger6kW/MSP\_STM\_9\_RDD\_plusMSP/MSP430/can.c}}
+
+
+C\+AN.  
+
+
 {\ttfamily \#include \char`\"{}Stm32f3xx.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}can.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}usci.\+h\char`\"{}}\newline
@@ -7,7 +12,13 @@
 {\ttfamily \#include \char`\"{}cfg.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
 Include dependency graph for can.\+c\+:
-% FIG 0
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{can_8c__incl}
+\end{center}
+\end{figure}
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -57,6 +68,31 @@ unsigned long \mbox{\hyperlink{can_8c_ade342ab5765140aec77012406bfb8fc6}{C\+A\+N
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+C\+AN. 
+
+Tritium M\+C\+P2515 C\+AN Interface Copyright (c) 2009, Tritium Pty Ltd. All rights reserved.
+
+Last Modified\+: J.\+Kennedy, Tritium Pty Ltd, 30 September 2009
+
+
+\begin{DoxyItemize}
+\item Implements the following C\+AN interface functions
+\begin{DoxyItemize}
+\item C\+A\+N\+\_\+init
+\item C\+A\+N\+\_\+transmit
+\item C\+A\+N\+\_\+receive
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+\mbox{\hyperlink{main_m_s_p_8c}{main\+M\+S\+P.\+c}}\+:\mbox{\hyperlink{main_m_s_p_8c_a6f9ad05474f475b7d9f0827da5484fd0}{main\+M\+S\+Ploop()}}-\/$>$ \mbox{\hyperlink{can_8h}{can.\+h}}\+:\mbox{\hyperlink{can_8c_a530821485162942b8902bf99a3b2012c}{C\+A\+N\+\_\+transmit()}}
+
+\mbox{\hyperlink{main_m_s_p_8c}{main\+M\+S\+P.\+c}}\+:\mbox{\hyperlink{main_8h_a2cab12f9c2d81101de81e7d5a48b68a3}{M\+A\+I\+N\+\_\+reset\+All\+And\+Start()}}-\/$>$\mbox{\hyperlink{can_8h}{can.\+h}}\+:\mbox{\hyperlink{can_8c_a61a1348d614fbaff3c560113b1314a57}{C\+A\+N\+\_\+init()}} \mbox{\hyperlink{main_m_s_p_8c}{main\+M\+S\+P.\+c}}\+:M\+A\+I\+N\+\_\+reset\+Remote\+Cfg -\/$>$\mbox{\hyperlink{can_8h}{can.\+h}}\+:\mbox{\hyperlink{can_8c_a61a1348d614fbaff3c560113b1314a57}{C\+A\+N\+\_\+init()}}
+
+\mbox{\hyperlink{comms_8c}{comms.\+c}}\+:\mbox{\hyperlink{comms_8c_a8e6604b958225317069baa073a4457a6}{C\+O\+M\+M\+S\+\_\+receive()}} -\/$>$\mbox{\hyperlink{can_8h}{can.\+h}}\+:\mbox{\hyperlink{can_8c_a61a1348d614fbaff3c560113b1314a57}{C\+A\+N\+\_\+init()}}
+
+\mbox{\hyperlink{comms_8c}{comms.\+c}}\+:\mbox{\hyperlink{comms_8c_a8e6604b958225317069baa073a4457a6}{C\+O\+M\+M\+S\+\_\+receive()}}-\/$>$ \mbox{\hyperlink{can_8h}{can.\+h}}\+:\mbox{\hyperlink{can_8c_a4eccfa3b8b0583ef6184416d1e92351e}{C\+A\+N\+\_\+receive()}} 
+
 \doxysubsection{Macro Definition Documentation}
 \mbox{\Hypertarget{can_8c_a042b57b6eb819209d2d2e7e53828bea8}\label{can_8c_a042b57b6eb819209d2d2e7e53828bea8}} 
 \index{can.c@{can.c}!ALT\_FUNC\_CAN@{ALT\_FUNC\_CAN}}
@@ -66,7 +102,7 @@ unsigned long \mbox{\hyperlink{can_8c_ade342ab5765140aec77012406bfb8fc6}{C\+A\+N
 
 
 
-Definition at line 47 of file can.\+c.
+Definition at line 49 of file can.\+c.
 
 
 
@@ -79,10 +115,15 @@ Definition at line 47 of file can.\+c.
 
 
 
-Definition at line 79 of file can.\+c.
+Definition at line 81 of file can.\+c.
 
-Here is the caller graph for this function\+:
-% FIG 1
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{can_8c_a4c0209a7cbb07e56e87eb00aa6d8fdf1_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{can_8c_a61a1348d614fbaff3c560113b1314a57}\label{can_8c_a61a1348d614fbaff3c560113b1314a57}} 
 \index{can.c@{can.c}!CAN\_init@{CAN\_init}}
 \index{CAN\_init@{CAN\_init}!can.c@{can.c}}
@@ -91,10 +132,15 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line 84 of file can.\+c.
+Definition at line 86 of file can.\+c.
 
-Here is the caller graph for this function\+:
-% FIG 2
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{can_8c_a61a1348d614fbaff3c560113b1314a57_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{can_8c_a94276ebccd689e374092357410f27536}\label{can_8c_a94276ebccd689e374092357410f27536}} 
 \index{can.c@{can.c}!CAN\_mod@{CAN\_mod}}
 \index{CAN\_mod@{CAN\_mod}!can.c@{can.c}}
@@ -133,10 +179,15 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line 273 of file can.\+c.
+Definition at line 275 of file can.\+c.
 
-Here is the caller graph for this function\+:
-% FIG 3
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{can_8c_a4eccfa3b8b0583ef6184416d1e92351e_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{can_8c_ab480c481d1c6e0dacc09bb71aca4a71c}\label{can_8c_ab480c481d1c6e0dacc09bb71aca4a71c}} 
 \index{can.c@{can.c}!CAN\_reset@{CAN\_reset}}
 \index{CAN\_reset@{CAN\_reset}!can.c@{can.c}}
@@ -157,10 +208,15 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line 433 of file can.\+c.
+Definition at line 435 of file can.\+c.
 
-Here is the caller graph for this function\+:
-% FIG 4
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{can_8c_a530821485162942b8902bf99a3b2012c_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{can_8c_aeac99bd367c7c35c0423d83b71abbef3}\label{can_8c_aeac99bd367c7c35c0423d83b71abbef3}} 
 \index{can.c@{can.c}!CAN\_write@{CAN\_write}}
 \index{CAN\_write@{CAN\_write}!can.c@{can.c}}
@@ -184,7 +240,7 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line 57 of file can.\+c.
+Definition at line 59 of file can.\+c.
 
 \mbox{\Hypertarget{can_8c_ade342ab5765140aec77012406bfb8fc6}\label{can_8c_ade342ab5765140aec77012406bfb8fc6}} 
 \index{can.c@{can.c}!CAN\_baseId@{CAN\_baseId}}
@@ -194,7 +250,7 @@ Definition at line 57 of file can.\+c.
 
 
 
-Definition at line 58 of file can.\+c.
+Definition at line 60 of file can.\+c.
 
 \mbox{\Hypertarget{can_8c_af18c7dfc2ab038240d17d757d8e9defb}\label{can_8c_af18c7dfc2ab038240d17d757d8e9defb}} 
 \index{can.c@{can.c}!CAN\_rx@{CAN\_rx}}
@@ -204,7 +260,7 @@ Definition at line 58 of file can.\+c.
 
 
 
-Definition at line 54 of file can.\+c.
+Definition at line 56 of file can.\+c.
 
 \mbox{\Hypertarget{can_8c_a6ca019dedd1ee29e71a7e7942d1be3e9}\label{can_8c_a6ca019dedd1ee29e71a7e7942d1be3e9}} 
 \index{can.c@{can.c}!CAN\_txBuffer@{CAN\_txBuffer}}
@@ -214,7 +270,7 @@ Definition at line 54 of file can.\+c.
 
 
 
-Definition at line 53 of file can.\+c.
+Definition at line 55 of file can.\+c.
 
 \mbox{\Hypertarget{can_8c_aaff4a639f6f2dd4277eb3c33ee1668c1}\label{can_8c_aaff4a639f6f2dd4277eb3c33ee1668c1}} 
 \index{can.c@{can.c}!CAN\_txBufferAddr@{CAN\_txBufferAddr}}
@@ -224,5 +280,5 @@ Definition at line 53 of file can.\+c.
 
 
 
-Definition at line 49 of file can.\+c.
+Definition at line 51 of file can.\+c.
 

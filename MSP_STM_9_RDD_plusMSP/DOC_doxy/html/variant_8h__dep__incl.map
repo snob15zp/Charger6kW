@@ -12,7 +12,7 @@
 <area shape="rect" id="node17" href="$pwm_8c.html" title=" " alt="" coords="2587,436,2797,492"/>
 <area shape="rect" id="node20" href="$meas_8h.html" title=" " alt="" coords="2231,109,2441,165"/>
 <area shape="rect" id="node26" href="$variant_8c.html" title=" " alt="" coords="2872,317,3083,373"/>
-<area shape="rect" id="node9" href="$can_8c.html" title=" " alt="" coords="1179,436,1389,492"/>
+<area shape="rect" id="node9" href="$can_8c.html" title="CAN." alt="" coords="1179,436,1389,492"/>
 <area shape="rect" id="node10" href="$sch_8c.html" title=" " alt="" coords="240,436,451,492"/>
 <area shape="rect" id="node13" href="$io_8h.html" title="Discrete I / O control." alt="" coords="1285,317,1496,373"/>
 <area shape="rect" id="node18" href="$safety_8c.html" title=" " alt="" coords="1413,436,1624,492"/>

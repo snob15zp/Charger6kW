@@ -1,8 +1,9 @@
-.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/can.c" 3 "Sun Nov 29 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
+.TH "D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/can.c" 3 "Mon Nov 30 2020" "Version 9" "Charger6kW" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/can.c
+D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/can.c \- CAN\&.  
+
 .SH SYNOPSIS
 .br
 .PP
@@ -88,22 +89,51 @@ D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/can.c
 .RI "unsigned long \fBCAN_baseId\fP"
 .br
 .in -1c
+.SH "Detailed Description"
+.PP 
+CAN\&. 
+
+Tritium MCP2515 CAN Interface Copyright (c) 2009, Tritium Pty Ltd\&. All rights reserved\&.
+.PP
+Last Modified: J\&.Kennedy, Tritium Pty Ltd, 30 September 2009
+.PP
+.IP "\(bu" 2
+Implements the following CAN interface functions
+.IP "  \(bu" 4
+CAN_init
+.IP "  \(bu" 4
+CAN_transmit
+.IP "  \(bu" 4
+CAN_receive
+.PP
+
+.PP
+.PP
+\fBmainMSP\&.c\fP:\fBmainMSPloop()\fP-> \fBcan\&.h\fP:\fBCAN_transmit()\fP
+.PP
+\fBmainMSP\&.c\fP:\fBMAIN_resetAllAndStart()\fP->\fBcan\&.h\fP:\fBCAN_init()\fP \fBmainMSP\&.c\fP:MAIN_resetRemoteCfg ->\fBcan\&.h\fP:\fBCAN_init()\fP
+.PP
+\fBcomms\&.c\fP:\fBCOMMS_receive()\fP ->\fBcan\&.h\fP:\fBCAN_init()\fP
+.PP
+\fBcomms\&.c\fP:\fBCOMMS_receive()\fP-> \fBcan\&.h\fP:\fBCAN_receive()\fP 
+.PP
+Definition in file \fBcan\&.c\fP\&.
 .SH "Macro Definition Documentation"
 .PP 
 .SS "#define ALT_FUNC_CAN   0x09"
 
 .PP
-Definition at line 47 of file can\&.c\&.
+Definition at line 49 of file can\&.c\&.
 .SH "Function Documentation"
 .PP 
 .SS "unsigned long CAN_getBaseId (void)"
 
 .PP
-Definition at line 79 of file can\&.c\&.
+Definition at line 81 of file can\&.c\&.
 .SS "void CAN_init (unsigned long newBaseId)"
 
 .PP
-Definition at line 84 of file can\&.c\&.
+Definition at line 86 of file can\&.c\&.
 .SS "void CAN_mod (unsigned char address, unsigned char mask, unsigned char data)"
 
 .SS "void CAN_read (unsigned char address, unsigned char * ptr, unsigned char bytes)"
@@ -117,7 +147,7 @@ Definition at line 84 of file can\&.c\&.
 .SS "void CAN_receive (void)"
 
 .PP
-Definition at line 273 of file can\&.c\&.
+Definition at line 275 of file can\&.c\&.
 .SS "void CAN_reset (void)"
 
 .SS "void CAN_rts (unsigned char address)"
@@ -125,7 +155,7 @@ Definition at line 273 of file can\&.c\&.
 .SS "void CAN_transmit (void)"
 
 .PP
-Definition at line 433 of file can\&.c\&.
+Definition at line 435 of file can\&.c\&.
 .SS "void CAN_write (unsigned char address, unsigned char * ptr, unsigned char bytes)"
 
 .SS "void CAN_write_tx (unsigned char address, unsigned char * ptr)"
@@ -135,23 +165,23 @@ Definition at line 433 of file can\&.c\&.
 .SS "unsigned char buffer[16]"
 
 .PP
-Definition at line 57 of file can\&.c\&.
+Definition at line 59 of file can\&.c\&.
 .SS "unsigned long CAN_baseId"
 
 .PP
-Definition at line 58 of file can\&.c\&.
+Definition at line 60 of file can\&.c\&.
 .SS "\fBCAN_Rx\fP CAN_rx"
 
 .PP
-Definition at line 54 of file can\&.c\&.
+Definition at line 56 of file can\&.c\&.
 .SS "\fBCAN_TxBuffer\fP CAN_txBuffer[\fBCAN_TxBufferInd_NUM\fP]"
 
 .PP
-Definition at line 53 of file can\&.c\&.
+Definition at line 55 of file can\&.c\&.
 .SS "unsigned long CAN_txBufferAddr[\fBCAN_TxBufferInd_NUM\fP]"
 
 .PP
-Definition at line 49 of file can\&.c\&.
+Definition at line 51 of file can\&.c\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Charger6kW from the source code\&.

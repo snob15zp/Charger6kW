@@ -1,8 +1,10 @@
 /*!
-\file CAN
+
+\file 
+
 \brief CAN
 
-/*
+
  * Tritium MCP2515 CAN Interface
  * Copyright (c) 2009, Tritium Pty Ltd.  All rights reserved.
  *
@@ -28,7 +30,7 @@
  
  
  
- */
+*/
 
 
 
