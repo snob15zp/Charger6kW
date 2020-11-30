@@ -8,46 +8,6 @@
 // History:
 //   2010-07-07: original
 //-------------------------------------------------------------------
-/*
-
-Protocol over CAN
-
-mainMSP.c:MAIN_resetAllAndStart-> comms.c:COMMS_init();
-
-status.c:statusFuncs ->comms.c:COMMS_getStatus();
-lcd.c:lcd_loadTelemetry()->comms.c:COMMS_getStatus();
-
-sch.c:tasks->comms.c:COMMS_sendHeartbeat();->CAN_txBuffer[]
-
-sch.c:tasks->comms.c:COMMS_sendStatus();->CAN_txBufferp[]
-
-sch.c:tasks->comms.c:COMMS_sendPvMeas();->CAN_txBuffer[]
-
-sch.c:tasks->comms.c:COMMS_sendOutMeas()->CAN_txBuffer[]
-
-sch.c:tasks->comms.c:COMMS_sendOcQMeas()->CAN_txBuffer[]
-
-sch.c:tasks->comms.c:COMMS_sendPowTemprMeas();->CAN_txBuffer[]
-
-sch.c:tasks->comms.c:COMMS_sendTime();->CAN_txBuffer[]
-
-sch.c:tasks->comms.c:COMMS_sendFlag();->CAN_txBuffer[]
-
-sch.c:tasks->comms.c:COMMS_sendOutVoltCmd();->CAN_txBuffer[]
-
-mainMSP:mainMSPloop->comms.c:COMMS_receive();->CAN_receive(),lcd_canRecved(),IO_disablePwmCtrl(),MAIN_resetRemoteCfg(),// Force watchdog reset;
-                                               TIME_recFromBc();CTRL_setOutVoltCmd(),CAN_init()
-
-sch.c:tasks->comms.c:COMMS_sendP2pPacket();->COMMS_endFlashSend(),COMMS_endFlashSend();->CAN_txBuffer[]
-
-comms.c:COMMS_startFlashRec()->comms.c:COMMS_sendDebugPacket();->CAN_txBuffer[]
-
-//void COMMS_sendDebugPacketU64( unsigned long long val );
-
-//void COMMS_sendDebugPacketFloat( float val1, float val2 );
-
-*/
-
 
 //#include <msp430x24x.h>
 #include "variant.h"
@@ -163,7 +123,7 @@ void COMMS_sendPvMeas()
 //	CAN_txBuffer[CAN_PV_MEAS_INDEX].data.data_fp[1] = meas.pvCurr.valReal = meas.pvCurr.val * meas.pvCurr.base;
 	CAN_txBuffer[CAN_PV_MEAS_INDEX].data.data_fp[0] = meas.pvVolt.valReal;
 	CAN_txBuffer[CAN_PV_MEAS_INDEX].data.data_fp[1] = meas.pvCurr.valReal;
-	//can.transmit();                                                    //RDD why?
+	//can.transmit();
 	CAN_txBuffer[CAN_PV_MEAS_INDEX].status = CAN_TXBUFFER_WAITING;
 }
 
@@ -302,7 +262,7 @@ void COMMS_receive()
 				{
 					// Make safe
 					IO_disablePwmCtrl();
-					//PWM_setMpptSamplePt( IQ_cnst(0.1) );    //RDD why?
+					//PWM_setMpptSamplePt( IQ_cnst(0.1) );
 					//PWM_setVinLim( IQ_cnst(0.1) );
 					// Reset
 					//MAIN_resetAllAndStart();
@@ -350,7 +310,7 @@ void COMMS_receive()
 			{
 				if ( CAN_rx.data.data_u8[0] )
 				{
-					P2OUT |= ENABLE;                //RDD why
+					P2OUT |= ENABLE;
 				}
 				else
 				{

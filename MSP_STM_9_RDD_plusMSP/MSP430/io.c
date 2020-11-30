@@ -8,28 +8,7 @@
 // History:
 //   2010-07-07: original
 //-------------------------------------------------------------------
-/********************************************************************
-Schematic Digital Input Output
-*CASETMP thermistor
 
-*ON_OFF_GFD
-           io.c:IO_getGroundFault()
-					 ctrl.c:CTRL_tick()->io.c:IO_getGroundFault()
-					 RDD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! set with delay disablePWM according to  GroundFault: J10 on PWRboard
-*RELAY_1_EN
-*RELAY_2_EN
-           io.c: IO_setRelay
-*TMPCMP used Analog or Digital?
-        Digital:
-        io.c: int IO_getDigitalTemp()
-        temp.c:TEMP_init()->io.c: int IO_getDigitalTemp()
-				pwm.c:PWM_isr()->temp.c:TEMP_tick()->io.c: int IO_getDigitalTemp()
-*ONOFF/SLAVE#
-        io.c:  epsent? 
-				
-In io.c:
-        IO_getIsSlave
-**********************************************************************/
 //#include <msp430x24x.h>
 #include "Stm32f3xx.h"
 #include "variant.h"
@@ -298,7 +277,7 @@ void IO_fanDrvPWM()
 void IO_fanSenseSpeed()
 {
 //	if (P1IFG & FAN_FB)
-	if(GPIOC->IDR & GPIO_IDR_8){  //RDD ToDo: need be detected edge
+	if(GPIOC->IDR & GPIO_IDR_8){
 		// fan feedback 1
 		if (fanFBCount1 < IO_FAN_COUNT_TIMEOUT){
 			fanFBCount1++;

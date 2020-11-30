@@ -1,19 +1,3 @@
-/*********************************************************************************
-*
-* init: Pins, ADC, ADCWhatchDog, DMA, HRTIM
-*
-* loop:   --- 
-*
-* interface: SetVin, Start_Stop, Enable_Disable
-*
-* DMA_Chammel1_IRQ -> flag
-*
-* ADC1_2_IRQ -> WathDog
-*
-* HRTIM_IRQ -> measure, regulator, DutyCycle
-*
-***********************************************************************************/
-
 
 #include "Stm32f3xx.h"
 #include "BoardInit.h"
@@ -94,6 +78,8 @@ __align(4) wordAdcValue_t sumValueBank_2 = {0,0,0,0,0,0,0,0,0,0,0,0}; //temporar
 
 
  int16_t delta;   //??????
+// int16_t delta_duty;   //spectr
+ int32_t delta_duty;   //spectr
  uint16_t offset = 500;  //????
 
  float efficiency; //??????
@@ -339,12 +325,32 @@ uint16_t  Regulator(float Vin)// Regulator like PID
 //	static workMode_ent workMode = MODE_VOLTAGE_STAB;
 //RDD Spread spectrum begin
 
+//	delta_duty = (PERIOD_STEP * 100) / (buckPeriod / (dutyCycle / 100));  //spectr
+	delta_duty = (buckPeriod *1000 / dutyCycle);  //koef-t spectr 
+	delta_duty = PERIOD_STEP*1000 / delta_duty  ;  //delta_duty spectr
+	
+	if(statusFlags.PERIOD_STEP_UP == 0)   //RDD Spread spectrum
+	{                               
+		buckPeriod -= PERIOD_STEP;                                       // PERIOD_STEP_UP only there 
+//		delta_duty = -100;              //spectr
+		delta_duty = -1*delta_duty;              //spectr
+		if(buckPeriod == BUCK_PERIOD_MIN) {statusFlags.PERIOD_STEP_UP = 1;}  //RD Replace to <= ?
+	} else 
+	{
+		buckPeriod += PERIOD_STEP;
+//		delta_duty = 100;              //spectr
+		if(buckPeriod == BUCK_PERIOD_MAX) {statusFlags.PERIOD_STEP_UP = 0;}
+	}
+
+	HRTIM1->sTimerxRegs[TIM_A].PERxR = buckPeriod;														// next period for timer
+
 //RDD Spread spectrum end	
 
 				delta = (Vin> calculatedValue.vInSensor) ?  - 10 : +10;
 //				if(delta > MAX_DUTY_STEP_POS){ delta = MAX_DUTY_STEP_POS;}
 //					else if (delta < MAX_DUTY_STEP_NEG){delta = MAX_DUTY_STEP_NEG;}
-				dutyCycle += delta;	
+//				dutyCycle = dutyCycle + delta;	
+				dutyCycle = dutyCycle + delta + delta_duty;	//spectr
 			
 
 	statusFlags.MIN_DUTY_LIMIT = 0;

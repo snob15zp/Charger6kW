@@ -5,34 +5,7 @@
  *      Author: RD
  */
 
-/*
 
-cfg
-crc16
-flag
-flash
-iqmath
-mainMSP
-meas
-safety
-spi
-stats
-time
-usci
-util
-variant
-lcd
-can
-comms
-ctrl
-io
-status
-pwm
-sch
-telem
-temp
-
-*/
 
 //-------------------------------------------------------------------
 // File: main.c
@@ -93,7 +66,7 @@ const __special_area__ my_erasable_data_area my_bsl_info[] = {0x0,0x0,0,0,0,0,0,
 #endif
 
 // Function prototypes
-void clock_init( void ); //RDD do not need in STM verdion
+void clock_init( void );
 
 
 // Global variables

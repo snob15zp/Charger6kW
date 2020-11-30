@@ -26,7 +26,6 @@
  *	- CAN_transmit
  *	- CAN_receive
  *
- 
  */
 
 #ifndef CAN_H
