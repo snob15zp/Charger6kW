@@ -1,6 +1,10 @@
+/*!
+
+\file 
+
+\brief CAN
 
 
-/*
  * Tritium MCP2515 CAN Interface
  * Copyright (c) 2009, Tritium Pty Ltd.  All rights reserved.
  *
@@ -26,7 +30,11 @@
  
  
  
- */
+*/
+
+
+
+
 
 // Include files
 //#include <msp430x24x.h>

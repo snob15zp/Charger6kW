@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Charger6kW: D:/user/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/can.c File Reference</title>
+<title>Charger6kW: D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/can.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -74,6 +74,9 @@ $(function() {
 <div class="title">can.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>CAN.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;Stm32f3xx.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="can_8h_source.html">can.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="usci_8h_source.html">usci.h</a>&quot;</code><br />
@@ -83,9 +86,9 @@ $(function() {
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for can.c:</div>
 <div class="dyncontent">
-<div class="center"><img src="can_8c__incl.png" border="0" usemap="#a_d_1_2user_2github_2_charger6k_w_2_m_s_p___s_t_m__9___r_d_d__plus_m_s_p_2_m_s_p430_2can_8c" alt=""/></div>
-<map name="_d_1_2user_2github_2_charger6k_w_2_m_s_p___s_t_m__9___r_d_d__plus_m_s_p_2_m_s_p430_2can_8c" id="_d_1_2user_2github_2_charger6k_w_2_m_s_p___s_t_m__9___r_d_d__plus_m_s_p_2_m_s_p430_2can_8c">
-<area shape="rect" title=" " alt="" coords="519,5,730,61"/>
+<div class="center"><img src="can_8c__incl.png" border="0" usemap="#a_d_1_2user_s_s_d_2github_2_charger6k_w_2_m_s_p___s_t_m__9___r_d_d__plus_m_s_p_2_m_s_p430_2can_8c" alt=""/></div>
+<map name="_d_1_2user_s_s_d_2github_2_charger6k_w_2_m_s_p___s_t_m__9___r_d_d__plus_m_s_p_2_m_s_p430_2can_8c" id="a_d_1_2user_s_s_d_2github_2_charger6k_w_2_m_s_p___s_t_m__9___r_d_d__plus_m_s_p_2_m_s_p430_2can_8c">
+<area shape="rect" title="CAN." alt="" coords="519,5,730,61"/>
 <area shape="rect" title=" " alt="" coords="904,184,998,211"/>
 <area shape="rect" href="can_8h.html" title=" " alt="" coords="805,109,860,136"/>
 <area shape="rect" href="usci_8h.html" title=" " alt="" coords="632,109,689,136"/>
@@ -157,7 +160,25 @@ Variables</h2></td></tr>
 <tr class="memitem:ade342ab5765140aec77012406bfb8fc6"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="can_8c.html#ade342ab5765140aec77012406bfb8fc6">CAN_baseId</a></td></tr>
 <tr class="separator:ade342ab5765140aec77012406bfb8fc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>CAN. </p>
+<p>Tritium MCP2515 CAN Interface Copyright (c) 2009, Tritium Pty Ltd. All rights reserved.</p>
+<p>Last Modified: J.Kennedy, Tritium Pty Ltd, 30 September 2009</p>
+<ul>
+<li>Implements the following CAN interface functions<ul>
+<li>CAN_init</li>
+<li>CAN_transmit</li>
+<li>CAN_receive</li>
+</ul>
+</li>
+</ul>
+<p><a class="el" href="main_m_s_p_8c.html">mainMSP.c</a>:<a class="el" href="main_m_s_p_8c.html#a6f9ad05474f475b7d9f0827da5484fd0">mainMSPloop()</a>-&gt; <a class="el" href="can_8h.html">can.h</a>:<a class="el" href="can_8c.html#a530821485162942b8902bf99a3b2012c">CAN_transmit()</a></p>
+<p><a class="el" href="main_m_s_p_8c.html">mainMSP.c</a>:<a class="el" href="main_8h.html#a2cab12f9c2d81101de81e7d5a48b68a3">MAIN_resetAllAndStart()</a>-&gt;<a class="el" href="can_8h.html">can.h</a>:<a class="el" href="can_8c.html#a61a1348d614fbaff3c560113b1314a57">CAN_init()</a> <a class="el" href="main_m_s_p_8c.html">mainMSP.c</a>:MAIN_resetRemoteCfg -&gt;<a class="el" href="can_8h.html">can.h</a>:<a class="el" href="can_8c.html#a61a1348d614fbaff3c560113b1314a57">CAN_init()</a></p>
+<p><a class="el" href="comms_8c.html">comms.c</a>:<a class="el" href="comms_8c.html#a8e6604b958225317069baa073a4457a6">COMMS_receive()</a> -&gt;<a class="el" href="can_8h.html">can.h</a>:<a class="el" href="can_8c.html#a61a1348d614fbaff3c560113b1314a57">CAN_init()</a></p>
+<p><a class="el" href="comms_8c.html">comms.c</a>:<a class="el" href="comms_8c.html#a8e6604b958225317069baa073a4457a6">COMMS_receive()</a>-&gt; <a class="el" href="can_8h.html">can.h</a>:<a class="el" href="can_8c.html#a4eccfa3b8b0583ef6184416d1e92351e">CAN_receive()</a> </p>
+
+<p class="definition">Definition in file <a class="el" href="can_8c_source.html">can.c</a>.</p>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a042b57b6eb819209d2d2e7e53828bea8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a042b57b6eb819209d2d2e7e53828bea8">&#9670;&nbsp;</a></span>ALT_FUNC_CAN</h2>
 
@@ -170,7 +191,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="can_8c_source.html#l00041">41</a> of file <a class="el" href="can_8c_source.html">can.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="can_8c_source.html#l00049">49</a> of file <a class="el" href="can_8c_source.html">can.c</a>.</p>
 
 </div>
 </div>
@@ -191,7 +212,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="can_8c_source.html#l00073">73</a> of file <a class="el" href="can_8c_source.html">can.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="can_8c_source.html#l00081">81</a> of file <a class="el" href="can_8c_source.html">can.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -223,7 +244,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="can_8c_source.html#l00078">78</a> of file <a class="el" href="can_8c_source.html">can.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="can_8c_source.html#l00086">86</a> of file <a class="el" href="can_8c_source.html">can.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -388,7 +409,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="can_8c_source.html#l00267">267</a> of file <a class="el" href="can_8c_source.html">can.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="can_8c_source.html#l00275">275</a> of file <a class="el" href="can_8c_source.html">can.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -454,7 +475,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="can_8c_source.html#l00427">427</a> of file <a class="el" href="can_8c_source.html">can.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="can_8c_source.html#l00435">435</a> of file <a class="el" href="can_8c_source.html">can.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -542,7 +563,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="can_8c_source.html#l00051">51</a> of file <a class="el" href="can_8c_source.html">can.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="can_8c_source.html#l00059">59</a> of file <a class="el" href="can_8c_source.html">can.c</a>.</p>
 
 </div>
 </div>
@@ -558,7 +579,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="can_8c_source.html#l00052">52</a> of file <a class="el" href="can_8c_source.html">can.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="can_8c_source.html#l00060">60</a> of file <a class="el" href="can_8c_source.html">can.c</a>.</p>
 
 </div>
 </div>
@@ -574,7 +595,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="can_8c_source.html#l00048">48</a> of file <a class="el" href="can_8c_source.html">can.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="can_8c_source.html#l00056">56</a> of file <a class="el" href="can_8c_source.html">can.c</a>.</p>
 
 </div>
 </div>
@@ -590,7 +611,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="can_8c_source.html#l00047">47</a> of file <a class="el" href="can_8c_source.html">can.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="can_8c_source.html#l00055">55</a> of file <a class="el" href="can_8c_source.html">can.c</a>.</p>
 
 </div>
 </div>
@@ -606,7 +627,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="can_8c_source.html#l00043">43</a> of file <a class="el" href="can_8c_source.html">can.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="can_8c_source.html#l00051">51</a> of file <a class="el" href="can_8c_source.html">can.c</a>.</p>
 
 </div>
 </div>

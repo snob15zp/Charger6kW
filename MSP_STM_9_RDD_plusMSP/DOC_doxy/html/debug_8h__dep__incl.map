@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <map id="D:/user/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/debug.h" name="D:/user/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/debug.h">
+=======
+<map id="D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/debug.h" name="D:/userSSD/github/Charger6kW/MSP_STM_9_RDD_plusMSP/MSP430/debug.h">
+>>>>>>> development
 <area shape="rect" id="node1" title=" " alt="" coords="3183,5,3393,61"/>
 <area shape="rect" id="node2" href="$adc__msp_8h.html" title=" " alt="" coords="5,317,216,373"/>
 <area shape="rect" id="node4" href="$can_8h.html" title=" " alt="" coords="3877,421,4088,477"/>
@@ -25,7 +29,11 @@
 <area shape="rect" id="node47" href="$usci_8h.html" title=" " alt="" coords="4163,421,4373,477"/>
 <area shape="rect" id="node48" href="$util_8h.html" title=" " alt="" coords="3453,317,3664,373"/>
 <area shape="rect" id="node3" href="$meas_8c.html" title=" " alt="" coords="148,540,359,596"/>
+<<<<<<< HEAD
 <area shape="rect" id="node5" href="$can_8c.html" title=" " alt="" coords="3811,540,4021,596"/>
+=======
+<area shape="rect" id="node5" href="$can_8c.html" title="CAN." alt="" coords="3811,540,4021,596"/>
+>>>>>>> development
 <area shape="rect" id="node7" href="$comms_8c.html" title=" " alt="" coords="3576,540,3787,596"/>
 <area shape="rect" id="node8" href="$lcd_8c.html" title=" " alt="" coords="3309,540,3520,596"/>
 <area shape="rect" id="node9" href="$main_m_s_p_8c.html" title=" " alt="" coords="4045,540,4256,596"/>
