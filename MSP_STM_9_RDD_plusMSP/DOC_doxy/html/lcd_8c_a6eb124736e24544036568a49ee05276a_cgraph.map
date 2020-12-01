@@ -1,7 +1,0 @@
-<map id="lcd_checkPersistentUpdate" name="lcd_checkPersistentUpdate">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,187,32"/>
-<area shape="rect" id="node2" href="$lcd_8c.html#a927bd441fb8a946c250345b7a26550f2" title=" " alt="" coords="235,5,397,32"/>
-<area shape="rect" id="node3" href="$lcd_8c.html#a7d8dbee6d60ca7e2cc18615abf463889" title=" " alt="" coords="445,5,589,32"/>
-<area shape="rect" id="node4" href="$crc16_8c.html#a2783e18fd5b314e656d988aed16c1116" title=" " alt="" coords="637,5,755,32"/>
-<area shape="rect" id="node5" href="$crc16_8c.html#aa3f82d8f012e4928bc40a18a6e66e161" title=" " alt="" coords="803,5,944,32"/>
-</map>

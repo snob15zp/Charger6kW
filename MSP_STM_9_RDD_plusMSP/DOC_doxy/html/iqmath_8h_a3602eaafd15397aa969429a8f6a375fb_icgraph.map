@@ -1,9 +1,0 @@
-<map id="IQ_mpy" name="IQ_mpy">
-<area shape="rect" id="node1" title="#include &lt;msp430x24x.h&gt;" alt="" coords="352,107,419,133"/>
-<area shape="rect" id="node2" href="$ctrl_8h.html#aa4bac94dced262e199b4cd8cf8eaceb4" title=" " alt="" coords="185,5,296,32"/>
-<area shape="rect" id="node3" href="$meas_8h.html#a4b81997899bac7a3ca87fee7a2ded013" title=" " alt="" coords="195,56,286,83"/>
-<area shape="rect" id="node4" href="$meas_8h.html#a82ac7713a91b1e286080c10e1776d2f8" title=" " alt="" coords="14,81,121,108"/>
-<area shape="rect" id="node5" href="$meas_8h.html#ab9db9c93546f4aad441d6616aea60dab" title=" " alt="" coords="182,157,299,184"/>
-<area shape="rect" id="node6" href="$meas_8h.html#a4eddadca6822d26b55b25a6887b8d511" title=" " alt="" coords="177,208,304,235"/>
-<area shape="rect" id="node7" href="$stats_8h.html#a11d1cf210e15ff93f9a8521ae9aed541" title=" " alt="" coords="5,208,129,235"/>
-</map>

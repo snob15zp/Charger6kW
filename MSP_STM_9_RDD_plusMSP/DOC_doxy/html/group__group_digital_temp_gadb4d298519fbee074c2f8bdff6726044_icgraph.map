@@ -1,5 +1,0 @@
-<map id="IO_getDigitalTemp" name="IO_getDigitalTemp">
-<area shape="rect" id="node1" title="Just returns the state of the input." alt="" coords="264,5,392,32"/>
-<area shape="rect" id="node2" href="$group__group_digital_temp.html#ga658f475d23bec65c525f7b89ca362852" title="Just returns the state of the input." alt="" coords="129,5,216,32"/>
-<area shape="rect" id="node3" href="$pwm_8h.html#a6abc946e40a86c52f2c86095e783c5c1" title=" " alt="" coords="5,5,81,32"/>
-</map>

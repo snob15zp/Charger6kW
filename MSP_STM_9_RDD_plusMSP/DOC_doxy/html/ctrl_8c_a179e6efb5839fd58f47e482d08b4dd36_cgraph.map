@@ -1,5 +1,0 @@
-<map id="CTRL_calcOutVoltSetpoints" name="CTRL_calcOutVoltSetpoints">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,189,57"/>
-<area shape="rect" id="node2" href="$io_8c.html#ad44f90f9147018b5caeeef6f99866118" title="not real input, return( (int)( CFG_localCfg.isSlave ) );" alt="" coords="255,5,357,32"/>
-<area shape="rect" id="node3" href="$util_8c.html#ae8814b00b784005b7b466157d9ded603" title=" " alt="" coords="237,56,375,83"/>
-</map>

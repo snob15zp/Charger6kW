@@ -1,7 +1,0 @@
-<map id="Meas_" name="Meas_">
-<area shape="rect" id="node1" title=" " alt="" coords="236,139,297,165"/>
-<area shape="rect" id="node2" href="$struct_comms_meas__.html" title=" " alt="" coords="5,5,112,32"/>
-<area shape="rect" id="node3" href="$struct_adc_comms_meas__.html" title=" " alt="" coords="137,5,266,32"/>
-<area shape="rect" id="node4" href="$struct_adc_meas__.html" title=" " alt="" coords="290,5,374,32"/>
-<area shape="rect" id="node5" href="$struct_integral_meas__.html" title=" " alt="" coords="398,5,501,32"/>
-</map>

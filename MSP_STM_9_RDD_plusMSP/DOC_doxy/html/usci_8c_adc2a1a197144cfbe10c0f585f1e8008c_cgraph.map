@@ -1,6 +1,0 @@
-<map id="uart_send" name="uart_send">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,84,57"/>
-<area shape="rect" id="node2" href="$crc16_8c.html#a2783e18fd5b314e656d988aed16c1116" title=" " alt="" coords="132,5,249,32"/>
-<area shape="rect" id="node4" href="$usci_8c.html#a8165a8d6cc982155fdbb73cca5485206" title="this must be plased to HardWareLevel Group" alt="" coords="159,56,222,83"/>
-<area shape="rect" id="node3" href="$crc16_8c.html#aa3f82d8f012e4928bc40a18a6e66e161" title=" " alt="" coords="297,5,439,32"/>
-</map>
