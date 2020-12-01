@@ -1,9 +1,0 @@
-.\objects\system_stm32f3xx_1.o: ..\TIM2_IRQ\Src\system_stm32f3xx.c
-.\objects\system_stm32f3xx_1.o: .\CMSIS\inc\stm32f3xx.h
-.\objects\system_stm32f3xx_1.o: .\CMSIS\inc\stm32f334x8.h
-.\objects\system_stm32f3xx_1.o: .\CMSIS\inc\core_cm4.h
-.\objects\system_stm32f3xx_1.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\system_stm32f3xx_1.o: .\CMSIS\inc\cmsis_version.h
-.\objects\system_stm32f3xx_1.o: .\CMSIS\inc\cmsis_compiler.h
-.\objects\system_stm32f3xx_1.o: .\CMSIS\inc\cmsis_armcc.h
-.\objects\system_stm32f3xx_1.o: .\CMSIS\inc\system_stm32f3xx.h
