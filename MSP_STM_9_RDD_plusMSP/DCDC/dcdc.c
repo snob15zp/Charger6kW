@@ -94,6 +94,8 @@ __align(4) wordAdcValue_t sumValueBank_2 = {0,0,0,0,0,0,0,0,0,0,0,0}; //temporar
 
 
  int16_t delta;   //??????
+// int16_t delta_duty;   //spectr
+ int32_t delta_duty;   //spectr
  uint16_t offset = 500;  //????
 
  float efficiency; //??????
