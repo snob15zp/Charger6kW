@@ -92,7 +92,7 @@ In io.c:
 	//To stop the fan running at night/when device disabled/shutdown:
 	//The fan will never be on below this output current threshold unless the device is dangerously hot.
 	// (above SAFETY_CASETMP_RESET)
-	#define IO_FAN_MINIMUM_CURRENT 0.0	//2.0	
+	#define IO_FAN_MINIMUM_CURRENT 2.0	//2.0	
 	
 	//The slowest that the fan is allowed to go before a safety shutdown is triggered
 	// 20% speed for small fan at 4ms per pulse
@@ -119,6 +119,7 @@ In io.c:
 	int fanFBCount2;
 	int prevFan2State;
 #endif
+	int prevFan1State;
 	int fanFBTransition1;
 	int fanFBTransition2;
 	unsigned int fanDriven;
@@ -169,6 +170,7 @@ In io.c:
 		fanFBTransition2 = 0;
 		fanRestartTimer = 0;
 		prevFan2State = 1;
+		prevFan1State = 1;
 	}
 
 
@@ -359,7 +361,8 @@ void IO_fanDrvPWM()
 	{
 		fanPWMCounter++;
 	}
-	if(fanPWMCounter < fanDutyCompare)
+	if(fanPWMCounter < fanDutyCompare)	//work
+//	if(fanPWMCounter < 10)	//test
 	{
 //		P1OUT |= FAN_DRV;
 		GPIOD->ODR |= GPIO_ODR_2;
@@ -391,11 +394,26 @@ void IO_fanSenseSpeed()
 //	if (P1IFG & FAN_FB)
 	if(GPIOC->IDR & GPIO_IDR_8){  //RDD ToDo: need be detected edge
 		// fan feedback 1
-		if (fanFBCount1 < IO_FAN_COUNT_TIMEOUT){
-			fanFBCount1++;
-		}
-//		P1IFG &= ~FAN_FB;
+//		if (fanFBCount1 < IO_FAN_COUNT_TIMEOUT){	//old
+//			fanFBCount1++;													//old
+//		}																					//old
+//	}																						//old
+		
+	if (prevFan1State == 1)
+	{
+		if (fanFBCount1 < IO_FAN_COUNT_TIMEOUT)
+		 {
+				fanFBCount1++;
+		 }
 	}
+		prevFan1State = 0;
+	}
+	else
+	{
+		prevFan1State = 1;
+	}
+
+    //		P1IFG &= ~FAN_FB;
 #ifndef ONE_FAN
 //	if ((P5IN & FAN_FB2) == 0)
 	if(GPIOC->IDR & GPIO_IDR_9){
@@ -424,6 +442,7 @@ void IO_fanSenseSpeed()
  */
 void IO_fanSetSpeed()
 {
+//	IO_setFanDutyCycle(10);	//test
 	int curFanFBCount1 = fanFBCount1;
 #ifndef ONE_FAN
 	int curFanFBCount2 = fanFBCount2;
@@ -446,7 +465,7 @@ void IO_fanSetSpeed()
 			// Stop the fan and try again in about 30s
 			fanShutdown = 1;
 			SAFETY_fanShutdown();
-			IO_setFanDutyCycle(0);
+			IO_setFanDutyCycle(0);  //test/work
 			fanDriven = 0;
 			fanRestartTimer = 0;
 			return;
@@ -463,8 +482,10 @@ void IO_fanSetSpeed()
 	}
 	else  //RDD variable for FAN   meas.caseTempr.valReal, meas.caseTemprFault, meas.outCurr.valReal, meas.caseTempr.val
 	{
+		meas.caseTempr.valReal = heatsinkTempFanHysThresh + 1;	//test
 		if((meas.caseTempr.valReal > heatsinkTempFanHysThresh) || (meas.caseTemprFault == 1))
 		{
+//			IO_setFanDutyCycle(10);	//test
 			//only switch the fan on if the device is actually running (there is output current) unless its dangerously hot
 			if((meas.outCurr.valReal >= IO_FAN_MINIMUM_CURRENT) || (meas.caseTempr.val > IQ_cnst(SAFETY_CASETMP_RESET) ))	
 			{
@@ -474,14 +495,14 @@ void IO_fanSetSpeed()
 			}
 			else
 			{
-				IO_setFanDutyCycle(0);
+				IO_setFanDutyCycle(0);  //test/work
 				fanDriven = 0;
 			}
 		}
 		else
 		{
 			heatsinkTempFanHysThresh = IO_HEATSINK_TEMP_FAN_THRESHOLD;
-			IO_setFanDutyCycle(0);
+			IO_setFanDutyCycle(0);  //test/work
 			fanDriven = 0;
 		}
 	}
