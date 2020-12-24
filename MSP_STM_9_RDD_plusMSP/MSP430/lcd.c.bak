@@ -1,16 +1,12 @@
-/**
-\file
-
- File: lcd.c
- Devices: MSP430F247
- Author: David Finn, Tritium Pty Ltd.
- History:
-  28/06/11 - original
- Required hardware:
- Notes:
-
-It looks like this controller only responds to display requests, does not transmit data itself.
-*/
+//--------------------------------------------------------------------
+// File: lcd.c
+// Devices: MSP430F247
+// Author: David Finn, Tritium Pty Ltd.
+// History:
+//  28/06/11 - original
+// Required hardware:
+// Notes:
+//--------------------------------------------------------------------
 //#include <msp430x24x.h>
 #include <signal.h>
 #include <stdlib.h>
@@ -433,14 +429,15 @@ void lcd_loadTelemetry(void)
 	telemetry_R.batteryTemp = 34.6f;
 	telemetry_R.eventFlags.flags = (uint32_t) 0x11223344;
 	*/
-
-	telemetry_R.pvVoltage = meas.pvVolt.valReal;
-	telemetry_R.pvCurrent = meas.pvCurr.valReal;
-	telemetry_R.outputVoltage = meas.outVolt.valReal;
-	telemetry_R.outputCurrent = meas.outCurr.valReal;
-	telemetry_R.ocVoltage = meas.pvOcVolt.valReal;
-	telemetry_R.outputCharge = meas.outCharge.valReal;
-	telemetry_R.pvPower = meas.pvPower.valReal;
+	
+//	telemetry_R.pvVoltage = meas.pvVolt.valReal;
+	telemetry_R.pvVoltage = calculatedValue.vInSensor;
+//	telemetry_R.pvCurrent = meas.pvCurr.valReal;
+//	telemetry_R.outputVoltage = meas.outVolt.valReal;
+//	telemetry_R.outputCurrent = meas.outCurr.valReal;
+//	telemetry_R.ocVoltage = meas.pvOcVolt.valReal;
+//	telemetry_R.outputCharge = meas.outCharge.valReal;
+//	telemetry_R.pvPower = meas.pvPower.valReal;
 	if ((userConfig_R.setPointsConfig.tempCompensation > 0.01f) || (userConfig_R.setPointsConfig.tempCompensation < -0.01f))
 	{
 		telemetry_R.batteryTemp = meas.batTempr.valReal;
@@ -719,7 +716,7 @@ int lcd_startWrite()
 	return ret;
 }
 
-/** Start writing the packet to flash. Return 1 if writing was started.*/
+// Start writing the packet to flash. Return 1 if writing was started.
 int lcd_queueWrite(int type)
 {
 	if (!(type == TYPE_FACTORY || type == TYPE_USER || type == TYPE_EVENTS || type == TYPE_MISC_STATE))

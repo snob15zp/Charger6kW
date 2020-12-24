@@ -19,6 +19,7 @@
 #include "BoardInit.h"
 #include "HiResTim.h"
 #include "adc.h"
+#include "termo.h"
 
 
 #include "dcdc.h"
@@ -505,7 +506,7 @@ void endOfCycleExecute(void){
 					}
 		  }
 		       
-//	calculatedValue.tmpCase = getTemperatureValue((uint32_t)averageValue.tmpCase );	 //test/work
+	calculatedValue.tmpCase = getTemperatureValue((uint32_t)averageValue.tmpCase );	 //test/work
 	
 	statusFlags.WORK_CYCLE_END = 0;
 

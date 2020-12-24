@@ -28,7 +28,10 @@
  
  comms.c:COMMS_receive()->          can.h:CAN_receive()
  
+ sch.c:SCH_runActiveTasks()  -> comms:COMMS_sendHeartbeat()->CAN packet
  
+ lcd_loadUserDefaults(): canBaudRate = BAUD_500;
+                         canBusID = 0x600;
  
 */
 

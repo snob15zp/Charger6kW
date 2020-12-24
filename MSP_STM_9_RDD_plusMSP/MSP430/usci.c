@@ -36,7 +36,7 @@
 #define STX 0x02
 
 #define ALT_FUNC_USART 0x07
-#define USART1_BAUD 1200		//b/s
+#define USART1_BAUD 2400		//b/s
 #define USART1_FCLK 72000000	//Hz
 
 typedef enum uart_State_
@@ -108,6 +108,15 @@ persistentStorage_t persistentStorage;
 //	return 0;
 //}
 
+/**
+
+fCK can be fLSE, fHSI, fPCLK, fSYS.
+TC=1. This indicates that the transmission of the last frame is complete.
+USART1SW[1:0]: USART1 clock source selection =0 ->PCLK/APB2->
+PPRE2=0/HCLK not divided->HLCK prescaler=0xxx/SYSCLK not divided->
+SWS=2/10: PLL used as system clock->PLLMUL=7/*9->PLLXTPRE=1/div2->
+PLLSRC=1/HSE/PREDIV->PREDIV=1/div2
+*/
 void uart_init( void )
 {
 	RCC->APB2ENR |= RCC_APB2ENR_USART1EN;  //USART1 clock enable
@@ -130,7 +139,7 @@ void uart_init( void )
 	NVIC_EnableIRQ(USART1_IRQn);
 }
 
-/*
+/**
  * Transmit data 
  *	- Begins transmission of the data buffer
  *	- Transmits one byte of data, the rest are handled by the Tx IRQ
@@ -161,12 +170,12 @@ void uart_send_response(command_Code cc, uint16_t arg)
 	uart_send(TYPE_COMMAND);
 }
 
-void uart_send_startup(void)
+void uart_send_startup(void) //RDD test work
 {
 	uart_send_response(RESPONSE_STARTUP, 0);
 }
 
-/*
+/**
  * Send an error.
  */
 void uart_send_error(error_Code ec)
@@ -185,7 +194,7 @@ void loadPassword()
 	}
 }
 
-/*
+/**
  * Process the recevied data.
  * If the received data is a request then send the requested packet otherwise write the data to flash then
  * send it back to the sender so it can validate that the correct data was written.
@@ -215,7 +224,7 @@ void uart_receive(void)
 		if(rx_buffer[k] == DLE)
 		{
 			k++;
-		}
+		}  //RDD ERROR? rx_buffer[crc_start] = rx_buffer[k];
 		k++;
 		if(rx_buffer[k] == DLE)
 		{
@@ -562,9 +571,10 @@ void USART1_IRQHandler(void)
 	}
 	
 	//IRQ receive complete
-	if(USART1->ISR & USART_ISR_RXNE){
+	if((USART1->ISR & USART_ISR_RXNE)||(USART1->ISR & USART_ISR_ORE)){
 		/// remove old hardware IE2 &= ~(UCA0RXIE);
 		USART1->CR1 &= ~USART_CR1_RXNEIE;	//rx interrupt disable
+		USART1->ICR =USART_ICR_ORECF; 
 		/// remove old hardware eint();
 		/// remove old hardware rx = (unsigned char)(UCA0RXBUF);
 		rx = (unsigned char)USART1->RDR;
