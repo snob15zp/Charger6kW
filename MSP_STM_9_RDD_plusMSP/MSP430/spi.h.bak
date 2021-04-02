@@ -9,14 +9,14 @@
 //   2010-07-27: original
 //-------------------------------------------------------------------
 
-#ifndef __SPI1_H__
-#define __SPI1_H__
+#ifndef SPI_H
+#define SPI_H
 
-void init_SPI1(void);
-unsigned char SPI_writeRead(unsigned char byte);
+#include "debug.h"
 
-void init_TIM2(void);
-void task_spi(void);
+void SPI_init(void);
+unsigned char SPI_writeRead( unsigned char byte );
 
-#endif // __SPI1_H__
+
+#endif // SPI_H
 
