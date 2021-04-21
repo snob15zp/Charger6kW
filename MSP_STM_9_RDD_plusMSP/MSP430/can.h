@@ -26,7 +26,6 @@
  *	- CAN_transmit
  *	- CAN_receive
  *
- 
  */
 
 #ifndef CAN_H
@@ -87,10 +86,11 @@ typedef enum CAN_TxBufferInd_
 	CAN_POW_TEMPR_MEAS_INDEX,
 	CAN_TIME_SEND_INDEX,
 	CAN_STATUS_INDEX,
-	CAN_RESET_INDEX,
+	CAN_RESET_INDEX, //0..13
 
 	CAN_TxBufferInd_MAX = CAN_RESET_INDEX
 } CAN_TxBufferInd;
+/** CAN_TxBufferInd_MIN =0; CAN_RESET_INDEX=13, CAN_TxBufferInd_MAX=14 */
 enum { CAN_TxBufferInd_NUM = (CAN_TxBufferInd_MAX - CAN_TxBufferInd_MIN) + 1 };
 
 // Address associated with each transmit buffer -- this array should be in the same order as the CAN_TxBufferInd enum

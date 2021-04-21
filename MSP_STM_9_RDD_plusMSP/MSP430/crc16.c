@@ -73,7 +73,8 @@ void CRC16_Update4Bits( unsigned char val )
  ***************P U B L I C    F U N C T I O N S*********************
  ********************************************************************/
 
-/********************************************************************
+/**
+******************************************************************
  *	Name		: CalculateCRC16
  *	Description	: Calculate the CRC of the given data.
  *	Inputs		: cp - pointer to data whose CRC is to be calculated

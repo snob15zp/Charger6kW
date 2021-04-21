@@ -57,6 +57,7 @@ TaskDef tasks[] =
 	{	500,									0,		IO_toggleGreenLed }
 };
 #elif (AER_PRODUCT_ID == AER07_WALL)
+//RDD Period, Offset, func 
 TaskDef tasks[] = 
 {	
 	{	(int)(1000.0 / CHARGE_UPDATE_RATE_HZ),	20,		MEAS_updateCharge },
