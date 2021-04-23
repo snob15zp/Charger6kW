@@ -23,6 +23,7 @@
 #include "io.h"
 #include "usci.h"
 
+#define APPLICATION_ADDRESS (uint32_t)0x08001800
 
 volatile uint32_t sysTickCounter = 0;
 
@@ -57,6 +58,9 @@ void debugFSM()       //call from TIM3_IRQHandler
 
 int main(void)
 { 
+#ifdef RELEASE
+	 SCB->VTOR = APPLICATION_ADDRESS;
+#endif
 	__disable_irq();		
 	
 	SystemCoreClock = setSystemClock();
