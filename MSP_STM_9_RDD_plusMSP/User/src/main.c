@@ -1,4 +1,5 @@
-/******************************************************************
+/**
+****************************************************************
 *
 * INIT : CLock, DCDC, mainMSPinit
 *
@@ -7,8 +8,14 @@
 * SysTick->SCH_incrMs() //from MSP
 *
 * TIM3_IRQ -> PWMisr() //512 ms, from MSP
+
+The maximum frequency of the AHB and
+APB2 domains is 72 MHz. The maximum allowed frequency of the APB1 domain is 36 MHz
+
+Crystal Y2 16MHz
 *
-*******************************************************************/
+******************************************************************
+*/
 #include "Stm32f3xx.h"
 #include "BoardInit.h"
 
@@ -81,6 +88,20 @@ int main(void)
 		MEAS_update();  //ToDo: link with time or measurement
   	DCDC_Loop(0);
 		mainMSPloop(0);
+		
+		
+		//rdd debug send	
+//		while(!(USART1->ISR & USART_ISR_TC))
+//			{	}
+//		/// remove old hardware IFG2 &= ~UCA0TXIFG;
+//		USART1->ICR &= ~USART_ICR_TCCF;
+//		// Enable Tx IRQ
+//		//USART1->CR1 |= USART_CR1_TCIE;
+//		USART1->CR1 &= ~USART_CR1_TCIE;
+//		/// remove old hardware IE2 |= UCA0TXIE;
+//		//UCA0CTL1 |= UCTXADDR;	// Set address bit transmission marker to preceed next tx byte
+//		// Load first byte into buffer and transmit
+//		USART1->TDR = 0x55;
 	}
 	while(1);
 }

@@ -1,3 +1,6 @@
+/*!
+\file
+\brief Discrete I / O control
 
 //-------------------------------------------------------------------
 // File: io.c
@@ -8,28 +11,54 @@
 // History:
 //   2010-07-07: original
 //-------------------------------------------------------------------
-/********************************************************************
+
 Schematic Digital Input Output
-*CASETMP thermistor
+
+*CASETMP thermistor, no in this file
 
 *ON_OFF_GFD
+
            io.c:IO_getGroundFault()
+					 
 					 ctrl.c:CTRL_tick()->io.c:IO_getGroundFault()
+					 
 					 RDD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! set with delay disablePWM according to  GroundFault: J10 on PWRboard
+					 
 *RELAY_1_EN
+
 *RELAY_2_EN
-           io.c: IO_setRelay
-*TMPCMP used Analog or Digital?
-        Digital:
+
+           mainMSP.c:mainMSPloop()->sch.c:SCH_runActiveTasks()->
+					 FLAG_checkAndWrite()->FLAG_checkAllFlags->io.c:IO_setRelay
+
+					 
+*TMPCMP Digital
+				
         io.c: int IO_getDigitalTemp()
+				
         temp.c:TEMP_init()->io.c: int IO_getDigitalTemp()
+				
 				pwm.c:PWM_isr()->temp.c:TEMP_tick()->io.c: int IO_getDigitalTemp()
+				
 *ONOFF/SLAVE#
-        io.c:  epsent? 
+
+         pwm.c:PWM_isr->cntrl.c:CTRL_tick()->io.c:int IO_getOnOff() 
 				
 In io.c:
+
         IO_getIsSlave
-**********************************************************************/
+				
+				FAN                                                     high level logic       limit fanDuty
+				
+				mainMSP.c:mainMSPloop()->sch.c:SCH_runActiveTasks()->io.c:IO_fanSetSpeed->io.c:IO_setFanDutyCycle( unsigned int fanDuty);
+				
+        mainMSP.c:TIM3_IRQHandler(void)->PWM.c:PWM_isr(void)->io.c:IO_fanSenseSpeed(void);
+				
+	      mainMSP.c:mainMSPloop()->sch.c:SCH_runActiveTasks()->io.c:IO_fanDrvPWM(void);
+
+
+*/
+
 //#include <msp430x24x.h>
 #include "Stm32f3xx.h"
 #include "variant.h"
@@ -63,7 +92,7 @@ In io.c:
 	//To stop the fan running at night/when device disabled/shutdown:
 	//The fan will never be on below this output current threshold unless the device is dangerously hot.
 	// (above SAFETY_CASETMP_RESET)
-	#define IO_FAN_MINIMUM_CURRENT 0.0	//2.0	
+	#define IO_FAN_MINIMUM_CURRENT 2.0	//2.0	
 	
 	//The slowest that the fan is allowed to go before a safety shutdown is triggered
 	// 20% speed for small fan at 4ms per pulse
@@ -90,6 +119,7 @@ In io.c:
 	int fanFBCount2;
 	int prevFan2State;
 #endif
+	int prevFan1State;
 	int fanFBTransition1;
 	int fanFBTransition2;
 	unsigned int fanDriven;
@@ -140,9 +170,29 @@ In io.c:
 		fanFBTransition2 = 0;
 		fanRestartTimer = 0;
 		prevFan2State = 1;
+		prevFan1State = 1;
 	}
 
-	//Functions that are only used for WALL
+
+/**
+ *  @defgroup groupFAN FAN
+	
+					FAN                                                     high level logic       limit fanDuty
+				
+				mainMSP.c:mainMSPloop()->sch.c:SCH_runActiveTasks()->io.c:IO_fanSetSpeed->io.c:IO_setFanDutyCycle( unsigned int fanDuty);
+				
+        mainMSP.c:TIM3_IRQHandler(void)->PWM.c:PWM_isr(void)->io.c:IO_fanSenseSpeed(void);
+				
+	      mainMSP.c:mainMSPloop()->sch.c:SCH_runActiveTasks()->io.c:IO_fanDrvPWM(void);
+
+	
+ */	
+	
+	
+/**
+ *  @ingroup groupFAN
+ *  @brief Limits fanDuty
+ */
 void IO_setFanDutyCycle(unsigned int fanDuty)
 	{	
 		if(fanDuty <= IO_FAN_PWM_PERIOD)
@@ -152,19 +202,36 @@ void IO_setFanDutyCycle(unsigned int fanDuty)
 			fanDutyCompare = IO_FAN_PWM_PERIOD;
 		}
 	}
-
+/**
+ *  @brief Just returns the state of the input 
+	
+	pwm.c:PWM_isr->cntrl.c:CTRL_tick()->io.c:int IO_getOnOff()
+ */
 	int IO_getOnOff()
 	{
 //		return ( ( P2IN & ONOFF ) == 0 );
 		return ((GPIOB->IDR & GPIO_IDR_0)==0);
 	}
-
+	
+/**
+  *  @brief Just returns the state of the input
+	
+	    set with delay disablePWM according to  GroundFault: J10 on PWRboard
+ */
 	int IO_getGroundFault()
 	{
 //		return ((P5IN & GF_ONOFF) == 0);
 		return ((GPIOC->IDR & GPIO_IDR_0)==0); //ToDo fix
 	}
-
+	
+/**	
+@defgroup groupDigitalTemp DigitalTemp MAX6577
+*/	
+	
+/**
+ *  @ingroup groupDigitalTemp
+ *  @brief Just returns the state of the input
+ */
 	int IO_getDigitalTemp()
 	{
 //		return ((P1IN & TMPCMP_DIGITAL) != 0);
@@ -229,7 +296,9 @@ void IO_setFanDutyCycle(unsigned int fanDuty)
 	
 
 #endif
-
+/**
+ *  @brief not real input, return( (int)( CFG_localCfg.isSlave ) );
+ */
 //get from backplane for RACK, needs to get from config in WALL
 int IO_getIsSlave()
 {
@@ -240,6 +309,15 @@ int IO_getIsSlave()
 #endif
 	//return 1;
 }
+
+/**
+   @brief just on/off relay
+
+mainMSP.c:mainMSPloop()->sch.c:SCH_runActiveTasks()->
+					 FLAG_checkAndWrite()->FLAG_checkAllFlags->io.c:IO_setRelay
+
+\todo 2 relay
+ */
 
 void IO_setRelay( unsigned long long bitfield )
 {
@@ -269,7 +347,10 @@ void IO_setRelay( unsigned long long bitfield )
 //	IO_pwmEnabled = 0;
 //}
 
-
+/**
+ *  @ingroup groupFAN
+ *  @brief Program PWM for FAN
+ */
 void IO_fanDrvPWM()
 {
 	if(fanPWMCounter >= (IO_FAN_PWM_PERIOD - 1))
@@ -280,7 +361,8 @@ void IO_fanDrvPWM()
 	{
 		fanPWMCounter++;
 	}
-	if(fanPWMCounter < fanDutyCompare)
+	if(fanPWMCounter < fanDutyCompare)	//work
+//	if(fanPWMCounter < 10)	//test
 	{
 //		P1OUT |= FAN_DRV;
 		GPIOD->ODR |= GPIO_ODR_2;
@@ -291,20 +373,47 @@ void IO_fanDrvPWM()
 	}
 }
 
-//This is called at the PWM frequency which is about every 512us as of revision 133.
-//Rated fan speed is 4300RPM which is about 6.5 ms between falling edges, or 13ms for a full rotation of the fan.
-//This corresponds to fanFBPeriod of about 0x0C
-//The safety cutoff for fanFBPeriod is set to FAN_PERIOD_MAXIMUM = 0x14
+
+/*!  @brief program counter of edges
+ 
+     @ingroup groupFAN
+
+     \todo make fanFBCount1 like fanFBCount2
+
+FAN speed: curFanFBCount1,  curFanFBCount2
+
+Speed analized in IO_fanSetSpeed()
+
+This is called at the PWM frequency which is about every 512us as of revision 133.
+Rated fan speed is 4300RPM which is about 6.5 ms between falling edges, or 13ms for a full rotation of the fan.
+This corresponds to fanFBPeriod of about 0x0C
+The safety cutoff for fanFBPeriod is set to FAN_PERIOD_MAXIMUM = 0x14
+*/
 void IO_fanSenseSpeed()
 {
 //	if (P1IFG & FAN_FB)
 	if(GPIOC->IDR & GPIO_IDR_8){  //RDD ToDo: need be detected edge
 		// fan feedback 1
-		if (fanFBCount1 < IO_FAN_COUNT_TIMEOUT){
-			fanFBCount1++;
-		}
-//		P1IFG &= ~FAN_FB;
+//		if (fanFBCount1 < IO_FAN_COUNT_TIMEOUT){	//old
+//			fanFBCount1++;													//old
+//		}																					//old
+//	}																						//old
+		
+	if (prevFan1State == 1)
+	{
+		if (fanFBCount1 < IO_FAN_COUNT_TIMEOUT)
+		 {
+				fanFBCount1++;
+		 }
 	}
+		prevFan1State = 0;
+	}
+	else
+	{
+		prevFan1State = 1;
+	}
+
+    //		P1IFG &= ~FAN_FB;
 #ifndef ONE_FAN
 //	if ((P5IN & FAN_FB2) == 0)
 	if(GPIOC->IDR & GPIO_IDR_9){
@@ -325,9 +434,15 @@ void IO_fanSenseSpeed()
 #endif
 }
 
+/**
+   @ingroup groupFAN
+   @brief High level logic for FAN
+
 //Run by scheduler every 2 seconds
+ */
 void IO_fanSetSpeed()
 {
+//	IO_setFanDutyCycle(10);	//test
 	int curFanFBCount1 = fanFBCount1;
 #ifndef ONE_FAN
 	int curFanFBCount2 = fanFBCount2;
@@ -350,7 +465,7 @@ void IO_fanSetSpeed()
 			// Stop the fan and try again in about 30s
 			fanShutdown = 1;
 			SAFETY_fanShutdown();
-			IO_setFanDutyCycle(0);
+			IO_setFanDutyCycle(0);  //test/work
 			fanDriven = 0;
 			fanRestartTimer = 0;
 			return;
@@ -367,8 +482,10 @@ void IO_fanSetSpeed()
 	}
 	else  //RDD variable for FAN   meas.caseTempr.valReal, meas.caseTemprFault, meas.outCurr.valReal, meas.caseTempr.val
 	{
+		meas.caseTempr.valReal = heatsinkTempFanHysThresh + 1;	//test
 		if((meas.caseTempr.valReal > heatsinkTempFanHysThresh) || (meas.caseTemprFault == 1))
 		{
+//			IO_setFanDutyCycle(10);	//test
 			//only switch the fan on if the device is actually running (there is output current) unless its dangerously hot
 			if((meas.outCurr.valReal >= IO_FAN_MINIMUM_CURRENT) || (meas.caseTempr.val > IQ_cnst(SAFETY_CASETMP_RESET) ))	
 			{
@@ -378,14 +495,14 @@ void IO_fanSetSpeed()
 			}
 			else
 			{
-				IO_setFanDutyCycle(0);
+				IO_setFanDutyCycle(0);  //test/work
 				fanDriven = 0;
 			}
 		}
 		else
 		{
 			heatsinkTempFanHysThresh = IO_HEATSINK_TEMP_FAN_THRESHOLD;
-			IO_setFanDutyCycle(0);
+			IO_setFanDutyCycle(0);  //test/work
 			fanDriven = 0;
 		}
 	}

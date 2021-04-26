@@ -19,7 +19,6 @@
 #include "BoardInit.h"
 #include "HiResTim.h"
 #include "adc.h"
-#include "termo.h"
 
 
 #include "dcdc.h"
@@ -169,9 +168,9 @@ void ADC1_2_IRQHandler(void){    //RDD fault
 //*************************************************************************************************************************
 void EXTI0_IRQHandler(void)   //software interrupt for regulator
 {
-//	GPIOB->BSRR = GPIO_BSRR_BR_1;	//testDC?
+	GPIOB->BSRR = GPIO_BSRR_BR_1;
 		EXTI->PR=EXTI_IMR_MR0;
-//	GPIOB->BSRR = GPIO_BSRR_BS_1;  //testDC?
+	GPIOB->BSRR = GPIO_BSRR_BS_1;
 //static	uint16_t tooglPin=0;
 //		switch(tooglPin)
 //			{
@@ -193,7 +192,7 @@ uint16_t  Regulator(float Vin);
 
 void HRTIM1_TIMA_IRQHandler(void)  
 {
-//	GPIOB->BSRR = GPIO_BSRR_BR_1;	 //testDC?
+	GPIOB->BSRR = GPIO_BSRR_BR_1;
 		HRTIM1->sTimerxRegs[TIM_A].TIMxICR=HRTIM_TIMICR_REPC;
 	//  EXTI->SWIER=EXTI_IMR_MR0; //software interrupt for regulator
 	
@@ -211,7 +210,7 @@ void HRTIM1_TIMA_IRQHandler(void)
 */
 		}
 	
-//	GPIOB->BSRR = GPIO_BSRR_BS_1;  //testDC?
+	GPIOB->BSRR = GPIO_BSRR_BS_1;
 //static	uint16_t tooglPin=0;
 //		switch(tooglPin)
 //			{
@@ -341,25 +340,6 @@ uint16_t  Regulator(float Vin)// Regulator like PID
 
 //	static workMode_ent workMode = MODE_VOLTAGE_STAB;
 //RDD Spread spectrum begin
-
-//	delta_duty = (PERIOD_STEP * 100) / (buckPeriod / (dutyCycle / 100));  //spectr
-	delta_duty = (buckPeriod *1000 / dutyCycle);  //spectr koef-t
-	delta_duty = PERIOD_STEP*1000 / delta_duty  ;  //spectr delta_duty 
-	
-	if(statusFlags.PERIOD_STEP_UP == 0)   //RDD Spread spectrum
-	{                               
-		buckPeriod -= PERIOD_STEP;                                       // PERIOD_STEP_UP only there 
-//		delta_duty = -100;              //spectr
-		delta_duty = -1*delta_duty;              //spectr
-		if(buckPeriod == BUCK_PERIOD_MIN) {statusFlags.PERIOD_STEP_UP = 1;}  //RD Replace to <= ?
-	} else 
-	{
-		buckPeriod += PERIOD_STEP;
-//		delta_duty = 100;              //spectr
-		if(buckPeriod == BUCK_PERIOD_MAX) {statusFlags.PERIOD_STEP_UP = 0;}
-	}
-
-	HRTIM1->sTimerxRegs[TIM_A].PERxR = buckPeriod;														// next period for timer
 
 //RDD Spread spectrum end	
 
@@ -506,7 +486,7 @@ void endOfCycleExecute(void){
 					}
 		  }
 		       
-	calculatedValue.tmpCase = getTemperatureValue((uint32_t)averageValue.tmpCase );	 //test/work
+//	calculatedValue.tmpCase = getTemperatureValue((uint32_t)averageValue.tmpCase );
 	
 	statusFlags.WORK_CYCLE_END = 0;
 
