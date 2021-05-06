@@ -1,6 +1,10 @@
+/*!
+
+\file 
+
+\brief CAN
 
 
-/*
  * Tritium MCP2515 CAN Interface
  * Copyright (c) 2009, Tritium Pty Ltd.  All rights reserved.
  *
@@ -24,9 +28,16 @@
  
  comms.c:COMMS_receive()->          can.h:CAN_receive()
  
+ sch.c:SCH_runActiveTasks()  -> comms:COMMS_sendHeartbeat()->CAN packet
  
+ lcd_loadUserDefaults(): canBaudRate = BAUD_500;
+                         canBusID = 0x600;
  
- */
+*/
+
+
+
+
 
 // Include files
 //#include <msp430x24x.h>

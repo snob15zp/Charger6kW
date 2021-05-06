@@ -1,4 +1,4 @@
-/*
+/**  \file
  * termo.c
  *
  *  Created on: 22 NOV. 2019 

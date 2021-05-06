@@ -20,6 +20,18 @@ static int currentState;				// The current state of the digital temp input
 
 static unsigned int temperature;		// Temp in kelvin * 64
 
+/**
+ *  @ingroup groupDigitalTemp
+ *  @brief temperature = (273.15f + 25) * 64;
+ 
+ *TMPCMP Digital input
+				
+        io.c: int IO_getDigitalTemp()
+				
+        temp.c:TEMP_init()->io.c: int IO_getDigitalTemp()
+				
+				pwm.c:PWM_isr()->temp.c:TEMP_tick()->io.c: int IO_getDigitalTemp()
+*/
 void TEMP_init()
 {
 	tickCount = 0;
@@ -30,9 +42,15 @@ void TEMP_init()
 	temperature = (273.15f + 25) * 64;
 }
 
-/*
+
+/**
+ *  @ingroup groupDigitalTemp
+ *  @brief Just returns the state of the input
+
  * Count the number of pulses in about a second and measure the time
  * Then temperature in kelvin is pulses/time
+   Get temperature in Kelvin * 64
+ 
  */
 void TEMP_tick()
 {
@@ -69,9 +87,10 @@ void TEMP_tick()
 	}
 }
 
-/*
- * Get temperature in Kelvin * 64
- */
+/**
+ *  @ingroup groupDigitalTemp
+ *  @brief Just returns the state of the temperature in Kelvin * 64
+*/
 unsigned int TEMP_getValue()
 {
 	return temperature;

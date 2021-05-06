@@ -1,3 +1,35 @@
+/*!
+\file
+\brief Discrete I / O control
+
+Schematic Digital Input Output
+*CASETMP thermistor, no in this file
+
+*ON_OFF_GFD
+           io.c:IO_getGroundFault()
+					 ctrl.c:CTRL_tick()->io.c:IO_getGroundFault()
+					 RDD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! set with delay disablePWM according to  GroundFault: J10 on PWRboard
+*RELAY_1_EN
+*RELAY_2_EN
+           io.c: IO_setRelay
+*TMPCMP or Digital?
+        Digital:
+        io.c: int IO_getDigitalTemp()
+        temp.c:TEMP_init()->io.c: int IO_getDigitalTemp()
+				pwm.c:PWM_isr()->temp.c:TEMP_tick()->io.c: int IO_getDigitalTemp()
+*ONOFF/SLAVE#
+        io.c:  epsent? 
+				
+In io.c:
+        IO_getIsSlave
+				
+				FAN                                                     high level logic       limit fanDuty
+				mainMSP.c:mainMSPloop()->sch.c:SCH_runActiveTasks()->io.c:IO_fanSetSpeed->io.c:IO_setFanDutyCycle( unsigned int fanDuty);
+        mainMSP.c:TIM3_IRQHandler(void)->PWM.c:PWM_isr(void)->io.c:IO_fanSenseSpeed(void);
+	      mainMSP.c:mainMSPloop()->sch.c:SCH_runActiveTasks()->io.c:IO_fanDrvPWM(void);
+
+
+*/
 
 //-------------------------------------------------------------------
 // File: io.h
