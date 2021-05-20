@@ -30,6 +30,16 @@ Crystal Y2 16MHz
 #include "io.h"
 #include "usci.h"
 
+//#include "spi.h"
+
+//-------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------
+//#include "uart.h"
+#include "mb.h"
+#include "mbport.h"
+//-------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------
+
 #define APPLICATION_ADDRESS (uint32_t)0x08001800
 
 volatile uint32_t sysTickCounter = 0;
@@ -60,7 +70,7 @@ void debugFSM()       //call from TIM3_IRQHandler
 	debugFSM_calc++;
 	
 }
-	
+
 
 
 int main(void)
@@ -68,6 +78,8 @@ int main(void)
 #ifdef RELEASE
 	 SCB->VTOR = APPLICATION_ADDRESS;
 #endif
+	
+	eMBErrorCode eStatus;	
 	__disable_irq();		
 	
 	SystemCoreClock = setSystemClock();
@@ -79,15 +91,20 @@ int main(void)
 	uart_init();// is in  MAIN_resetAllAndStart()
 	mainMSPinit( );
 
-	
-	
+  eStatus = eMBInit( MB_RTU, 0x0A, 0, 115200UL, MB_PAR_NONE );
+  eStatus = eMBEnable();
 	__enable_irq();
+	
+	
+//	__enable_irq();
  	
 	do 
 	{ //ftemp=2.3*	((float)debugFSM_calc) ;
 		MEAS_update();  //ToDo: link with time or measurement
-  	DCDC_Loop(0);
+        DCDC_Loop(0);
 		mainMSPloop(0);
+		eMBPoll();
+		check_txd_RS485();
 		
 		
 		//rdd debug send	

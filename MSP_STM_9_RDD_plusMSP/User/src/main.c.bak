@@ -1,0 +1,155 @@
+/**
+****************************************************************
+*
+* INIT : CLock, DCDC, mainMSPinit
+*
+* LOOP: mainMSPLoop
+*
+* SysTick->SCH_incrMs() //from MSP
+*
+* TIM3_IRQ -> PWMisr() //512 ms, from MSP
+
+The maximum frequency of the AHB and
+APB2 domains is 72 MHz. The maximum allowed frequency of the APB1 domain is 36 MHz
+
+Crystal Y2 16MHz
+*
+******************************************************************
+*/
+#include "Stm32f3xx.h"
+#include "BoardInit.h"
+
+#include "sch.h"
+#include "pwm.h"
+
+#include "dcdc.h"
+
+#include "mainMSP.h"
+
+#include "meas.h"
+#include "io.h"
+#include "usci.h"
+
+
+
+//-------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------
+//#include "uart.h"
+#include "mb.h"
+#include "mbport.h"
+//-------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------
+
+volatile uint32_t sysTickCounter = 0;
+
+uint32_t SystemCoreClock = 8000000;
+
+float ftemp;  // for debug 
+
+//FSM for debug 
+static uint16_t debugFSM_calc=0;
+void debugFSM()       //call from TIM3_IRQHandler
+{ 
+	switch (debugFSM_calc)
+	{	
+	  case 1:
+			DCDC_Start_Stop(0); break;
+	  case 4000:
+			setVin(0);DCDC_Start_Stop(1);DCDC_Enable_Disable(1); break;
+	  case 8000:
+			setVin(100);break;
+		case 12000: 
+			setVin(25);break;	
+		case 16000: 
+			debugFSM_calc = 0; break;	
+		default: ;	
+  };
+	
+	debugFSM_calc++;
+	
+}
+	
+
+
+int main(void)
+{ 
+	eMBErrorCode eStatus;	
+	__disable_irq();		
+	
+	SystemCoreClock = setSystemClock();
+	SysTick_Config(SystemCoreClock / 1000);																		// set ssystem tick = 1 ms
+	DCDC_Init();
+	initTim3();
+	
+	IO_init();// is in  MAIN_resetAllAndStart()
+	uart_init();// is in  MAIN_resetAllAndStart()
+	mainMSPinit( );
+
+  eStatus = eMBInit( MB_RTU, 0x0A, 0, 115200UL, MB_PAR_NONE );
+  eStatus = eMBEnable();
+	__enable_irq();
+	
+	
+//	__enable_irq();
+ 	
+	do 
+	{ //ftemp=2.3*	((float)debugFSM_calc) ;
+		MEAS_update();  //ToDo: link with time or measurement
+  	DCDC_Loop(0);
+		mainMSPloop(0);
+		eMBPoll();
+		check_txd_RS485();
+		
+		
+		//rdd debug send	
+//		while(!(USART1->ISR & USART_ISR_TC))
+//			{	}
+//		/// remove old hardware IFG2 &= ~UCA0TXIFG;
+//		USART1->ICR &= ~USART_ICR_TCCF;
+//		// Enable Tx IRQ
+//		//USART1->CR1 |= USART_CR1_TCIE;
+//		USART1->CR1 &= ~USART_CR1_TCIE;
+//		/// remove old hardware IE2 |= UCA0TXIE;
+//		//UCA0CTL1 |= UCTXADDR;	// Set address bit transmission marker to preceed next tx byte
+//		// Load first byte into buffer and transmit
+//		USART1->TDR = 0x55;
+	}
+	while(1);
+}
+
+/*************************************************************************************************************************
+*
+*
+**************************************************************************************************************************/
+void SysTick_Handler(void){ 
+	sysTickCounter--;//do not used
+	SCH_incrMs();
+}
+
+void TIM3_IRQHandler(void)
+{
+	TIM3->SR = ~TIM_SR_UIF;
+	PWM_isr();   //function from MSP430 every 512 ms
+	//RDD DEBUG debugFSM(); //RDD DEBUG
+	
+//	if(TIM3->SR & TIM_SR_UIF){
+//		TIM3->SR = ~TIM_SR_UIF;
+//		switch(tooglPin){
+//			case 0:
+//				GPIOB->BSRR = GPIO_BSRR_BS_1;
+//				tooglPin=1;
+//				break;
+//			case 1:
+//				GPIOB->BSRR = GPIO_BSRR_BR_1;
+//				tooglPin=0;
+//				break;
+//		}
+//	}
+}
+
+//void delay_ms(uint32_t delayTime){
+//	sysTickCounter = delayTime;
+//	while(sysTickCounter){}
+//}
+
+

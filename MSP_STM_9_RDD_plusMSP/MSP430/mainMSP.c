@@ -130,10 +130,11 @@ int mainMSPloop( char l )
 		COMMS_receive();  // mainMSP
 
 		SCH_runActiveTasks(); // mainMSP
-
-		uart_receive(); // mainMSP
-	}
-  while(l); 
+#ifndef MODBUS
+        uart_receive(); // mainMSP
+#endif
+    }
+    while(l); 
 	// Will never get here, keeps compiler happy
 	return(1);
 }
