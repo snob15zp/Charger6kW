@@ -91,7 +91,7 @@ int main(void)
 	uart_init();// is in  MAIN_resetAllAndStart()
 	mainMSPinit( );
 
-  eStatus = eMBInit( MB_RTU, 0x0A, 0, 115200UL, MB_PAR_NONE );
+  eStatus = eMBInit( MB_RTU, 0x0A, 0, 9600, MB_PAR_NONE );
   eStatus = eMBEnable();
 	__enable_irq();
 	
