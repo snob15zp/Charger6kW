@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <log>
+    <path>\log</path>
+    <file>log_</file>
+    <level>info</level>
+  </log>
+  <devs>
+    <dev_gen>
+      <!-- 0x7a70 ('z','p')-->
+      <signature>31344</signature>
+      <spm_pagesize>2048</spm_pagesize>
+      <page_count>29</page_count>
+      <key>c/ISirhC2BfxpDGzLDQPTA==</key>
+    </dev_gen>
+      <dev_gen_g070>
+      <!-- 0x7a71 ('z','r')-->
+      <signature>31345</signature>
+      <spm_pagesize>2048</spm_pagesize>
+      <page_count>56</page_count>
+      <key>yHjqPDeqWIyMHOFdZqiwvQ==</key>
+    </dev_gen_g070>
+    <baul>
+      <!-- 0x7a71 ('z','r')-->
+      <signature>31345</signature>
+      <spm_pagesize>2048</spm_pagesize>
+      <page_count>56</page_count>
+      <key>yHjqPDeqWIyMHOFdZqiwvQ==</key>
+    </baul>
+    <aer07g302>
+        <signature>31346</signature>
+        <spm_pagesize>2048</spm_pagesize>
+        <page_count>29</page_count>
+        <key>hxRDvjeYNpDBahYW77xthA==</key>
+    </aer07g302>
+  </devs>
+</root>
+
+
