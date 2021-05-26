@@ -79,10 +79,7 @@ miscState_t miscState_W;
 
 persistentStorage_t persistentStorage;
 
-//void usci_init( unsigned char clock )
-//{
-///// remove old hardware
-//}
+
 
 ///*
 // * Transmits data on SPI connection
@@ -146,6 +143,7 @@ void uart_init( void )
  */
 void uart_tx( void )   ///this must be plased to HardWareLevel Group
 {
+#ifndef MODBUS
 	// Set the byte counter
 	tx_count = 0;
 //	// Make sure IRQ flag is clear
@@ -161,13 +159,17 @@ void uart_tx( void )   ///this must be plased to HardWareLevel Group
 	// Load first byte into buffer and transmit
 	USART1->TDR = tx_buffer[tx_count++];
 	/// remove old hardware UCA0TXBUF = tx_buffer[tx_count++];
+#endif
 }
 
 void uart_send_response(command_Code cc, uint16_t arg)
 {
+#ifndef MODBUS
+
 	command_R.commandCode = cc;
 	command_R.arg = arg;
 	uart_send(TYPE_COMMAND);
+#endif
 }
 
 void uart_send_startup(void) //RDD test work
@@ -201,6 +203,7 @@ void loadPassword()
  */
 void uart_receive(void)
 {
+#ifndef MODBUS
 	unsigned char i;
 	unsigned char k;
 	unsigned char crc_start;
@@ -374,10 +377,12 @@ void uart_receive(void)
 			lcd_checkPersistentUpdate();
 		}
 	}
+#endif
 }
 
 int uart_send(int type)
 {
+#ifndef MODBUS
 	unsigned char *bytes;
 	unsigned char structSize;
 	unsigned char version;
@@ -507,8 +512,10 @@ int uart_send(int type)
 	tx_buffer[k++] = ETX;
 
 	uart_tx();
-
+#endif
+    (void)type;
 	return 1;
+
 }
 
 //interrupt(USCIAB0TX_VECTOR) enablenested uart_tx_isr(void)
@@ -539,6 +546,7 @@ int uart_send(int type)
 //interrupt(USCIAB0RX_VECTOR) enablenested uart_rx_isr(void)
 /// remove old hardware interrupt(USCIAB0RX_VECTOR)
 //void uart_rx_isr(void)  ///this must be plased to HardWareLevel Group
+#ifndef MODBUS
 void USART1_IRQHandler(void)
 {
 	unsigned char rx;
@@ -640,3 +648,4 @@ void USART1_IRQHandler(void)
 	USART1->CR1 |= USART_CR1_RXNEIE;
 	}
 }
+#endif
