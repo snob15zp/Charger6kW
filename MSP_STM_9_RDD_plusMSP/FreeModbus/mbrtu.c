@@ -196,7 +196,7 @@ eMBRTUSend( UCHAR ucSlaveAddress, const UCHAR * pucFrame, USHORT usLength )
      */
     if( eRcvState == STATE_RX_IDLE )
     {
-				txd_RS485_EN();			
+				txd_RS485_EN();
 			
         /* First byte before the Modbus-PDU is the slave address. */
         pucSndBufferCur = ( UCHAR * ) pucFrame - 1;

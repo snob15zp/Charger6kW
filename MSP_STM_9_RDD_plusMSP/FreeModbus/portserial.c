@@ -27,7 +27,8 @@
 #include "mbport.h"
 #include "Stm32f3xx.h"
 
-#define USART3_PCLK 			(36000000UL)
+#define USART3_FCLK 			(36000000UL)
+#define USART3_DEFBAUDRATE 			(9600UL)
 
 unsigned long Time_Cycle = 0;
 static USART_TypeDef* usart = USART3;
@@ -77,7 +78,7 @@ void check_txd_RS485(void)
 {
     if ( USART3->ISR & USART_ISR_TC_Msk )
     {
-		txd_RS485_DIS();
+			txd_RS485_DIS();
     }
     
     MB_CopyStructToDiscreteInputs();
@@ -126,7 +127,8 @@ BOOL xMBPortSerialInit( UCHAR ucPORT, ULONG ulBaudRate, UCHAR ucDataBits, eMBPar
 	
 	USART3->CR1 &= ~USART_CR1_UE;
 //	USART3->BRR = USART3_PCLK/ulBaudRate;	
-	USART3->BRR = 312;//625;
+	USART3->BRR = USART3_FCLK/USART3_DEFBAUDRATE;
+	
 
 
 	switch ( eParity )
@@ -144,8 +146,7 @@ BOOL xMBPortSerialInit( UCHAR ucPORT, ULONG ulBaudRate, UCHAR ucDataBits, eMBPar
 			break;
 	}
 	USART3->CR2 &= USART_CR2_STOP_Msk;
-
-    USART3->CR1|= USART_CR1_TE | USART_CR1_RE; 	
+	USART3->CR1|= USART_CR1_TE | USART_CR1_RE; 	
 	
 	NVIC_SetPriority( USART3_IRQn, 7 );
 	NVIC_EnableIRQ( USART3_IRQn );
@@ -159,7 +160,7 @@ BOOL xMBPortSerialPutByte( CHAR ucByte )
     /* Put a byte in the UARTs transmit buffer. This function is called
      * by the protocol stack if pxMBFrameCBTransmitterEmpty( ) has been
      * called. */
-	usart->TDR = ucByte;
+		usart->TDR = ucByte;
     return TRUE;
 }
 
@@ -171,7 +172,6 @@ BOOL xMBPortSerialGetByte( CHAR *pucByte )
      */
     
     data = 	usart->RDR;
-	
     *pucByte = data;
     return TRUE;
 }
